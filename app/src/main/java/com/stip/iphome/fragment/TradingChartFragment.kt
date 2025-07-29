@@ -216,10 +216,10 @@ class TradingChartFragment : Fragment() {
         try {
             // 현재 날짜 기준으로 3개월 전부터 현재까지 데이터 요청
             val calendar = Calendar.getInstance()
-            val endDate = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault()).format(calendar.time)
+            val endDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
             
             calendar.add(Calendar.MONTH, -3)
-            val startDate = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault()).format(calendar.time)
+            val startDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
             
             val url = URL("$API_BASE_URL/api/tickers/hourly?marketPairId=$pairId&from=$startDate&to=$endDate")
             val connection = url.openConnection()

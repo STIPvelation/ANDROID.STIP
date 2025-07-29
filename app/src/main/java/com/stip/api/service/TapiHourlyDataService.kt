@@ -12,8 +12,8 @@ interface TapiHourlyDataService {
     /**
      * 시간별 거래 데이터 조회
      * @param marketPairId 마켓 페어 ID
-     * @param from 시작 시각 (ISO 8601 형식)
-     * @param to 종료 시각 (ISO 8601 형식)
+     * @param from 시작 날짜 (YYYY-MM-DD 형식)
+     * @param to 종료 날짜 (YYYY-MM-DD 형식)
      * @return 시간별 거래 데이터 배열
      */
     @GET("api/tickers/hourly")
