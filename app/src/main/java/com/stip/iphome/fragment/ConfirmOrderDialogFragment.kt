@@ -190,6 +190,14 @@ class ConfirmOrderDialogFragment : DialogFragment() {
         } ?: Log.e(TAG, "Dialog window is null in onStart, cannot set size.")
     }
 
+    override fun onDismiss(dialog: android.content.DialogInterface) {
+        super.onDismiss(dialog)
+        // 모달이 닫힐 때 부모 Fragment에 알림
+        parentFragmentManager.setFragmentResult(REQUEST_KEY, Bundle().apply {
+            putBoolean(RESULT_KEY_CONFIRMED, false)
+        })
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
