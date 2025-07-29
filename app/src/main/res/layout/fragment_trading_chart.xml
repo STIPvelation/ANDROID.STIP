@@ -6,34 +6,111 @@
     android:id="@+id/main_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#131722"
+    android:background="#FFFFFF"
     tools:context=".ChartFragment">
 
-    <!-- 차트 제목 -->
-    <TextView
-        android:id="@+id/chart_title"
-        android:layout_width="wrap_content"
+    <!-- 시간 필터 컨테이너 -->
+    <LinearLayout
+        android:id="@+id/time_filter_container"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="18sp"
-        android:textColor="#D1D4DC"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- 메인 시간 필터 버튼들 -->
+        <LinearLayout
+            android:id="@+id/main_time_filters"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@drawable/bg_time_filter_container"
+            android:padding="4dp">
+
+            <Button
+                android:id="@+id/btn_seconds"
+                style="@style/TimeFilterButtonStyle"
+                android:text="초" />
+
+            <Button
+                android:id="@+id/btn_minutes"
+                style="@style/TimeFilterButtonStyle"
+                android:text="분" />
+
+            <Button
+                android:id="@+id/btn_hours"
+                style="@style/TimeFilterButtonStyle"
+                android:text="시" />
+
+            <Button
+                android:id="@+id/btn_days"
+                style="@style/TimeFilterButtonStyle"
+                android:text="일" />
+
+            <Button
+                android:id="@+id/btn_weeks"
+                style="@style/TimeFilterButtonStyle"
+                android:text="주" />
+
+            <Button
+                android:id="@+id/btn_months"
+                style="@style/TimeFilterButtonStyle"
+                android:text="월" />
+
+            <Button
+                android:id="@+id/btn_years"
+                style="@style/TimeFilterButtonStyle"
+                android:text="년" />
+
+        </LinearLayout>
+
+        <!-- 분 단위 서브 필터 (기본적으로 숨김) -->
+        <LinearLayout
+            android:id="@+id/minute_sub_filters"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@drawable/bg_time_filter_sub_container"
+            android:padding="4dp"
+            android:layout_marginTop="4dp"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/btn_1min"
+                style="@style/TimeFilterSubButtonStyle"
+                android:text="1분" />
+
+            <Button
+                android:id="@+id/btn_5min"
+                style="@style/TimeFilterSubButtonStyle"
+                android:text="5분" />
+
+            <Button
+                android:id="@+id/btn_15min"
+                style="@style/TimeFilterSubButtonStyle"
+                android:text="15분" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <!-- 차트 컨테이너 -->
     <FrameLayout
         android:id="@+id/chart_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="#131722"
-        app:layout_constraintTop_toBottomOf="@id/chart_title"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/time_filter_container"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
@@ -42,7 +119,7 @@
             android:id="@+id/chartWebView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#131722" />
+            android:background="#FFFFFF" />
 
         <!-- 로딩 인디케이터 -->
         <ProgressBar
@@ -61,7 +138,7 @@
             android:orientation="vertical"
             android:gravity="center"
             android:visibility="gone"
-            android:background="#131722">
+            android:background="#FFFFFF">
 
             <ImageView
                 android:layout_width="80dp"
@@ -69,7 +146,7 @@
                 android:src="@android:drawable/ic_menu_view"
                 android:contentDescription="차트 없음"
                 android:alpha="0.5"
-                android:tint="#D1D4DC" />
+                android:tint="#666666" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -77,7 +154,7 @@
                 android:layout_marginTop="16dp"
                 android:text="거래 데이터가 없습니다"
                 android:textSize="16sp"
-                android:textColor="#D1D4DC"
+                android:textColor="#333333"
                 android:gravity="center" />
 
             <TextView
@@ -86,7 +163,7 @@
                 android:layout_marginTop="8dp"
                 android:text="데이터를 새로고침하려면 화면을 터치하세요"
                 android:textSize="14sp"
-                android:textColor="#888888"
+                android:textColor="#666666"
                 android:gravity="center" />
 
         </LinearLayout>

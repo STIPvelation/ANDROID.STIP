@@ -47,6 +47,9 @@ class OrderButtonHandler(
         private const val TAG = "OrderButtonHandler"
     }
     
+    // 주문확인 모달 상태 추적
+    private var isOrderConfirmDialogShowing = false
+    
     /**
      * 최신 시장가를 동기적으로 가져오는 메서드
      * 주문 확인 다이얼로그에서 사용
@@ -234,6 +237,12 @@ class OrderButtonHandler(
             val selectedTab = binding.tabLayoutOrderMode.selectedTabPosition
             val isLoggedIn = PreferenceUtil.isRealLoggedIn()
             
+            // 주문확인 모달이 열려있으면 버튼 비활성화
+            if (isOrderConfirmDialogShowing) {
+                binding.buttonBuy.isEnabled = false
+                return
+            }
+            
             if (!isLoggedIn) {
                 // 로그인하지 않은 경우 버튼 비활성화
                 binding.buttonBuy.isEnabled = false
@@ -415,10 +424,18 @@ class OrderButtonHandler(
             triggerPriceValue = triggerPriceConfirmStr
         )
 
+        // 모달이 열릴 때 상태 업데이트
+        isOrderConfirmDialogShowing = true
+        updateOrderButtonStates()
+
         parentFragmentManager.setFragmentResultListener(
             ConfirmOrderDialogFragment.REQUEST_KEY,
             context as androidx.lifecycle.LifecycleOwner
         ) { _, result ->
+            // 모달이 닫힐 때 상태 업데이트
+            isOrderConfirmDialogShowing = false
+            updateOrderButtonStates()
+            
             val confirmed = result.getBoolean(ConfirmOrderDialogFragment.RESULT_KEY_CONFIRMED, false)
             if (confirmed) {
                 val resultIsBuy = result.getBoolean(ConfirmOrderDialogFragment.RESULT_KEY_IS_BUY, false)
@@ -434,6 +451,10 @@ class OrderButtonHandler(
     }
 
     private fun executeOrder(isBuyOrder: Boolean, price: Double, quantity: Double) {
+        // 주문 실행 중 버튼 비활성화
+        isOrderConfirmDialogShowing = true
+        updateOrderButtonStates()
+        
         val userId = PreferenceUtil.getUserId() ?: run {
             val orderType = if (isBuyOrder) "매수" else "매도"
             Log.e(TAG, "$orderType 실패: userId is null")
@@ -442,6 +463,9 @@ class OrderButtonHandler(
                 "사용자 정보를 찾을 수 없습니다.",
                 R.color.red
             )
+            // 에러 발생 시 버튼 다시 활성화
+            isOrderConfirmDialogShowing = false
+            updateOrderButtonStates()
             return
         }
 
@@ -568,6 +592,10 @@ class OrderButtonHandler(
                                     Log.d(TAG, "주문 체결 후 강제 주문가능 금액 업데이트 완료")
                                 } catch (e: Exception) {
                                     Log.e(TAG, "주문 체결 후 강제 업데이트 실패", e)
+                                } finally {
+                                    // 주문 성공 후 버튼 다시 활성화
+                                    isOrderConfirmDialogShowing = false
+                                    updateOrderButtonStates()
                                 }
                             }
                         } else {
@@ -577,6 +605,9 @@ class OrderButtonHandler(
                                 "${orderType} 주문 실패: ${orderResponse?.message}",
                                 R.color.red
                             )
+                            // 주문 실패 시 버튼 다시 활성화
+                            isOrderConfirmDialogShowing = false
+                            updateOrderButtonStates()
                         }
                     } else {
                         Log.e(TAG, "$orderType 주문 실패: ${response.code()} - ${response.errorBody()?.string()}")
@@ -585,6 +616,9 @@ class OrderButtonHandler(
                             "${orderType} 주문 실패: ${response.errorBody()?.string()}",
                             R.color.red
                         )
+                        // 주문 실패 시 버튼 다시 활성화
+                        isOrderConfirmDialogShowing = false
+                        updateOrderButtonStates()
                     }
                 }
             } catch (e: Exception) {
@@ -595,6 +629,9 @@ class OrderButtonHandler(
                         "${orderType} 주문 실행 중 오류가 발생했습니다: ${e.message}",
                         R.color.red
                     )
+                    // 예외 발생 시 버튼 다시 활성화
+                    isOrderConfirmDialogShowing = false
+                    updateOrderButtonStates()
                 }   
             }
         }
