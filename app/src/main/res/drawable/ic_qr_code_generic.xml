@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+    
+    <!-- Background -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M0,0h200v200h-200z"/>
+    
+    <!-- QR Code pattern -->
+    <!-- Position detection patterns (the three large squares in corners) -->
+    <!-- Top-left position detection pattern -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M20,20h50v50h-50z"/>
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M30,30h30v30h-30z"/>
+    <path
+        android:fillColor="#000000"
+        android:pathData="M40,40h10v10h-10z"/>
+    
+    <!-- Top-right position detection pattern -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M130,20h50v50h-50z"/>
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M140,30h30v30h-30z"/>
+    <path
+        android:fillColor="#000000"
+        android:pathData="M150,40h10v10h-10z"/>
+    
+    <!-- Bottom-left position detection pattern -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M20,130h50v50h-50z"/>
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M30,140h30v30h-30z"/>
+    <path
+        android:fillColor="#000000"
+        android:pathData="M40,150h10v10h-10z"/>
+    
+    <!-- QR Code data modules (small squares) -->
+    <path android:fillColor="#000000" android:pathData="M80,20h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M100,20h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M80,40h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M110,40h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M20,80h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M40,80h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M60,80h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M90,80h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M120,80h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M150,80h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M170,80h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M80,100h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M110,100h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M130,100h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M170,100h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M100,120h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M140,120h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M170,120h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M80,130h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M120,130h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M130,130h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M150,130h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M170,130h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M90,150h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M130,150h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M150,150h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M80,170h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M100,170h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M120,170h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M140,170h10v10h-10z"/>
+    <path android:fillColor="#000000" android:pathData="M160,170h10v10h-10z"/>
+</vector>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="policy_terms_title_array">
+        <item>（必須）取引通貨および為替方式</item>
+        <item>（必須）投資責任およびリスク告知</item>
+        <item>（必須）認証サービス利用規約</item>
+        <item>（必須）固有識別情報の使用同意</item>
+        <item>（必須）認証時の個人情報収集同意</item>
+        <item>（必須）個人情報収集同意</item>
+        <item>（必須）入出金自動引き落としサービス</item>
+        <item>（必須）利用規約および利用案内</item>
+        <item>（必須）消費者保護ポリシー</item>
+        <item>（必須）プライバシーポリシー</item>
+        <item>（必須）個人情報の収集および利用同意</item>
+        <item>ESGポリシー</item>
+        <item>スタートアップおよび中小企業支援ポリシー</item>
+        <item>マネーロンダリング対策（AML）および内部統制ポリシー</item>
+        <item>DIP価値評価基準ポリシー</item>
+        <item>STIP手数料の透明性ポリシー</item>
+    </string-array>
+    <string-array name="policy_terms_content_array">
+    </string-array>
+
+
+
+</resources>

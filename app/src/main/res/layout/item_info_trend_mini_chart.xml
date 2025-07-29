@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/price_section_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="12dp"
+    android:paddingBottom="12dp">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_mid_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <TextView
+        android:id="@+id/stip_label"
+        style="@style/DefaultTextStyle_16"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/label_stip"
+        app:layout_constraintEnd_toStartOf="@id/guideline_mid_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/stip_price"
+        style="@style/DefaultTextStyle_20"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:gravity="center"
+        tools:text="@string/price_stip"
+        app:layout_constraintEnd_toStartOf="@id/guideline_mid_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stip_label" />
+
+    <LinearLayout
+        android:id="@+id/stip_change_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"  app:layout_constraintEnd_toStartOf="@id/guideline_mid_vertical"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stip_price">
+
+        <ImageView
+            android:id="@+id/increase_icon_stip"
+            android:layout_width="9dp"
+            android:layout_height="6dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_arrow_up_red" />
+
+        <TextView
+            android:id="@+id/change_stip"
+            style="@style/DefaultTextStyle_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            tools:text="@string/change_stip" />
+
+        <TextView
+            android:id="@+id/percent_stip"
+            style="@style/DefaultTextStyle_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            tools:text="@string/percent_stip" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/etip_label"
+        style="@style/DefaultTextStyle_16"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/label_etip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline_mid_vertical"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/etip_price"
+        style="@style/DefaultTextStyle_20"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:gravity="center"
+        tools:text="@string/price_etip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline_mid_vertical"
+        app:layout_constraintTop_toBottomOf="@id/etip_label" />
+
+    <LinearLayout
+        android:id="@+id/etip_change_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"  app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@id/guideline_mid_vertical"
+        app:layout_constraintTop_toBottomOf="@id/etip_price">
+
+        <ImageView
+            android:id="@+id/increase_icon_etip"
+            android:layout_width="9dp"
+            android:layout_height="6dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_arrow_up_red" />
+
+        <TextView
+            android:id="@+id/change_etip"
+            style="@style/DefaultTextStyle_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            tools:text="@string/change_etip" />
+
+        <TextView
+            android:id="@+id/percent_etip"
+            style="@style/DefaultTextStyle_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            tools:text="@string/percent_etip" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/chart_section_container"
+        android:layout_width="0dp"
+        android:layout_height="77dp"
+
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stip_change_container">
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart_stip"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:elevation="2dp" />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart_etip"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:elevation="2dp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

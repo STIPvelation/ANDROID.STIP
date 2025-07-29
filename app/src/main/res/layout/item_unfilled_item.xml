@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:baselineAligned="false"
+    android:background="@color/white">
+
+    <!-- ✅ 왼쪽 상태 아이콘 셀 -->
+    <FrameLayout
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/cell_item_border">
+
+        <ImageView
+            android:id="@+id/checkIcon"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_circle_check_outline"
+            android:visibility="visible" />
+    </FrameLayout>
+
+    <!-- 티커 + 거래종류 -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2.2"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tickerText"
+            style="@style/ItemCellStyle_Boxed"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="8sp"
+            android:autoSizeMaxTextSize="10sp"
+            android:autoSizeStepGranularity="1sp" />
+
+        <TextView
+            android:id="@+id/tradeTypeText"
+            style="@style/ItemCellStyle_Boxed"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="8sp"
+            android:autoSizeMaxTextSize="10sp"
+            android:autoSizeStepGranularity="1sp" />
+    </LinearLayout>
+
+    <!-- 감시가격 + 주문가격 -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2.5"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/watchPriceText"
+            style="@style/ItemCellStyle_Boxed"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="8sp"
+            android:autoSizeMaxTextSize="10sp"
+            android:autoSizeStepGranularity="1sp" />
+
+        <TextView
+            android:id="@+id/orderPriceText"
+            style="@style/ItemCellStyle_Boxed"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="8sp"
+            android:autoSizeMaxTextSize="10sp"
+            android:autoSizeStepGranularity="1sp" />
+    </LinearLayout>
+
+    <!-- 주문수량 + 미체결량 -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2.5"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/orderQuantityText"
+            style="@style/ItemCellStyle_Boxed"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="8sp"
+            android:autoSizeMaxTextSize="10sp"
+            android:autoSizeStepGranularity="1sp" />
+
+        <TextView
+            android:id="@+id/unfilledQuantityText"
+            style="@style/ItemCellStyle_Boxed"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="8sp"
+            android:autoSizeMaxTextSize="10sp"
+            android:autoSizeStepGranularity="1sp" />
+    </LinearLayout>
+
+    <!-- 주문시간 -->
+    <TextView
+        android:id="@+id/orderTimeText"
+        style="@style/ItemCellStyle_Boxed"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2.2"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="8sp"
+        android:autoSizeMaxTextSize="10sp"
+        android:autoSizeStepGranularity="1sp" />
+</LinearLayout>

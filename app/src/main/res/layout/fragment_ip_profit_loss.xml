@@ -1,0 +1,712 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F9FA">
+
+
+    <ScrollView
+        android:id="@+id/scroll_view_profit"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/contentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            android:paddingStart="@dimen/screen_edge_padding"
+            android:paddingEnd="@dimen/screen_edge_padding">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/notice_card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:strokeWidth="0.3dp"
+                app:strokeColor="#30C6E8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/notice_section"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingVertical="10dp"
+                    android:paddingHorizontal="16dp">
+
+                    <TextView
+                        android:id="@+id/label_notice"
+                        style="@style/NoticeLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_notice" />
+
+                    <TextView
+                        android:id="@+id/text_notice"
+                        style="@style/DefaultTextStyle_12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:textColor="#333333"
+                        android:text="@string/text_notice_profit" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/profit_type_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:strokeWidth="0.5dp"
+                app:strokeColor="#DDDDDD"
+                app:layout_constraintBottom_toTopOf="@id/text_profit_period"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/notice_card">
+
+                <LinearLayout
+                    android:id="@+id/profitTypeContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textProfitType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:textSize="14sp"
+                        android:textColor="#333333"
+                        android:textStyle="bold"
+                        android:text="@string/label_profit_type_weighted" />
+
+                    <ImageView
+                        android:id="@+id/icon_down"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:layout_marginStart="8dp"
+                        android:contentDescription="@string/desc_dropdown_arrow"
+                        android:tint="#30C6E8"
+                        android:src="@drawable/ic_arrow_down_filled" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/profit_month_card"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginEnd="12dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:strokeWidth="0.5dp"
+                app:strokeColor="#DDDDDD"
+                app:layout_constraintBottom_toBottomOf="@id/profit_type_card"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/profit_type_card">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textProfitMonth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#333333"
+                        android:textStyle="bold"
+                        android:text="@string/placeholder_month" />
+
+                    <ImageView
+                        android:id="@+id/iconDown"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:layout_marginStart="8dp"
+                        android:contentDescription="@string/desc_dropdown_arrow"
+                        android:tint="#30C6E8"
+                        android:src="@drawable/ic_arrow_down_filled" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/text_profit_period"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="16dp"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="16dp"
+                android:background="@drawable/rounded_period_background"
+                android:gravity="center"
+                android:textSize="13sp"
+                android:textColor="#333333"
+                android:fontFamily="sans-serif-medium"
+                android:elevation="1dp"
+                android:text="@string/placeholder_profit_period"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/profit_type_card" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/summary_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:strokeWidth="0.5dp"
+                app:strokeColor="#DDDDDD"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_profit_period"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/labels_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="24dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:strokeWidth="0.3dp"
+                app:strokeColor="#30C6E8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/summary_card">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <!-- First column - now profitRateLabel (swapped) -->
+                    <TextView
+                        android:id="@+id/profitRateLabel"
+                        style="@style/DefaultTextStyle_12"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_period_rate"
+                        android:gravity="center_horizontal"
+                        android:lineSpacingExtra="3dp"
+                        android:maxLines="2"
+                        android:ellipsize="end"
+                        android:paddingHorizontal="4dp"
+                        android:textAlignment="center"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/valuationProfitLabel"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.33" />
+
+                    <TextView
+                        android:id="@+id/profitRateText"
+                        style="@style/DefaultTextStyle_14"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/placeholder_percent_zero"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/profitRateLabel"
+                        app:layout_constraintEnd_toEndOf="@id/profitRateLabel"
+                        app:layout_constraintTop_toBottomOf="@id/profitRateLabel" />
+
+                    <!-- Second column - now valuationProfitLabel (swapped) -->
+                    <TextView
+                        android:id="@+id/valuationProfitLabel"
+                        style="@style/DefaultTextStyle_12"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_period_profit"
+                        android:gravity="center_horizontal"
+                        android:lineSpacingExtra="3dp"
+                        android:maxLines="2"
+                        android:ellipsize="end"
+                        android:paddingHorizontal="4dp"
+                        android:layout_marginBottom="1dp"
+                        android:textAlignment="center"
+                        app:layout_constraintStart_toEndOf="@id/profitRateLabel"
+                        app:layout_constraintEnd_toStartOf="@id/text_avg_label"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.33" />
+
+                    <TextView
+                        android:id="@+id/valuationProfitText"
+                        style="@style/DefaultTextStyle_14"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/placeholder_usd_zero"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/valuationProfitLabel"
+                        app:layout_constraintEnd_toEndOf="@id/valuationProfitLabel"
+                        app:layout_constraintTop_toBottomOf="@id/valuationProfitLabel" />
+
+                    <!-- Third column -->
+                    <TextView
+                        android:id="@+id/text_avg_label"
+                        style="@style/DefaultTextStyle_12"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_period_average_investment"
+                        android:gravity="center"
+                        app:layout_constraintStart_toEndOf="@id/profitRateLabel"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.33" />
+
+                    <TextView
+                        android:id="@+id/text_avg_value"
+                        style="@style/DefaultTextStyle_14"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/placeholder_usd_zero"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/text_avg_label"
+                        app:layout_constraintEnd_toEndOf="@id/text_avg_label"
+                        app:layout_constraintTop_toBottomOf="@id/text_avg_label" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline_rate_center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.5" />
+
+                    <!-- Removed vertical divider to fix UI issue when expanding/collapsing graph -->
+                    <View
+                        android:id="@+id/vertical_divider_rate"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:visibility="gone"
+                        android:background="#DDDDDD"
+                        app:layout_constraintBottom_toBottomOf="@id/profitRateText"
+                        app:layout_constraintEnd_toStartOf="@id/guideline_rate_center"
+                        app:layout_constraintStart_toStartOf="@id/guideline_rate_center"
+                        app:layout_constraintTop_toTopOf="@id/profitRateLabel" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_graph_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="12dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:strokeWidth="0.3dp"
+                app:strokeColor="#30C6E8"
+                app:layout_constraintTop_toBottomOf="@id/labels_container"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/text_graph_title"
+                        style="@style/DefaultTextStyle_16"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:gravity="center_vertical|start"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:text="@string/title_profit_graph"
+                        android:textColor="#333333"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/icon_graph_arrow"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="16dp"
+                        android:contentDescription="@string/desc_dropdown_arrow"
+                        android:src="@drawable/ic_arrow_down"
+                        android:tint="#777777"
+                        app:layout_constraintBottom_toBottomOf="@id/text_graph_title"
+                        app:layout_constraintEnd_toEndOf="@id/text_graph_title"
+                        app:layout_constraintTop_toTopOf="@id/text_graph_title" />
+
+                    <View
+                        android:id="@+id/divider_graph_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="#EEEEEE"
+                        app:layout_constraintTop_toBottomOf="@id/text_graph_title" />
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tab_layout_profit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        app:tabIndicatorColor="@color/main_point"
+                        app:tabSelectedTextColor="@color/main_point"
+                        app:tabTextColor="#30C6E8"
+                        app:tabIndicatorHeight="0.5dp"
+                        app:tabIndicatorFullWidth="true"
+                        app:tabMode="fixed"
+                        app:tabGravity="fill"
+                        app:layout_constraintTop_toBottomOf="@id/divider_graph_title"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent">
+
+                        <com.google.android.material.tabs.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tab_accumulated_rate" />
+
+                        <com.google.android.material.tabs.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tab_profit_loss" />
+                    </com.google.android.material.tabs.TabLayout>
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/line_chart_profit"
+                        android:layout_width="0dp"
+                        android:layout_height="220dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tab_layout_profit"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_profit_detail_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="12dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:strokeWidth="0.3dp"
+                app:strokeColor="#30C6E8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/card_graph_container">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/text_profit_detail_title"
+                        style="@style/DefaultTextStyle_16"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical|start"
+                        android:padding="8dp"
+                        android:text="@string/title_profit_detail"
+                        android:textColor="#333333"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/divider_detail_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="#EEEEEE"
+                        app:layout_constraintTop_toBottomOf="@id/text_profit_detail_title" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/container_trade_table_header"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/table_header_gradient"
+                        android:elevation="0.5dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/divider_detail_title">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/container_date"
+                            android:layout_width="@dimen/list_item_date_width"
+                            android:layout_height="0dp"
+                            android:paddingEnd="8dp"
+                            android:paddingStart="12dp"
+                            android:background="@android:color/transparent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/text_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/trade_header_date"
+                                android:textSize="13sp"
+                                android:textColor="#555555"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/icon_sort_arrow"
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:src="@drawable/ic_arrow_both_filled"
+                                android:tint="#777777"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:ignore="ContentDescription" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <LinearLayout
+                            android:id="@+id/container_profit_loss"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="@android:color/transparent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/container_profit_rate"
+                            app:layout_constraintStart_toEndOf="@id/container_date"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/text_daily_profit_label"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:paddingVertical="8dp"
+                                android:textSize="12sp"
+                                android:textColor="#555555"
+                                android:text="@string/trade_header_daily_profit" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:background="#30C6E8"
+                                android:alpha="0.3" />
+
+                            <TextView
+                                android:id="@+id/text_cumulative_profit_label"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:paddingVertical="8dp"
+                                android:textSize="12sp"
+                                android:textColor="#555555"
+                                android:text="@string/trade_header_cumulative_profit" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/container_profit_rate"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="@android:color/transparent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/container_assets"
+                            app:layout_constraintStart_toEndOf="@id/container_profit_loss"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/text_daily_rate_label"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:paddingVertical="8dp"
+                                android:textSize="12sp"
+                                android:textColor="#555555"
+                                android:text="@string/trade_header_daily_rate" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:background="#30C6E8"
+                                android:alpha="0.3" />
+
+                            <TextView
+                                android:id="@+id/text_cumulative_rate_label"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:paddingVertical="8dp"
+                                android:textSize="12sp"
+                                android:textColor="#555555"
+                                android:text="@string/trade_header_cumulative_rate" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/container_assets"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="@android:color/transparent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/container_deposit_withdrawal"
+                            app:layout_constraintStart_toEndOf="@id/container_profit_rate"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/text_assets_label"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:paddingVertical="8dp"
+                                android:textSize="12sp"
+                                android:textColor="#555555"
+                                android:text="@string/trade_header_assets" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:background="#30C6E8"
+                                android:alpha="0.3" />
+
+                            <TextView
+                                android:id="@+id/text_investment_label"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:paddingVertical="8dp"
+                                android:textSize="12sp"
+                                android:textColor="#555555"
+                                android:text="@string/trade_header_invest" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/container_deposit_withdrawal"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="@android:color/transparent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/container_assets"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/text_deposit_label"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:paddingVertical="8dp"
+                                android:textSize="12sp"
+                                android:textColor="#555555"
+                                android:text="@string/trade_header_deposit" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:background="#30C6E8"
+                                android:alpha="0.3" />
+
+                            <TextView
+                                android:id="@+id/text_withdrawal_label"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:paddingVertical="8dp"
+                                android:textSize="12sp"
+                                android:textColor="#555555"
+                                android:text="@string/trade_header_withdrawal" />
+                        </LinearLayout>
+
+                        <androidx.constraintlayout.widget.Group
+                            android:id="@+id/group_weighted_columns"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:constraint_referenced_ids="container_profit_loss, container_profit_rate, container_assets, container_deposit_withdrawal" />
+
+                        <View
+                            android:id="@+id/separator1"
+                            android:layout_width="1dp"
+                            android:layout_height="0dp"
+                            android:background="@color/trade_header_separator"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/container_date"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:id="@+id/separator2"
+                            android:layout_width="1dp"
+                            android:layout_height="0dp"
+                            android:background="@color/trade_header_separator"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/container_profit_loss"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:id="@+id/separator3"
+                            android:layout_width="1dp"
+                            android:layout_height="0dp"
+                            android:background="@color/trade_header_separator"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/container_profit_rate"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:id="@+id/separator4"
+                            android:layout_width="1dp"
+                            android:layout_height="0dp"
+                            android:background="@color/trade_header_separator"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/container_assets"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <View
+                        android:id="@+id/divider_before_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E0E0E0"
+                        app:layout_constraintTop_toBottomOf="@id/container_trade_table_header" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

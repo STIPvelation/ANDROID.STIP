@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F8F8">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/material_toolbar"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_navigate_back"
+        app:titleCentered="true"
+        app:title="WETALK 출금하기"
+        app:titleTextAppearance="@style/TitleText" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/material_toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            
+            <!-- 출금 가능/한도 정보 섹션 -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/white"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:id="@+id/tv_available_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="출금가능"
+                        android:textColor="#333333"
+                        android:textSize="@dimen/text_medium_small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_available_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="40.00 WETALK"
+                        android:textColor="#333333"
+                        android:textSize="@dimen/text_medium_small"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tv_available_label" />
+
+                    <TextView
+                        android:id="@+id/tv_max_amount_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/padding_medium"
+                        android:text="출금한도"
+                        android:textColor="#333333"
+                        android:textSize="@dimen/text_medium_small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_available_label" />
+
+                    <TextView
+                        android:id="@+id/tv_max_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1,000,000 WETALK"
+                        android:textColor="#333333"
+                        android:textSize="@dimen/text_medium_small"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tv_max_amount_label" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- 금액 입력 카드 -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_amount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card_info">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="24dp">
+
+                    <ImageView
+                        android:id="@+id/iv_wallet_icon"
+                        android:layout_width="@dimen/icon_small"
+                        android:layout_height="@dimen/icon_small"
+                        android:src="@drawable/ic_wallet"
+                        app:tint="#30C6E8"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_amount_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="출금수량"
+                        android:textColor="#333333"
+                        android:textSize="@dimen/text_medium"
+                        app:layout_constraintBottom_toBottomOf="@+id/iv_wallet_icon"
+                        app:layout_constraintStart_toEndOf="@+id/iv_wallet_icon"
+                        app:layout_constraintTop_toTopOf="@+id/iv_wallet_icon" />
+
+                    <EditText
+                        android:id="@+id/et_amount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/padding_medium"
+                        android:background="@drawable/bg_edit_text_withdrawal_border"
+                        android:hint="0.00"
+                        android:inputType="numberDecimal"
+                        android:textAlignment="textEnd"
+                        android:textColor="#30C6E8"
+                        android:textColorHint="#CCCCCC"
+                        android:paddingVertical="@dimen/margin_small"
+                        android:paddingHorizontal="@dimen/margin_small"
+                        android:textSize="@dimen/text_xlarge"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_wallet_icon" />
+                        
+                    <!-- 퍼센트 선택 버튼 영역 -->
+                    <LinearLayout
+                        android:id="@+id/percentage_buttons_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/padding_medium"
+                        android:paddingHorizontal="4dp"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/et_amount">
+
+                        <Button
+                            android:id="@+id/btn_percent_10"
+                            android:layout_width="0dp"
+                            android:layout_height="36dp"
+                            android:layout_marginEnd="6dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_rounded_button_light_blue"
+                            android:padding="0dp"
+                            android:text="10%"
+                            android:textColor="#D8F6FC"
+                            android:textSize="@dimen/text_small" />
+
+                        <Button
+                            android:id="@+id/btn_percent_25"
+                            android:layout_width="0dp"
+                            android:layout_height="36dp"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="6dp"
+                            android:padding="0dp"
+                            android:background="@drawable/bg_rounded_button_light_blue"
+                            android:text="25%"
+                            android:textSize="@dimen/text_small"
+                            android:textColor="#D8F6FC" />
+
+                        <Button
+                            android:id="@+id/btn_percent_50"
+                            android:layout_width="0dp"
+                            android:layout_height="36dp"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="6dp"
+                            android:padding="0dp"
+                            android:background="@drawable/bg_rounded_button_light_blue"
+                            android:text="50%"
+                            android:textSize="@dimen/text_small"
+                            android:textColor="#D8F6FC" />
+
+                        <Button
+                            android:id="@+id/btn_percent_100"
+                            android:layout_width="0dp"
+                            android:layout_height="36dp"
+                            android:layout_weight="1"
+                            android:padding="0dp"
+                            android:background="@drawable/bg_rounded_button_light_blue"
+                            android:text="100%"
+                            android:textSize="@dimen/text_small"
+                            android:textColor="#D8F6FC" />
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- 출금 주소 입력 섹션 -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card_amount">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:padding="24dp">
+
+                    <ImageView
+                        android:id="@+id/iv_link_icon"
+                        android:layout_width="@dimen/icon_xsmall"
+                        android:layout_height="@dimen/icon_xsmall"
+                        android:src="@drawable/ic_link"
+                        app:tint="#30C6E8"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_address_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="출금 주소"
+                        android:textColor="#333333"
+                        android:textSize="@dimen/text_medium"
+                        app:layout_constraintBottom_toBottomOf="@+id/iv_link_icon"
+                        app:layout_constraintStart_toEndOf="@+id/iv_link_icon"
+                        app:layout_constraintTop_toTopOf="@+id/iv_link_icon" />
+
+                    <EditText
+                        android:id="@+id/et_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:layout_marginTop="@dimen/padding_medium"
+                        android:background="@drawable/bg_edit_text_border"
+                        android:hint="출금 주소를 입력해주세요"
+                        android:inputType="text"
+                        android:paddingStart="@dimen/margin_small"
+                        android:paddingEnd="@dimen/margin_small"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:textSize="@dimen/text_normal"
+                        android:textColorHint="#CCCCCC"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_link_icon" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+            
+            <!-- 수수료 정보 섹션 - 하나의 흰색 카드로 통합 -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_fee_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card_address">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:id="@+id/tv_fee_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="수수료 (부가세 포함)"
+                        android:textColor="#666666"
+                        android:textSize="@dimen/text_medium_small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_fee_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1.00 WETALK"
+                        android:textColor="#30C6E8"
+                        android:textSize="@dimen/text_medium_small"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tv_fee_label" />
+
+                    <TextView
+                        android:id="@+id/tv_total_fee_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/padding_medium"
+                        android:text="총출금 (수수료 포함)"
+                        android:textColor="#666666"
+                        android:textSize="@dimen/text_medium_small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_fee_label" />
+
+                    <TextView
+                        android:id="@+id/tv_total_fee_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1.00 WETALK"
+                        android:textColor="#30C6E8"
+                        android:textSize="@dimen/text_medium_small"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tv_total_fee_label" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- 중요 정보 섹션 -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_info_notice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="24dp"
+                app:cardCornerRadius="@dimen/corner_radius_medium"
+                app:cardElevation="0dp"
+                android:backgroundTint="#F2F2F2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card_fee_info">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_medium">
+                    
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/margin_small"
+                        android:text="중요 유의사항"
+                        android:textColor="#333333"
+                        android:textSize="@dimen/text_medium_small"
+                        android:textStyle="bold"
+                        app:drawableStartCompat="@drawable/ic_info_circle"
+                        app:drawableTint="#333333" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:text="• 최소 출금 금액은 1.00 입니다."
+                        android:textColor="#666666"
+                        android:textSize="@dimen/text_normal" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="• 다른 네트워크로 출금 시 복구가 불가합니다."
+                        android:textColor="#666666"
+                        android:textSize="@dimen/text_normal" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="• 출금 소요시간은 네트워크 상태에 따라 다릅니다."
+                        android:textColor="#666666"
+                        android:textSize="@dimen/text_normal" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- 출금 계속 버튼 -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_continue"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/button_background_blue"
+                android:text="출금신청"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card_info_notice"
+                app:layout_constraintVertical_bias="0.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

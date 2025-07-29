@@ -1,0 +1,771 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    tools:context=".YourFragmentOrActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@android:drawable/ic_menu_recent_history"
+                android:tint="#30C6E8"
+                android:contentDescription="@string/dnd_mode_category_title" />
+
+            <TextView
+                android:id="@+id/tv_dnd_mode_header"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="@string/dnd_mode_category_title"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:contentPadding="16dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/item_dnd_rest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/img_dnd_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:adjustViewBounds="true"
+                    android:maxWidth="24dp"
+                    android:src="@android:drawable/ic_lock_idle_alarm"
+                    android:tint="#30C6E8"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/dnd_mode_rest_title" />
+
+                <TextView
+                    android:id="@+id/tv_dnd_rest_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="휴식 모드"
+                    android:textSize="16sp"
+                    android:textStyle="normal"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_dnd_rest_desc"
+                    app:layout_constraintEnd_toStartOf="@+id/switch_dnd_rest_container"
+                    app:layout_constraintStart_toEndOf="@+id/img_dnd_icon"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <TextView
+                    android:id="@+id/tv_dnd_rest_desc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/dnd_mode_rest_description"
+                    android:textSize="13sp"
+                    android:textColor="#757575"
+                    app:layout_constraintEnd_toStartOf="@+id/switch_dnd_rest_container"
+                    app:layout_constraintStart_toEndOf="@+id/img_dnd_icon"
+                    app:layout_constraintTop_toBottomOf="@id/tv_dnd_rest_title" />
+
+                <FrameLayout
+                    android:id="@+id/switch_dnd_rest_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="51dp"
+                    android:minHeight="31dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switch_dnd_rest"
+                        android:checked="false"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:thumbTint="#FFFFFF"
+                        app:trackTint="@color/switch_track_selector" />
+                </FrameLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:maxWidth="20dp"
+                android:src="@android:drawable/ic_dialog_info"
+                android:tint="#30C6E8"
+                android:contentDescription="@string/owned_ip_category_title" />
+
+            <TextView
+                android:id="@+id/tv_owned_ip_header"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="@string/owned_ip_category_title"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:contentPadding="16dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/item_owned_ip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/img_owned_ip_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:adjustViewBounds="true"
+                    android:maxWidth="24dp"
+                    android:src="@android:drawable/ic_menu_myplaces"
+                    android:tint="#30C6E8"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/owned_ip_alert_title" />
+
+                <TextView
+                    android:id="@+id/tv_owned_ip_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/owned_ip_alert_title"
+                    android:textSize="16sp"
+                    android:textStyle="normal"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_owned_ip_desc"
+                    app:layout_constraintEnd_toStartOf="@+id/switch_owned_ip_container"
+                    app:layout_constraintStart_toEndOf="@+id/img_owned_ip_icon"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <TextView
+                    android:id="@+id/tv_owned_ip_desc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/owned_ip_alert_description"
+                    android:textSize="13sp"
+                    android:textColor="#757575"
+                    app:layout_constraintEnd_toStartOf="@+id/switch_owned_ip_container"
+                    app:layout_constraintStart_toEndOf="@+id/img_owned_ip_icon"
+                    app:layout_constraintTop_toBottomOf="@id/tv_owned_ip_title" />
+
+                <FrameLayout
+                    android:id="@+id/switch_owned_ip_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="51dp"
+                    android:minHeight="31dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switch_owned_ip"
+                        android:checked="false"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:thumbTint="#FFFFFF"
+                        app:trackTint="@color/switch_track_selector" />
+                </FrameLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:maxWidth="20dp"
+                android:src="@android:drawable/ic_popup_reminder"
+                android:tint="#30C6E8"
+                android:contentDescription="@string/comprehensive_alert_category_title" />
+
+            <TextView
+                android:id="@+id/tv_comprehensive_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="@string/comprehensive_alert_category_title"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:contentPadding="16dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/item_comp_designated"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/img_comp_designated_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="0dp"
+                    android:src="@android:drawable/ic_menu_edit"
+                    android:tint="#30C6E8"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/comprehensive_alert_designated_title" />
+
+                <TextView
+                    android:id="@+id/tv_comp_designated_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/comprehensive_alert_designated_title"
+                    android:textSize="16sp"
+                    android:textStyle="normal"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_comp_designated_desc"
+                    app:layout_constraintEnd_toStartOf="@+id/switch_comp_designated_container"
+                    app:layout_constraintStart_toEndOf="@+id/img_comp_designated_icon"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <TextView
+                    android:id="@+id/tv_comp_designated_desc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/comprehensive_alert_designated_description"
+                    android:textSize="13sp"
+                    android:textColor="#757575"
+                    app:layout_constraintEnd_toStartOf="@+id/switch_comp_designated_container"
+                    app:layout_constraintStart_toEndOf="@+id/img_comp_designated_icon"
+                    app:layout_constraintTop_toBottomOf="@id/tv_comp_designated_title" />
+
+                <FrameLayout
+                    android:id="@+id/switch_comp_designated_container"
+                    android:layout_width="51dp"
+                    android:layout_height="31dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switch_comp_designated"
+                        android:checked="false"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:thumbTint="#FFFFFF"
+                        app:trackTint="@color/switch_track_selector" />
+                </FrameLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:contentPadding="16dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/item_comp_rise_fall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/img_comp_rise_fall_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="0dp"
+                    android:src="@android:drawable/arrow_up_float"
+                    android:tint="#30C6E8"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/comprehensive_alert_rise_fall_title" />
+
+                <TextView
+                    android:id="@+id/tv_comp_rise_fall_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/comprehensive_alert_rise_fall_title"
+                    android:textSize="16sp"
+                    android:textStyle="normal"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_comp_rise_fall_desc"
+                    app:layout_constraintEnd_toStartOf="@+id/switch_comp_rise_fall_container"
+                    app:layout_constraintStart_toEndOf="@+id/img_comp_rise_fall_icon"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <TextView
+                    android:id="@+id/tv_comp_rise_fall_desc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/comprehensive_alert_rise_fall_description"
+                    android:textSize="13sp"
+                    android:textColor="#757575"
+                    app:layout_constraintEnd_toStartOf="@+id/switch_comp_rise_fall_container"
+                    app:layout_constraintStart_toEndOf="@+id/img_comp_rise_fall_icon"
+                    app:layout_constraintTop_toBottomOf="@id/tv_comp_rise_fall_title" />
+
+                <FrameLayout
+                    android:id="@+id/switch_comp_rise_fall_container"
+                    android:layout_width="51dp"
+                    android:layout_height="31dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switch_comp_rise_fall"
+                        android:checked="false"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:thumbTint="#FFFFFF"
+                        app:trackTint="@color/switch_track_selector" />
+                </FrameLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:contentPadding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/item_comp_report_low"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp">
+
+                    <ImageView
+                        android:id="@+id/img_comp_report_low_icon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="0dp"
+                        android:src="@android:drawable/ic_menu_info_details"
+                        android:tint="#30C6E8"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:contentDescription="@string/comprehensive_alert_report_low_price_title" />
+
+                    <TextView
+                        android:id="@+id/tv_comp_report_low_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/comprehensive_alert_report_low_price_title"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_comp_report_low_desc"
+                        app:layout_constraintEnd_toStartOf="@+id/switch_comp_report_low_container"
+                        app:layout_constraintStart_toEndOf="@+id/img_comp_report_low_icon"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <TextView
+                        android:id="@+id/tv_comp_report_low_desc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/comprehensive_alert_report_low_price_description"
+                        android:textColor="#757575"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toTopOf="@id/divider_comp_report_low"
+                        app:layout_constraintEnd_toStartOf="@+id/switch_comp_report_low_container"
+                        app:layout_constraintStart_toEndOf="@+id/img_comp_report_low_icon"
+                        app:layout_constraintTop_toBottomOf="@id/tv_comp_report_low_title" />
+
+                    <FrameLayout
+                        android:id="@+id/switch_comp_report_low_container"
+                        android:layout_width="51dp"
+                        android:layout_height="31dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switch_comp_report_low"
+                            android:checked="false"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            app:thumbTint="#FFFFFF"
+                            app:trackTint="@color/switch_track_selector" />
+                    </FrameLayout>
+
+                    <View
+                        android:id="@+id/divider_comp_report_low"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="?android:attr/listDivider"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/item_comp_ip_cross"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp">
+
+                    <ImageView
+                        android:id="@+id/img_comp_ip_cross_icon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="0dp"
+                        android:src="@android:drawable/ic_menu_share"
+                        android:tint="#30C6E8"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:contentDescription="@string/comprehensive_alert_ip_cross_compare_title" />
+
+                    <TextView
+                        android:id="@+id/tv_comp_ip_cross_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/comprehensive_alert_ip_cross_compare_title"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_comp_ip_cross_desc"
+                        app:layout_constraintEnd_toStartOf="@+id/switch_comp_ip_cross_container"
+                        app:layout_constraintStart_toEndOf="@+id/img_comp_ip_cross_icon"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <TextView
+                        android:id="@+id/tv_comp_ip_cross_desc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="12dp"
+                        android:text="@string/comprehensive_alert_ip_cross_compare_description"
+                        android:textColor="#757575"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toTopOf="@id/divider_comp_ip_cross"
+                        app:layout_constraintEnd_toStartOf="@+id/switch_comp_ip_cross_container"
+                        app:layout_constraintStart_toEndOf="@+id/img_comp_ip_cross_icon"
+                        app:layout_constraintTop_toBottomOf="@id/tv_comp_ip_cross_title" />
+
+                    <FrameLayout
+                        android:id="@+id/switch_comp_ip_cross_container"
+                        android:layout_width="51dp"
+                        android:layout_height="31dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switch_comp_ip_cross"
+                            android:checked="false"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            app:thumbTint="#FFFFFF"
+                            app:trackTint="@color/switch_track_selector" />
+                    </FrameLayout>
+
+                    <View
+                        android:id="@+id/divider_comp_ip_cross"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="?android:attr/listDivider"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/item_comp_new_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp">
+
+                    <ImageView
+                        android:id="@+id/img_comp_new_user_icon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="0dp"
+                        android:src="@android:drawable/ic_menu_add"
+                        android:tint="#30C6E8"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:contentDescription="@string/comprehensive_alert_new_rights_user_title" />
+
+                    <TextView
+                        android:id="@+id/tv_comp_new_user_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/comprehensive_alert_new_rights_user_title"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_comp_new_user_desc"
+                        app:layout_constraintEnd_toStartOf="@+id/switch_comp_new_user_container"
+                        app:layout_constraintStart_toEndOf="@+id/img_comp_new_user_icon"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <TextView
+                        android:id="@+id/tv_comp_new_user_desc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="12dp"
+                        android:text="@string/comprehensive_alert_new_rights_user_description"
+                        android:textColor="#757575"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toTopOf="@id/divider_comp_new_user"
+                        app:layout_constraintEnd_toStartOf="@+id/switch_comp_new_user_container"
+                        app:layout_constraintStart_toEndOf="@+id/img_comp_new_user_icon"
+                        app:layout_constraintTop_toBottomOf="@id/tv_comp_new_user_title" />
+
+                    <FrameLayout
+                        android:id="@+id/switch_comp_new_user_container"
+                        android:layout_width="51dp"
+                        android:layout_height="31dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switch_comp_new_user"
+                            android:checked="false"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            app:thumbTint="#FFFFFF"
+                            app:trackTint="@color/switch_track_selector" />
+                    </FrameLayout>
+
+                    <View
+                        android:id="@+id/divider_comp_new_user"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="?android:attr/listDivider"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/item_comp_revoke_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp">
+
+                    <ImageView
+                        android:id="@+id/img_comp_revoke_user_icon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="0dp"
+                        android:src="@android:drawable/ic_menu_close_clear_cancel"
+                        android:tint="#30C6E8"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:contentDescription="@string/comprehensive_alert_rights_revoker_title" />
+
+                    <TextView
+                        android:id="@+id/tv_comp_revoke_user_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/comprehensive_alert_rights_revoker_title"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_comp_revoke_user_desc"
+                        app:layout_constraintEnd_toStartOf="@+id/switch_comp_revoke_user_container"
+                        app:layout_constraintStart_toEndOf="@+id/img_comp_revoke_user_icon"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <TextView
+                        android:id="@+id/tv_comp_revoke_user_desc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="12dp"
+                        android:text="@string/comprehensive_alert_rights_revoker_description"
+                        android:textColor="#757575"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toTopOf="@id/divider_comp_revoke_user"
+                        app:layout_constraintEnd_toStartOf="@+id/switch_comp_revoke_user_container"
+                        app:layout_constraintStart_toEndOf="@+id/img_comp_revoke_user_icon"
+                        app:layout_constraintTop_toBottomOf="@id/tv_comp_revoke_user_title" />
+
+                    <FrameLayout
+                        android:id="@+id/switch_comp_revoke_user_container"
+                        android:layout_width="51dp"
+                        android:layout_height="31dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switch_comp_revoke_user"
+                            android:checked="false"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            app:thumbTint="#FFFFFF"
+                            app:trackTint="@color/switch_track_selector" />
+                    </FrameLayout>
+
+                    <View
+                        android:id="@+id/divider_comp_revoke_user"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="?android:attr/listDivider"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
+
+    </LinearLayout>
+</ScrollView>

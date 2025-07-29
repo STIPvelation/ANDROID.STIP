@@ -1,0 +1,1254 @@
+<resources>
+    <string name="app_name">STIP IP Exchange</string>
+
+    <string name="tab_iphome">ホーム</string>
+    <string name="tab_ipinfo">情報</string>
+    <string name="tab_iptransaction">履歴</string>
+    <string name="tab_ipasset">入出金</string>
+    <string name="tab_more">他</string>
+
+    <string name="header_iphome">IPホーム</string>
+    <string name="header_ipinfo">IP情報</string>
+    <string name="header_iptransaction">IP履歴</string>
+    <string name="header_ipasset">入出金</string>
+    <string name="header_more">他</string>
+
+    <string name="common_number">00.00</string>
+    <string name="common_label">会社名</string>
+    <string name="common_usd_ticker">AAA/USD</string>
+    <string name="common_percent_format">00.00%</string>
+    <string name="menu_order">注文</string>
+    <string name="menu_chart">チャート</string>
+    <string name="menu_quotes">相場</string>
+    <string name="menu_info">情報</string>
+
+    <string name="patent_title">KATV Patent</string>
+
+    <string name="usage_plan_title">デジタルIP使用計画</string>
+
+    <string name="ip_rating_detail_title">IP評価詳細</string>
+    <string name="close">閉じる</string>
+    <string name="patent_grade_a">A</string>
+    <string name="axis_label_rights">権利</string>
+    <string name="axis_label_utilization">活用</string>
+    <string name="axis_label_regulation">規制</string>
+    <string name="axis_label_transaction">取引</string>
+    <string name="axis_label_capability">能力</string>
+    <string name="axis_label_technology">技術</string>
+    <string name="legend_label_institutional">機関価値評価</string>
+    <string name="legend_label_stip">STIP価値評価</string>
+    <string name="corp_expense_rnd">研究開発 (R&amp;D)</string>
+    <string name="corp_expense_salary">給与及び人件費</string>
+    <string name="corp_expense_marketing">マーケティング及び広告</string>
+    <string name="corp_expense_operations">運営管理費</string>
+    <string name="corp_expense_facility">施設投資及び拡充</string>
+    <string name="corp_expense_expansion">新事業及び支社拡張</string>
+    <string name="corp_expense_welfare">従業員福祉</string>
+    <string name="corp_expense_it">ITインフラ/システム</string>
+    <string name="corp_expense_education">教育及び訓練</string>
+    <string name="corp_expense_fees">支払手数料</string>
+    <string name="corp_expense_financial">金融費用</string>
+    <string name="corp_expense_etc">その他運営費用</string>
+    <string name="ip_search">IP検索</string>
+    <string name="all_ip">ALL IP</string>
+    <string name="header_ticker">ティッカー</string>
+    <string name="header_ticker_english">AXNO</string>
+    <string name="header_current_price">現在価格</string>
+    <string name="header_change">前日比</string>
+    <string name="header_volume">取引金額</string>
+    <string name="item_icon_description">上場ロゴアイコン</string>
+    <string name="default_ticker_name">----</string>
+    <string name="default_price">0</string>
+    <string name="default_change_percent">0%</string>
+    <string name="default_change_value">0</string>
+    <string name="default_volume">0</string>
+    <string name="search_icon_description">検索アイコン</string>
+    <string name="dropdown_arrow_description">ドロップダウン矢印</string>
+    <string name="sort_up_description">昇順ソートアイコン</string>
+    <string name="sort_down_description">降順ソートアイコン</string>
+
+    <string name="popup_item_all">ALL IP</string>
+    <string name="popup_item_patent">Patent</string>
+    <string name="popup_item_movie">映画/ドラマ</string>
+    <string name="popup_item_business">Business Model</string>
+    <string name="popup_item_music">Music</string>
+    <string name="popup_item_dance">Dance</string>
+    <string name="popup_item_franchise">Franchise</string>
+    <string name="popup_item_trademark">Trademark</string>
+    <string name="popup_item_character">Character / Art</string>
+    <string name="not_able_to_find">検索結果がありません</string>
+    <string name="empty">----</string>
+
+    <string name="all_ip_filter">ALL IP</string>
+
+    <string name="keypad_error_incorrect_password">PIN番号が一致しません。</string>
+    <string name="unit_default">N/A</string>
+
+    <string name="volume_24h_label">24h出来高</string>
+    <string name="high_price_24h_label">24h高値</string>
+    <string name="low_price_24h_label">24h安値</string>
+    <string name="gather_the_price">まとめ表示</string>
+    <string name="quantity_iphome">数量</string>
+    <string name="member_edit_phone_label">携帯電話番号</string>
+    <string name="member_edit_email_label">Eメール</string>
+    <string name="member_edit_email_hint">support@stip.global</string>
+    <string name="member_edit_required_info_title">必須修正情報</string>
+    <string name="member_edit_english_name_label">パスポートの英語名</string>
+    <string name="member_edit_english_name_hint">パスポートの英語名を入力</string>
+    <string name="member_edit_address_label">住所</string>
+    <string name="member_edit_address_hint">住所を入力</string>
+    <string name="member_edit_address_detail_label">詳細住所</string>
+    <string name="member_edit_address_detail_hint">詳細住所を入力</string>
+    <string name="sign_up_kyc_address_zipcode_missing">この住所には郵便番号がありません。別の住所を選択してください。</string>
+    <string name="member_edit_job_label">職業</string>
+    <string name="member_edit_job_hint">職業を入力</string>
+    <string name="member_edit_company_name_label">会社名</string>
+    <string name="member_edit_company_name_hint">会社名を入力</string>
+    <string name="member_edit_work_address_label">勤務先住所</string>
+    <string name="member_edit_work_address_hint">勤務先住所を入力</string>
+    <string name="member_edit_footer_notice">必須情報項目は、顧客確認の再履行を通じて変更可能です。\n多少ご不便をおかけしますが、ご了承ください。</string>
+    <string name="member_edit_save_button">保存</string>
+    <string name="info_change">変更</string>
+    <string name="usd_deposit_title">USD入金</string>
+
+    <string name="order_mode_buy">買い</string>
+    <string name="order_mode_sell">売り</string>
+    <string name="order_mode_history">履歴</string>
+
+    <string name="order_type_limit">指値</string>
+    <string name="order_type_market">成行</string>
+    <string name="order_type_reserve">予約 (逆指値)</string>
+    <string name="toast_txid_copied">TXIDがコピーされました。</string>
+
+
+
+
+
+    <string name="withdraw_navigation_error">出金画面への移動に失敗しました</string>
+    <string name="withdraw_status_null_warning">出金情報を取得しています。しばらくしてからもう一度お試しください。</string>
+
+
+
+
+
+    <string name="withdrawal_limit_message">
+    1回の出金限度額：100,000 USD\n1日の出金限度額：300,000 USD\n出金待機中の金額は1日の限度額に含まれます。
+</string>
+
+    <string name="withdrawable_amount_message">
+    本人確認済みの1つの銀行口座に適用されます。銀行口座の状態や顧客確認の状況により、1回あたりの限度額が変動する場合があり、最大の入出金が制限されることもあります。
+</string>
+
+    <string name="deposit_network_warning">
+    このデジタルIPはPolygonネットワークによる入金のみ対応しています。\n他のネットワークから送金した場合、反映されませんのでご注意ください。
+</string>
+
+    <string name="withdraw_network_warning">
+    デジタルIPを出金する前に、ご利用のウォレットがPolygonネットワークでの入金に対応していることをご確認ください。
+</string>
+
+    <string name="deposit_navigation_error">入金画面への移動に失敗しました。</string>
+
+    <string name="label_quantity">数量</string>
+    <string name="label_price">価格</string>
+    <string name="label_trigger_price">トリガー価格</string>
+    <string name="label_price_percentage">現在比 %</string>
+    <string name="label_total_amount">総額</string>
+
+    <string name="hint_order_quantity">注文数量</string>
+    <string name="hint_order_price">注文価格</string>
+    <string name="hint_trigger_price">トリガー(到達)価格</string>
+    <string name="hint_total_amount_input">注文総額</string>
+
+    <string name="unit_coin_default">COIN</string>
+    <string name="unit_usd">USD</string>
+    <string name="initial_total_amount">0</string>
+
+    <string name="button_available">可能</string>
+    <string name="button_minus">-</string>
+    <string name="button_plus">+</string>
+    <string name="button_reset_1">リセット</string>
+    <string name="button_buy">買い</string>
+    <string name="button_sell">売り</string>
+    <string name="text_order_type_info">注文タイプ案内</string>
+    <string name="label_available_balance">注文可能</string>
+    <string name="default_available_balance">0 USD</string>
+
+    <string name="dialog_title_info">案内</string>
+    <string name="confirm_deletion_24hr_message">会員退会時、24時間はサービスの再加入が制限されます。\nそれでも退会しますか？</string>
+    <string name="dialog_confirm">確認</string>
+    <string name="dialog_close">閉じる</string>
+    <string name="dialog_cancel">キャンセル</string>
+    <string name="dialog_authenticate">認証</string>
+    <string name="dialog_start">開始</string>
+    <string name="dialog_title_warning_order">注文確認</string>
+    <string name="dialog_title_error_order">注文エラー</string>
+    <string name="dialog_title_order_type">注文タイプ</string>
+    <string name="dialog_title_buy_order_submitted">買い注文受付</string>
+    <string name="dialog_title_sell_order_submitted">売り注文受付</string>
+    <string name="dialog_title_cancel_order_confirm">注文取消確認</string>
+    <string name="dialog_message_cancel_order_confirm">選択した未約定注文を取り消しますか？</string>
+    <string name="dialog_message_cancel_order_confirm_count">選択した%d件の注文を取り消しますか？</string>
+    <string name="dialog_button_confirm">確認</string>
+    <string name="dialog_button_cancel">キャンセル</string>
+    <string name="dialog_title_confirm_sell">売り注文確認</string>
+    <string name="dialog_confirm_sell">売り確認</string>
+    <string name="dialog_title_confirm_buy">買い注文確認</string>
+    <string name="dialog_confirm_buy">買い確認</string>
+    <string name="dialog_confirm_button">確認</string>
+    <string name="logout_dialog_title">ログアウト</string>
+    <string name="logout_dialog_message">今ログアウトすると\nログアウト後のログイン試行時に\n再度本人認証が必要です。\n\nログアウトしますか？</string>
+    <string name="dialog_title_phone_change">案内</string>
+    <string name="dialog_message_phone_change">携帯電話本人認証を通じて携帯電話番号の変更が可能です。\n携帯電話本人認証を行ってください。</string>
+    <string name="dialog_title_error">エラー</string>
+    <string name="dialog_title_notification">通知</string>
+    <string name="dialog_loading_title">読み込み中</string>
+    <string name="dialog_loading_sub_title">しばらくお待ちください。</string>
+    <string name="dialog_auth_agree_title">利用規約への同意をチェックしてください。</string>
+    <string name="dialog_auth_input_inform_title">入力した情報を確認後、再度入力してください。</string>
+    <string name="dialog_auth_request_title">認証番号が一致しません。\n認証番号を確認後、再試行してください。\n(エラー回数 : <![CDATA[<font color="#DB3949">%d</font>]]>/3)</string>
+    <string name="dialog_auth_request_over_title">本人認証の試行可能回数を超えました。</string>
+    <string name="dialog_auth_time_over_title">認証時間が超過しました。再試行してください。</string>
+    <string name="dialog_bank_guide_title">案内</string>
+    <string name="dialog_bank_account_not_valid_title">入力された口座番号は有効ではありません。\n口座番号を確認後、再試行してください。</string>
+    <string name="dialog_bank_1_help_content">銀行アプリ、SMSメッセージ、またはテレバンキングを実行して取引履歴を確認後、STIPが入金した1ウォンの振込人名義の前<![CDATA[<font color="#30C6E8">6桁の数字</font> ]]>を入力してください。</string>
+    <string name="dialog_bank_deposit_fail_title">口座認証失敗</string>
+    <string name="dialog_bank_deposit_fail_content">口座認証に失敗しました。\n認証番号を確認後、再試行をお願いします。\n (エラー回数: <![CDATA[<font color="#DD3D43">%d</font>]]>/3)</string>
+    <string name="dialog_bank_deposit_fail_time_out">口座認証に失敗しました。\n再試行をお願いします。</string>
+    <string name="dialog_bank_deposit_three_fail_content">口座認証に3回失敗しました。\n最初からやり直してください。</string>
+    <string name="dialog_pin_number_title">案内</string>
+    <string name="dialog_pin_number_content">パスワードが5回以上一致しませんでした。\nPINパスワードを再設定してください。</string>
+    <string name="dialog_pin_number_personal_information_warning">生年月日、電話番号など個人情報に関連する数字は登録が制限されます。他の数字を入力してください。</string>
+    <string name="dialog_pin_number_finish_reset">パスワードを再設定するには、既存のログイン情報を削除後、再登録が必要です。本人認証からやり直しますか？</string>
+    <string name="dialog_message_required_info_notice">必須情報は本人確認後30日以内に更新してください。\n未更新の場合、取引や入出金が制限される可能性があります。</string>
+    <string name="dialog_prompt_customer_verification">内容を熟知し、顧客確認を進めますか？</string>
+
+
+
+
+
+
+
+
+
+
+    <string name="category_patent">特許</string>
+    <string name="category_trademark">商標</string>
+    <string name="category_franchise">フランチャイズ</string>
+    <string name="category_music">音源</string>
+    <string name="category_dance">ダンス</string>
+    <string name="category_art">アート</string>
+    <string name="category_movie">映画</string>
+    <string name="category_drama">ドラマ</string>
+    <string name="category_bm">ビジネスモデル</string>
+    <string name="category_game">ゲーム</string>
+    <string name="category_character">キャラクター</string>
+    <string name="category_comics">漫画</string>
+    <string name="category_other">その他</string>
+
+
+
+
+
+
+
+    <string name="order_max_quantity_format">最大: %s</string>
+
+
+
+
+    <string name="quantity_option_available">可能</string>
+    <string name="quantity_option_max">最大</string>
+    <string name="quantity_option_75">75%</string>
+    <string name="quantity_option_50">50%</string>
+    <string name="quantity_option_25">25%</string>
+    <string name="quantity_option_10">10%</string>
+
+
+
+
+        <string name="dialog_reset_password_title">お知らせ</string>
+        <string name="dialog_reset_password_message">パスワードを再設定するには、既存のログイン情報を削除して再登録する必要があります。本人確認から再度進めますか？</string>
+        <string name="dialog_action_cancel">キャンセル</string>
+        <string name="dialog_action_confirm">確認</string>
+
+
+
+
+    <string name="order_price">注文価格</string>
+
+    <string name="pin_password_input_title">PINパスワードを入力してください</string>
+
+
+    <string name="dialog_header_guidance">お知らせ</string>
+    <string name="pin_limit_exceeded_dialog_title">入力ミスが5回を超えました。</string>
+    <string name="pin_limit_exceeded_dialog_message">PINを再設定するには本人確認が必要です。</string>
+
+
+    <string name="pin_error_limit_exceeded">入力ミスが5回を超えました。\n本人確認後にPINを再登録してください。</string>
+    <string name="ok">確認</string>
+    <string name="pin_password_wrong_attempt">PINが一致しません (%1$d/%2$d)</string>
+
+
+    <string name="label_right">権利</string>
+    <string name="label_utilization">活用</string>
+    <string name="label_regulation">規制</string>
+    <string name="label_trade">取引</string>
+    <string name="label_capability">能力</string>
+    <string name="label_technology">技術</string>
+    <string name="label_sustainability">持続性</string>
+    <string name="label_collaboration">協業性</string>
+    <string name="label_partnership">パートナーシップ</string>
+    <string name="label_scalability">拡張性</string>
+    <string name="label_distribution_power">流通力</string>
+    <string name="label_ip_utilization">IP活用</string>
+    <string name="label_design">デザイン</string>
+    <string name="label_recognition">認知度</string>
+    <string name="label_legal_stability">法的安定性</string>
+    <string name="label_marketability">市場性</string>
+    <string name="label_operational_ability">運営能力</string>
+    <string name="label_monetization">収益化</string>
+    <string name="label_branding">ブランディング</string>
+    <string name="label_content">コンテンツ</string>
+    <string name="label_creativity">創造性</string>
+
+
+    <string name="license_scope_default_title">実施権の範囲</string>
+
+    <string name="price_percentage_prompt">現在価格比 %</string>
+    <string name="total_amount_label">総額</string>
+    <string name="quantity_label">数量</string>
+    <string name="time">00:00:00</string>
+    <string name="label_order_available">注文可能</string>
+    <string name="initial_available_amount">0</string>
+    <string name="trading_ticker">AXNO</string>
+    <string name="tab_unfilled_order">未約定</string>
+    <string name="tab_filled_order">約定済み</string>
+    <string name="filter">フィルター</string>
+    <string name="hint_enter_quantity">IP数量</string>
+    <string name="hint_enter_total_amount">注文総額</string>
+    <string name="buy_order_error_title">買い注文エラー</string>
+    <string name="sell_order_error_title">売り注文エラー</string>
+    <string name="sell_error_insufficient_quantity">注文可能数量が不足しています。</string>
+    <string name="buy_error_minimum_order">注文可能な最低金額は10 USDです。</string>
+    <string name="no_unfilled_order">未約定の履歴はありません</string>
+    <string name="error_loading_unfilled">未約定履歴の読み込み失敗</string>
+    <string name="error_loading_unfilled_toast">未約定履歴の読み込み中にエラーが発生しました。</string>
+    <string name="label_assets_held_usd">保有資産 (USD)</string>
+    <string name="label_avg_buy_price">平均取得価格</string>
+    <string name="label_valuation_amount">評価金額</string>
+    <string name="label_valuation_pl">評価損益</string>
+    <string name="label_rate_of_return">収益率</string>
+    <string name="label_min_order_amount">最低注文金額</string>
+    <string name="label_fee_vat_included">手数料 (税込)</string>
+    <string name="value_min_order_amount">10</string>
+    <string name="value_fee">0.1</string>
+    <string name="value_percent_unit">%</string>
+    <string name="order_type_explain">注文タイプ案内</string>
+    <string name="label_assets_held_quantity">保有数量</string>
+    <string name="unit_usd_estimated">USD</string>
+    <string name="stop_order_desc">設定したトリガー価格に到達すると、自動的に指定された注文が実行されます。主に損切りや利益確定のために使用されます。</string>
+    <string name="buy_error_insufficient_funds">注文可能金額が不足しています。</string>
+    <string name="toast_minimum_order_violation">最低注文金額は %s USD以上です。</string>
+    <string name="label_fee">手数料</string>
+    <string name="limit_order_title">指値注文</string>
+    <string name="order_type_unknown">不明</string>
+    <string name="market_order_title">成行注文</string>
+    <string name="stop_order_title">予約注文 (逆指値注文)</string>
+    <string name="limit_order_desc">ユーザーが直接数量と価格を決定する注文方式で、約定の有無より希望価格を優先する場合に活用します。</string>
+    <string name="market_order_desc">買いの場合は注文金額、売りの場合は注文数量のみ入力すれば\n市場価格で即時約定される注文方式です。\n迅速な取引が必要な場合に適しています。</string>
+    <string name="order_success_message_buy">買い注文が正常に受付されました。</string>
+    <string name="order_success_message_sell">売り注文が正常に受付されました。</string>
+    <string name="toast_select_orders_to_cancel">取り消す注文を選択してください。</string>
+    <string name="toast_cancel_request_sent">注文取消要求済み (実装必要)</string>
+    <string name="no_filled_orders">約定済みの履歴はありません</string>
+    <string name="label_estimated_quantity">予想数量</string>
+    <string name="label_order_price1">注文価格</string>
+    <string name="label_order_type">注文タイプ</string>
+    <string name="label_order_price">注文価格</string>
+    <string name="label_order_quantity">注文数量</string>
+    <string name="label_order_total">注文総額</string>
+    <string name="order_type_limit_sell">指値売り</string>
+    <string name="order_type_limit_buy">指値買い</string>
+    <string name="tab_unexecuted">未約定</string>
+    <string name="tab_executed">約定済み</string>
+    <string name="label_order_amount">注文総額</string>
+    <string name="hint_enter_order_amount">注文総額を入力</string>
+    <string name="reserved_order_error_title">予約注文エラー (逆指値エラー)</string>
+    <string name="buy_trigger_price_error">買い予約のトリガー価格は、注文価格以下である必要があります。</string>
+    <string name="sell_trigger_price_error">売り予約のトリガー価格は、注文価格以上である必要があります。</string>
+    <string name="order_type_reserved_limit_buy">予約指値買い (逆指値買い)</string>
+    <string name="order_type_reserved_limit_sell">予約指値売り (逆指値売り)</string>
+    <string name="order_type_market_buy">成行買い</string>
+    <string name="order_type_market_sell">成行売り</string>
+    <string name="market_price">成行価格</string>
+    <string name="market_quantity">成行数量</string>
+    <string name="market_total">成行総額</string>
+    <string name="buy_error_minimum_order_amount">最低注文金額は10USDです。</string>
+
+
+
+
+
+
+    <string name="order_type_sell">売り</string>
+    <string name="order_type_buy">買い</string>
+    <string name="label_ticker">ティッカー</string>
+    <string name="label_filled_quantity">約定数量</string>
+    <string name="filled_price">価格</string>
+    <string name="filled_quantity1">数量</string>
+    <string name="filled_total">金額</string>
+    <string name="watch_price">トリガー</string>
+    <string name="order_quantity">数量</string>
+    <string name="unfilled_quantity">未約定</string>
+    <string name="trade_type">種類</string>
+    <string name="buy">買い</string>
+
+
+
+
+
+
+
+
+
+    <string name="country_korea">韓国</string>
+    <string name="country_japan">日本</string>
+    <string name="country_china">中国</string>
+    <string name="country_euro">ユーロ</string>
+
+    <string name="rate_krw_usd">KRW/USD</string>
+    <string name="rate_jpn_usd">JPN/USD</string>
+    <string name="rate_cny_usd">CNY/USD</string>
+    <string name="rate_eur_usd">EUR/USD</string>
+
+    <string name="rise_ip_1_name">アフティ＆シー</string>
+    <string name="rise_ip_1_code">MDM/USD</string>
+
+    <string name="rise_ip_2_name">コンテンツウェバー</string>
+    <string name="rise_ip_2_code">AXNO/USD</string>
+
+    <string name="rise_ip_3_name">韓国生物研究所</string>
+    <string name="rise_ip_3_code">CDM/USD</string>
+
+    <string name="rise_ip_4_name">(株)ドゥレ</string>
+    <string name="rise_ip_4_code">WETALK/USD</string>
+
+    <string name="rise_ip_5_name">ジュンウォンGBI</string>
+    <string name="rise_ip_5_code">JWV/USD</string>
+
+    <string name="ip_toon_title">IPマンガ</string>
+    <string name="ip_swap_title">IPスワップ</string>
+    <string name="ip_auction_title">IPオークション</string>
+
+
+    <string name="date_range_picker_title">日付範囲を選択</string>
+    <string name="center_label_total_value">評価総額</string>
+    <string name="date_month_format">%1$d年 %2$02d月</string>
+    <string name="date_range_format">%1$s 01日 ～ %2$s %3$02d日</string>
+
+
+    <string name="stip_index_total">STIP 総合指数</string>
+    <string name="stip_index_ai">STIP 人工知能(AI) 特許指数</string>
+    <string name="stip_index_global">STIP 世界特許指数</string>
+    <string name="stip_index_entertainment">STIP エンタメ指数</string>
+    <string name="stip_index_franchise">STIP フランチャイズ指数</string>
+
+
+    <string name="mini_chart_title_stip_1000">STIP 1000</string>
+    <string name="mini_chart_title_etip_500">ETIP 500</string>
+    <string name="mini_chart_title_patent_100">特許 100</string>
+    <string name="mini_chart_title_etip_movie">ETIP 映画</string>
+    <string name="mini_chart_title_stip_music">STIP 音楽</string>
+    <string name="mini_chart_title_etip_ai">ETIP AI</string>
+
+
+    <plurals name="toast_cancel_order_success_plural">
+        <item quantity="one">%d件の注文をキャンセルします</item>
+        <item quantity="other">%d件の注文をキャンセルします</item>
+    </plurals>
+
+
+        <string name="no_ip_link">IPリンクがありません。</string>
+        <string name="no_homepage_link">ホームページリンクがありません。</string>
+        <string name="no_business_plan_link">事業計画のリンクがありません。</string>
+        <string name="no_related_video_link">関連動画のリンクがありません。</string>
+        <string name="error_loading_details">詳細情報の読み込みに失敗しました。</string>
+
+
+
+
+
+
+
+    <string name="ticker_axno">AXNO</string>
+    <string name="ticker_iject">IJECT</string>
+    <string name="ticker_wetalk">WETALK</string>
+    <string name="ticker_mdm">MDM</string>
+    <string name="ticker_jwv">JWV</string>
+    <string name="ticker_kcot">KCOT</string>
+
+    <string name="ticker_movie_shiri">映画 シリ</string>
+    <string name="ticker_music_ggd">音楽 GGD</string>
+    <string name="ticker_franchise_twosomebucks">フランチャイズ トゥーサムバックス</string>
+
+    <string name="ticker_etip_renewable">ETIP 再生可能エネルギー</string>
+    <string name="ticker_etip_ai">ETIP 人工知能</string>
+    <string name="ticker_etip_semiconductor">ETIP 半導体</string>
+    <string name="ticker_etip_bio">ETIP バイオテクノロジー</string>
+    <string name="ticker_etip_auto">ETIP 自動車</string>
+    <string name="ticker_etip_finance">ETIP 金融</string>
+    <string name="ticker_etip_energy">ETIP エネルギー</string>
+    <string name="ticker_etip_chemical">ETIP 化学</string>
+    <string name="ticker_etip_telecom">ETIP 通信</string>
+    <string name="ticker_etip_construction">ETIP 建設</string>
+    <string name="ticker_etip_medical">ETIP 医療</string>
+    <string name="ticker_etip_food">ETIP 食品</string>
+    <string name="ticker_etip_retail">ETIP 小売</string>
+    <string name="ticker_etip_transport">ETIP 輸送</string>
+    <string name="ticker_etip_entertainment">ETIP エンターテインメント</string>
+    <string name="ticker_etip_education">ETIP 教育</string>
+    <string name="ticker_etip_service">ETIP サービス</string>
+
+
+
+    <string name="dialog_login_inform_title">ログイン案内</string>
+    <string name="dialog_login_inform_message">ログイン後にご利用いただけます。</string>
+
+
+    <string name="order_type_all">全ての注文</string>
+    <string name="order_type_normal">通常注文</string>
+    <string name="order_type_reserved">予約注文 (逆指値注文)</string>
+    <string name="order_type_reserved_simple">予約</string>
+    <string name="order_cancel">注文取消</string>
+    <string name="no_unfilled_orders">未約定の履歴はありません</string>
+    <string name="toast_invalid_price">有効な価格形式ではありません。</string>
+    <string name="toast_enter_total_amount">注文総額を入力してください。</string>
+    <string name="toast_invalid_total_amount">有効な注文総額ではありません。</string>
+    <string name="toast_invalid_quantity_from_total">注文総額から計算された数量が有効ではありません。</string>
+    <string name="toast_enter_quantity">数量を入力してください。</string>
+    <string name="toast_invalid_quantity">有効な数量形式ではありません。</string>
+    <string name="toast_invalid_final_quantity">有効な数量ではありません。</string>
+    <string name="toast_invalid_price_for_total">総額入力時には有効な価格を入力してください。</string>
+    <string name="toast_invalid_trigger_price">有効なトリガー価格を入力してください。</string>
+    <string name="toast_market_order_no_total_mode">成行注文では総額入力モードを使用できません。</string>
+    <string name="toast_enter_order_amount">注文総額を入力してください。</string>
+    <string name="toast_invalid_order_amount">有効な注文総額ではありません。</string>
+    <string name="error_time_expired">入力制限時間を超過しました。認証番号を再リクエストしてください。</string>
+    <string name="error_max_attempts_reached">認証番号の入力エラー5回のため認証できません。\n再度認証コードを送信して認証してください。</string>
+    <string name="message_email_verification_complete">Eメール認証が完了しました。</string>
+    <color name="confirm_button_blue">#1674EA</color>
+    <string name="notification_header">一般通知</string>
+    <string name="notification_settings_title">通知設定</string>
+    <string name="notification_settings_description">受信、バッジ、サウンド、バナーなどの通知設定。</string>
+    <string name="login_alert_title">ログイン通知</string>
+    <string name="login_alert_description">新しいログイン発生時に通知。</string>
+    <string name="transaction_alert_title">取引通知</string>
+    <string name="transaction_alert_description">売買約定完了時に通知。</string>
+    <string name="deposit_withdrawal_alert_title">入出金通知</string>
+    <string name="deposit_withdrawal_alert_description">入出金完了時に通知。</string>
+    <string name="order_alert_title">予約注文通知 (逆指値注文通知)</string>
+    <string name="order_alert_description">設定価格に到達し、予約注文が実行された場合に通知。</string>
+    <string name="staking_alert_title">ステーキング通知</string>
+    <string name="staking_alert_description">ステーキング及びアンステーキング完了時に通知。</string>
+    <string name="event_alert_title">イベント等のお知らせ受信</string>
+    <string name="event_alert_description">特典やイベントなどの通知受信に同意。</string>
+    <string name="setting_title_login_alert">ログイン通知</string>
+    <string name="setting_description_login_alert">新しいログイン発生時に通知。</string>
+    <string name="setting_title_trade_alert">取引通知</string>
+    <string name="setting_description_trade_alert">売買約定完了時に通知。</string>
+    <string name="setting_title_deposit_withdrawal_alert">入出金通知</string>
+    <string name="setting_description_deposit_withdrawal_alert">入出金完了時に通知。</string>
+    <string name="setting_title_reserved_order_alert">予約注文通知 (逆指値注文通知)</string>
+    <string name="setting_description_reserved_order_alert">設定価格に到達し、予約注文が実行された場合に通知。</string>
+    <string name="setting_title_event_reception">イベント等のお知らせ受信</string>
+    <string name="setting_description_event_reception">特典やイベントなどの通知受信に同意。</string>
+    <string name="setting_title_ip_webtoon_alert">IPウェブトゥーン通知</string>
+    <string name="setting_description_ip_webtoon_alert">新しいIPウェブトゥーンの通知設定。</string>
+    <string name="setting_title_ip_auction_alert">IPオークション通知</string>
+    <string name="setting_description_ip_auction_alert">IPオークション開始1時間前に通知。</string>
+    <string name="setting_title_new_ip_listing_alert">IP新規上場通知</string>
+    <string name="setting_description_new_ip_listing_alert">新規上場される知的財産の通知。</string>
+    <string name="setting_title_ip_swap_alert">IPスワップ通知</string>
+    <string name="setting_description_ip_swap_alert">IPスワップを希望する申請通知。</string>
+    <string name="market_price_settings_title">相場設定</string>
+    <string name="tab_standard">標準</string>
+    <string name="tab_market_price">相場</string>
+    <string name="market_alert_screen_title">相場アラート</string>
+    <string name="market_alert_tab_standard">標準</string>
+    <string name="market_alert_tab_market">相場</string>
+    <string name="dnd_mode_category_title">サイレントモード</string>
+    <string name="dnd_mode_rest_title">休憩モード</string>
+    <string name="dnd_mode_rest_description">設定期間中は通知を制限</string>
+    <string name="owned_ip_category_title">保有IP</string>
+    <string name="owned_ip_alert_title">保有IPアラート</string>
+    <string name="owned_ip_alert_description">設定基準の10%区間で上昇/下落発生時に通知。</string>
+    <string name="comprehensive_alert_category_title">総合アラート</string>
+    <string name="comprehensive_alert_designated_title">指定アラート</string>
+    <string name="comprehensive_alert_designated_description">設定基準の10%区間で上昇/下落発生時に通知</string>
+    <string name="comprehensive_alert_rise_fall_title">上昇/下落アラート</string>
+    <string name="comprehensive_alert_rise_fall_description">指定IPの短期間での上昇及び下落発生時に通知</string>
+    <string name="comprehensive_alert_report_low_price_title">高値/安値アラート</string>
+    <string name="comprehensive_alert_report_low_price_description">指定した日付の高値/安値発生時に通知</string>
+    <string name="comprehensive_alert_ip_cross_compare_title">IPクロス比較アラート</string>
+    <string name="comprehensive_alert_ip_cross_compare_description">ペアにしたIPの価格変動差を通知</string>
+    <string name="comprehensive_alert_new_rights_user_title">新規実施権ユーザーアラート</string>
+    <string name="comprehensive_alert_new_rights_user_description">指定IPで新規実施権ユーザー発生時に通知</string>
+    <string name="comprehensive_alert_rights_revoker_title">IP実施権放棄者アラート</string>
+    <string name="comprehensive_alert_rights_revoker_description">指定IPで実施権使用を放棄するユーザーを通知</string>
+    <string name="title_price_alert">相場アラート</string>
+    <string name="title_mode_setting">モード設定</string>
+    <string name="mode_settings_screen_title">モード設定</string>
+    <string name="general_section_title">一般画面</string>
+    <string name="screen_on_title">スリープ防止モード</string>
+    <string name="screen_on_desc">アプリ使用中の画面オフを防止。</string>
+    <string name="exchange_section_title">取引所画面</string>
+    <string name="ip_refresh_title">IP情報更新</string>
+    <string name="ip_refresh_desc">IP情報を新しく更新します。</string>
+    <string name="ip_refresh_button">更新</string>
+    <string name="execution_effect_title">約定時エフェクト</string>
+    <string name="execution_effect_desc">売買約定時に点滅エフェクト。</string>
+    <string name="order_section_title">注文画面</string>
+    <string name="new_quote_effect_title">新規気配値エフェクト</string>
+    <string name="new_quote_effect_desc">新規気配値のハイライトエフェクト。</string>
+    <string name="quote_depth_range_title">気配値増減範囲エフェクト</string>
+    <string name="quote_depth_range_desc">気配値の数が増加または減少に応じて反応する効果。</string>
+    <string name="display_mode_section_title">表示モード</string>
+    <string name="display_mode_normal_title">ノーマルモード</string>
+    <string name="display_mode_normal_desc">STIPが提供する標準の表示モードです。</string>
+    <string name="display_mode_dark_title">ダークモード</string>
+    <string name="display_mode_dark_desc">STIPが提供する黒背景のデザインモードです。</string>
+    <string name="display_mode_design_title">デザインモード</string>
+    <string name="display_mode_design_desc">四半期ごとに新しいデザイン画面を提供します。</string>
+    <string name="display_mode_user_title">ユーザーモード</string>
+    <string name="display_mode_user_desc">ユーザーのデザインで画面を提供します。</string>
+    <string name="title_security_auth">セキュリティ / 認証</string>
+    <string name="security_auth_screen_title">セキュリティ / 認証</string>
+    <string name="pin_change_title">PINパスワード変更</string>
+    <string name="pin_change_desc">PINを忘れた場合、ログインを再開始してください。</string>
+    <string name="biometric_auth_title">生体認証情報を使用</string>
+    <string name="biometric_auth_desc">生体認証情報を使用して本人確認。</string>
+    <string name="overseas_login_block_title">海外ログイン遮断</string>
+    <string name="overseas_login_block_desc">海外からのログイン試行時にログイン制限。</string>
+    <string name="login_history_title">ログイン履歴</string>
+    <string name="login_history_desc">ユーザーのログイン履歴確認</string>
+    <string name="login_history_title_manage">ログイン管理</string>
+    <string name="login_history_description">STIPはモバイルデバイス基準で3台でのみログインが許可されます。</string>
+    <string name="login_history_logout_all">全てのデバイスからログアウト</string>
+    <string name="login_history_header_datetime">日時</string>
+    <string name="login_history_header_os_browser">OS/ブラウザ</string>
+    <string name="login_history_header_ip">ログインIP</string>
+    <string name="login_history_item_app_name">STIPモバイルアプリ</string>
+    <string name="login_history_item_location_korea">大韓民国</string>
+    <string name="minute_chart">分</string>
+    <string name="day_chart">日</string>
+    <string name="week_chart">週</string>
+    <string name="month_chart">月</string>
+    <string name="year_chart">年</string>
+    <string name="quote_header_date">日付</string>
+    <string name="quote_header_close">終値 (USD)</string>
+    <string name="quote_header_change">前日比</string>
+    <string name="quote_header_volume_ticker">出来高 (ティッカー)</string>
+    <string name="quote_tab_time">時間別</string>
+    <string name="quote_tab_daily">日別</string>
+    <string name="quote_header_time">時間</string>
+    <string name="quote_header_price_usd">価格 (USD)</string>
+    <string name="quote_header_volume">約定金額 (USD)</string>
+    <string name="error_loading_data">データ読み込み中にエラーが発生しました。</string>
+    <string name="quote_header_executed">約定金額</string>
+    <string name="quote_header_volume_with_ticker">出来高(%1$s)</string>
+    <string name="tab_info">基本</string>
+    <string name="tab_details">詳細</string>
+    <string name="placeholder_ticker_name">ティッカー: ETIP AI 1</string>
+    <string name="placeholder_ticker_id">KR-14-20240816</string>
+    <string name="label_shortcuts">ショートカット</string>
+    <string name="link_block_inquiry">照会</string>
+    <string name="link_ip_rating">IP評価</string>
+    <string name="link_license">実施権</string>
+    <string name="link_view_video">動画</string>
+    <string name="label_first_issuance">初回発行</string>
+    <string name="label_total_issuance_limit">総発行限度</string>
+    <string name="placeholder_total_issuance_limit_value">1,000,000 (STIP提供)</string>
+    <string name="ticker_name_format">ティッカー: %1$s</string>
+    <string name="label_current_circulation">現在流通量</string>
+    <string name="value_current_circulation">00,000 ETIP AI</string>
+    <string name="label_digital_ip">デジタルIP使用計画</string>
+    <string name="label_license">IP使用同意書</string>
+    <string name="value_license_amount">0,000 AXNO</string>
+    <string name="value_view">見る</string>
+    <string name="license_scope_title">通常実施権範囲</string>
+    <string name="license_header_ratio">比率%</string>
+    <string name="license_header_area">IP使用可能領域</string>
+    <string name="license_ratio_10">10%</string>
+    <string name="license_area_10">本IPに関する技術及び商業的な全てにおいて活用可能</string>
+    <string name="license_ratio_7">7%</string>
+    <string name="license_area_7">アジア及びヨーロッパ地域で使用可能</string>
+    <string name="license_ratio_5">5%</string>
+    <string name="license_area_5">大韓民国内でのみ商業用として特許使用可能</string>
+    <string name="license_ratio_1">1%</string>
+    <string name="license_area_1">大学機関及び研究施設で研究目的で使用可能</string>
+    <string name="link_ip_link">リンク</string>
+    <string name="link_homepage">ホーム</string>
+    <string name="link_business_plan">計画</string>
+    <string name="link_related_video">関連</string>
+    <string name="label_corporation_name">法人名</string>
+    <string name="label_representative">代表者</string>
+    <string name="label_registration_number">登録番号</string>
+    <string name="label_business_type">業種</string>
+    <string name="label_contact">連絡先</string>
+    <string name="label_address">所在地</string>
+    <string name="label_sns">SNS</string>
+    <string name="value_corporation_name">STIP Korea</string>
+    <string name="value_representative">イ・ソンヨン</string>
+    <string name="value_registration_number">000-00-00000</string>
+    <string name="value_business_type">情報通信業</string>
+    <string name="value_contact_email">support@stip.global</string>
+    <string name="value_address_detail">光化門ソウルファイナンスセンター</string>
+    <string name="sns_twitter">X(Twitter)</string>
+    <string name="sns_instagram">Instagram</string>
+    <string name="sns_kakaotalk">KakaoTalk</string>
+    <string name="sns_telegram">Telegram</string>
+    <string name="sns_linkedin">LinkedIn</string>
+    <string name="sns_wechat">WeChat</string>
+    <string name="label_katv">KATV</string>
+    <string name="label_avex">AVEX</string>
+    <string name="label_jmv">JMV</string>
+    <string name="value_common">\u0020$ 96,445.00</string>
+    <string name="katv">\u0020KATV</string>
+    <string name="some_id">\u0020$ 96,445.00</string>
+    <string name="ip_entertainment">IPエンターテインメント</string>
+    <string name="tab_info_trend">IPトレンド</string>
+    <string name="tab_info_news">IPニュース</string>
+    <string name="account_holder_label">口座名義人</string>
+    <string name="account_number_label">口座番号</string>
+    <string name="account_holder_name">株式会社IPメディアグループ</string>
+    <string name="account_number">国民銀行 102701-04-435574</string>
+    <string name="account_number2">新韓銀行 140-015-070902</string>
+    <string name="account_number3">ウリ銀行 1005-804-753434</string>
+    <string name="tab_transaction_holdings">IP保有</string>
+    <string name="tab_transaction_profit">IP損益</string>
+    <string name="tab_transaction_investment">IP投資</string>
+    <string name="tab_transaction_unfilled">未約定</string>
+    <string name="my_ip">保有IP</string>
+    <string name="holding_usd">保有USD</string>
+    <string name="holding_usd_number">0</string>
+    <string name="total_asset">総保有資産</string>
+    <string name="total_asset_number">0</string>
+    <string name="total_buy">総買付額</string>
+    <string name="total_buy_number">0</string>
+    <string name="valuation_profit">評価損益</string>
+    <string name="valuation_profit_number">0</string>
+    <string name="total_valuation">総評価額</string>
+    <string name="total_valuation_number">0</string>
+    <string name="profit_rate">収益率</string>
+    <string name="profit_rate_percentage">0.00%</string>
+    <string name="available_order">注文可能</string>
+    <string name="available_order_number">0</string>
+    <string name="noip">現在保有中のIPはありません。</string>
+    <string name="myiptext">保有IP</string>
+    <string name="filter_text">1ヶ月 • 全取引</string>
+    <string name="ipsearch">IP検索</string>
+    <string name="profit_loss">評価損益</string>
+    <string name="w_ratio">収益率</string>
+    <string name="quantity">数量</string>
+    <string name="evaluated_price">評価金額</string>
+    <string name="average_buy">平均取得価格</string>
+    <string name="buy_price">買付金額</string>
+    <string name="mark">"-"</string>
+    <string name="label_notice">案内</string>
+    <string name="text_notice_profit">この情報は参考用であり、実際の結果と異なる場合があります。</string>
+    <string name="label_profit_type_weighted">金額加重収益率</string>
+    <string name="placeholder_month">YYYY年MM月</string>
+    <string name="placeholder_profit_period">YYYY年MM月DD日 ~ MM月DD日</string>
+    <string name="label_period_profit">期間累積損益</string>
+    <string name="placeholder_usd_zero">0 USD</string>
+    <string name="label_period_rate">期間累積収益率</string>
+    <string name="placeholder_percent_zero">0.00 %</string>
+    <string name="label_period_average_investment">期間平均投資金額</string>
+    <string name="title_profit_graph">IP損益グラフ</string>
+    <string name="tab_accumulated_rate">累積収益率</string>
+    <string name="tab_profit_loss">損益</string>
+    <string name="label_date">日付</string>
+    <string name="title_profit_detail">IP損益詳細</string>
+    <string name="desc_dropdown_arrow">ドロップダウン矢印</string>
+    <string name="desc_sort_arrow">ソート矢印</string>
+    <string name="date_confirm">確認</string>
+    <string name="profit_type_weighted">金額加重収益率</string>
+    <string name="profit_type_time">時間加重収益率</string>
+    <string name="profit_type_simple">単純収益率</string>
+    <string name="touch_chart">チャートをタッチ</string>
+    <string name="trade_header_date">日付</string>
+    <string name="trade_header_daily_profit">日次損益</string>
+    <string name="trade_header_cumulative_profit">累積損益</string>
+    <string name="trade_header_daily_rate">日次収益率</string>
+    <string name="trade_header_cumulative_rate">累積収益率</string>
+    <string name="trade_header_ending_assets">期末資産</string>
+    <string name="trade_header_beginning_assets">期首資産</string>
+    <string name="trade_header_deposit">入金</string>
+    <string name="trade_header_withdrawal">出金</string>
+    <string name="list_item_placeholder_date">06.01</string>
+    <string name="list_item_placeholder_zero">0.00</string>
+    <string name="list_item_placeholder_percent">0.00%</string>
+    <string name="filter_label_text">1週間 • 履歴表示</string>
+    <string name="filter_icon_desc">IP履歴フィルター</string>
+    <string name="ip_search_text">IP検索</string>
+    <string name="title_transaction_filter">IP投資履歴検索</string>
+    <string name="label_transaction_type">履歴種類</string>
+    <string name="label_date_range">検索期間</string>
+    <string name="chip_type_all">全て</string>
+    <string name="chip_type_buy">買い</string>
+    <string name="chip_type_sell">売り</string>
+    <string name="chip_type_deposit">入金</string>
+    <string name="chip_type_withdraw">出金</string>
+    <string name="chip_period_1w">1週間</string>
+    <string name="chip_period_1m">1ヶ月</string>
+    <string name="chip_period_3m">3ヶ月</string>
+    <string name="chip_period_6m">6ヶ月</string>
+    <string name="chip_period_direct">直接入力</string>
+    <string name="button_reset">Reset</string>
+    <string name="button_search">検索</string>
+    <string name="desc_back_button">戻るボタン</string>
+    <string name="desc_start_date_input">照会開始日選択</string>
+    <string name="desc_end_date_input">照会終了日選択</string>
+    <string name="desc_date_select">戻る</string>
+    <string name="ticker">ティッカ</string>
+    <string name="type">種類</string>
+    <string name="quantity1">数量</string>
+    <string name="tradingave">取引単価</string>
+    <string name="amount">取引金額</string>
+    <string name="commission">手数料</string>
+    <string name="settlement">精算金額</string>
+    <string name="order_time">注文時間</string>
+    <string name="execution_time">約定時間</string>
+    <string name="no_data_text">該当期間の取引履歴はありません\n2025.01.15 ~ 2025.06.15.</string>
+    <string name="all_orders">全ての注文</string>
+    <string name="no_order_found">照会された取引履歴はありません</string>
+    <string name="label_stip">STIP</string>
+    <string name="price_stip">1000.00</string>
+    <string name="change_stip">00.00</string>
+    <string name="percent_stip">0.00%</string>
+    <string name="label_etip">ETIP</string>
+    <string name="price_etip">500.00</string>
+    <string name="change_etip">00.00</string>
+    <string name="percent_etip">0.00%</string>
+    <string name="label_etip_ai">ETIP AI</string>
+    <string name="price_etip_ai">100.00</string>
+    <string name="change_etip_ai">00.00</string>
+    <string name="percent_etip_ai">0.00%</string>
+    <string name="price_format">%.2f</string>
+    <string name="change_format">%.2f</string>
+    <string name="percent_format">%.2f%%</string>
+    <string name="ipriserank_title">上昇率上位IP</string>
+    <string name="date_1week">1週間</string>
+    <string name="date_1month">1ヶ月</string>
+    <string name="date_3months">3ヶ月</string>
+    <string name="date_6months">6ヶ月</string>
+    <string name="date_1year">1年</string>
+    <string name="mdm_label">MDM</string>
+    <string name="mdm_usd_ticker">MDM/USD</string>
+    <string name="mdm_percent_format">00.00%</string>
+    <string name="stip_index_text">STIPインデックス</string>
+    <string name="stip_index_today">今日</string>
+    <string name="stip_index_month">1ヶ月</string>
+    <string name="stip_index_threemonth">3ヶ月</string>
+    <string name="stip_index_text_english">STIP Index</string>
+    <string name="stip_ai_index">STIP AI Index</string>
+    <string name="dip_market_cap_number">0,000,000</string>
+    <string name="dip_market_cap_order">注文</string>
+    <string name="dip_market_logo1">JWV </string>
+    <string name="dip_market_logo2">MDM </string>
+    <string name="ip_news">IPニュース</string>
+    <string name="title_latest_news">最新IPニュース</string>
+    <string name="time_sample">10:15</string>
+    <string name="report_time">2025年06月01日</string>
+    <string name="date_just_now">25.06.01</string>
+    <string name="filled_time">06.11 04:10:14</string>
+    <string name="error_news_load_failed">ニュース読み込み失敗</string>
+    <string name="error_open_link_failed">リンクを開けませんでした</string>
+    <string name="time_just_now">さっき</string>
+    <string name="time_minutes_ago">%1$d分前</string>
+    <string name="time_hours_ago">%1$d時間前</string>
+    <string name="time_yesterday">昨日 %1$s</string>
+    <string name="time_format_full">%1$s</string>
+    <string name="breaking_news">速報</string>
+    <string name="ip_breaking_news">Breaking NEWS</string>
+    <string name="dip_listing_info">IP NEWS</string>
+
+    <string name="title_stock_exchange">取引所</string>
+    <string name="title_ip_inform">IP情報</string>
+    <string name="title_investment_history">投資履歴</string>
+    <string name="title_transaction_history">入出金</string>
+    <string name="title_more">もっと見る</string>
+    <string name="common_confirm">確認</string>
+    <string name="common_cancel">キャンセル</string>
+    <string name="common_dot">\u2022</string>
+    <string name="common_change">変更</string>
+    <string name="common_yes">はい</string>
+    <string name="common_no">いいえ</string>
+    <string name="common_re_order">並び替え</string>
+    <string name="common_lg">LG U+</string>
+    <string name="common_kt">KT</string>
+    <string name="common_skt">SKT</string>
+    <string name="common_only_english">英語で入力してください。</string>
+    <string name="common_invalid_email">Eメール形式で入力してください。</string>
+    <string name="common_ready">準備中</string>
+    <string name="common_camera_permission">カメラ/ギャラリーへのアクセス権限がありません。権限を許可してからご利用ください。</string>
+    <string name="common_not_password">パスワードが一致しません。</string>
+    <string name="common_app_end">もう一度押すと終了します</string>
+    <string name="common_dont_show_again_today">今日は表示しない</string>
+    <string name="common_deposit">入金</string>
+    <string name="common_deposit_action">入金する</string>
+    <string name="common_withdrawal">出金</string>
+    <string name="common_withdrawal_action">出金する</string>
+    <string name="common_pending_transaction_amount">取引待機</string>
+    <string name="common_withdrawable_amount">出金可能</string>
+    <string name="common_copy">コピー</string>
+    <string name="common_real_name_account">実名口座</string>
+    <string name="common_withdrawal_account">出金口座</string>
+    <string name="common_withdrawal_wallet">出金ウォレット</string>
+    <string name="common_notice">案内</string>
+    <string name="button_verify">確認</string>
+    <string name="button_verify_with_timer">確認 (%s)</string>
+    <string name="info_verification_time_limit">認証可能時間 5:00 分</string>
+    <string name="checkbox_agree">同意します</string>
+    <string name="error_duplicate_409">すでに登録されている会員情報です。</string>
+    <string name="error_admin_500">不明なエラーが発生しました。管理者にお問い合わせください。</string>
+    <string name="error_network_999">ネットワーク接続に失敗しました。</string>
+    <string name="error_login_fail_888">ログイン接続に失敗しました。</string>
+    <string name="permission_title">安全で便利な<![CDATA[<br/><font color="#30C6E8">STIP</font>利用のため、以下の<br/>]]> 権限の許可が必要です。</string>
+    <string name="permission_camera">カメラ</string>
+    <string name="permission_camera_comment">身分証明書の撮影及び書類提出、出金アドレスQRコード撮影、1:1問い合わせ及び取引サポート関連詐欺報告時の送信写真撮影</string>
+    <string name="permission_picture">写真</string>
+    <string name="permission_picture_comment">書類提出、画面共有画像の保存、1:1問い合わせ時の写真送信</string>
+    <string name="permission_biometric_auth">生体認証情報(Touch ID)</string>
+    <string name="permission_biometric_auth_comment">本人確認及び利用者識別</string>
+    <string name="permission_notification">通知</string>
+    <string name="permission_notification_comment">プッシュ通知</string>
+    <string name="permission_select">(選択)</string>
+    <string name="permission_comment">選択アクセス権限を許可しなくても、該当機能以外のSTIP\nサービス利用が可能です。</string>
+    <string name="login_stip">Sign up</string>
+    <string name="login_later">後でログインしますか？</string>
+    <string name="login_look_around">ゲストとして見る</string>
+    <string name="login_start_title"><![CDATA[<br/><font color="#30C6E8">STIP</font> ログインを<br/>]]>開始します。</string>
+    <string name="login_start">STIP開始</string>
+    <string name="log_in_home">Log in</string>
+    <string name="login_pin_number_title">PIN番号でログイン</string>
+    <string name="login_pin_number_forget_password"><u>パスワードをお忘れですか？</u></string>
+    <string name="login_pin_number_basic_login_setting">基本ログインに設定</string>
+    <string name="login_pin_number_another_login_method"><u>他のログイン方法</u></string>
+    <string name="login_biometric_auth_title">生体認証ログイン</string>
+    <string name="login_biometric_auth_re_registration"><u>再登録</u></string>
+    <string name="login_biometric_auth_basic_login_setting">基本ログインに設定</string>
+    <string name="login_biometric_auth_another_login_method"><u>他のログイン方法</u></string>
+    <string name="login_biometric_auth_login_method_change">ログイン方法変更</string>
+    <string name="login_biometric_auth">生体認証</string>
+    <string name="login_biometric_auth_pin_number">PIN番号</string>
+    <string name="main_login_required">ログイン後に利用できます。</string>
+    <string name="sign_up_title"><![CDATA[<br/><font color="#30C6E8">STIP</font> 利用のための<br/>]]>本人認証を行います。</string>
+    <string name="sign_up_all_agree">全てに同意</string>
+    <string name="sign_up_phone_auth_confirm">携帯電話本人確認</string>
+    <string name="sign_up_name">名前</string>
+    <string name="sign_up_name_hint">氏名入力</string>
+    <string name="sign_up_resident_number">住民登録番号</string>
+    <string name="sign_up_resident_number_hint">生年月日</string>
+    <string name="sign_up_communication_agency">通信キャリア</string>
+    <string name="sign_up_communication_agency_hint">通信キャリア選択</string>
+    <string name="sign_up_phone_number">携帯電話番号</string>
+    <string name="sign_up_phone_number_hint">-なしで入力</string>
+    <string name="sign_up_auth_request">認証要請</string>
+    <string name="sign_up_auth_request_re">再要請</string>
+    <string name="sign_up_auth_request_hint">認証番号6桁入力</string>
+    <string name="sign_up_communication_select">通信キャリア選択</string>
+    <string name="sign_up_communication_skt">SKT</string>
+    <string name="sign_up_communication_kt">KT</string>
+    <string name="sign_up_communication_lg">LG U+</string>
+    <string name="sign_up_communication_frugality_skt">SKT MVNO</string>
+    <string name="sign_up_communication_frugality_kt">KT MVNO</string>
+    <string name="sign_up_communication_frugality_lg">LG U+ MVNO</string>
+    <string name="sign_up_agree_pop_up_title">利用規約への同意をチェックしてください</string>
+    <string name="sign_up_input_inform_pop_up_title">入力した情報を確認後、再度入力してください</string>
+    <string name="sign_up_auth_number_disaccord_pop_up_title">認証番号が一致しません。\n認証番号を確認後、再試行してください。\n(エラー回数 : %s/3)</string>
+    <string name="sign_up_auth_number_over_count_pop_up_title">本人認証の試行可能回数を超えました。</string>
+    <string name="sign_up_auth_number_over_time_pop_up_title">認証時間が超過しました。再試行してください。</string>
+    <string name="sign_up_bank_title">銀行口座認証を\n行ってください。</string>
+    <string name="sign_up_bank_sub_title">お客様の実名と口座に登録された名前が\n一致する場合のみ認証可能です。</string>
+    <string name="sign_up_bank_bank">銀行</string>
+    <string name="sign_up_bank_number">口座番号</string>
+    <string name="sign_up_bank_number_hint">-なしで入力</string>
+    <string name="sign_up_bank_warning">\u2022 各銀行のサーバーメンテナンス時間中は口座認証をご利用いただけません。</string>
+    <string name="sign_up_bank_auth_request">口座認証番号送信</string>
+    <string name="sign_up_bank_select_title">銀行選択</string>
+    <string name="sign_up_bank_search_hint">銀行/証券会社名検索</string>
+    <string name="sign_up_bank_1_won_title">1ウォンを入金しました。<![CDATA[<br/><font color="#30C6E8">6桁の数字</font>を<br/>]]>入力してください。</string>
+    <string name="sign_up_bank_1_won_help_1"><u>認証番号の確認方法は？</u></string>
+    <string name="sign_up_bank_1_won_help_2">\u2022 申請が集中した場合、1ウォンの入金に5分以上かかることがあります。</string>
+    <string name="sign_up_bank_1_won_help_3">\u2022 入金履歴がない場合は、口座情報を再度ご確認ください。</string>
+    <string name="sign_up_bank_1_won_auth">1ウォン認証 (%s)</string>
+    <string name="sign_up_kyc_title">KYC情報を入力してください</string>
+    <string name="sign_up_kyc_email">Eメール</string>
+    <string name="sign_up_kyc_email_hint">Eメール入力</string>
+    <string name="sign_up_kyc_name">名前</string>
+    <string name="sign_up_kyc_name_hint">英語入力</string>
+    <string name="sign_up_kyc_address">住所</string>
+    <string name="sign_up_kyc_address_hint">住所入力</string>
+    <string name="sign_up_kyc_address_old">地番</string>
+    <string name="sign_up_kyc_address_new">道路名</string>
+    <string name="sign_up_kyc_address_not_found">一致する住所がありません。</string>
+    <string name="sign_up_kyc_account_open">ご自身で使用する口座を開設しますか？</string>
+    <string name="sign_up_kyc_purpose">使用目的</string>
+    <string name="sign_up_kyc_purpose_hint">一般投資目的</string>
+    <string name="sign_up_kyc_purpose_select">使用目的選択</string>
+    <string name="sign_up_kyc_source">資金源</string>
+    <string name="sign_up_kyc_source_hint">給与/年金</string>
+    <string name="sign_up_kyc_source_select">資金源選択</string>
+    <string name="sign_up_kyc_job">職業</string>
+    <string name="sign_up_kyc_job_hint">会社員</string>
+    <string name="sign_up_kyc_job_select">職業選択</string>
+    <string name="sign_up_kyc_inform_title">%s様の\n情報を入力してください</string>
+    <string name="sign_up_kyc_inform_passport_name">パスポートの英語氏名</string>
+    <string name="sign_up_kyc_inform_passport_last_name_hint">英語 姓</string>
+    <string name="sign_up_kyc_inform_passport_first_name_hint">英語 名</string>
+    <string name="sign_up_kyc_inform_current_address">現在の居住地</string>
+    <string name="sign_up_kyc_inform_current_address_hint">住所検索</string>
+    <string name="sign_up_kyc_search_address_title">住所検索</string>
+    <string name="sign_up_kyc_search_address_hint">例) パンギョ駅路 166、盆唐 住公 柏峴洞 532</string>
+    <string name="sign_up_kyc_search_address_detail_hint">詳細住所入力</string>
+    <string name="sign_up_pin_number_title">住民登録証または\n運転免許証をご用意ください。</string>
+    <string name="sign_up_pin_number_sub_title">口座開設のため、お客様の実名を確認できる\n身分証明書の撮影が必要です。</string>
+    <string name="sign_up_pin_number_identification_take">身分証明書撮影開始</string>
+    <string name="sign_up_pin_number_setting_title">PINパスワード設定</string>
+    <string name="sign_up_pin_number_setting_same_condition_warning">同一または連続した数字、及び個人情報関連の\n数字は登録が制限されます。</string>
+    <string name="sign_up_pin_number_setting_confirm_warning">確認のため、もう一度入力してください。</string>
+    <string name="sign_up_pin_number_setting_confirm_not_correct">一致しません。\n(%d/5)</string>
+    <string name="sign_up_pin_number_biometric_title">スムーズな利用のために\n生体認証を設定してください。</string>
+    <string name="sign_up_pin_number_biometric_sub_title">もっと見る > 認証/セキュリティ メニューでも\n設定可能です。</string>
+    <string name="sign_up_pin_number_biometric_basic_login_setting">基本ログインに設定</string>
+    <string name="sign_up_pin_number_biometric_basic_login_warning">本人確認目的でデバイスに登録された生体認証情報を利用して\nSTIPログインを行い、サーバーに送信/保存しません。</string>
+    <string name="sign_up_pin_number_biometric_later">後で</string>
+    <string name="sign_up_pin_number_biometric_use_agree">生体認証使用に同意</string>
+    <string name="sign_up_pin_number_start_title">これで<![CDATA[<font color="#30C6E8">STIP</font>で<br/>]]> 投資を開始できます</string>
+    <string name="sign_up_pin_number_start_sub_title">デジタル知的財産(DIP)取引が可能です。\n\nSTIPは24時間365日取引所を運営し、\nいつでもDIP取引をサポートします。\n\n時間と場所にとらわれず、\n自由にDIPを取引してください！</string>
+    <string name="sign_up_pin_number_start">取引開始</string>
+    <string name="sign_up_pin_number_finish_title">PINパスワード入力</string>
+    <string name="sign_up_pin_number_finish_forget">PINパスワードをお忘れですか？</string>
+    <string name="ip_asset_search_ticker_ip">ティッカー/IP検索</string>
+    <string name="ip_asset_krw_deposit">JPY入金</string>
+    <string name="phone_fraud_alert_title">電気通信金融詐欺 注意案内</string>
+    <string name="phone_fraud_alert_message1">最近、デジタルIP(DIP)資産を利用した電気通信金融詐欺被害(ボイスフィッシング)が多く発生しています。</string>
+    <string name="phone_fraud_alert_message2">上記項目のいずれかに該当する場合、ボイスフィッシング詐欺の可能性があります。</string>
+    <string name="phone_fraud_alert_message3">少しでも疑わしい場合は、直ちに取引を中止し、STIPカカオトークチャンネルにご連絡ください。</string>
+    <string name="phone_fraud_alert_message4">誰もが被害者になる可能性のあるボイスフィッシング、特に注意すれば予防できます。</string>
+    <string name="phone_fraud_alert_bullet_point1">国内外の取引所役職員及び金融機関担当者が金融情報の要求及びデジタルIP(DIP)入金を誘導しましたか？</string>
+    <string name="phone_fraud_alert_bullet_point2">SNS、デーティングアプリ等で親しくなった外国人が、見慣れない海外取引サイトを紹介し、会員登録を誘導しましたか？</string>
+    <string name="phone_fraud_alert_bullet_point3">投資損失額を補填すると言って、特定のサイトへの加入、アプリのインストール及びウォレット作成を要求しましたか？</string>
+    <string name="deposit_address">入金アドレス</string>
+    <string name="deposit_notice_title_not_usd">入金前に必ずご確認ください！</string>
+    <string name="deposit_notice_message_not_usd">"このアドレスは{currencyCode}専用の入金アドレスです。\n他のデジタルIPを入金した場合、エラーまたは損失が発生する可能性があり、復旧は不可能です。\n\nまた、当社の異常取引審査手続きにより、資金源確認のための書類提出が要求される場合があり、\nこれにより入金反映が遅延する可能性があります。書類審査の結果によっては入金が承認されない場合もあり、\n返還時には出金手数料が課される場合があります。\n\n本アドレスは入金専用です。"</string>
+    <string name="deposit_notice_title_usd">[入金案内]</string>
+    <string name="deposit_notice_message_usd">上記の指定された口座に入金してください。\n入金が確認された後、ご自身の口座に反映されます。</string>
+    <string name="filter_all">全て</string>
+    <string name="filter_deposit">入金</string>
+    <string name="filter_withdraw">出金</string>
+    <string name="filter_refund">返還</string>
+    <string name="filter_pending">進行中</string>
+    <string name="total_holdings">総保有</string>
+    <string name="deposit_completed">入金完了</string>
+    <string name="withdrawal_completed">出金完了</string>
+    <string name="withdrawal_limit">出金限度額</string>
+    <string name="withdrawal_request">出金申請</string>
+    <string name="withdrawal_request_confirm">出金申請確認</string>
+    <string name="withdrawal_notice_message_withdrawal_completed">出金申請が完了しました。</string>
+    <string name="withdrawal_warning_title1">確認を進めると出金申請が完了し、キャンセルはできません。</string>
+    <string name="withdrawal_warning_title2">出金申請は確認後すぐに完了し、申請後はキャンセルできません。</string>
+    <string name="withdrawal_confirm_warning_title">再度ご確認ください</string>
+    <string name="withdrawal_confirm_warning_message1">本人名義のSTIPアカウントを他人の要請や指示に従って貸与する場合、法的処罰の対象となる可能性があり、実名認証されたアカウントを共有すると個人情報漏洩のリスクがあります。また、銀行のメンテナンス時間(毎日23:50～00:10)には出金サービスの利用が円滑でない場合があり、VPNを使用して接続すると出金が保留または制限される場合があります。\n\n不正取引と疑われる場合、出金が遮断されることもあります。\nさらに、当社の異常取引審査手続きにより、出金申請時に資金源及び出金先の確認のための書類提出を要請する場合があり、これにより出金が遅延する可能性があります。\n\n書類審査の結果によっては出金が承認されない場合もありますので、ご注意ください。</string>
+    <string name="withdrawal_confirm_warning_message2">本人名義のSTIPアカウントを他人に貸与すると、法的処罰の対象となる可能性があり、実名認証アカウントの共有時には個人情報漏洩のリスクがあります。\n\n銀行のメンテナンス時間(23:50～00:10)中、出金サービスの利用が円滑でない場合があります。\n\nVPN使用時には出金が遅延または制限される可能性があり、不正取引が疑われる場合には出金が遮断されることがあります。\n\n異常取引審査過程で、資金源及び出金先の確認のために書類提出が要求される場合があり、これにより出金が遅延する可能性があります。審査の結果によっては出金が拒否されることもあります。</string>
+    <string name="withdrawal_amount">出金額</string>
+    <string name="withdrawal_quantity">出金数量</string>
+    <string name="withdrawal_total_vat_included">総出金額 (手数料込)</string>
+    <string name="withdrawal_min_amount">最低1</string>
+    <string name="withdrawal_error_available_amount_exceeded">出金可能額を超過しました。</string>
+    <string name="withdrawal_error_limit_exceeded">出金限度額を超過しました。</string>
+    <string name="filter_owned">保有</string>
+    <string name="desc_back">戻る</string>
+    <string name="desc_share">共有する</string>
+    <string name="status_withdrawal_complete">出金完了</string>
+    <string name="label_completion_datetime">完了日時</string>
+    <string name="label_type">タイプ</string>
+    <string name="value_type_krw_withdrawal">USD出金</string>
+    <string name="label_withdrawal_account">出金口座</string>
+    <string name="button_confirm">確認</string>
+    <string name="title_krw_deposit_detail">KRW入金詳細履歴</string>
+    <string name="title_krw_withdrawal_detail">KRW出金詳細履歴</string>
+    <string name="title_usd_deposit_detail">USD入金詳細履歴</string>
+    <string name="title_usd_withdrawal_detail">USD出金詳細履歴</string>
+    <string name="title_deposit_detail">入金履歴詳細</string>
+    <string name="title_withdrawal_detail">出金履歴詳細</string>
+    <string name="status_deposit_completed">入金完了</string>
+    <string name="value_type_krw_deposit">JPY入金</string>
+    <string name="label_deposit_account">入金口座</string>
+    <string name="value_type_usd_deposit">USD入金</string>
+    <string name="value_type_usd_withdrawal">USD出金</string>
+    <string name="value_type_deposit">入金</string>
+    <string name="value_type_withdrawal">出金</string>
+    <string name="value_type_unknown">不明</string>
+    <string name="deposit_warning">入金注意</string>
+    <string name="withdraw_warning">出金注意</string>
+    <string name="label_network">ネットワーク</string>
+    <string name="label_to">To</string>
+    <string name="label_txid">取引ID</string>
+    <string name="usd_equivalent_placeholder">USD</string>
+    <string name="network_value">ネットワーク情報 (例: イーサリアム)</string>
+    <string name="transaction_id_value">0x123abc456def789...</string>
+    <string name="deletion_guide_title">会員退会案内</string>
+    <string name="deletion_guide_intro">会員退会前に、保有しているIP資産がある場合は、必ず必要な措置を完了してください。</string>
+    <string name="deletion_guide_consequence1">退会が進むと、保有中のIP資産及び関連データは全て削除され、復旧できません。</string>
+    <string name="deletion_guide_consequence2">退会時に登録された個人情報も共に削除されますが、関係法令により一定期間保管が必要な情報は維持される場合があります。また、STIP IP取引所アカウントと連携された外部サービス(例：第三者連携サービス)も自動解約され、以降利用できません。</string>
+    <string name="deletion_guide_consequence3">会員退会後は、IP資産及び取引履歴を含む全ての情報が削除され、STIP IP取引所内の個別サービスに対する利用同意も撤回されます。</string>
+    <string name="deletion_guide_consequence4">保有しているIP資産があっても退会は可能ですので、ご留意ください。</string>
+    <string name="deletion_guide_notes_title">その他の注意事項</string>
+    <string name="deletion_guide_note1">• 実名確認された口座情報がない場合、サービス利用料の支払いが制限されることがあります。</string>
+    <string name="deletion_guide_note2">• 退会後24時間はSTIP IP取引所への再加入はできません。</string>
+    <string name="deletion_guide_note3">• 1年以内に2回以上退会と再加入を繰り返すと、1年間加入が制限されることがあります。ただし、カスタマーセンターを通じて正当な事由が認められた場合は、再加入申請が可能です。</string>
+    <string name="withdraw_membership">会員退会</string>
+    <string name="license_agreement_title">デジタルIP使用同意書</string>
+    <string name="license_agreement_content">
+        本同意書（以下「本同意書」）は、デジタルIP（以下「本DIP」）の使用に関する通常実施権を規定する内容を含みます。\n\n
+        第1条（目的）\n
+        本同意書は、本IPの所有者（以下「権利者」）とこれを使用しようとする投資家の権利及び義務を明確にし、本IPの適法な使用を保障することを目的とします。\n\n
+        第2条（本IPの定義）\n
+        本IPは、STIP IP Exchangeを通じて上場されたIPであり、特許権、著作権、商標権、意匠権、音楽、ダンス、フランチャイズ、美術品、ゲームコード、ビジネスモデルなど、その他の知的財産権が含まれる場合があります。\n\n
+        第3条（通常実施権の付与）\n
+        1. 権利者は、本IP上場を通じて自身が定めた通常実施権比率に従い、ユーザーに本IPを使用できる権利を付与します。\n
+        2. ユーザーは、該当IPの通常実施権比率を満たすデジタルIP（DIP）を保有した場合、本知的財産を定められた範囲内で使用できます。\n
+        3. DIP保有者が本IP使用権限を要請した場合、権利者は申請日から2週間以内に該当IP登録機関に使用権限を登録しなければなりません。\n
+        4. ユーザーは、本IPを通常実施権で定められた目的内でのみ使用でき、権利者の事前の書面同意なしに他人に本実施権を譲渡、貸与、再使用許諾することはできません。これに違反した場合、権利者はユーザーの使用権を直ちに解除でき、損害賠償請求及び関連する法的制裁を加えることができます。\n
+        5. 本IPを使用しようとする投資家及び購入者は、権利者が該当IPを担当機関に登録した後でのみ法的に通常実施権を行使できます。IPを使用する期間中は、該当DIPを販売することはできず、もはやIPを使用しない場合は、本所有者にこれを通知し、通常実施権の権利を取り消した後、4週間が経過しなければDIPの販売はできません。\n\n
+        第4条（IP使用方法）\n
+        1. 本IPの使用のための方法は、STIP IP Exchangeで各IPが定めたDIPを購入することです。\n
+        2. ユーザーは、実施権の使用に関連して発生する法的、税金、手数料などの全ての費用を負担します。ただし、投資家及び本IPを使用しようとして購入する人は、権利者が登録した後、IPを使用する期間中は該当DIPを販売することはできません。もはやIPを使用しない場合は、本所有者に通知し、通常実施権の権利を取り消した後、4週間後に販売が可能です。通常実施権の使用申請に関連する登録費用は、IP本所有者が負担します。\n\n
+        第5条（ユーザーの義務及び制限事項）\n
+        1. ユーザーは、本IPを不法な用途で使用したり、第三者の権利を侵害する方式で活用したりすることはできません。\n
+        2. 本IPを活用する場合、該当コンテンツに対するクレジットを明確に表記しなければなりません。\n
+        3. ユーザーは、本IPを変形、改作、再加工して使用可能です。\n\n
+        第6条（権利者の義務及び保証）\n
+        1. 権利者は、本IPが第三者の権利を侵害しないことを保証します。\n
+        2. 本IPの法的紛争発生時、権利者は迅速な解決のためにユーザーと協力します。全ての責任はIP本所有者が負担し、解決します。\n\n
+        第7条（契約の解除及び効力停止）\n
+        1. ユーザーが本同意書の条件に違反した場合、権利者は直ちに通知した後、本実施権を解除することができます。\n
+        2. 本同意書の解除または終了後も、第3条、第5条、第8条の条項は継続して効力を持ちます。\n\n
+        第8条（紛争解決）\n
+        1. 本同意書に関連して発生する全ての紛争は、大韓民国法を準拠法とし、ソウル中央地方裁判所を専属管轄裁判所とします。\n紛争発生時、当事者は相互協議を通じて解決するように最善を尽くさなければなりません。\n\n
+        第9条（その他条項）\n
+        本同意書に明示されていない事項は、大韓民国の関連法令及び商慣習に従います。\n\n\n
+        [権利者]\n
+        知的財産（IP）名称： \n\n
+        IP所有者：
+    </string>
+    <string name="more_options_title">もっと見る</string>
+    <string name="profile_image_description">ユーザープロフィール画像</string>
+    <string name="user_name_placeholder">チョン・ヒョンド</string>
+    <string name="more_options_arrow_description">もっと見る</string>
+    <string name="menu_price_alert">相場アラート</string>
+    <string name="menu_mode_settings">モード設定</string>
+    <string name="menu_security_auth">認証</string>
+    <string name="more_name">チョン・ヒョンド</string>
+    <string name="icon_ip_webtoon_label">IPウェブトゥーン</string>
+    <string name="icon_ip_auction_label">IPオークション</string>
+    <string name="icon_ip_swap_label">IPスワップ</string>
+    <string name="icon_ip_donate_label">IP寄付</string>
+    <string name="logo_stip_description">STIPロゴ</string>
+    <string name="dip_portfolio">DIPポートフォリオ</string>
+    <string name="settings_terms">ポリシー及び規約</string>
+    <string name="settings_privacy_policy">個人情報処理方針</string>
+    <string name="settings_youth_policy">消費者保護ポリシー</string>
+    <string name="settings_transaction_status">入出金現況</string>
+    <string name="settings_stipvelation">STIPvelation</string>
+    <string name="settings_app_version_label">アプリバージョン 1.01</string>
+    <string name="button_customer_center">カスタマーセンター</string>
+    <string name="prompt_enter_email">Eメールアドレスを入力してください</string>
+    <string name="email_label">Eメール</string>
+    <string name="email_hint">jhdoup@gmail.com</string>
+    <string name="info_email_verification">Eメールに認証番号が送信され、送信後10分以内に認証する必要があります。\n認証が完了しない場合、該当Eメールは会員退会時に自動削除されます。</string>
+    <string name="button_request_code">認証番号受信</string>
+    <string name="settings">設定</string>
+    <string name="more_policy_and_terms">ポリシー及び規約</string>
+    <string name="more_privacy_policy">ESGポリシー</string>
+    <string name="more_youth_policy">スタートアップ及び中小企業支援ポリシー</string>
+    <string name="more_transaction_status">マネーロンダリング防止(AML)及び内部統制ポリシー</string>
+    <string name="policy_title_disclosure_transparency">開示透明性強化ポリシー</string>
+    <string name="policy_title_dip_valuation">DIP価値評価基準ポリシー</string>
+    <string name="policy_title_user_data_protection">ユーザーデータ保護及び情報閲覧権ポリシー</string>
+    <string name="policy_title_fee_transparency">STIP手数料透明性ポリシー</string>
+    <string name="more_stipulation">STIPvelation</string>
+    <string name="more_app_version_format">アプリバージョン 1.00</string>
+    <string name="more_current_app_version">1.01</string>
+    <string name="more_policy_and_terms_agreement">(必須) ポリシー及び規約利用同意</string>
+    <string name="terms_telecom">通信キャリア利用規約</string>
+    <string name="terms_currency_exchange">取引通貨及び両替方式案内</string>
+    <string name="terms_investment_risk">投資責任及びリスク告知</string>
+    <string name="terms_certificate_service">証明書サービス利用規約</string>
+    <string name="terms_identification_info">認証時固有識別情報処理同意</string>
+    <string name="terms_personal_info_collection_auth">認証時個人情報収集同意</string>
+    <string name="terms_personal_info_collection">個人情報収集同意</string>
+    <string name="terms_auto_debit">入出金自動振替サービス</string>
+    <string name="terms_exchange_usage">STIP IP取引所利用規約及び利用案内</string>
+    <string name="terms_youth_protection">消費者保護ポリシー</string>
+    <string name="terms_privacy_policy">個人情報処理方針</string>
+    <string name="terms_personal_info_use">個人情報収集及び利用同意</string>
+    <string name="more_customer_center">カスタマーセンター</string>
+    <string name="phone_number">010-000-0000</string>
+    <string name="header_policy_terms">ポリシー及び規約</string>
+    <string name="header_customer_center">カスタマーセンター</string>
+    <string name="header_customer_center_for_you">皆様の貴重なご意見をお待ちしております。</string>
+    <string name="user_guide_title">ユーザーガイド</string>
+    <string name="phone_consult_title">電話相談</string>
+    <string name="kakao_inquiry_title">カカオトーク問い合わせ</string>
+    <string name="one_on_one_inquiry_title">Eメール問い合わせ</string>
+    <string name="inquiry_history_title">ホームページから問い合わせ</string>
+    <string name="impersonation_report_title">なりすまし詐欺報告</string>
+    <string name="unfair_trade_title">不公正取引</string>
+    <string name="transaction_statement_title">取引履歴書発行</string>
+    <string name="user_guide_desc">STIP利用関連ガイド</string>
+    <string name="common_customer_center_phone">カスタマーセンター 09:00 ~ 18:00 運営</string>
+    <string name="common_customer_center_24h">カスタマーセンター 24時間運営</string>
+    <string name="inquiry_history_desc">問い合わせ履歴確認。</string>
+    <string name="impersonation_report_desc">上場を前提に対価を要求された場合の報告</string>
+    <string name="unfair_trade_desc">STIP取引時に発生した不公正取引行為の報告</string>
+    <string name="transaction_statement_desc">DIP取引証明書、DIP取引履歴書発行申請</string>
+    <string name="more_info">詳細情報</string>
+    <string name="logout_button">ログアウト</string>
+    <string name="member_info_title">会員情報</string>
+    <string name="edit_button">修正</string>
+    <string name="member_info_title_change">会員情報修正</string>
+    <string name="label_name">名前</string>
+    <string name="label_passport_name">パスポートの英語名</string>
+    <string name="label_phone">携帯電話番号</string>
+    <string name="label_dob">生年月日</string>
+    <string name="label_email">Eメール</string>
+    <string name="label_bank">認証銀行</string>
+    <string name="label_job">職業</string>
+    <string name="label_job_title">勤務先名</string>
+    <string name="label_job_address">勤務先住所</string>
+    <string name="some_other_string">他の文字列</string>
+    <string name="member_info_edit_title">会員情報修正</string>
+    <string name="email_hint_empty">Eメールアドレスを入力してください</string>
+    <string name="prompt_enter_code">新しく入力したEメールアドレスに送信された\n認証番号を入力してください</string>
+    <string name="code_hint">認証番号4桁入力</string>
+    <string name="info_attempts_left">認証は合計5回まで可能</string>
+    <string name="button_verify_code">認証確認</string>
+    <string name="language_select">言語選択</string>
+    <string name="language_korean">韓国語</string>
+    <string name="language_korean_desc">ハングルの科学的な文字構造</string>
+    <string name="language_english">英語</string>
+    <string name="language_english_desc">豊富な語彙とニュアンス</string>
+    <string name="language_japanese">日本語</string>
+    <string name="language_japanese_desc">丁寧で繊細な表現</string>
+    <string name="language_chinese">中国語</string>
+    <string name="language_chinese_desc">文化的影響力と象徴性</string>
+    <string name="language_changed">言語が変更されました</string>
+
+
+    <string name="tab_market">相場</string>
+
+</resources>

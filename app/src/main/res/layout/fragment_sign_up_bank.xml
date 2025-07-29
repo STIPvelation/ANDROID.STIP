@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nsv_body_section"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
+        android:background="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/sign_up_bottom_padding">
+
+            <!-- Guidelines for responsive layouts -->
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/common_side_margin_20dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/common_side_margin_20dp" />
+
+            <!-- Content width limiter for tablets and larger screens -->
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_content_max_width_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.15" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_content_max_width_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.85" />
+                
+            <!-- Modernized Header Section with Refined Typography -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_sign_up_bank_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/sign_up_bank_title"
+                android:textSize="@dimen/sign_up_title_text_size"
+                android:textColor="@color/text_black_14181B_100"
+                android:fontFamily="@font/pretendard_medium_font_family"
+                android:letterSpacing="-0.01"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="@id/guideline_start"
+                app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                app:layout_constraintWidth_max="@dimen/content_max_width"
+                app:layout_constraintHorizontal_bias="0.0"
+                android:layout_marginTop="@dimen/sign_up_top_margin"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_sign_up_bank_sub_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/sign_up_bank_sub_title"
+                android:textSize="@dimen/sign_up_subtitle_text_size"
+                android:textColor="@color/text_gray_595F63_100"
+                android:fontFamily="@font/pretendard_regular_font_family"
+                android:lineSpacingMultiplier="1.2"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sign_up_bank_title"
+                app:layout_constraintStart_toStartOf="@id/guideline_start"
+                app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                app:layout_constraintWidth_max="@dimen/content_max_width"
+                app:layout_constraintHorizontal_bias="0.0"
+                android:layout_marginTop="@dimen/sign_up_section_spacing_small"/>
+
+            <!-- Bank Selection with Card-like Appearance -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_bank_selection"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sign_up_bank_sub_title"
+                app:layout_constraintStart_toStartOf="@id/guideline_start"
+                app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                app:layout_constraintWidth_max="@dimen/content_max_width"
+                app:layout_constraintHorizontal_bias="0.5"
+                android:layout_marginTop="@dimen/sign_up_section_spacing_large"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="8dp"
+                app:strokeWidth="0.3dp"
+                app:strokeColor="#30C6E8">
+                
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/sign_up_card_padding">
+                    
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_sign_up_bank_bank"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sign_up_bank_bank"
+                        android:textSize="@dimen/sign_up_label_text_size"
+                        android:paddingBottom="4dp"
+                        android:textColor="@color/text_gray_595F63_100"
+                        android:fontFamily="@font/pretendard_medium_font_family"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
+                        
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_sign_up_bank_value"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/sign_up_input_text_size"
+                        android:textColor="@color/text_black_14181B_100"
+                        android:fontFamily="@font/pretendard_medium_font_family"
+                        android:drawableEnd="@drawable/ic_drop_down_gray_24dp"
+                        android:background="@drawable/bg_input_stroke_blue"
+                        android:paddingStart="@dimen/sign_up_input_padding_horizontal"
+                        android:paddingEnd="@dimen/sign_up_input_padding_horizontal"
+                        android:paddingTop="@dimen/sign_up_input_padding_vertical"
+                        android:paddingBottom="@dimen/sign_up_input_padding_vertical"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_sign_up_bank_bank"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Account Number Section with Card-like Appearance -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_account_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/card_bank_selection"
+                app:layout_constraintStart_toStartOf="@id/guideline_start"
+                app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                app:layout_constraintWidth_max="@dimen/content_max_width"
+                app:layout_constraintHorizontal_bias="0.5"
+                android:layout_marginTop="@dimen/sign_up_section_spacing_medium"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="8dp"
+                app:strokeWidth="0.3dp"
+                app:strokeColor="#30C6E8">
+                
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/sign_up_card_padding">
+                    
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_sign_up_bank_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sign_up_bank_number"
+                        android:textSize="@dimen/sign_up_label_text_size"
+                        android:textColor="@color/text_gray_595F63_100"
+                        android:fontFamily="@font/pretendard_medium_font_family"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
+                        
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_sign_up_bank_number_value"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/sign_up_input_text_size"
+                        android:textColor="@color/text_black_14181B_100"
+                        android:hint="@string/sign_up_phone_number_hint"
+                        android:textColorHint="@color/text_gray_B0B8C1_100"
+                        android:fontFamily="@font/pretendard_regular_font_family"
+                        android:background="@drawable/bg_input_stroke_blue"
+                        android:paddingStart="@dimen/sign_up_input_padding_horizontal"
+                        android:paddingEnd="@dimen/sign_up_input_padding_horizontal"
+                        android:paddingTop="@dimen/sign_up_input_padding_vertical"
+                        android:paddingBottom="@dimen/sign_up_input_padding_vertical"
+                        android:minHeight="@dimen/sign_up_input_min_height"
+                        android:focusable="true"
+                        android:clickable="true"
+                        android:gravity="center_vertical"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_sign_up_bank_number"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="@dimen/sign_up_element_spacing_small"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Warning Message with Info Icon -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container_warning"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sign_up_section_spacing_medium"
+                app:layout_constraintTop_toBottomOf="@+id/card_account_number"
+                app:layout_constraintStart_toStartOf="@id/guideline_start"
+                app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                app:layout_constraintWidth_max="@dimen/content_max_width"
+                app:layout_constraintHorizontal_bias="0.5">
+                
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_warning_icon"
+                    android:layout_width="@dimen/sign_up_icon_size"
+                    android:layout_height="@dimen/sign_up_icon_size"
+                    android:src="@android:drawable/ic_dialog_info"
+                    android:tint="@color/text_gray_595F63_100"
+                    app:layout_constraintTop_toTopOf="@+id/tv_sign_up_bank_warning"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_sign_up_bank_warning"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginEnd="@dimen/sign_up_element_spacing_small"/>
+                
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_sign_up_bank_warning"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sign_up_bank_warning"
+                    android:textSize="@dimen/sign_up_note_text_size"
+                    android:textColor="@color/text_gray_595F63_100"
+                    android:fontFamily="@font/pretendard_regular_font_family"
+                    android:layout_marginStart="@dimen/sign_up_warning_text_margin"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Stylized Button with Material Design -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_send"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/sign_up_bank_auth_request"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sign_up_button_text_size"
+                android:paddingVertical="@dimen/sign_up_button_padding"
+                app:cornerRadius="8dp"
+                android:enabled="false"
+                app:backgroundTint="@null"
+                android:background="@drawable/selector_gray_b0b8c1_sky_30c6e8_round_4dp"
+                android:layout_marginBottom="@dimen/sign_up_section_spacing_small"
+                android:layout_marginTop="@dimen/sign_up_section_spacing_medium"
+                app:layout_constraintTop_toBottomOf="@+id/container_warning"
+                app:layout_constraintBottom_toTopOf="@+id/rv_number"
+                app:layout_constraintStart_toStartOf="@id/guideline_start"
+                app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                app:layout_constraintWidth_max="@dimen/button_max_width"
+                app:layout_constraintWidth_percent="0.9"
+                app:layout_constraintHorizontal_bias="0.5"/>
+
+            <!-- Number Pad Grid - Modern Styling -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:paddingVertical="@dimen/sign_up_keypad_padding"
+                android:clipToPadding="false"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="3"
+                android:background="#F5F5F5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_max="@dimen/keypad_max_width"
+                app:layout_constraintWidth_percent="1.0"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:visibility="gone"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

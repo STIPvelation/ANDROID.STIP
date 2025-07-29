@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="1dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:rippleColor="#20000000"
+    app:cardBackgroundColor="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- 개선된 이미지 컨테이너 -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:minHeight="160dp">
+
+            <ImageView
+                android:id="@+id/imageAuction"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                tools:src="@android:drawable/ic_menu_gallery" />
+            
+            <!-- 세련된 그라데이션 오버레이 -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_overlay"
+                android:alpha="0.7" />
+
+            <!-- 향상된 IP 유형 태그 -->
+            <TextView
+                android:id="@+id/badgeIpType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|end"
+                android:layout_margin="10dp"
+                android:background="@drawable/tag_background"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:fontFamily="sans-serif-medium"
+                android:elevation="2dp"
+                tools:text="저작권" />
+        </FrameLayout>
+
+        <!-- 향상된 정보 섹션 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="14dp"
+            android:background="#FFFFFF">
+
+            <!-- 개선된 제목 -->
+            <TextView
+                android:id="@+id/textAuctionTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="#212121"
+                android:textSize="15sp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                tools:text="인기 웹툰 'STIP 일상' IP" />
+
+            <!-- 개선된 등록번호 -->
+            <TextView
+                android:id="@+id/textRegistrationNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="sans-serif"
+                android:textColor="#757575"
+                android:textSize="12sp"
+                tools:text="IP #C-2023-056789" />
+
+            <!-- 가격 섹션 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:gravity="bottom|center_vertical">
+
+                <TextView
+                    android:id="@+id/textAuctionPrice"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="#1976D2"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:text="$12,500" />
+
+                <!-- 참여자 수 -->
+                <TextView
+                    android:id="@+id/textBidCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:textColor="#757575"
+                    android:textSize="12sp"
+                    android:gravity="end"
+                    tools:text="25 bids" />
+            </LinearLayout>
+
+            <!-- 남은 시간 표시 - 더 모던하게 -->
+            <TextView
+                android:id="@+id/textTimeRemaining"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:paddingVertical="4dp"
+                android:fontFamily="sans-serif"
+                android:textColor="#E65100"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:drawablePadding="4dp"
+                app:drawableStartCompat="@android:drawable/ic_menu_recent_history"
+                app:drawableTint="#E65100"
+                android:drawableStart="@android:drawable/ic_menu_recent_history"
+                tools:text="2 days left" />
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

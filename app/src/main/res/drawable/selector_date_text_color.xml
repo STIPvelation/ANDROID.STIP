@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 선택된 상태 (selected=true) : 진한 검정 -->
+    <item android:state_selected="true" android:color="@color/color_text_default" />
+    <!-- 선택 안된 상태 (selected=false) : 흐린 회색 -->
+    <item android:state_selected="false" android:color="@color/text_disabled_grey" />
+</selector>

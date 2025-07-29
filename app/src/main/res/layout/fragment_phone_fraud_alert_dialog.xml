@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="36dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/bg_frame_rounded"
+        android:backgroundTint="#4D3C3C43" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/common_side_margin_20dp"
+        android:layout_marginTop="20dp"
+        style="@style/DefaultTextStyle_medium_16"
+        android:text="@string/phone_fraud_alert_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/common_side_margin_20dp"
+        android:layout_marginTop="24dp"
+        android:layout_weight="1.0"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:padding="8dp"
+                style="@style/DefaultTextStyle_12"
+                android:text="@string/phone_fraud_alert_message1" />
+
+            <include
+                layout="@layout/layout_phone_fraud_alert_bullet_point"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:padding="8dp"
+                style="@style/DefaultTextStyle_12"
+                android:text="@string/phone_fraud_alert_message2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:padding="8dp"
+                style="@style/DefaultTextStyle_12"
+                android:text="@string/phone_fraud_alert_message3" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:padding="8dp"
+                style="@style/DefaultTextStyle_12"
+                android:text="@string/phone_fraud_alert_message4" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/common_side_margin_20dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1.0"
+            android:background="@drawable/round_solid_gray_f4f7fc_radius_4dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/pretendard_medium_font_family"
+            android:maxLines="1"
+            android:stateListAnimator="@null"
+            android:text="@string/common_dont_show_again_today"
+            android:textColor="@color/text_gray_B0B8C1_100"
+            android:textSize="@dimen/text_size_medium" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_confirm"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1.0"
+            android:background="@drawable/round_solid_sky_30c6e8_radius_4dp"
+            android:fontFamily="@font/pretendard_medium_font_family"
+            android:stateListAnimator="@null"
+            android:text="@string/common_confirm"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_medium" />
+
+    </LinearLayout>
+
+</LinearLayout>

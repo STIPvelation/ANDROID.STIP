@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/order_type_popup_root"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:elevation="6dp"
+    android:orientation="vertical"
+    android:paddingVertical="2dp"
+    android:paddingHorizontal="2dp">
+
+    <TextView
+        android:id="@+id/order_type_all"
+        style="@style/PopupProfitType"
+        android:text="@string/order_type_all" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E0E0E0" />
+
+    <TextView
+        android:id="@+id/order_type_normal"
+        style="@style/PopupProfitType"
+        android:text="@string/order_type_normal" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E0E0E0" />
+
+    <TextView
+        android:id="@+id/order_type_reserved"
+        style="@style/PopupProfitType"
+        android:text="@string/order_type_reserved" />
+
+</LinearLayout>

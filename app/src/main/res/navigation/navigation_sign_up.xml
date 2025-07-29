@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_sign_up"
+    app:startDestination="@id/SignUpAuthFragment">
+
+    <fragment
+        android:id="@+id/SignUpAuthFragment"
+        android:name="com.stip.stip.signup.signup.auth.SignUpAuthFragment"
+        tools:layout="@layout/fragment_sign_up_auth"
+        />
+
+    <fragment
+        android:id="@+id/SignUpAuthNiceFragment"
+        android:name="com.stip.stip.signup.signup.auth.nice.SignUpAuthNiceFragment"
+        tools:layout="@layout/fragment_sign_up_auth_nice"
+        />
+
+    <fragment
+        android:id="@+id/SignUpBankFragment"
+        android:name="com.stip.stip.signup.signup.bank.SignUpBankFragment"
+        tools:layout="@layout/fragment_sign_up_bank"
+
+        />
+
+    <fragment
+        android:id="@+id/SignUpBankSelectFragment"
+        android:name="com.stip.stip.signup.signup.bank.select.SignUpBankSelectFragment"
+        tools:layout="@layout/fragment_sign_up_bank_select"
+        />
+
+    <fragment
+        android:id="@+id/SignUpBankDepositFragment"
+        android:name="com.stip.stip.signup.signup.bank.deposit.SignUpBankDepositFragment"
+        tools:layout="@layout/fragment_sign_up_bank_deposit"
+        />
+
+    <fragment
+        android:id="@+id/SignUpKYCFragment"
+        android:name="com.stip.stip.signup.signup.kyc.SignUpKYCFragment"
+        tools:layout="@layout/fragment_sign_up_kyc"
+        />
+
+    <fragment
+        android:id="@+id/SignUpKYCAddressFragment"
+        android:name="com.stip.stip.signup.signup.kyc.address.SignUpKYCAddressFragment"
+        tools:layout="@layout/fragment_sign_up_kyc_address"
+        />
+
+    <fragment
+        android:id="@+id/SignUpKYCInformFragment"
+        android:name="com.stip.stip.signup.signup.kyc.inform.SignUpKYCInformFragment"
+        tools:layout="@layout/fragment_sign_up_kyc_inform"
+        />
+
+    <fragment
+        android:id="@+id/SignUpPinNumberFragment"
+        android:name="com.stip.stip.signup.signup.pin.number.SignUpPinNumberFragment"
+        tools:layout="@layout/fragment_sign_up_pin_number"
+        />
+
+    <fragment
+        android:id="@+id/SignUpPinNumberSettingFragment"
+        android:name="com.stip.stip.signup.signup.pin.setting.SignUpPinNumberSettingFragment"
+        tools:layout="@layout/fragment_sign_up_pin_number_setting"
+        />
+
+    <fragment
+        android:id="@+id/SignUpPinNumberBiometricFragment"
+        android:name="com.stip.stip.signup.signup.pin.biometric.SignUpPinNumberBiometricFragment"
+        tools:layout="@layout/fragment_sign_up_pin_number_biometric"
+        />
+
+    <fragment
+        android:id="@+id/SignUpPinNumberStartFragment"
+        android:name="com.stip.stip.signup.signup.pin.start.SignUpPinNumberStartFragment"
+        tools:layout="@layout/fragment_sign_up_pin_number_start"
+        />
+
+    <fragment
+        android:id="@+id/SignUpPinNumberFinishFragment"
+        android:name="com.stip.stip.signup.signup.pin.finish.SignUpPinNumberFinishFragment"
+        tools:layout="@layout/fragment_sign_up_pin_number_finish"
+        />
+
+    <action
+        android:id="@+id/action_SignUpAuthFragment_to_SignUpAuthNiceFragment"
+        app:destination="@id/SignUpAuthNiceFragment"
+        />
+
+    <action
+        android:id="@+id/action_SignUpAuthNiceFragment_to_SignUpBankFragment"
+        app:destination="@id/SignUpBankFragment"
+        />
+
+    <action
+        android:id="@+id/action_SignUpBankFragment_to_SignUpBankDepositFragment"
+        app:destination="@id/SignUpBankDepositFragment"
+        />
+
+    <action
+        android:id="@+id/action_SignUpBankFragment_to_SignUpBankSelectFragment"
+        app:destination="@id/SignUpBankSelectFragment" />
+
+    <action
+        android:id="@+id/action_SignUpBankDepositFragment_to_SignUpBankSelectFragment"
+        app:destination="@id/SignUpBankSelectFragment" />
+
+    <action
+        android:id="@+id/action_SignUpBankSelectFragment_to_SignUpBankFragment"
+        app:destination="@id/SignUpBankFragment" />
+
+    <action
+        android:id="@+id/action_SignUpBankDepositFragment_to_SignUpKYCFragment"
+        app:destination="@id/SignUpKYCFragment" />
+
+    <action
+        android:id="@+id/action_SignUpKYCInformFragment_to_SignUpKYCFragment"
+        app:destination="@id/SignUpKYCFragment" />
+
+    <action
+        android:id="@+id/action_SignUpKYCInformFragment_to_SignUpKYCAddressFragment"
+        app:destination="@id/SignUpKYCAddressFragment" />
+
+    <action
+        android:id="@+id/action_SignUpKYCAddressFragment_to_SignUpKYCInformFragment"
+        app:destination="@id/SignUpKYCInformFragment" />
+
+    <action
+        android:id="@+id/action_SignUpKYCFragment_to_SignUpKYCInformFragment"
+        app:destination="@id/SignUpKYCInformFragment" />
+
+    <action
+        android:id="@+id/action_SignUpKYCFragment_to_SignUpPinNumberFragment"
+        app:destination="@id/SignUpPinNumberFragment" />
+
+    <action
+        android:id="@+id/action_SignUpPinNumberFragment_to_SignUpPinNumberSettingFragment"
+        app:destination="@+id/SignUpPinNumberSettingFragment"
+        />
+
+    <action
+        android:id="@+id/action_SignUpAuthNiceFragment_to_SignUpPinNumberSettingFragment"
+        app:destination="@id/SignUpPinNumberSettingFragment"
+        />
+
+    <action
+        android:id="@+id/action_SignUpPinNumberSettingFragment_to_SignUpPinNumberBiometricFragment"
+        app:destination="@+id/SignUpPinNumberBiometricFragment"
+        />
+
+    <action
+        android:id="@+id/action_SignUpPinNumberBiometricFragment_to_SignUpPinNumberStartFragment"
+        app:destination="@+id/SignUpPinNumberStartFragment"
+        />
+
+    <action
+        android:id="@+id/action_SignUpPinNumberStartFragment_to_SignUpPinNumberFinishFragment"
+        app:destination="@+id/SignUpPinNumberFinishFragment"
+        />
+
+
+</navigation>

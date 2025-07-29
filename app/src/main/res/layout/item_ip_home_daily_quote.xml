@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/item_quote_background_with_divider"
+    android:orientation="horizontal"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp"
+    android:weightSum="4">
+
+    <!-- 일자 -->
+    <TextView
+        android:id="@+id/itemDateTextView"
+        style="@style/DefaultTextStyle_12"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="start"
+        tools:text="2025.01.01" />
+
+    <!-- 종가 -->
+    <TextView
+        android:id="@+id/itemLastPriceTextView"
+        style="@style/DefaultTextStyle_12"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        tools:text="1,234.56" />
+
+    <!-- 변동률 -->
+    <TextView
+        android:id="@+id/itemChangePercentTextView"
+        style="@style/DefaultTextStyle_12"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        tools:text="+5.67%" />
+
+    <!-- 거래량 -->
+    <TextView
+        android:id="@+id/itemVolumeTextView"
+        style="@style/DefaultTextStyle_12"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="end"
+        tools:text="1,234,567" />
+
+</LinearLayout> 

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:stateListAnimator="@animator/lift_on_touch"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true"
+    app:strokeWidth="0dp"
+    app:rippleColor="#33000000"
+    app:cardBackgroundColor="#FFFFFF">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp"
+        android:background="@drawable/portfolio_gradient_background">
+
+    <TextView
+        android:id="@+id/tvPortfolioTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="보유자산 포트폴리오"
+        android:textColor="#1A237E"
+        android:textSize="22sp"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="-0.02"
+        android:elevation="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="2dp"
+        app:cardBackgroundColor="#E8F5FE"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPortfolioTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvPortfolioTitle">
+        
+        <ImageView
+            android:id="@+id/ivExpandIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:contentDescription="Expand/Collapse"
+            android:src="@drawable/ic_arrow_up"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="#1976D2" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/pieChart"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="32dp"
+        android:elevation="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPortfolioTitle" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/legendCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="3dp"
+        app:strokeWidth="0dp"
+        app:cardBackgroundColor="#FAFAFA"
+        app:layout_constraintBottom_toBottomOf="@+id/pieChart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pieChart"
+        app:layout_constraintTop_toTopOf="@+id/pieChart">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+            
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/legendDotCard"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardBackgroundColor="#3F51B5"
+                app:cardElevation="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                
+                <View
+                    android:id="@+id/legendDot"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/legendLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="TRX"
+                android:textColor="#263238"
+                android:textSize="17sp"
+                android:fontFamily="sans-serif-medium"
+                app:layout_constraintBottom_toBottomOf="@+id/legendDotCard"
+                app:layout_constraintStart_toEndOf="@+id/legendDotCard"
+                app:layout_constraintTop_toTopOf="@+id/legendDotCard" />
+
+            <TextView
+                android:id="@+id/legendPercentage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:gravity="end"
+                android:text="100.0%"
+                android:textColor="#1976D2"
+                android:textSize="18sp"
+                android:letterSpacing="0.02"
+                android:fontFamily="sans-serif-medium"
+                app:layout_constraintBottom_toBottomOf="@+id/legendLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/legendLabel"
+                app:layout_constraintTop_toTopOf="@+id/legendLabel" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

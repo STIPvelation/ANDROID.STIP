@@ -1,0 +1,99 @@
+[versions]
+# AndroidX & Core
+androidxCoreKtx = "1.12.0"
+androidxAppcompat = "1.6.1"
+androidxActivity = "1.9.0"
+androidxConstraintlayout = "2.1.4"
+androidxFragmentKtx = "1.7.1"
+androidxLifecycle = "2.7.0"
+androidxNavigation = "2.7.7"
+androidxViewpager2 = "1.1.0"
+
+# UI & Material
+material = "1.11.0"
+
+# Kotlin & Coroutines
+kotlin = "2.0.0"
+kotlinxCoroutines = "1.8.1"
+
+# Libraries
+glide = "4.16.0"
+gson = "2.11.0"
+hdodenhofCircleimageview = "3.1.0"
+mpandroidchart = "v3.1.0"
+prof18Rssparser = "6.0.10"
+
+# Build & Tools
+androidGradlePlugin = "8.7.2"
+googleDevtoolsKsp = "2.0.0-1.0.21"
+
+# TODO 로그인과 입출금 기능에 사용된 라이브러리들입니다. 차후 스타일에 맞게 정렬하시면 됩니다. -- kmong
+hilt = "2.55"
+navigationSafeArgsGradlePlugin = "2.8.9"
+zxingAndroidEmbedded = "4.3.0"
+sandwich = "1.2.3"
+lottie = "5.0.2"
+biometric = "1.1.0"
+glideTransformations = "4.3.0"
+rxBinding = "2.2.0"
+retrofit = "2.9.0"
+okhttp3Interceptor = "4.12.0"
+
+# Testing
+junit = "4.13.2"
+androidxTestExtJunit = "1.2.1"
+androidxEspressoCore = "3.6.1"
+
+[libraries]
+# AndroidX & Core
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCoreKtx" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppcompat" }
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "androidxActivity" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidxConstraintlayout" }
+androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "androidxFragmentKtx" }
+androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidxLifecycle" }
+androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "androidxNavigation" }
+androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "androidxNavigation" }
+androidx-viewpager2 = { group = "androidx.viewpager2", name = "viewpager2", version.ref = "androidxViewpager2" }
+
+# UI & Material
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+# Kotlin & Coroutines
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
+
+# Common Libraries
+github-glide-core = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+github-glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glide" }
+google-gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+hdodenhof-circleimageview = { group = "de.hdodenhof", name = "circleimageview", version.ref = "hdodenhofCircleimageview" }
+github-mpandroidchart = { group = "com.github.PhilJay", name = "MPAndroidChart", version.ref = "mpandroidchart" }
+prof18-rssparser = { group = "com.prof18.rssparser", name = "rssparser", version.ref = "prof18Rssparser" }
+
+# Testing
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxTestExtJunit" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidxEspressoCore" }
+
+# TODO 로그인과 입출금 기능에 사용된 라이브러리들입니다. 차후 스타일에 맞게 정렬하시면 됩니다. -- kmong
+androidx-navigation-safe-args-gradle-plugin = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigationSafeArgsGradlePlugin" }
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
+zxing-android-embedded = { module = "com.journeyapps:zxing-android-embedded", version.ref = "zxingAndroidEmbedded" }
+sandwich = { module = "com.github.skydoves:sandwich", version.ref = "sandwich" }
+lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
+androidx-biometric = { group = "androidx.biometric", name = "biometric", version.ref = "biometric" }
+glide-transformations = { group = "jp.wasabeef", name = "glide-transformations", version.ref = "glideTransformations" }
+rx-binding = { group = "com.jakewharton.rxbinding2", name = "rxbinding-kotlin", version.ref = "rxBinding"}
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+retrofit-adapter-rxjava = { group = "com.squareup.retrofit2", name = "adapter-rxjava2", version.ref = "retrofit" }
+okhttp3-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp3Interceptor" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
+# ✅ Glide 사용을 위해 KSP 대신 KAPT 활성화
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/dialog_background_rounded_white"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/tvDialogChartTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ip_rating_detail_title"
+        android:textAppearance="@style/DialogErrorTitleStyle"
+        android:textColor="@color/dialog_message_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.github.mikephil.charting.charts.RadarChart
+        android:id="@+id/dialogRadarChart"
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDialogChartTitle" />
+
+    <FrameLayout
+        android:id="@+id/gradeOverlayContainerChart"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/dialogRadarChart"
+        app:layout_constraintEnd_toEndOf="@id/dialogRadarChart"
+        app:layout_constraintStart_toStartOf="@id/dialogRadarChart"
+        app:layout_constraintTop_toTopOf="@id/dialogRadarChart">
+
+        <TextView
+            android:id="@+id/tvDialogGradeOverlayChart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="48dp"
+            android:elevation="10dp"
+            android:text="N/A"
+            android:textColor="#30C6E8"
+            android:textSize="100sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonCloseChartDialog"
+        style="@style/DialogButtonTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="@string/close"
+        app:backgroundTint="#30C6E8"
+        app:cornerRadius="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dialogRadarChart" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

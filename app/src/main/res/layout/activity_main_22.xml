@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- 네비게이션 바 (초기에는 숨김) -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="?attr/colorPrimary"
+        app:title="본인인증 예제"
+        app:titleTextColor="@android:color/white"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:visibility="gone"> <!-- 초기에는 숨김 -->
+
+        <!-- 닫기 버튼 -->
+        <Button
+            android:id="@+id/closeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="닫기"
+            android:layout_gravity="end"
+            android:padding="8dp"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- api 응답값 -->
+    <LinearLayout
+        android:id="@+id/formLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tokenVersionId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="tokenVersionId"
+            android:focusable="false"
+            android:clickable="false"
+            android:padding="16dp"/>
+
+        <TextView
+            android:id="@+id/encData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="encData"
+            android:focusable="false"
+            android:clickable="false"
+            android:padding="16dp"/>
+
+        <TextView
+            android:id="@+id/integrityValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="integrityValue"
+            android:focusable="false"
+            android:clickable="false"
+            android:padding="16dp"/>
+
+        <TextView
+            android:id="@+id/returnEncData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="암호화 데이터:"
+            android:textSize="16sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_marginTop="20dp"/>
+
+
+        <TextView
+            android:id="@+id/returnIntegrityValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="무결성 값:"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/returnDcryptedData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textSize="16sp"
+            android:scrollbars="vertical"/>
+
+
+        <Button
+            android:id="@+id/buttonSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="제출하기"
+            android:padding="16dp"/>
+        <Button
+            android:id="@+id/buttonDecrypt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="복호화 요청"
+            android:padding="16dp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <!-- WebView (초기에는 숨김) -->
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:visibility="gone"/>
+</LinearLayout>

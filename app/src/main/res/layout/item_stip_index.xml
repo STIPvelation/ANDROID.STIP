@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/stip_index_text_id"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:background="@drawable/frame_bottom_line_unselected"
+    android:padding="12dp">
+
+    <!-- STIP Index 이름 -->
+    <TextView
+        android:id="@+id/stip_index_text"
+        style="@style/DefaultTextStyle_14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stip_index_text_english"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- 상승/하락 아이콘 -->
+
+    <!-- STIP Index 퍼센트 -->
+    <TextView
+        android:id="@+id/stip_index_percentage"
+        style="@style/DefaultTextStyle_14"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:text="@string/mdm_percent_format"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

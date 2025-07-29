@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_ip_swap"
+    app:startDestination="@id/ipSwapFragment">
+
+    <fragment
+        android:id="@+id/ipSwapFragment"
+        android:name="com.stip.stip.more.fragment.ipentertainment.IPSwapFragment"
+        android:label="IPSwapFragment"
+        tools:layout="@layout/fragment_more_ip_swap">
+        
+        <action
+            android:id="@+id/action_ipSwapFragment_to_ipSwapDetailFragment"
+            app:destination="@id/ipSwapDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ipSwapDetailFragment"
+        android:name="com.stip.stip.more.fragment.ipentertainment.IPSwapDetailFragment"
+        android:label="IPSwapDetailFragment"
+        tools:layout="@layout/fragment_more_ip_swap_detail">
+        
+        <argument
+            android:name="swapItem"
+            app:argType="com.stip.stip.more.fragment.ipentertainment.model.SwapModel" />
+            
+        <action
+            android:id="@+id/action_ipSwapDetailFragment_to_ipSwapApplicationFragment"
+            app:destination="@id/ipSwapApplicationFragment" />
+    </fragment>
+    
+    <fragment
+        android:id="@+id/ipSwapApplicationFragment"
+        android:name="com.stip.stip.more.fragment.ipentertainment.IPSwapApplicationFragment"
+        android:label="IPSwapApplicationFragment"
+        tools:layout="@layout/fragment_more_ip_swap_application">
+        
+        <argument
+            android:name="swapItem"
+            app:argType="com.stip.stip.more.fragment.ipentertainment.model.SwapModel" />
+    </fragment>
+</navigation>

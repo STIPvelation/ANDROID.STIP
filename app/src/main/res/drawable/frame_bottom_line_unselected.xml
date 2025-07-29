@@ -1,0 +1,16 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="44dp"
+    android:viewportWidth="360"
+    android:viewportHeight="44">
+
+    <group>
+        <clip-path android:pathData="M0 0H360V44H0V0Z" />
+        <!-- 하단 라인만 표시 -->
+        <path
+            android:pathData="M0 43.5H360"
+            android:strokeColor="#EEEEEE"
+            android:strokeWidth="0.5" />
+    </group>
+
+</vector>

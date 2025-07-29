@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="policy_terms_title_array">
+        <item>（必填）交易货币及兑换方式</item>
+        <item>（必填）投资责任与风险告知</item>
+        <item>（必填）认证服务使用条款</item>
+        <item>（必填）同意使用唯一识别信息</item>
+        <item>（必填）认证时收集个人信息的同意</item>
+        <item>（必填）收集个人信息的同意</item>
+        <item>（必填）自动转账服务</item>
+        <item>（必填）使用条款与使用指南</item>
+        <item>（必填）消费者保护政策</item>
+        <item>（必填）隐私政策</item>
+        <item>（必填）收集与使用个人信息的同意</item>
+        <item>ESG 政策</item>
+        <item>初创企业与中小企业支持政策</item>
+        <item>反洗钱（AML）及内部控制政策</item>
+        <item>DIP 价值评估标准政策</item>
+        <item>STIP 手续费透明政策</item>
+    </string-array>
+
+    <string-array name="policy_terms_content_array">
+    </string-array>
+
+</resources>

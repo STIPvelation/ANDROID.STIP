@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:background="@drawable/round_stroke_sky_solid_white_radius_4dp"
+        >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_number"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="22sp"
+            android:textColor="@color/text_black_14181B_100"
+            android:fontFamily="@font/pretendard_medium_font_family"
+            android:gravity="center"
+            tools:text="4"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

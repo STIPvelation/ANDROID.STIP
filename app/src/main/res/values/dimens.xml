@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="list_item_text_size">12sp</dimen>
+    <dimen name="list_item_cell_height">32dp</dimen>
+    <dimen name="list_item_date_width">56dp</dimen>
+    <dimen name="list_item_divider_width">1dp</dimen>
+    <dimen name="original_list_item_text_size">12sp</dimen>
+    <dimen name="list_item_border_width">1dp</dimen>
+
+
+    <dimen name="text_size_large">20sp</dimen>
+    <dimen name="text_size_medium">16sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+
+    <dimen name="text_size_small_min">10sp</dimen>
+    <dimen name="text_size_small_max">12sp</dimen>
+
+    <dimen name="header_cell_height">32dp</dimen>
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="screen_edge_padding">4dp</dimen>
+    <dimen name="item_offset">8dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="common_side_margin_20dp">20dp</dimen>
+
+    <dimen name="margin_6dp">6dp</dimen>
+    <dimen name="margin_8dp">8dp</dimen>
+    <dimen name="padding_18dp">18dp</dimen>
+    
+    <!-- 반응형 여백 -->    
+    <dimen name="spacing_xsmall">4dp</dimen>
+    <dimen name="spacing_small">8dp</dimen>
+    <dimen name="spacing_medium">16dp</dimen>
+    <dimen name="spacing_large">24dp</dimen>
+    <dimen name="spacing_xlarge">32dp</dimen>
+
+    <!-- 반응형 마진/패딩 (Responsive margin/padding) -->
+
+    <!-- 회원가입 은행 화면 반응형 치수 (Sign up bank screen responsive dimensions) -->
+    <dimen name="sign_up_top_margin">40dp</dimen>
+    <dimen name="sign_up_bottom_padding">80dp</dimen>
+    <dimen name="sign_up_card_padding">16dp</dimen>
+    <dimen name="sign_up_element_spacing_small">4dp</dimen>
+    <dimen name="sign_up_section_spacing_small">16dp</dimen>
+    <dimen name="sign_up_section_spacing_medium">24dp</dimen>
+    <dimen name="sign_up_section_spacing_large">48dp</dimen>
+    <dimen name="sign_up_input_padding_horizontal">8dp</dimen>
+    <dimen name="sign_up_input_padding_vertical">12dp</dimen>
+    <dimen name="sign_up_input_min_height">48dp</dimen>
+    <dimen name="sign_up_warning_text_margin">28dp</dimen>
+    <dimen name="sign_up_button_padding">16dp</dimen>
+    <dimen name="sign_up_keypad_padding">8dp</dimen>
+    <dimen name="sign_up_icon_size">20dp</dimen>
+    
+    <!-- 회원가입 은행 화면 텍스트 사이즈 (Sign up bank screen text sizes) -->
+    <dimen name="sign_up_title_text_size">28sp</dimen>
+    <dimen name="sign_up_subtitle_text_size">15sp</dimen>
+    <dimen name="sign_up_label_text_size">14sp</dimen>
+    <dimen name="sign_up_input_text_size">16sp</dimen>
+    <dimen name="sign_up_note_text_size">14sp</dimen>
+    <dimen name="sign_up_button_text_size">16sp</dimen>
+    
+    <!-- 회원가입 은행 화면 최대 너비 (Sign up bank screen max widths) -->
+    <dimen name="content_max_width">600dp</dimen>
+    <dimen name="button_max_width">400dp</dimen>
+    <dimen name="keypad_max_width">450dp</dimen>
+
+    <!-- 로그인 이력 카드 elevation -->
+    <dimen name="card_elevation_normal">4dp</dimen>
+    <dimen name="card_elevation_unusual">8dp</dimen>
+    <dimen name="spacing_xxlarge">40dp</dimen>
+    <dimen name="spacing_xxxlarge">48dp</dimen>
+    
+    <!-- 반응형 텍스트 크기 -->
+    <dimen name="text_small">13sp</dimen>
+    <dimen name="text_normal">14sp</dimen>
+    <dimen name="text_medium">16sp</dimen>
+    <dimen name="text_large">18sp</dimen>
+    <dimen name="text_xlarge">20sp</dimen>
+    <dimen name="text_xxlarge">24sp</dimen>
+    <dimen name="text_xxxlarge">32sp</dimen>
+    <dimen name="text_medium_small">15sp</dimen>
+    <dimen name="text_size_xlarge">19sp</dimen>
+
+    <!-- 반응형 아이콘 및 카드 크기 -->
+    <dimen name="icon_xsmall">22dp</dimen>
+    <dimen name="icon_small">24dp</dimen>
+    
+    <!-- 트랜잭션 화면 샘플 아이템 보이기 위한 리사이클러뷰 최소 크기 -->
+    <dimen name="recycler_view_min_height">100dp</dimen>
+    <dimen name="icon_medium">48dp</dimen>
+    <dimen name="icon_large">64dp</dimen>
+    <dimen name="card_width_small">100dp</dimen>
+    <dimen name="card_width_medium">120dp</dimen>
+    <dimen name="card_height_small">80dp</dimen>
+    <dimen name="card_height_medium">100dp</dimen>
+    
+    <!-- 반응형 마진/패딩 -->
+    <dimen name="margin_xsmall">4dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+    <dimen name="margin_xlarge">32dp</dimen>
+    <dimen name="padding_xsmall">4dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_large">24dp</dimen>
+    
+    <!-- 버튼 높이 및 코너 반경 -->
+    <dimen name="button_height_small">36dp</dimen>
+    <dimen name="button_height_medium">44dp</dimen>
+    <dimen name="button_height_large">48dp</dimen>
+    <dimen name="corner_radius_small">4dp</dimen>
+    <dimen name="corner_radius_medium">8dp</dimen>
+    <dimen name="corner_radius_large">12dp</dimen>
+    
+    <!-- PIN 입력 화면 관련 치수 -->
+    <dimen name="keypad_bottom_margin">44dp</dimen>
+
+        <dimen name="policy_padding_horizontal">16dp</dimen>
+        <dimen name="policy_padding_vertical_item">14dp</dimen> <dimen name="policy_padding_vertical_header">10dp</dimen> <dimen name="policy_text_size_title">18sp</dimen>
+        <dimen name="policy_text_size_list_header">12sp</dimen>
+        <dimen name="policy_text_size_list_item">14sp</dimen> <dimen name="policy_icon_size">24dp</dimen>
+
+        <dimen name="policy_divider_height">1dp</dimen>
+
+</resources>
+
+

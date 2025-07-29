@@ -1,0 +1,104 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    android:background="#F4F7FC"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:divider="@drawable/divider_white_1dp"
+    android:showDividers="middle">
+
+    <!-- 티커 -->
+    <TextView
+        android:id="@+id/textViewItemName"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/ticker"
+      style="@style/DefaultTextStyle_12"
+        android:textAppearance="@style/DefaultTextStyle_10" />
+
+    <!-- 종류 -->
+    <TextView
+        android:id="@+id/textViewItemType"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/type"
+        style="@style/DefaultTextStyle_12" />
+
+    <!-- 스크롤 가능한 영역 -->
+    <HorizontalScrollView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+        android:background="#30C6E8">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="#F4F7FC"
+            android:divider="@drawable/divider_white_1dp"
+            android:showDividers="middle">
+
+            <TextView
+                android:id="@+id/textViewItemQuantity"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/quantity"
+                style="@style/DefaultTextStyle_12" />
+
+            <TextView
+                android:id="@+id/textViewItemUnitPrice"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/tradingave"
+                style="@style/DefaultTextStyle_12" />
+
+            <TextView
+                android:id="@+id/textViewItemAmount"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/amount"
+                style="@style/DefaultTextStyle_12" />
+
+            <TextView
+                android:id="@+id/textViewItemFee"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/commission"
+                style="@style/DefaultTextStyle_12"/>
+
+            <TextView
+                android:id="@+id/textViewItemSettlement"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/settlement"
+                style="@style/DefaultTextStyle_12" />
+
+            <TextView
+                android:id="@+id/textViewItemOrderTime"
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/order_time"
+                style="@style/DefaultTextStyle_12" />
+
+            <TextView
+                android:id="@+id/textViewItemExecutionTime"
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/execution_time"
+                style="@style/DefaultTextStyle_12" />
+        </LinearLayout>
+    </HorizontalScrollView>
+</LinearLayout>

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/text_dialog_title"
+        style="@style/DefaultTextStyle_16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_title_confirm_sell"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_ticker_confirm"
+        style="@style/DefaultTextStyle_14"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="#EDF5FD"
+        android:gravity="center"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_dialog_title"
+        tools:text="@string/common_usd_ticker" />
+
+    <TextView
+        android:id="@+id/label_order_type"
+        style="@style/DefaultTextStyle_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/label_order_type"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_ticker_confirm" />
+
+    <TextView
+        android:id="@+id/text_order_type_confirm"
+        style="@style/DefaultTextStyle_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@id/label_order_type"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="@string/order_type_limit_sell" />
+
+    <TextView
+        android:id="@+id/label_trigger_price"
+        style="@style/DefaultTextStyle_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/label_trigger_price"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/label_order_type" />
+
+    <TextView
+        android:id="@+id/text_trigger_price_unit_confirm"
+        style="@style/DefaultTextStyle_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/unit_usd"
+        app:layout_constraintBaseline_toBaselineOf="@id/label_trigger_price"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/text_trigger_price_value_confirm"
+        style="@style/DefaultTextStyle_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBaseline_toBaselineOf="@id/label_trigger_price"
+        app:layout_constraintEnd_toStartOf="@id/text_trigger_price_unit_confirm"
+        tools:text="@string/default_price" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_trigger_price_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="label_trigger_price,text_trigger_price_unit_confirm,text_trigger_price_value_confirm"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/label_order_quantity"
+        style="@style/DefaultTextStyle_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/label_order_quantity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/label_trigger_price" />
+
+    <TextView
+        android:id="@+id/text_order_quantity_unit_confirm"
+        style="@style/DefaultTextStyle_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@id/label_order_quantity"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="KATV" />
+
+    <TextView
+        android:id="@+id/text_order_quantity_value_confirm"
+        style="@style/DefaultTextStyle_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBaseline_toBaselineOf="@id/label_order_quantity"
+        app:layout_constraintEnd_toStartOf="@id/text_order_quantity_unit_confirm"
+        tools:text="@string/default_price" />
+
+    <TextView
+        android:id="@+id/label_order_price"
+        style="@style/DefaultTextStyle_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/label_order_price"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/label_order_quantity" />
+
+    <TextView
+        android:id="@+id/text_order_price_unit_confirm"
+        style="@style/DefaultTextStyle_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/unit_usd"
+        app:layout_constraintBaseline_toBaselineOf="@id/label_order_price"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/text_order_price_value_confirm"
+        style="@style/DefaultTextStyle_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBaseline_toBaselineOf="@id/label_order_price"
+        app:layout_constraintEnd_toStartOf="@id/text_order_price_unit_confirm"
+        tools:text="@string/default_price" />
+
+    <TextView
+        android:id="@+id/label_fee_confirm"
+        style="@style/DefaultTextStyle_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/label_fee"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/label_order_price" />
+
+    <TextView
+        android:id="@+id/text_fee_unit_confirm"
+        style="@style/DefaultTextStyle_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/unit_usd"
+        app:layout_constraintBaseline_toBaselineOf="@id/label_fee_confirm"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/text_fee_value_confirm"
+        style="@style/DefaultTextStyle_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBaseline_toBaselineOf="@id/label_fee_confirm"
+        app:layout_constraintEnd_toStartOf="@id/text_fee_unit_confirm"
+        tools:text="@string/default_price" />
+
+    <TextView
+        android:id="@+id/label_order_total"
+        style="@style/DefaultTextStyle_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/label_order_total"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/label_fee_confirm" />
+
+    <TextView
+        android:id="@+id/text_order_total_unit_confirm"
+        style="@style/DefaultTextStyle_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/unit_usd"
+        app:layout_constraintBaseline_toBaselineOf="@id/label_order_total"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/text_order_total_value_confirm"
+        style="@style/DefaultTextStyle_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBaseline_toBaselineOf="@id/label_order_total"
+        app:layout_constraintEnd_toStartOf="@id/text_order_total_unit_confirm"
+        tools:text="@string/default_price" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/button_center_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <Button
+        android:id="@+id/button_close"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:text="@string/dialog_close"
+        android:textColor="#B0B8C1"
+        android:textSize="16sp"
+        app:backgroundTint="#F4F7FC"
+        app:cornerRadius="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/button_center_guideline"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/label_order_total" />
+
+    <Button
+        android:id="@+id/button_confirm_sell"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/dialog_confirm_sell"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:backgroundTint="#1979F3"
+        app:cornerRadius="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@id/button_center_guideline"
+        app:layout_constraintTop_toTopOf="@id/button_close" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

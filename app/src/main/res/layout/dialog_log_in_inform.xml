@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialogLoginInformRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_background_rounded_white"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/dialogLoginInformTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/dialog_login_inform_title"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="12dp" />
+
+    <TextView
+        android:id="@+id/dialogLoginInformMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/DefaultTextStyle_14"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/dialog_login_inform_message"
+        android:layout_marginBottom="32dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@android:color/white">
+
+        <TextView
+            android:id="@+id/dialogLoginInformButtonCancel"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingVertical="8dp"
+            android:paddingHorizontal="12dp"
+            android:text="@string/dialog_action_cancel"
+            android:textAllCaps="false"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="16sp"
+            android:background="#F2F2F2" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="48dp"
+            android:background="#E0E0E0" />
+
+        <TextView
+            android:id="@+id/dialogLoginInformButtonConfirm"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingVertical="8dp"
+            android:paddingHorizontal="12dp"
+            android:text="@string/dialog_action_confirm"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:background="@color/main_point" />
+    </LinearLayout>
+
+</LinearLayout>

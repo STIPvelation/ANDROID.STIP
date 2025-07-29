@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/material_toolbar"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/spacing_xxxlarge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_navigate_back"
+            app:titleCentered="true"
+            app:titleTextAppearance="@style/TitleText" />
+
+        <TextView
+            android:id="@+id/withdrawal_warning_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/common_side_margin_20dp"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginBottom="@dimen/margin_large"
+            style="@style/DefaultTextStyle_16"
+            android:background="@drawable/bg_frame_rounded"
+            android:paddingHorizontal="@dimen/common_side_margin_20dp"
+            android:paddingVertical="@dimen/padding_medium"
+            android:text="확인 진행후 출금신청이 완료되면 취소 불가능합니다."
+            android:textColor="@color/text_gray_505060_100"
+            android:backgroundTint="@color/gray_F8FAFF_100"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/material_toolbar" />
+
+        <TextView
+            android:id="@+id/withdrawal_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="USD 출금신청 확인"
+            android:textColor="@color/sky_30C6E8_100"
+            android:textSize="@dimen/text_xlarge"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/withdrawal_warning_title" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/material_divider"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/policy_divider_height"
+            android:layout_marginTop="@dimen/margin_large"
+            app:dividerColor="@color/gray_F4F7FC_100"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/withdrawal_title" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_withdrawal_details"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/common_side_margin_20dp"
+            android:layout_marginTop="24dp"
+            app:cardCornerRadius="@dimen/margin_small"
+            app:cardElevation="@dimen/card_elevation_unusual"
+            android:layout_margin="@dimen/spacing_xsmall"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/material_divider">
+
+            <LinearLayout
+                android:id="@+id/container_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/bank_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/common_side_margin_20dp"
+                    android:paddingVertical="@dimen/padding_medium">
+
+                    <TextView
+                        android:id="@+id/withdrawal_destination_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="출금계좌"
+                        android:textColor="@color/text_gray_505060_100"
+                        android:textSize="@dimen/text_medium" />
+
+                    <TextView
+                        android:id="@+id/text_bank"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_gray_232D3F_100"
+                        android:textSize="@dimen/text_medium"
+                        android:textStyle="normal"
+                        tools:text="신한은행 110-123-**6789" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/policy_divider_height"
+                    android:background="@color/gray_F0F0F5_100" />
+
+                <LinearLayout
+                    android:id="@+id/withdrawal_amount_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/common_side_margin_20dp"
+                    android:paddingVertical="@dimen/padding_medium">
+
+                    <TextView
+                        android:id="@+id/label_withdrawable"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="출금금액"
+                        android:textColor="@color/text_gray_505060_100"
+                        android:textSize="@dimen/text_medium" />
+
+                    <TextView
+                        android:id="@+id/text_withdrawable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_gray_232D3F_100"
+                        android:textSize="@dimen/text_medium"
+                        android:textStyle="normal"
+                        tools:text="10,000 USD" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_warning_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/common_side_margin_20dp"
+            android:layout_marginTop="28dp"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="@color/gray_F8FAFF_100"
+            app:cardElevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_withdrawal_details">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/common_side_margin_20dp">
+
+                <TextView
+                    android:id="@+id/withdrawal_confirm_warning_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="한 번 더 확인해 주세요"
+                    android:textColor="@color/text_gray_232D3F_100"
+                    android:textSize="@dimen/text_medium"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="@dimen/margin_small" />
+
+                <TextView
+                    android:id="@+id/warning_point1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="본인 명의의 STIP 계정을 타인의 요청이나 지시에 따라 대여할 경우 범죄 처벌 대상이 될 수 있으며, 실명 인증된 계정을 공유하면 개인정보 보호를 침해하게 됩니다."
+                    android:textColor="@color/text_gray_505060_100"
+                    android:textSize="@dimen/text_normal"
+                    android:lineSpacingExtra="@dimen/spacing_xsmall"
+                    android:layout_marginBottom="@dimen/margin_small" />
+
+                <TextView
+                    android:id="@+id/warning_point2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="특정 거래는 정밀한 점검 출금이 지연될 수도 있습니다. 이후의, 당사의 이상 거래 감지 결과에 따라 출금 신청 시 거절 및 입출금자 확인을 위한 서류 제출을 요청할 수 있으며, 이에 따라 출금이 지연될 수 있습니다."
+                    android:textColor="@color/text_gray_505060_100"
+                    android:textSize="@dimen/text_normal"
+                    android:lineSpacingExtra="@dimen/spacing_xsmall"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/confirm_button"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/spacing_xxxlarge"
+            android:layout_marginHorizontal="@dimen/common_side_margin_20dp"
+            android:layout_marginBottom="@dimen/margin_large"
+            android:text="확인"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_large"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/margin_medium"
+            app:backgroundTint="@color/sky_30C6E8_100"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            app:elevation="@dimen/card_elevation_unusual"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_warning_info"
+            app:layout_constraintVertical_bias="1.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

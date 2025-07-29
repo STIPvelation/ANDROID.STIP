@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <!-- 첫 줄: 티커 + 타입 -->
+    <TextView
+        android:id="@+id/text_name_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/header_ticker"
+        style="@style/DefaultTextStyle_12" />
+
+    <!-- 두 번째 줄: 체결 시간 -->
+    <TextView
+        android:id="@+id/text_execution_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="@string/time"
+        style="@style/DefaultTextStyle_12" />
+
+    <!-- 단가 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textUnitPriceLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filled_price"
+            style="@style/DefaultTextStyle_12" />
+
+        <TextView
+            android:id="@+id/text_unit_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            style="@style/DefaultTextStyle_12"
+            android:text="@string/common_number" />
+    </LinearLayout>
+
+    <!-- 수량 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textQuantityLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filled_quantity1"
+            style="@style/DefaultTextStyle_12" />
+
+        <TextView
+            android:id="@+id/text_quantity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            style="@style/DefaultTextStyle_12"
+            android:text="@string/common_number" />
+    </LinearLayout>
+
+    <!-- 금액 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textAmountLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filled_total"
+            style="@style/DefaultTextStyle_12" />
+
+        <TextView
+            android:id="@+id/text_amount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            style="@style/DefaultTextStyle_12"
+            android:gravity="end"
+            android:text="@string/common_number" />
+    </LinearLayout>
+
+    <!-- 🔽 회색 디바이더 추가 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="#EEEEEE" />
+</LinearLayout>

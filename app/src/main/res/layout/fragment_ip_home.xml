@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:paddingStart="12dp"
+    android:paddingTop="16dp"
+    android:paddingEnd="12dp"
+    android:paddingBottom="16dp">
+
+    <LinearLayout
+        android:id="@+id/frame_4235"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.05"
+        android:background="@drawable/bg_frame_rounded"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ic_round_se"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1"
+            android:contentDescription="@string/search_icon_description"
+            android:src="@drawable/ic_round_search"
+            app:tint="#888888" />
+
+        <EditText
+            android:id="@+id/ipSearch"
+            style="@style/ip_search"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.9"
+            android:layout_marginStart="8dp"
+            android:background="@android:color/transparent"
+            android:gravity="center_vertical"
+            android:hint="@string/ip_search"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:lineSpacingExtra="-1sp"
+            android:textColorHint="#595F63" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textNoResult"
+        style="@style/DefaultTextStyle_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/not_able_to_find"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frame_17074" />
+
+    <RelativeLayout
+        android:id="@+id/frame_4043"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_percent="0.35"
+        app:layout_constraintHeight_percent="0.05"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_frame_fillter_rounded"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frame_4235">
+
+        <TextView
+            android:id="@+id/all_ip"
+            style="@style/all_ip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/component_2"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="-2sp"
+            android:text="@string/all_ip" />
+
+        <ImageView
+            android:id="@+id/component_2"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/dropdown_arrow_description"
+            android:src="@drawable/ic_arrow_white_down"
+            app:tint="@android:color/white" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/categoryDropdown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_frame_fillter_rounded"
+        android:visibility="gone"
+        android:elevation="6dp"
+        android:layout_marginTop="2dp"
+        android:padding="2dp"
+        app:layout_constraintTop_toBottomOf="@id/frame_4043"
+        app:layout_constraintStart_toStartOf="@id/frame_4043"
+        app:layout_constraintEnd_toEndOf="@id/frame_4043">
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/frame_17074"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.04"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_frame_rounded"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frame_4043">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <LinearLayout
+                android:id="@+id/sortTickerContainer"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingStart="12dp"
+                android:gravity="center_vertical|start"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/header_ticker"
+                    style="@style/DefaultTextStyle_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/header_ticker" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:baselineAligned="false"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="0dp">
+
+                    <ImageView
+                        android:id="@+id/icTickerSortDownFill"
+                        android:layout_width="9.6dp"
+                        android:layout_height="9.6dp"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/sort_down_description"
+                        android:padding="0dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_sort_a_z" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/sortPriceContainer"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical|end"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/header_current_price"
+                    style="@style/DefaultTextStyle_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/header_current_price" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:baselineAligned="false"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="0dp">
+
+                    <ImageView
+                        android:id="@+id/icPrimeSortUpFill"
+                        android:layout_width="9.6dp"
+                        android:layout_height="9.6dp"
+                        android:layout_marginBottom="-5dp"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/sort_up_description"
+                        android:padding="0dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_prime_sort_up_fill" />
+
+                    <ImageView
+                        android:id="@+id/icPrimeSortDownFill"
+                        android:layout_width="9.6dp"
+                        android:layout_height="9.6dp"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/sort_down_description"
+                        android:padding="0dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_prime_sort_down_fill" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/sortChangeContainer"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical|end"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/header_change"
+                    style="@style/DefaultTextStyle_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/header_change" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:baselineAligned="false"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="0dp">
+
+                    <ImageView
+                        android:id="@+id/icChangeSortUpFill"
+                        android:layout_width="9.6dp"
+                        android:layout_height="9.6dp"
+                        android:layout_marginBottom="-5dp"
+                        android:adjustViewBounds="true"
+                        android:clipToOutline="true"
+                        android:contentDescription="@string/sort_up_description"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_prime_sort_up_fill" />
+
+                    <ImageView
+                        android:id="@+id/icChangeSortDownFill"
+                        android:layout_width="9.6dp"
+                        android:layout_height="9.6dp"
+                        android:adjustViewBounds="true"
+                        android:clipToOutline="true"
+                        android:contentDescription="@string/sort_down_description"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_prime_sort_down_fill" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/sortVolumeContainer"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical|end"
+                android:orientation="horizontal"
+                android:paddingEnd="8dp">
+
+                <TextView
+                    android:id="@+id/header_volume"
+                    style="@style/DefaultTextStyle_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/header_volume" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:baselineAligned="false"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="0dp">
+
+                    <ImageView
+                        android:id="@+id/icVolumeSortUpFill"
+                        android:layout_width="9.6dp"
+                        android:layout_height="9.6dp"
+                        android:layout_marginBottom="-5dp"
+                        android:adjustViewBounds="true"
+                        android:clipToOutline="true"
+                        android:contentDescription="@string/sort_up_description"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_prime_sort_up_fill" />
+
+                    <ImageView
+                        android:id="@+id/icVolumeSortDownFill"
+                        android:layout_width="9.6dp"
+                        android:layout_height="9.6dp"
+                        android:adjustViewBounds="true"
+                        android:clipToOutline="true"
+                        android:contentDescription="@string/sort_down_description"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_prime_sort_down_fill" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerIpList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp" app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frame_17074"
+        tools:listitem="@layout/item_ip_listing" />
+
+    <ImageView
+        android:id="@+id/watermarkLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.05"
+        android:translationZ="1dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/kipo_logo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:fitsSystemWindows="true"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/buttonBack"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_arrow_return"
+        android:visibility="gone"
+        android:tint="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="10dp" />
+
+
+
+    <!-- 🔥 공통 헤더 타이틀 + 탭을 감싸는 헤더 레이아웃 -->
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:paddingTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/headerTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendard_medium"
+            android:gravity="center"
+            android:text="@string/header_iphome"
+            android:textColor="@color/text_primary"
+            android:textSize="20sp" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/secondaryTabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="@color/main_point"
+            app:tabIndicatorFullWidth="true"
+            app:tabIndicatorHeight="2dp"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/main_point"
+            app:tabTextAppearance="@style/TabTextStyle"
+            app:tabTextColor="@color/color_tab_inactive" />
+
+        <View
+            android:id="@+id/tabUnderline"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_unselected_text"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <!-- 🔄 프래그먼트 영역 -->
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/tab_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerLayout" />
+
+    <!-- 🔻 하단 탭 바 -->
+    <LinearLayout
+        android:id="@+id/tab_bar"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:background="@color/main_point"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!-- 탭 1: IP홈 -->
+        <LinearLayout
+            android:id="@+id/tab_iphome"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/icon_iphome"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:contentDescription="@string/tab_iphome"
+                android:src="@drawable/ic_tab_iphome_inactive" />
+
+            <TextView
+                android:id="@+id/text_iphome"
+                style="@style/TabTextStyle_White"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_iphome" />
+        </LinearLayout>
+
+        <!-- 탭 2: IP정보 -->
+        <LinearLayout
+            android:id="@+id/tab_ipinfo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/icon_ipinfo"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:contentDescription="@string/tab_ipinfo"
+                android:src="@drawable/ic_tab_ipinfo_inactive" />
+
+            <TextView
+                android:id="@+id/text_ipinfo"
+                style="@style/TabTextStyle_White"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_ipinfo" />
+        </LinearLayout>
+
+        <!-- 탭 3: IP내역 -->
+        <LinearLayout
+            android:id="@+id/tab_iptransaction"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/icon_iptransaction"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:contentDescription="@string/tab_iptransaction"
+                android:src="@drawable/ic_tab_transaction_inactive" />
+
+            <TextView
+                android:id="@+id/text_iptransaction"
+                style="@style/TabTextStyle_White"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_iptransaction" />
+        </LinearLayout>
+
+        <!-- 탭 4: 입출금 -->
+        <LinearLayout
+            android:id="@+id/tab_ipasset"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/icon_ipasset"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:contentDescription="@string/tab_ipasset"
+                android:src="@drawable/ic_tab_ipasset_inactive" />
+
+            <TextView
+                android:id="@+id/text_ipasset"
+                style="@style/TabTextStyle_White"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_ipasset" />
+        </LinearLayout>
+
+        <!-- 탭 5: 더보기 -->
+        <LinearLayout
+            android:id="@+id/tab_more"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/icon_more"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:contentDescription="@string/tab_more"
+                android:src="@drawable/ic_tab_more_inactive" />
+
+            <TextView
+                android:id="@+id/text_more"
+                style="@style/TabTextStyle_White"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_more" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

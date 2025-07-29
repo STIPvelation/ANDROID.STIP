@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textView_status_label"
+        style="@style/DefaultTextStyle_gery_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buy"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_status_datetime"
+        style="@style/DefaultTextStyle_gery_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@id/textView_status_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="@string/execution_time" />
+
+    <TextView
+        android:id="@+id/textView_ticker_label"
+        style="@style/DefaultTextStyle_gery_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/ticker"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_status_label" />
+
+    <TextView
+        android:id="@+id/textView_ticker_value"
+        style="@style/DefaultTextStyle_gery_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@id/textView_ticker_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="@string/header_ticker" />
+
+    <TextView
+        android:id="@+id/textView_price_label"
+        style="@style/DefaultTextStyle_gery_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/quantity1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_ticker_label" />
+
+    <TextView
+        android:id="@+id/textView_price_value"
+        style="@style/DefaultTextStyle_gery_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@id/textView_price_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="@string/common_number" />
+
+    <TextView
+        android:id="@+id/textView_quantity_label"
+        style="@style/DefaultTextStyle_gery_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/tradingave"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_price_label" />
+
+    <TextView
+        android:id="@+id/textView_quantity_value"
+        style="@style/DefaultTextStyle_gery_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@id/textView_quantity_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="@string/common_number" />
+
+    <TextView
+        android:id="@+id/textView_unfilled_label"
+        style="@style/DefaultTextStyle_gery_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/amount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_quantity_label" />
+
+    <TextView
+        android:id="@+id/textView_unfilled_value"
+        style="@style/DefaultTextStyle_gery_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@id/textView_unfilled_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="@string/common_number"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,54 @@
+package com.stip.stip.signup
+
+object Constants {
+
+    const val TAG = "STIP LOG"
+    const val TOUCH_THROTTLE_TIME = 500L
+
+    /** Preference Key */
+    const val PREF_KEY_BASIC_LOGIN_TYPE = "PREF_KEY_BASIC_LOGIN_TYPE"
+    const val PREF_KEY_BANK_DEPOSIT_SAVE_TIME = "PREF_KEY_BANK_DEPOSIT_SAVE_TIME"
+    const val PREF_KEY_BANK_DEPOSIT_TIME_VALUE = "PREF_KEY_BANK_DEPOSIT_TIME_VALUE"
+
+    const val PREF_KEY_OCR_BIRTHDAY_VALUE = "PREF_KEY_OCR_BIRTHDAY_VALUE"
+    const val PREF_KEY_OCR_NAME_VALUE = "PREF_KEY_OCR_NAME_VALUE"
+    const val PREF_KEY_OCR_PHONE_NUMBER_VALUE = "PREF_KEY_OCR_PHONE_NUMBER_VALUE"
+    const val PREF_KEY_OCR_EMAIL_VALUE = "PREF_KEY_OCR_EMAIL_VALUE"
+
+    const val PREF_KEY_MEMBER_ID_VALUE = "PREF_KEY_MEMBER_ID_VALUE"
+    const val PREF_KEY_PIN_VALUE = "PREF_KEY_PIN_VALUE"
+    const val PREF_KEY_DI_VALUE = "PREF_KEY_DI_VALUE"
+
+    const val PREF_KEY_AUTH_TOKEN_VALUE = "PREF_KEY_AUTH_TOKEN_VALUE"
+
+    /** Basic Login Type */
+    const val BASIC_LOGIN_TYPE_PIN_NUMBER       = "PIN_NUMBER"
+    const val BASIC_LOGIN_TYPE_BIOMETRIC_AUTH   = "BIOMETRIC_AUTH"
+
+    /** 외부 연동 Key */
+    const val KAKAO_LOCATION_KEY = "KakaoAK fcd7adc40e4d47b076bec34a54306599"
+    const val USBE_OCR_CUSTOMER_ID = "156"
+    const val USBE_OCR_ID = "QN5r26FHNt"
+    const val USBE_OCR_KEY = "xC2Wyj4EJRX!p4Y"
+
+    /** Bundle Key */
+    const val BUNDLE_AUTH_DI_KEY =  "BUNDLE_AUTH_DI_KEY"
+    const val BUNDLE_AUTH_NAME_KEY =  "BUNDLE_AUTH_NAME_KEY"
+    const val BUNDLE_SELECT_BANK_KEY =  "BUNDLE_SELECT_BANK_KEY"
+    const val BUNDLE_ACCOUNT_NAME_KEY =  "BUNDLE_ACCOUNT_NAME_KEY"
+    const val BUNDLE_ACCOUNT_NUMBER_KEY =  "BUNDLE_ACCOUNT_NUMBER_KEY"
+    const val BUNDLE_REQUEST_NO_KEY =  "BUNDLE_REQUEST_NO_KEY"
+    const val BUNDLE_REQUEST_RESPONSE_UNIQUE_ID_KEY =  "BUNDLE_REQUEST_RESPONSE_UNIQUE_ID_KEY"
+    const val BUNDLE_KYC_LAST_NAME_KEY =  "BUNDLE_KYC_LAST_NAME_KEY"
+    const val BUNDLE_KYC_FIRST_NAME_KEY =  "BUNDLE_KYC_FIRST_NAME_KEY"
+    const val BUNDLE_KYC_ADDRESS_KEY =  "BUNDLE_KYC_ADDRESS_KEY"
+
+    /** Network Error Code */
+    const val NETWORK_DUPLICATE_ERROR_CODE = 409
+    const val NETWORK_SERVER_ERROR_CODE = 500
+    const val NETWORK_ERROR_CODE = 999
+    const val NETWORK_LOGIN_FAIL_CODE = 888
+
+    /** 나이스페이 */
+    const val NICE_PAY_AUTH_URL = "https://tapi.sharetheip.com/web/pass"
+}

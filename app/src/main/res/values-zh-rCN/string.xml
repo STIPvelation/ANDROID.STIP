@@ -1,0 +1,1230 @@
+<resources>
+    <string name="app_name">STIP IP Exchange</string>
+
+    <string name="tab_iphome">首页</string>
+    <string name="tab_ipinfo">信息</string>
+    <string name="tab_iptransaction">记录</string>
+    <string name="tab_ipasset">充提</string>
+    <string name="tab_more">更多</string>
+
+    <string name="header_iphome">IP 首页</string>
+    <string name="header_ipinfo">IP 信息</string>
+    <string name="header_iptransaction">IP 记录</string>
+    <string name="header_ipasset">充提</string>
+    <string name="header_more">更多</string>
+
+    <string name="common_number">00.00</string>
+    <string name="common_label">公司名称</string>
+    <string name="common_usd_ticker">AAA/USD</string>
+    <string name="common_percent_format">00.00%</string>
+
+    <string name="menu_order">订单</string>
+    <string name="menu_chart">图表</string>
+    <string name="menu_quotes">行情</string>
+    <string name="menu_info">信息</string>
+    <string name="patent_title">KATV Patent</string>
+
+    <string name="usage_plan_title">数字 IP 使用计划</string>
+
+    <string name="ip_rating_detail_title">IP 评级详情</string>
+    <string name="close">关闭</string>
+    <string name="patent_grade_a">A</string>
+    <string name="axis_label_rights">权利</string>
+    <string name="axis_label_utilization">利用</string>
+    <string name="axis_label_regulation">监管</string>
+    <string name="axis_label_transaction">交易</string>
+    <string name="axis_label_capability">能力</string>
+    <string name="axis_label_technology">技术</string>
+    <string name="legend_label_institutional">机构估值</string>
+    <string name="legend_label_stip">STIP 估值</string>
+    <string name="corp_expense_rnd">研发 (R&amp;D)</string>
+    <string name="corp_expense_salary">工资及人力成本</string>
+    <string name="corp_expense_marketing">市场营销及广告</string>
+    <string name="corp_expense_operations">运营管理费</string>
+    <string name="corp_expense_facility">设施投资及扩建</string>
+    <string name="corp_expense_expansion">新业务及分公司扩张</string>
+    <string name="corp_expense_welfare">员工福利</string>
+    <string name="corp_expense_it">IT 基础设施/系统</string>
+    <string name="corp_expense_education">教育及培训</string>
+    <string name="corp_expense_fees">支付手续费</string>
+    <string name="corp_expense_financial">财务费用</string>
+    <string name="corp_expense_etc">其他运营费用</string>
+    <string name="ip_search">IP 搜索</string>
+    <string name="all_ip">ALL IP</string>
+    <string name="header_ticker">交易代码</string>
+    <string name="header_ticker_english">AXNO</string>
+    <string name="header_current_price">现价</string>
+    <string name="header_change">涨跌幅</string>
+    <string name="header_volume">交易金额</string>
+    <string name="item_icon_description">上市徽标图标</string>
+    <string name="default_ticker_name">----</string>
+    <string name="default_price">0</string>
+    <string name="default_change_percent">0%</string>
+    <string name="default_change_value">0</string>
+    <string name="default_volume">0</string>
+    <string name="search_icon_description">搜索图标</string>
+    <string name="dropdown_arrow_description">下拉箭头</string>
+    <string name="sort_up_description">升序排序图标</string>
+    <string name="sort_down_description">降序排序图标</string>
+
+    <string name="popup_item_all">ALL IP</string>
+    <string name="popup_item_patent">Patent</string>
+    <string name="popup_item_movie">电影/电视剧</string>
+    <string name="popup_item_business">Business Model</string>
+    <string name="popup_item_music">Music</string>
+    <string name="popup_item_dance">Dance</string>
+    <string name="popup_item_franchise">Franchise</string>
+    <string name="popup_item_trademark">Trademark</string>
+    <string name="popup_item_character">Character / Art</string>
+    <string name="not_able_to_find">未找到搜索结果</string>
+    <string name="empty">----</string>
+
+    <string name="all_ip_filter">ALL IP</string>
+
+    <string name="keypad_error_incorrect_password">PIN 码不匹配。</string>
+    <string name="unit_default">N/A</string>
+
+    <string name="volume_24h_label">24h 交易量</string>
+    <string name="high_price_24h_label">24h 最高价</string>
+    <string name="low_price_24h_label">24h 最低价</string>
+    <string name="gather_the_price">汇总查看</string>
+    <string name="quantity_iphome">数量</string>
+    <string name="member_edit_phone_label">手机号码</string>
+    <string name="member_edit_email_label">邮箱</string>
+    <string name="member_edit_email_hint">support@stip.global</string>
+    <string name="member_edit_required_info_title">必填修改信息</string>
+    <string name="member_edit_english_name_label">护照英文姓名</string>
+    <string name="member_edit_english_name_hint">输入护照英文姓名</string>
+    <string name="member_edit_address_label">地址</string>
+    <string name="member_edit_address_hint">输入地址</string>
+    <string name="member_edit_address_detail_label">详细地址</string>
+    <string name="member_edit_address_detail_hint">输入详细地址</string>
+    <string name="sign_up_kyc_address_zipcode_missing">此地址没有邮政编码。请选择其他地址。</string>
+    <string name="member_edit_job_label">职业</string>
+    <string name="member_edit_job_hint">输入职业</string>
+    <string name="member_edit_company_name_label">公司名称</string>
+    <string name="member_edit_company_name_hint">输入公司名称</string>
+    <string name="member_edit_work_address_label">工作地址</string>
+    <string name="member_edit_work_address_hint">输入工作地址</string>
+    <string name="member_edit_footer_notice">必填信息项可通过重新进行客户验证来更改。\n由此带来的不便，敬请谅解。</string>
+    <string name="member_edit_save_button">保存</string>
+    <string name="info_change">更改</string>
+    <string name="usd_deposit_title">USD 充值</string>
+
+    <string name="order_mode_buy">买入</string>
+    <string name="order_mode_sell">卖出</string>
+    <string name="order_mode_history">记录</string>
+
+    <string name="order_type_limit">限价</string>
+    <string name="order_type_market">市价</string>
+    <string name="order_type_reserve">预约 (止损/止盈)</string>
+
+    <string name="label_quantity">数量</string>
+    <string name="label_price">价格</string>
+    <string name="label_trigger_price">触发价</string>
+    <string name="label_price_percentage">相对现价 %</string>
+    <string name="label_total_amount">总额</string>
+
+    <string name="hint_order_quantity">订单数量</string>
+    <string name="hint_order_price">订单价格</string>
+    <string name="hint_trigger_price">触发(达到)价格</string>
+    <string name="hint_total_amount_input">订单总额</string>
+
+    <string name="unit_coin_default">COIN</string>
+    <string name="unit_usd">USD</string>
+    <string name="initial_total_amount">0</string>
+
+    <string name="button_available">可用</string>
+    <string name="button_minus">-</string>
+    <string name="button_plus">+</string>
+    <string name="button_reset_1">重置</string>
+    <string name="button_buy">买入</string>
+    <string name="button_sell">卖出</string>
+    <string name="text_order_type_info">订单类型说明</string>
+    <string name="label_available_balance">可用余额</string>
+    <string name="default_available_balance">0 USD</string>
+
+    <string name="dialog_title_info">提示</string>
+    <string name="confirm_deletion_24hr_message">注销会员后，24小时内将限制重新注册服务。\n您确定要注销吗？</string>
+    <string name="dialog_confirm">确认</string>
+    <string name="dialog_close">关闭</string>
+    <string name="dialog_cancel">取消</string>
+    <string name="dialog_authenticate">验证</string>
+    <string name="dialog_start">开始</string>
+    <string name="dialog_title_warning_order">订单确认</string>
+    <string name="dialog_title_error_order">订单错误</string>
+    <string name="dialog_title_order_type">订单类型</string>
+    <string name="dialog_title_buy_order_submitted">买入订单已提交</string>
+    <string name="dialog_title_sell_order_submitted">卖出订单已提交</string>
+    <string name="dialog_title_cancel_order_confirm">订单取消确认</string>
+    <string name="dialog_message_cancel_order_confirm">您要取消所选的未成交订单吗？</string>
+    <string name="dialog_message_cancel_order_confirm_count">您要取消所选的 %d 个订单吗？</string>
+    <string name="dialog_button_confirm">确认</string>
+    <string name="dialog_button_cancel">取消</string>
+    <string name="dialog_title_confirm_sell">卖出订单确认</string>
+    <string name="dialog_confirm_sell">确认卖出</string>
+    <string name="dialog_title_confirm_buy">买入订单确认</string>
+    <string name="dialog_confirm_buy">确认买入</string>
+    <string name="dialog_confirm_button">确认</string>
+    <string name="logout_dialog_title">登出</string>
+    <string name="logout_dialog_message">现在登出后，\n再次尝试登录时\n需要重新进行身份验证。\n\n您要登出吗？</string>
+    <string name="dialog_title_phone_change">提示</string>
+    <string name="dialog_message_phone_change">可以通过手机身份验证更改手机号码。\n请进行手机身份验证。</string>
+    <string name="dialog_title_error">错误</string>
+    <string name="dialog_title_notification">通知</string>
+    <string name="dialog_loading_title">加载中</string>
+    <string name="dialog_loading_sub_title">请稍候。</string>
+    <string name="dialog_auth_agree_title">请勾选同意服务条款。</string>
+    <string name="dialog_auth_input_inform_title">请核对输入的信息后重新输入。</string>
+    <string name="dialog_auth_request_title">验证码不匹配。\n请核对验证码后重试。\n(错误次数 : <![CDATA[<font color="#DB3949">%d</font>]]>/3)</string>
+    <string name="dialog_auth_request_over_title">已超过身份验证尝试次数上限。</string>
+    <string name="dialog_auth_time_over_title">验证时间已过。请重试。</string>
+    <string name="dialog_bank_guide_title">指南</string>
+    <string name="dialog_bank_account_not_valid_title">输入的账号无效。\n请核对账号后重试。</string>
+    <string name="dialog_bank_1_help_content">请运行银行应用、短信或电话银行查看交易记录后，输入 STIP 存入的 1 韩元存款人姓名前的<![CDATA[<font color="#30C6E8">6位数字</font> ]]>。</string>
+    <string name="dialog_bank_deposit_fail_title">账户验证失败</string>
+    <string name="dialog_bank_deposit_fail_content">账户验证失败。\n请核对验证码后重试。\n (错误次数: <![CDATA[<font color="#DD3D43">%d</font>]]>/3)</string>
+    <string name="dialog_bank_deposit_fail_time_out">账户验证失败。\n请重试。</string>
+    <string name="dialog_bank_deposit_three_fail_content">账户验证失败3次。\n请从头开始。</string>
+    <string name="dialog_pin_number_title">提示</string>
+    <string name="dialog_pin_number_content">密码不匹配次数已达5次或以上。\n请重置您的 PIN 密码。</string>
+    <string name="dialog_pin_number_personal_information_warning">与出生日期、电话号码等个人信息相关的数字限制注册。请输入其他数字。</string>
+    <string name="dialog_pin_number_finish_reset">重置密码需要删除现有登录信息后重新注册。是否要从身份验证开始重新进行？</string>
+    <string name="dialog_message_required_info_notice">必填信息的更改必须在客户验证后 30 天内完成。\n如果在期限内未修改，交易和充提可能会受到限制。</string>
+    <string name="dialog_prompt_customer_verification">您已了解内容并希望继续进行客户验证吗？</string>
+
+
+    <string name="dialog_header_guidance">提示</string>
+    <string name="pin_limit_exceeded_dialog_title">输入错误超过5次。</string>
+    <string name="pin_limit_exceeded_dialog_message">重新设置PIN需进行身份验证。</string>
+
+
+    <string name="pin_password_input_title">请输入PIN密码</string>
+
+
+        <string name="dialog_reset_password_title">提示</string>
+        <string name="dialog_reset_password_message">要重设密码，需删除现有登录信息并重新注册。是否重新进行身份验证？</string>
+        <string name="dialog_action_cancel">取消</string>
+        <string name="dialog_action_confirm">确认</string>
+
+
+
+    <string name="pin_error_limit_exceeded">入力ミスが5回を超えました。\n本人確認後にPINを再登録してください。</string>
+    <string name="ok">確認</string>
+    <string name="pin_password_wrong_attempt">PINが一致しません (%1$d/%2$d)</string>
+
+
+
+    <string name="category_patent">专利</string>
+    <string name="category_trademark">商标</string>
+    <string name="category_franchise">特许经营</string>
+    <string name="category_music">音源</string>
+    <string name="category_dance">舞蹈</string>
+    <string name="category_art">艺术</string>
+    <string name="category_movie">电影</string>
+    <string name="category_drama">电视剧</string>
+    <string name="category_bm">商业模式</string>
+    <string name="category_game">游戏</string>
+    <string name="category_character">角色</string>
+    <string name="category_comics">漫画</string>
+    <string name="category_other">其他</string>
+
+
+
+
+
+    <string name="order_max_quantity_format">最大: %s</string>
+
+
+
+
+
+
+
+    <string name="quantity_option_available">可用</string>
+    <string name="quantity_option_max">最大</string>
+    <string name="quantity_option_75">75%</string>
+    <string name="quantity_option_50">50%</string>
+    <string name="quantity_option_25">25%</string>
+    <string name="quantity_option_10">10%</string>
+
+
+
+
+
+    <string name="label_right">权利</string>
+    <string name="label_utilization">利用</string>
+    <string name="label_regulation">监管</string>
+    <string name="label_trade">交易</string>
+    <string name="label_capability">能力</string>
+    <string name="label_technology">技术</string>
+    <string name="label_sustainability">可持续性</string>
+    <string name="label_collaboration">协作性</string>
+    <string name="label_partnership">合作伙伴关系</string>
+    <string name="label_scalability">可扩展性</string>
+    <string name="label_distribution_power">分销力</string>
+    <string name="label_ip_utilization">IP使用</string>
+    <string name="label_design">设计</string>
+    <string name="label_recognition">知名度</string>
+    <string name="label_legal_stability">法律稳定性</string>
+    <string name="label_marketability">市场性</string>
+    <string name="label_operational_ability">运营能力</string>
+    <string name="label_monetization">盈利化</string>
+    <string name="label_branding">品牌化</string>
+    <string name="label_content">内容</string>
+    <string name="label_creativity">创造力</string>
+
+
+
+    <string name="order_price">订单价格</string>
+    <string name="license_scope_default_title">通常许可权范围</string>
+
+
+
+    <string name="date_range_picker_title">选择日期范围</string>
+
+    <string name="center_label_total_value">总评估金额</string>
+    <string name="date_month_format">%1$d年 %2$02d月</string>
+    <string name="date_range_format">%1$s 01日 ～ %2$s %3$02d日</string>
+
+
+    <string name="rise_ip_1_name">公司</string>
+
+    <string name="rise_ip_1_code">MDM/USD</string>
+
+    <string name="rise_ip_2_name">内容Wever</string>
+    <string name="rise_ip_2_code">AXNO/USD</string>
+
+    <string name="rise_ip_3_name">韩国生物研究院</string>
+    <string name="rise_ip_3_code">CDM/USD</string>
+
+    <string name="rise_ip_4_name">斗乐公司</string>
+    <string name="rise_ip_4_code">WETALK/USD</string>
+
+    <string name="rise_ip_5_name">俊元GBI</string>
+    <string name="rise_ip_5_code">JWV/USD</string>
+
+
+    <string name="ip_toon_title">IP漫画</string>
+    <string name="ip_swap_title">IP交换</string>
+    <string name="ip_auction_title">IP拍卖</string>
+
+
+
+
+
+
+
+    <plurals name="toast_cancel_order_success_plural">
+        <item quantity="one">正在取消 %d 个订单</item>
+        <item quantity="other">正在取消 %d 个订单</item>
+    </plurals>
+
+
+
+    <string name="toast_txid_copied">TXID已复制。</string>
+
+
+    <string name="ticker_axno">AXNO</string>
+    <string name="ticker_iject">IJECT</string>
+    <string name="ticker_wetalk">WETALK</string>
+    <string name="ticker_mdm">MDM</string>
+    <string name="ticker_jwv">JWV</string>
+    <string name="ticker_kcot">KCOT</string>
+
+    <string name="ticker_movie_shiri">电影《实尾岛》</string>
+    <string name="ticker_music_ggd">音乐 GGD</string>
+    <string name="ticker_franchise_twosomebucks">特许经营 Twosomebucks</string>
+
+    <string name="ticker_etip_renewable">ETIP 可再生能源</string>
+    <string name="ticker_etip_ai">ETIP 人工智能</string>
+    <string name="ticker_etip_semiconductor">ETIP 半导体</string>
+    <string name="ticker_etip_bio">ETIP 生物技术</string>
+    <string name="ticker_etip_auto">ETIP 汽车</string>
+    <string name="ticker_etip_finance">ETIP 金融</string>
+    <string name="ticker_etip_energy">ETIP 能源</string>
+    <string name="ticker_etip_chemical">ETIP 化学</string>
+    <string name="ticker_etip_telecom">ETIP 通信</string>
+    <string name="ticker_etip_construction">ETIP 建筑</string>
+    <string name="ticker_etip_medical">ETIP 医疗</string>
+    <string name="ticker_etip_food">ETIP 食品</string>
+    <string name="ticker_etip_retail">ETIP 零售</string>
+    <string name="ticker_etip_transport">ETIP 运输</string>
+    <string name="ticker_etip_entertainment">ETIP 娱乐</string>
+    <string name="ticker_etip_education">ETIP 教育</string>
+    <string name="ticker_etip_service">ETIP 服务</string>
+    <string name="withdraw_navigation_error">无法跳转到提现页面</string>
+    <string name="withdraw_status_null_warning">正在加载提现信息，请稍后重试。</string>
+
+
+    <string name="withdrawal_limit_message">
+    单次提现限额：100,000 USD\n每日提现限额：300,000 USD\n待处理的提现金额将计入每日限额。
+</string>
+
+    <string name="withdrawable_amount_message">
+    适用于每位用户已实名验证的一个银行账户。\n根据银行账户状态和客户验证情况，单次限额可能有所变动，\n最大充值/提现金额也可能会受到限制。
+</string>
+
+    <string name="deposit_network_warning">
+    该数字IP仅支持Polygon网络充值。\n通过其他网络转账将无法到账，请注意。
+</string>
+
+    <string name="withdraw_network_warning">
+    在提现数字IP之前，请确保您的个人钱包支持Polygon网络充值。
+</string>
+
+    <string name="deposit_navigation_error">跳转到充值页面时出错。</string>
+
+
+
+
+
+
+
+
+
+    <string name="country_korea">韩国</string>
+    <string name="country_japan">日本</string>
+    <string name="country_china">中国</string>
+    <string name="country_euro">欧元</string>
+
+    <string name="rate_krw_usd">KRW/USD</string>
+    <string name="rate_jpn_usd">JPN/USD</string>
+    <string name="rate_cny_usd">CNY/USD</string>
+    <string name="rate_eur_usd">EUR/USD</string>
+
+
+    <string name="stip_index_total">STIP 综合指数</string>
+    <string name="stip_index_ai">STIP 人工智能（AI）专利指数</string>
+    <string name="stip_index_global">STIP 全球专利指数</string>
+    <string name="stip_index_entertainment">STIP 娱乐指数</string>
+    <string name="stip_index_franchise">STIP 特许经营指数</string>
+
+
+
+    <string name="mini_chart_title_stip_1000">STIP 1000</string>
+    <string name="mini_chart_title_etip_500">ETIP 500</string>
+    <string name="mini_chart_title_patent_100">专利 100</string>
+    <string name="mini_chart_title_etip_movie">ETIP 电影</string>
+    <string name="mini_chart_title_stip_music">STIP 音乐</string>
+    <string name="mini_chart_title_etip_ai">ETIP AI</string>
+
+
+
+    <string name="price_percentage_prompt">相对现价 %</string>
+    <string name="total_amount_label">总额</string>
+    <string name="quantity_label">数量</string>
+    <string name="time">00:00:00</string>
+    <string name="label_order_available">可下单</string>
+    <string name="initial_available_amount">0</string>
+    <string name="trading_ticker">AXNO</string>
+    <string name="tab_unfilled_order">未成交</string>
+    <string name="tab_filled_order">已成交</string>
+    <string name="filter">筛选</string>
+    <string name="hint_enter_quantity">IP 数量</string>
+    <string name="hint_enter_total_amount">订单总额</string>
+    <string name="buy_order_error_title">买入订单错误</string>
+    <string name="sell_order_error_title">卖出订单错误</string>
+    <string name="sell_error_insufficient_quantity">可下单数量不足。</string>
+    <string name="buy_error_minimum_order">最低订单金额为 10 USD。</string>
+    <string name="no_unfilled_order">无未成交记录</string>
+    <string name="error_loading_unfilled">未成交记录加载失败</string>
+    <string name="error_loading_unfilled_toast">加载未成交记录时发生错误。</string>
+    <string name="label_assets_held_usd">持有资产 (USD)</string>
+    <string name="label_avg_buy_price">买入均价</string>
+    <string name="label_valuation_amount">估值金额</string>
+    <string name="label_valuation_pl">估值盈亏</string>
+    <string name="label_rate_of_return">收益率</string>
+    <string name="label_min_order_amount">最低订单金额</string>
+    <string name="label_fee_vat_included">手续费 (含增值税)</string>
+    <string name="value_min_order_amount">10</string>
+    <string name="value_fee">0.1</string>
+    <string name="value_percent_unit">%</string>
+    <string name="order_type_explain">订单类型说明</string>
+    <string name="label_assets_held_quantity">持有数量</string>
+    <string name="unit_usd_estimated">USD</string>
+    <string name="stop_order_desc">达到设定的监控价格时，自动执行指定订单。主要用于限制损失或实现盈利。</string>
+    <string name="buy_error_insufficient_funds">可用下单金额不足。</string>
+    <string name="toast_minimum_order_violation">最低订单金额需达到 %s USD 或以上。</string>
+    <string name="label_fee">手续费</string>
+    <string name="limit_order_title">限价订单</string>
+    <string name="order_type_unknown">未知</string>
+    <string name="market_order_title">市价订单</string>
+    <string name="stop_order_title">预约订单</string>
+    <string name="limit_order_desc">用户直接决定数量和价格的订单方式，优先考虑期望价格而非成交与否时使用。</string>
+    <string name="market_order_desc">买入时输入订单金额，卖出时仅输入订单数量，\n即以市场价格立即成交的订单方式。\n适合需要快速交易时。</string>
+    <string name="order_success_message_buy">买入订单已成功提交。</string>
+    <string name="order_success_message_sell">卖出订单已成功提交。</string>
+    <string name="toast_select_orders_to_cancel">请选择要取消的订单。</string>
+    <string name="toast_cancel_request_sent">订单取消请求已发送 (需要实现)</string>
+    <string name="no_filled_orders">无成交记录</string>
+    <string name="label_estimated_quantity">预计数量</string>
+    <string name="label_order_price1">订单价格</string>
+    <string name="label_order_type">订单类型</string>
+    <string name="label_order_price">订单价格</string>
+    <string name="label_order_quantity">订单数量</string>
+    <string name="label_order_total">订单总额</string>
+    <string name="order_type_limit_sell">限价卖出</string>
+    <string name="order_type_limit_buy">限价买入</string>
+    <string name="tab_unexecuted">未执行</string>
+    <string name="tab_executed">已执行</string>
+    <string name="label_order_amount">订单总额</string>
+    <string name="hint_enter_order_amount">输入订单总额</string>
+    <string name="reserved_order_error_title">预约订单错误</string>
+    <string name="buy_trigger_price_error">买入预约触发价格必须低于或等于订单价格。</string>
+    <string name="sell_trigger_price_error">卖出预约触发价格必须高于或等于订单价格。</string>
+    <string name="order_type_reserved_limit_buy">预约限价买入</string>
+    <string name="order_type_reserved_limit_sell">预约限价卖出</string>
+    <string name="order_type_market_buy">市价买入</string>
+    <string name="order_type_market_sell">市价卖出</string>
+    <string name="market_price">市价</string>
+    <string name="market_quantity">市价数量</string>
+    <string name="market_total">市价总额</string>
+    <string name="buy_error_minimum_order_amount">最低订单金额为 10 USD。</string>
+    <string name="order_type_sell">卖出</string>
+    <string name="order_type_buy">买入</string>
+    <string name="label_ticker">交易代码</string>
+    <string name="label_filled_quantity">成交量</string>
+    <string name="filled_price">价格</string>
+    <string name="filled_quantity1">数量</string>
+    <string name="filled_total">金额</string>
+    <string name="watch_price">触发价</string>
+    <string name="order_quantity">数量</string>
+    <string name="unfilled_quantity">未成交</string>
+    <string name="trade_type">类型</string>
+    <string name="buy">买入</string>
+    <string name="order_type_all">所有订单</string>
+    <string name="order_type_normal">普通订单</string>
+    <string name="order_type_reserved">预约订单</string>
+    <string name="order_type_reserved_simple">预约</string>
+    <string name="order_cancel">取消订单</string>
+    <string name="no_unfilled_orders">无未成交记录</string>
+    <string name="toast_invalid_price">无效的价格格式。</string>
+    <string name="toast_enter_total_amount">请输入订单总额。</string>
+    <string name="toast_invalid_total_amount">无效的订单总额。</string>
+    <string name="toast_invalid_quantity_from_total">根据订单总额计算的数量无效。</string>
+    <string name="toast_enter_quantity">请输入数量。</string>
+    <string name="toast_invalid_quantity">无效的数量格式。</string>
+    <string name="toast_invalid_final_quantity">无效的数量。</string>
+    <string name="toast_invalid_price_for_total">输入总额时请输入有效价格。</string>
+    <string name="toast_invalid_trigger_price">请输入有效的触发价格。</string>
+    <string name="toast_market_order_no_total_mode">市价订单无法使用总额输入模式。</string>
+    <string name="toast_enter_order_amount">请输入订单总额。</string>
+    <string name="toast_invalid_order_amount">无效的订单总额。</string>
+    <string name="toast_invalid_code_attempts">请重新核对并输入验证码 (%1$d/%2$d)</string>
+    <string name="error_time_expired">输入时限已过。请重新请求验证码。</string>
+    <string name="error_max_attempts_reached">验证码输入错误已达5次，无法验证。\n请重新发送验证码进行验证。</string>
+    <string name="message_email_verification_complete">邮箱验证已完成。</string>
+    <color name="confirm_button_blue">#1674EA</color>
+    <string name="notification_header">一般通知</string>
+    <string name="notification_settings_title">通知设置</string>
+    <string name="notification_settings_description">接收、标记、声音、横幅等通知设置。</string>
+    <string name="login_alert_title">登录提醒</string>
+    <string name="login_alert_description">发生新登录时提醒。</string>
+    <string name="transaction_alert_title">交易提醒</string>
+    <string name="transaction_alert_description">买入/卖出成交完成时提醒。</string>
+    <string name="deposit_withdrawal_alert_title">充提提醒</string>
+    <string name="deposit_withdrawal_alert_description">充提完成时提醒。</string>
+    <string name="order_alert_title">预约订单提醒</string>
+    <string name="order_alert_description">达到设定价格并执行预约订单时提醒。</string>
+    <string name="staking_alert_title">Staking 提醒</string>
+    <string name="staking_alert_description">Staking 及 Unstaking 完成时提醒。</string>
+    <string name="event_alert_title">接收活动等通知</string>
+    <string name="event_alert_description">同意接收优惠及活动等提醒。</string>
+    <string name="setting_title_login_alert">登录提醒</string>
+    <string name="setting_description_login_alert">发生新登录时提醒。</string>
+    <string name="setting_title_trade_alert">交易提醒</string>
+    <string name="setting_description_trade_alert">买入/卖出成交完成时提醒。</string>
+    <string name="setting_title_deposit_withdrawal_alert">充提提醒</string>
+    <string name="setting_description_deposit_withdrawal_alert">充提完成时提醒。</string>
+    <string name="setting_title_reserved_order_alert">预约订单提醒</string>
+    <string name="setting_description_reserved_order_alert">达到设定价格并执行预约订单时提醒。</string>
+    <string name="setting_title_event_reception">接收活动等通知</string>
+    <string name="setting_description_event_reception">同意接收优惠及活动等提醒。</string>
+    <string name="setting_title_ip_webtoon_alert">IP 网络漫画提醒</string>
+    <string name="setting_description_ip_webtoon_alert">新 IP 网络漫画的提醒设置。</string>
+    <string name="setting_title_ip_auction_alert">IP 拍卖提醒</string>
+    <string name="setting_description_ip_auction_alert">IP 拍卖开始前1小时提醒。</string>
+    <string name="setting_title_new_ip_listing_alert">IP 新上市提醒</string>
+    <string name="setting_description_new_ip_listing_alert">新上市知识产权的提醒。</string>
+    <string name="setting_title_ip_swap_alert">IP Swap 提醒</string>
+    <string name="setting_description_ip_swap_alert">希望进行 IP Swap 的申请提醒。</string>
+    <string name="market_price_settings_title">行情设置</string>
+    <string name="tab_standard">标准</string>
+    <string name="tab_market_price">行情</string>
+    <string name="market_alert_screen_title">行情提醒</string>
+    <string name="market_alert_tab_standard">标准</string>
+    <string name="market_alert_tab_market">行情</string>
+    <string name="dnd_mode_category_title">免打扰模式</string>
+    <string name="dnd_mode_rest_title">休息模式</string>
+    <string name="dnd_mode_rest_description">设置期间限制提醒</string>
+    <string name="owned_ip_category_title">持有 IP</string>
+    <string name="owned_ip_alert_title">持有 IP 提醒</string>
+    <string name="owned_ip_alert_description">达到设定基准的 10% 区间上涨/下跌时提醒。</string>
+    <string name="comprehensive_alert_category_title">综合提醒</string>
+    <string name="comprehensive_alert_designated_title">指定提醒</string>
+    <string name="comprehensive_alert_designated_description">达到设定基准的 10% 区间上涨/下跌时提醒</string>
+    <string name="comprehensive_alert_rise_fall_title">上涨/下跌提醒</string>
+    <string name="comprehensive_alert_rise_fall_description">指定 IP 短期内发生上涨及下跌时提醒</string>
+    <string name="comprehensive_alert_report_low_price_title">最高价/最低价提醒</string>
+    <string name="comprehensive_alert_report_low_price_description">指定日期的最高价/最低价出现时提醒</string>
+    <string name="comprehensive_alert_ip_cross_compare_title">IP 交叉比较提醒</string>
+    <string name="comprehensive_alert_ip_cross_compare_description">配对 IP 价格变动差异提醒</string>
+    <string name="comprehensive_alert_new_rights_user_title">新许可证用户提醒</string>
+    <string name="comprehensive_alert_new_rights_user_description">指定 IP 出现新许可证用户时提醒</string>
+    <string name="comprehensive_alert_rights_revoker_title">IP 许可证放弃者提醒</string>
+    <string name="comprehensive_alert_rights_revoker_description">指定 IP 放弃许可证使用的用户提醒</string>
+    <string name="title_price_alert">行情提醒</string>
+    <string name="title_mode_setting">模式设置</string>
+    <string name="mode_settings_screen_title">模式设置</string>
+    <string name="general_section_title">常规屏幕</string>
+    <string name="screen_on_title">屏幕常亮模式</string>
+    <string name="screen_on_desc">防止应用使用中屏幕关闭。</string>
+    <string name="exchange_section_title">交易所屏幕</string>
+    <string name="ip_refresh_title">刷新 IP 信息</string>
+    <string name="ip_refresh_desc">更新 IP 信息。</string>
+    <string name="ip_refresh_button">刷新</string>
+    <string name="execution_effect_title">成交效果</string>
+    <string name="execution_effect_desc">买卖成交时闪烁效果。</string>
+    <string name="order_section_title">订单屏幕</string>
+    <string name="new_quote_effect_title">新报价效果</string>
+    <string name="new_quote_effect_desc">新报价高亮效果。</string>
+    <string name="quote_depth_range_title">订单簿深度范围效果</string>
+    <string name="quote_depth_range_desc">根据订单簿中订单数量的增减产生反应效果。</string>
+    <string name="display_mode_section_title">显示模式</string>
+    <string name="display_mode_normal_title">普通模式</string>
+    <string name="display_mode_normal_desc">STIP 提供的标准显示模式。</string>
+    <string name="display_mode_dark_title">深色模式</string>
+    <string name="display_mode_dark_desc">STIP 提供的黑色背景设计模式。</string>
+    <string name="display_mode_design_title">设计模式</string>
+    <string name="display_mode_design_desc">每季度提供新的设计屏幕。</string>
+    <string name="display_mode_user_title">用户模式</string>
+    <string name="display_mode_user_desc">提供用户设计的屏幕。</string>
+    <string name="title_security_auth">安全 / 认证</string>
+    <string name="security_auth_screen_title">安全 / 认证</string>
+    <string name="pin_change_title">更改 PIN 密码</string>
+    <string name="pin_change_desc">如果丢失 PIN 密码，需要从头开始\n重新进行 STIP 登录。</string>
+    <string name="biometric_auth_title">使用生物认证信息</string>
+    <string name="biometric_auth_desc">使用生物认证信息进行身份验证。\n使用指纹识别</string>
+    <string name="overseas_login_block_title">阻止海外登录</string>
+    <string name="overseas_login_block_desc">限制来自海外地区的登录尝试。</string>
+    <string name="login_history_title">登录历史</string>
+    <string name="login_history_desc">查看用户登录历史并在使用\n异常 IP 登录时进行检查</string>
+    <string name="login_history_title_manage">登录管理</string>
+    <string name="login_history_description">STIP 最多允许三台移动设备登录。</string>
+    <string name="login_history_logout_all">从所有设备登出</string>
+    <string name="login_history_header_datetime">时间</string>
+    <string name="login_history_header_os_browser">操作系统/浏览器</string>
+    <string name="login_history_header_ip">登录 IP</string>
+    <string name="login_history_item_app_name">STIP 移动应用</string>
+    <string name="login_history_item_location_korea">韩国</string>
+    <string name="minute_chart">分钟</string>
+    <string name="day_chart">日</string>
+    <string name="week_chart">周</string>
+    <string name="month_chart">月</string>
+    <string name="year_chart">年</string>
+    <string name="quote_header_date">日期</string>
+    <string name="quote_header_close">收盘价 (USD)</string>
+    <string name="quote_header_change">涨跌幅 (较前一日)</string>
+    <string name="quote_header_volume_ticker">交易量 (代码)</string>
+    <string name="quote_tab_time">小时</string>
+    <string name="quote_tab_daily">每日</string>
+    <string name="quote_header_time">时间</string>
+    <string name="quote_header_price_usd">价格 (USD)</string>
+    <string name="quote_header_volume">成交额 (USD)</string>
+    <string name="error_loading_data">加载数据时出错。</string>
+    <string name="quote_header_executed">成交额</string>
+    <string name="quote_header_volume_with_ticker">交易量(%1$s)</string>
+    <string name="tab_info">基本</string>
+    <string name="tab_details">详细</string>
+    <string name="placeholder_ticker_name">交易代码: ETIP AI 1</string>
+    <string name="placeholder_ticker_id">KR-14-20240816</string>
+    <string name="label_shortcuts">快捷方式</string>
+    <string name="link_block_inquiry">区块查询</string>
+    <string name="link_ip_rating">IP 评级</string>
+    <string name="link_license">许可证</string>
+    <string name="link_view_video">查看视频</string>
+    <string name="label_first_issuance">首次发行</string>
+    <string name="label_total_issuance_limit">总发行限额</string>
+    <string name="placeholder_total_issuance_limit_value">1,000,000 (STIP 提供)</string>
+    <string name="ticker_name_format">交易代码: %1$s</string>
+    <string name="label_current_circulation">当前流通量</string>
+    <string name="value_current_circulation">00,000 ETIP AI</string>
+    <string name="label_digital_ip">数字 IP 使用计划</string>
+    <string name="label_license">IP 使用协议</string>
+    <string name="value_license_amount">0,000 AXNO</string>
+    <string name="value_view">查看</string>
+    <string name="license_scope_title">普通许可范围</string>
+    <string name="license_header_ratio">比例 %</string>
+    <string name="license_header_area">IP 可用区域</string>
+    <string name="license_ratio_10">10%</string>
+    <string name="license_area_10">可用于与此 IP 相关的所有技术和商业方面</string>
+    <string name="license_ratio_7">7%</string>
+    <string name="license_area_7">可在亚洲和欧洲地区使用</string>
+    <string name="license_ratio_5">5%</string>
+    <string name="license_area_5">仅可在韩国境内用于商业目的的专利</string>
+    <string name="license_ratio_1">1%</string>
+    <string name="license_area_1">可在大学机构和研究设施中用于研究目的</string>
+    <string name="link_ip_link">IP 链接</string>
+    <string name="link_homepage">主页</string>
+    <string name="link_business_plan">商业计划</string>
+    <string name="link_related_video">相关视频</string>
+    <string name="label_corporation_name">法人名称</string>
+    <string name="label_representative">代表</string>
+    <string name="label_registration_number">注册号</string>
+    <string name="label_business_type">业务类型</string>
+    <string name="label_contact">联系方式</string>
+    <string name="label_address">地址</string>
+    <string name="label_sns">SNS</string>
+    <string name="value_corporation_name">STIP Korea</string>
+    <string name="value_representative">李成龙</string>
+    <string name="value_registration_number">000-00-00000</string>
+    <string name="value_business_type">信息通信业</string>
+    <string name="value_contact_email">support@stip.global</string>
+    <string name="value_address_detail">光化门首尔金融中心</string>
+    <string name="sns_twitter">X(Twitter)</string>
+    <string name="sns_instagram">Instagram</string>
+    <string name="sns_kakaotalk">KakaoTalk</string>
+    <string name="sns_telegram">Telegram</string>
+    <string name="sns_linkedin">LinkedIn</string>
+    <string name="sns_wechat">微信 (WeChat)</string>
+    <string name="label_katv">KATV</string>
+    <string name="label_avex">AVEX</string>
+    <string name="label_jmv">JMV</string>
+    <string name="value_common">\u0020$ 96,445.00</string>
+    <string name="katv">\u0020KATV</string>
+    <string name="some_id">\u0020$ 96,445.00</string>
+    <string name="ip_entertainment">IP 娱乐</string>
+    <string name="tab_info_trend">IP 趋势</string>
+    <string name="tab_info_news">IP 新闻</string>
+    <string name="account_holder_label">账户持有人</string>
+    <string name="account_number_label">账号</string>
+    <string name="account_holder_name">IP Media Group Co., Ltd.</string>
+    <string name="account_number">国民银行 102701-04-435574</string>
+    <string name="account_number2">新韩银行 140-015-070902</string>
+    <string name="account_number3">友利银行 1005-804-753434</string>
+    <string name="tab_transaction_holdings">IP 持有</string>
+    <string name="tab_transaction_profit">IP 盈亏</string>
+    <string name="tab_transaction_investment">IP 投资</string>
+    <string name="tab_transaction_unfilled">未成交</string>
+    <string name="my_ip">我的持有 IP</string>
+    <string name="holding_usd">持有 USD</string>
+    <string name="holding_usd_number">0</string>
+    <string name="total_asset">总持有资产</string>
+    <string name="total_asset_number">0</string>
+    <string name="total_buy">总买入额</string>
+    <string name="total_buy_number">0</string>
+    <string name="valuation_profit">估值盈亏</string>
+    <string name="valuation_profit_number">0</string>
+    <string name="total_valuation">总估值</string>
+    <string name="total_valuation_number">0</string>
+    <string name="profit_rate">收益率</string>
+    <string name="profit_rate_percentage">0.00%</string>
+    <string name="available_order">可下单</string>
+    <string name="available_order_number">0</string>
+    <string name="noip">当前没有持有的 IP。</string>
+    <string name="myiptext">持有 IP</string>
+    <string name="filter_text">1 个月 • 全部交易</string>
+    <string name="ipsearch">IP 搜索</string>
+    <string name="profit_loss">估值盈亏</string>
+    <string name="w_ratio">收益率</string>
+    <string name="quantity">数量</string>
+    <string name="evaluated_price">估值金额</string>
+    <string name="average_buy">买入均价</string>
+    <string name="buy_price">买入金额</string>
+    <string name="mark">"-"</string>
+    <string name="label_notice">提示</string>
+    <string name="text_notice_profit">本信息仅供参考，可能与实际结果不同。</string>
+    <string name="label_profit_type_weighted">金额加权收益率</string>
+    <string name="placeholder_month">YYYY年 MM月</string>
+    <string name="placeholder_profit_period">YYYY年 MM月 DD日 ~ MM月 DD日</string>
+    <string name="label_period_profit">期间累计盈亏</string>
+    <string name="placeholder_usd_zero">0 USD</string>
+    <string name="label_period_rate">期间累计收益率</string>
+    <string name="placeholder_percent_zero">0.00 %</string>
+    <string name="label_period_average_investment">期间平均投资金额</string>
+    <string name="title_profit_graph">IP 盈亏图表</string>
+    <string name="tab_accumulated_rate">累计收益率</string>
+    <string name="tab_profit_loss">盈亏</string>
+    <string name="label_date">日期</string>
+    <string name="title_profit_detail">IP 盈亏详情</string>
+    <string name="desc_dropdown_arrow">下拉箭头</string>
+    <string name="desc_sort_arrow">排序箭头</string>
+    <string name="date_confirm">确认</string>
+    <string name="profit_type_weighted">金额加权收益率</string>
+    <string name="profit_type_time">时间加权收益率</string>
+    <string name="profit_type_simple">简单收益率</string>
+    <string name="touch_chart">触摸图表</string>
+    <string name="trade_header_date">日期</string>
+    <string name="trade_header_daily_profit">每日盈亏</string>
+    <string name="trade_header_cumulative_profit">累计盈亏</string>
+    <string name="trade_header_daily_rate">每日收益率</string>
+    <string name="trade_header_cumulative_rate">累计收益率</string>
+    <string name="trade_header_ending_assets">期末资产</string>
+    <string name="trade_header_beginning_assets">期初资产</string>
+    <string name="trade_header_deposit">充值</string>
+    <string name="trade_header_withdrawal">提现</string>
+    <string name="list_item_placeholder_date">06.01</string>
+    <string name="list_item_placeholder_zero">0.00</string>
+    <string name="list_item_placeholder_percent">0.00%</string>
+    <string name="filter_label_text">1 周 • 查看记录</string>
+    <string name="filter_icon_desc">IP 记录筛选</string>
+    <string name="ip_search_text">IP 搜索</string>
+    <string name="title_transaction_filter">IP 投资记录搜索</string>
+    <string name="label_transaction_type">记录类型</string>
+    <string name="label_date_range">搜索期间</string>
+    <string name="chip_type_all">全部</string>
+    <string name="chip_type_buy">买入</string>
+    <string name="chip_type_sell">卖出</string>
+    <string name="chip_type_deposit">充值</string>
+    <string name="chip_type_withdraw">提现</string>
+    <string name="chip_period_1w">1 周</string>
+    <string name="chip_period_1m">1 个月</string>
+    <string name="chip_period_3m">3 个月</string>
+    <string name="chip_period_6m">6 个月</string>
+    <string name="chip_period_direct">自定义</string>
+    <string name="button_reset">重置</string>
+    <string name="button_search">搜索</string>
+    <string name="desc_back_button">返回按钮</string>
+    <string name="desc_start_date_input">选择查询开始日期</string>
+    <string name="desc_end_date_input">选择查询结束日期</string>
+    <string name="desc_date_select">返回</string>
+    <string name="ticker">交易代码</string>
+    <string name="type">类型</string>
+    <string name="quantity1">数量</string>
+    <string name="tradingave">交易单价</string>
+    <string name="amount">交易金额</string>
+    <string name="commission">手续费</string>
+    <string name="settlement">结算金额</string>
+    <string name="order_time">下单时间</string>
+    <string name="execution_time">成交时间</string>
+    <string name="no_data_text">该期间无交易记录\n2025.01.15 ~ 2025.06.15.</string>
+    <string name="all_orders">所有订单</string> <string name="no_order_found">未查询到交易记录</string>
+    <string name="label_stip">STIP</string>
+    <string name="price_stip">1000.00</string>
+    <string name="change_stip">00.00</string>
+    <string name="percent_stip">0.00%</string>
+    <string name="label_etip">ETIP</string>
+    <string name="price_etip">500.00</string>
+    <string name="change_etip">00.00</string>
+    <string name="percent_etip">0.00%</string>
+    <string name="label_etip_ai">ETIP AI</string>
+    <string name="price_etip_ai">100.00</string>
+    <string name="change_etip_ai">00.00</string>
+    <string name="percent_etip_ai">0.00%</string>
+    <string name="price_format">%.2f</string>
+    <string name="change_format">%.2f</string>
+    <string name="percent_format">%.2f%%</string>
+    <string name="ipriserank_title">涨幅排名靠前的 IP</string>
+    <string name="date_1week">1 周</string>
+    <string name="date_1month">1 个月</string>
+    <string name="date_3months">3 个月</string>
+    <string name="date_6months">6 个月</string>
+    <string name="date_1year">1 年</string>
+    <string name="mdm_label">MDM</string>
+    <string name="mdm_usd_ticker">MDM/USD</string>
+    <string name="mdm_percent_format">00.00%</string>
+    <string name="stip_index_text">STIP 指数</string>
+    <string name="stip_index_today">今天</string>
+    <string name="stip_index_month">1 个月</string>
+    <string name="stip_index_threemonth">3 个月</string>
+    <string name="stip_index_text_english">STIP Index</string>
+    <string name="stip_ai_index">STIP AI Index</string>
+    <string name="dip_market_cap_number">0,000,000</string>
+    <string name="dip_market_cap_order">订单</string>
+    <string name="dip_market_logo1">JWV </string>
+    <string name="dip_market_logo2">MDM </string>
+    <string name="ip_news">IP 新闻</string>
+    <string name="title_latest_news">最新 IP 新闻</string>
+    <string name="time_sample">10:15</string>
+    <string name="report_time">2025年06月01日</string>
+    <string name="date_just_now">25.06.01</string>
+    <string name="filled_time">06.11 04:10:14</string>
+    <string name="error_news_load_failed">新闻加载失败</string>
+    <string name="error_open_link_failed">打开链接失败</string>
+    <string name="time_just_now">刚刚</string>
+    <string name="time_minutes_ago">%1$d 分钟前</string>
+    <string name="time_hours_ago">%1$d 小时前</string>
+    <string name="time_yesterday">昨天 %1$s</string>
+    <string name="time_format_full">%1$s</string>
+    <string name="breaking_news">快讯</string>
+    <string name="ip_breaking_news">Breaking NEWS</string>
+    <string name="dip_listing_info">IP NEWS</string>
+    <string name="title_stock_exchange">交易所</string>
+    <string name="title_ip_inform">IP 信息</string>
+    <string name="title_investment_history">投资记录</string>
+    <string name="title_transaction_history">充提</string>
+    <string name="title_more">更多</string>
+    <string name="common_confirm">确认</string>
+    <string name="common_cancel">取消</string>
+    <string name="common_dot">\u2022</string>
+    <string name="common_change">更改</string>
+    <string name="common_yes">是</string>
+    <string name="common_no">否</string>
+    <string name="common_re_order">重新排列</string>
+    <string name="common_lg">LG U+</string>
+    <string name="common_kt">KT</string>
+    <string name="common_skt">SKT</string>
+    <string name="common_only_english">请用英文输入。</string>
+    <string name="common_invalid_email">请输入有效的邮箱格式。</string>
+    <string name="common_ready">准备中</string>
+    <string name="common_camera_permission">没有相机/相册访问权限。请允许权限后使用。</string>
+    <string name="common_not_password">密码不匹配。</string>
+    <string name="common_app_end">再按一次退出</string>
+    <string name="common_dont_show_again_today">今天不再显示</string>
+    <string name="common_deposit">充值</string>
+    <string name="common_deposit_action">充值</string>
+    <string name="common_withdrawal">提现</string>
+    <string name="common_withdrawal_action">提现</string>
+    <string name="common_pending_transaction_amount">交易待处理</string>
+    <string name="common_withdrawable_amount">可提现</string>
+    <string name="common_copy">复制</string>
+    <string name="common_real_name_account">实名账户</string>
+    <string name="common_withdrawal_account">提现账户</string>
+    <string name="common_withdrawal_wallet">提现钱包</string>
+    <string name="common_notice">提示</string>
+    <string name="button_verify">确认</string>
+    <string name="button_verify_with_timer">确认 (%s)</string>
+    <string name="info_verification_time_limit">验证可用时间 5:00 分钟</string>
+    <string name="checkbox_agree">同意</string>
+    <string name="error_duplicate_409">已注册的会员信息。</string>
+    <string name="error_admin_500">发生未知错误。请联系管理员。</string>
+    <string name="error_network_999">网络连接失败。</string>
+    <string name="error_login_fail_888">登录连接失败。</string>
+    <string name="permission_title">为了安全便捷地使用<![CDATA[<br/><font color="#30C6E8">STIP</font>，需要允许以下<br/>]]>权限。</string>
+    <string name="permission_camera">相机</string>
+    <string name="permission_camera_comment">身份证拍摄及文件提交、提现地址二维码扫描、1:1咨询及交易支持相关欺诈举报时传输照片拍摄</string>
+    <string name="permission_picture">照片</string>
+    <string name="permission_picture_comment">文件提交、屏幕共享图片保存、1:1咨询时发送照片</string>
+    <string name="permission_biometric_auth">生物认证信息(Touch ID)</string>
+    <string name="permission_biometric_auth_comment">身份验证及用户识别</string>
+    <string name="permission_notification">通知</string>
+    <string name="permission_notification_comment">推送通知</string>
+    <string name="permission_select">(可选)</string>
+    <string name="permission_comment">即使不允许可选访问权限，也可以使用除相应功能外的 STIP\n服务。</string>
+    <string name="login_stip">Sign up</string>
+    <string name="login_later">稍后登录？</string>
+    <string name="login_look_around">随便看看</string>
+    <string name="login_start_title">开始 <![CDATA[<br/><font color="#30C6E8">STIP</font> 登录。<br/>]]></string>
+    <string name="login_start">开始 STIP</string>
+    <string name="login_pin_number_title">使用 PIN 码登录</string>
+    <string name="log_in_home">Log in</string>
+    <string name="login_pin_number_forget_password"><u>忘记密码了？</u></string>
+    <string name="login_pin_number_basic_login_setting">设为默认登录</string>
+    <string name="login_pin_number_another_login_method"><u>其他登录方式</u></string>
+    <string name="login_biometric_auth_title">生物认证登录</string>
+    <string name="login_biometric_auth_re_registration"><u>重新注册</u></string>
+    <string name="login_biometric_auth_basic_login_setting">设为默认登录</string>
+    <string name="login_biometric_auth_another_login_method"><u>其他登录方式</u></string>
+    <string name="login_biometric_auth_login_method_change">更改登录方式</string>
+    <string name="login_biometric_auth">生物认证</string>
+    <string name="login_biometric_auth_pin_number">PIN 码</string>
+    <string name="main_login_required">登录后才能使用。</string>
+    <string name="sign_up_title">进行身份验证<br/>以使用 <![CDATA[<font color="#30C6E8">STIP</font>。]]></string>
+    <string name="sign_up_all_agree">全部同意</string>
+    <string name="sign_up_phone_auth_confirm">手机身份验证</string>
+    <string name="sign_up_name">姓名</string>
+    <string name="sign_up_name_hint">输入姓名</string>
+    <string name="sign_up_resident_number">居民登记号</string>
+    <string name="sign_up_resident_number_hint">出生日期</string>
+    <string name="sign_up_communication_agency">运营商</string>
+    <string name="sign_up_communication_agency_hint">选择运营商</string>
+    <string name="sign_up_phone_number">手机号码</string>
+    <string name="sign_up_phone_number_hint">输入时不带-</string>
+    <string name="sign_up_auth_request">请求验证</string>
+    <string name="sign_up_auth_request_re">重新请求</string>
+    <string name="sign_up_auth_request_hint">输入6位验证码</string>
+    <string name="sign_up_communication_select">选择运营商</string>
+    <string name="sign_up_communication_skt">SKT</string>
+    <string name="sign_up_communication_kt">KT</string>
+    <string name="sign_up_communication_lg">LG U+</string>
+    <string name="sign_up_communication_frugality_skt">SKT 虚拟运营商</string>
+    <string name="sign_up_communication_frugality_kt">KT 虚拟运营商</string>
+    <string name="sign_up_communication_frugality_lg">LG U+ 虚拟运营商</string>
+    <string name="sign_up_agree_pop_up_title">请勾选同意服务条款</string>
+    <string name="sign_up_input_inform_pop_up_title">请核对输入的信息后重新输入</string>
+    <string name="sign_up_auth_number_disaccord_pop_up_title">验证码不匹配。\n请核对验证码后重试。\n(错误次数 : %s/3)</string>
+    <string name="sign_up_auth_number_over_count_pop_up_title">已超过身份验证尝试次数上限。</string>
+    <string name="sign_up_auth_number_over_time_pop_up_title">验证时间已过。请重试。</string>
+    <string name="sign_up_bank_title">请进行\n银行账户验证。</string>
+    <string name="sign_up_bank_sub_title">只有您的实名与账户注册姓名\n一致时才能进行验证。</string>
+    <string name="sign_up_bank_bank">银行</string>
+    <string name="sign_up_bank_number">账号</string>
+    <string name="sign_up_bank_number_hint">输入时不带-</string>
+    <string name="sign_up_bank_warning">\u2022 各银行服务器维护期间无法进行账户验证。</string>
+    <string name="sign_up_bank_auth_request">发送账户验证码</string>
+    <string name="sign_up_bank_select_title">选择银行</string>
+    <string name="sign_up_bank_search_hint">搜索银行/证券公司名称</string>
+    <string name="sign_up_bank_1_won_title">已存入 1 韩元。<![CDATA[<br/>请输入<font color="#30C6E8">6位数字</font>。<br/>]]></string>
+    <string name="sign_up_bank_1_won_help_1"><u>如何查看验证码？</u></string>
+    <string name="sign_up_bank_1_won_help_2">\u2022 如果请求过多，1 韩元存款可能需要 5 分钟以上。</string>
+    <string name="sign_up_bank_1_won_help_3">\u2022 如果没有存款记录，请再次核对您的账户信息。</string>
+    <string name="sign_up_bank_1_won_auth">1 韩元验证 (%s)</string>
+    <string name="sign_up_kyc_title">请输入 KYC 信息</string>
+    <string name="sign_up_kyc_email">邮箱</string>
+    <string name="sign_up_kyc_email_hint">输入邮箱</string>
+    <string name="sign_up_kyc_name">姓名</string>
+    <string name="sign_up_kyc_name_hint">输入英文</string>
+    <string name="sign_up_kyc_address">地址</string>
+    <string name="sign_up_kyc_address_hint">输入地址</string>
+    <string name="sign_up_kyc_address_old">地号地址</string>
+    <string name="sign_up_kyc_address_new">道路名地址</string>
+    <string name="sign_up_kyc_address_not_found">未找到匹配地址。</string>
+    <string name="sign_up_kyc_account_open">是否开设供自己使用的账户？</string>
+    <string name="sign_up_kyc_purpose">使用目的</string>
+    <string name="sign_up_kyc_purpose_hint">一般投资目的</string>
+    <string name="sign_up_kyc_purpose_select">选择使用目的</string>
+    <string name="sign_up_kyc_source">资金来源</string>
+    <string name="sign_up_kyc_source_hint">工资/养老金</string>
+    <string name="sign_up_kyc_source_select">选择资金来源</string>
+    <string name="sign_up_kyc_job">职业</string>
+    <string name="sign_up_kyc_job_hint">公司职员</string>
+    <string name="sign_up_kyc_job_select">选择职业</string>
+    <string name="sign_up_kyc_inform_title">请输入\n%s 的信息</string>
+    <string name="sign_up_kyc_inform_passport_name">护照英文姓名</string>
+    <string name="sign_up_kyc_inform_passport_last_name_hint">英文姓氏</string>
+    <string name="sign_up_kyc_inform_passport_first_name_hint">英文名字</string>
+    <string name="sign_up_kyc_inform_current_address">当前居住地</string>
+    <string name="sign_up_kyc_inform_current_address_hint">搜索地址</string>
+    <string name="sign_up_kyc_search_address_title">地址搜索</string>
+    <string name="sign_up_kyc_search_address_hint">例) 板桥驿路 166, 盆唐住公柏岘洞 532</string>
+    <string name="sign_up_kyc_search_address_detail_hint">输入详细地址</string>
+    <string name="sign_up_pin_number_title">请准备好您的居民登记证或\n驾驶执照。</string>
+    <string name="sign_up_pin_number_sub_title">为了开设账户，需要拍摄可以确认您实名的\n身份证件。</string>
+    <string name="sign_up_pin_number_identification_take">开始拍摄身份证件</string>
+    <string name="sign_up_pin_number_setting_title">设置 PIN 密码</string>
+    <string name="sign_up_pin_number_setting_same_condition_warning">相同或连续的数字以及与个人信息相关的\n数字限制注册。</string>
+    <string name="sign_up_pin_number_setting_confirm_warning">请再输入一次以确认。</string>
+    <string name="sign_up_pin_number_setting_confirm_not_correct">不匹配。\n(%d/5)</string>
+    <string name="sign_up_pin_number_biometric_title">为了快速使用，\n请设置生物认证。</string>
+    <string name="sign_up_pin_number_biometric_sub_title">也可以在 更多 > 认证/安全 菜单中\n进行设置。</string>
+    <string name="sign_up_pin_number_biometric_basic_login_setting">设为默认登录</string>
+    <string name="sign_up_pin_number_biometric_basic_login_warning">以身份验证为目的，使用设备上注册的生物认证信息进行\nSTIP 登录，不会传输/存储到服务器。</string>
+    <string name="sign_up_pin_number_biometric_later">稍后</string>
+    <string name="sign_up_pin_number_biometric_use_agree">同意使用生物认证</string>
+    <string name="sign_up_pin_number_start_title">现在可以在<![CDATA[<font color="#30C6E8">STIP</font>开始<br/>]]>投资了</string>
+    <string name="sign_up_pin_number_start_sub_title">可以进行数字知识产权 (DIP) 交易。\n\nSTIP 运营 7/24 交易所，\n随时支持 DIP 交易。\n\n现在，不受时间和地点的限制，\n自由交易 DIP 吧！</string>
+    <string name="sign_up_pin_number_start">开始交易</string>
+    <string name="sign_up_pin_number_finish_title">输入 PIN 密码</string>
+    <string name="sign_up_pin_number_finish_forget">忘记 PIN 密码了？</string>
+    <string name="ip_asset_search_ticker_ip">搜索交易代码/IP</string>
+    <string name="ip_asset_krw_deposit">CNY 充值</string>
+    <string name="phone_fraud_alert_title">电信金融诈骗警示</string>
+    <string name="phone_fraud_alert_message1">近期利用数字 IP (DIP) 资产进行的电信金融诈骗（语音钓鱼）受害事件频发。</string>
+    <string name="phone_fraud_alert_message2">如果符合以上任何一项，则可能是语音钓鱼诈骗。</string>
+    <string name="phone_fraud_alert_message3">如有丝毫怀疑，请立即停止交易并联系 STIP KakaoTalk 频道。</string>
+    <string name="phone_fraud_alert_message4">任何人都可能成为语音钓鱼的受害者，特别注意即可预防。</string>
+    <string name="phone_fraud_alert_bullet_point1">国内外交易所员工及金融机构负责人是否要求提供金融信息并诱导进行数字 IP (DIP) 充值？</string>
+    <string name="phone_fraud_alert_bullet_point2">在 SNS、交友应用等上认识的外国人是否介绍了陌生的海外交易网站并诱导注册会员？</string>
+    <string name="phone_fraud_alert_bullet_point3">是否有人声称可以弥补投资损失，并要求加入特定网站、安装应用及创建钱包？</string>
+    <string name="deposit_address">充值地址</string>
+    <string name="deposit_notice_title_not_usd">充值前必读！</string>
+    <string name="deposit_notice_message_not_usd">"该地址是 {currencyCode} 专用充值地址，\n充值其他数字 IP 时可能会发生错误或损失，且无法恢复。\n\n此外，根据本公司的异常交易审核流程，可能会要求提交用于确认资金来源的文件，\n因此可能导致充值到账延迟。根据文件审核结果，充值也可能不被批准，\n退还时可能会收取提现手续费。\n\n本地址仅限充值使用。"</string>
+    <string name="deposit_notice_title_usd">[充值说明]</string>
+    <string name="deposit_notice_message_usd">请向上面显示指定账户充值。\n充值确认后，将反映到您的账户中。</string>
+    <string name="filter_all">全部</string>
+    <string name="filter_deposit">充值</string>
+    <string name="filter_withdraw">提现</string>
+    <string name="filter_refund">退还</string>
+    <string name="filter_pending">处理中</string>
+    <string name="total_holdings">总持有</string>
+    <string name="deposit_completed">充值完成</string>
+    <string name="withdrawal_completed">提现完成</string>
+    <string name="withdrawal_limit">提现限额</string>
+    <string name="withdrawal_request">提现申请</string>
+    <string name="withdrawal_request_confirm">提现申请确认</string>
+    <string name="withdrawal_notice_message_withdrawal_completed">提现申请已完成。</string>
+    <string name="withdrawal_warning_title1">进行确认后将完成提现申请，且无法取消。</string>
+    <string name="withdrawal_warning_title2">提现申请在确认后立即完成，申请后无法取消。</string>
+    <string name="withdrawal_confirm_warning_title">请再次确认</string>
+    <string name="withdrawal_confirm_warning_message1">如果根据他人请求或指示出借本人名下的 STIP 账户，可能成为法律处罚对象，共享实名认证账户存在个人信息泄露风险。此外，银行维护时间（每日 23:50~00:10）提现服务可能不顺畅，使用 VPN 连接时提现可能被搁置或限制。\n\n如果怀疑为欺诈交易，提现也可能被阻止。\n此外，根据本公司的异常交易审核流程，申请提现时可能要求提交用于确认资金来源及提现地址的文件，因此可能导致提现延迟。\n\n请注意，根据文件审核结果，提现也可能不被批准。</string>
+    <string name="withdrawal_confirm_warning_message2">将本人名下的 STIP 账户借给他人可能成为法律处罚对象，共享实名认证账户存在个人信息泄露风险。\n\n银行维护时间（23:50~00:10）期间提现服务可能不顺畅。\n\n使用 VPN 时提现可能延迟或受限，如果怀疑为欺诈交易，提现可能被阻止。\n\n在异常交易审核过程中，可能要求提交用于确认资金来源及提现地址的文件，因此可能导致提现延迟。根据审核结果，提现也可能被拒绝。</string>
+    <string name="withdrawal_amount">提现金额</string>
+    <string name="withdrawal_quantity">提现数量</string>
+    <string name="withdrawal_total_vat_included">总提现 (含手续费)</string>
+    <string name="withdrawal_min_amount">最少 1</string>
+    <string name="withdrawal_error_available_amount_exceeded">超过可提现金额。</string>
+    <string name="withdrawal_error_limit_exceeded">超过提现限额。</string>
+    <string name="filter_owned">持有</string>
+    <string name="desc_back">返回</string>
+    <string name="desc_share">分享</string>
+    <string name="status_withdrawal_complete">提现完成</string>
+    <string name="label_completion_datetime">完成时间</string>
+    <string name="label_type">类型</string>
+    <string name="value_type_krw_withdrawal">USD 提现</string>
+    <string name="label_withdrawal_account">提现账户</string>
+    <string name="button_confirm">确认</string>
+    <string name="title_krw_deposit_detail">KRW 充值详情记录</string>
+    <string name="title_krw_withdrawal_detail">KRW 提现详情记录</string>
+    <string name="title_usd_deposit_detail">USD 充值详情记录</string>
+    <string name="title_usd_withdrawal_detail">USD 提现详情记录</string>
+    <string name="title_deposit_detail">充值记录详情</string>
+    <string name="title_withdrawal_detail">提现记录详情</string>
+    <string name="status_deposit_completed">充值完成</string>
+    <string name="value_type_krw_deposit">CNY充值</string>
+    <string name="label_deposit_account">充值账户</string>
+    <string name="value_type_usd_deposit">USD 充值</string>
+    <string name="value_type_usd_withdrawal">USD 提现</string>
+    <string name="value_type_deposit">充值</string>
+    <string name="value_type_withdrawal">提现</string>
+    <string name="value_type_unknown">未知</string>
+    <string name="deposit_warning">充值注意</string>
+    <string name="withdraw_warning">提现注意</string>
+    <string name="label_network">网络</string>
+    <string name="label_to">To</string>
+    <string name="label_txid">交易 ID</string>
+    <string name="usd_equivalent_placeholder">USD</string>
+    <string name="network_value">网络信息 (例如: 以太坊)</string>
+    <string name="transaction_id_value">0x123abc456def789...</string>
+    <string name="deletion_guide_title">会员注销说明</string>
+    <string name="deletion_guide_intro">注销会员前，如果持有 IP 资产，请务必完成必要的处理措施。</string>
+    <string name="deletion_guide_consequence1">注销进行后，持有的 IP 资产及相关数据将全部删除，无法恢复。</string>
+    <string name="deletion_guide_consequence2">注销时注册的个人信息也将一并删除，但根据相关法律规定需要保管一定期限的信息可能会保留。此外，与 STIP IP 交易所账户关联的外部服务（例如：第三方联动服务）也将自动解除，之后无法使用。</string>
+    <string name="deletion_guide_consequence3">注销会员后，包括 IP 资产及交易记录在内的所有信息将被删除，对 STIP IP 交易所内各项服务的用户协议也将被撤销。</string>
+    <string name="deletion_guide_consequence4">即使持有 IP 资产也可以注销，请参考。</string>
+    <string name="deletion_guide_notes_title">其他注意事项</string>
+    <string name="deletion_guide_note1">• 如果没有实名认证的账户信息，服务费支付可能会受到限制。</string>
+    <string name="deletion_guide_note2">• 注销后 24 小时内无法重新加入 STIP IP 交易所。</string>
+    <string name="deletion_guide_note3">• 如果在 1 年内反复注销和重新加入超过 2 次，可能会限制加入 1 年。但是，如果通过客服中心确认有正当理由，可以申请重新加入。</string>
+    <string name="withdraw_membership">注销会员</string>
+    <string name="license_agreement_title">数字 IP 使用协议</string>
+    <string name="license_agreement_content">
+        本协议（以下简称“协议”）包含规范数字 IP（以下简称“本 DIP”）使用的普通许可权的内容。\n\n
+        第 1 条（目的）\n
+        本协议旨在明确本 IP 所有者（以下简称“权利人”）与意欲使用本 IP 的投资者的权利和义务，保障本 IP 的合法使用。\n\n
+        第 2 条（本 IP 的定义）\n
+        本 IP 是通过 STIP IP Exchange 上市的 IP，可能包括专利权、著作权、商标权、设计权、音乐、舞蹈、特许经营权、艺术品、游戏代码、商业模式等其他知识产权。\n\n
+        第 3 条（普通许可权的授予）\n
+        1. 权利人通过本 IP 上市，根据其设定的普通许可权比例，授予用户使用本 IP 的权利。\n
+        2. 用户持有满足相应 IP 普通许可权比例的数字 IP（DIP）时，可在规定范围内使用本知识产权。\n
+        3. DIP 持有者请求本 IP 使用权时，权利人必须在申请日起 2 周内向相应 IP 注册机构登记使用权。\n
+        4. 用户只能在本 IP 普通许可权规定的目的范围内使用，未经权利人事先书面同意，不得将本许可权转让、出借、再许可给他人。违反此规定时，权利人可立即终止用户的使用权，并可要求损害赔偿及采取相关法律制裁。\n
+        5. 意欲使用本 IP 的投资者及购买者，只有在权利人将相应 IP 在主管机构登记后，才能合法行使普通许可权。在使用 IP 期间，不能出售相应的 DIP，如果不再使用 IP，需通知本所有者并取消普通许可权后，经过 4 周才能出售 DIP。\n\n
+        第 4 条（IP 使用方法）\n
+        1. 使用本 IP 的方法是在 STIP IP Exchange 购买各 IP 指定的 DIP。\n
+        2. 用户承担与行使许可权相关的所有法律、税务、手续费等费用。但是，为使用本 IP 而购买的投资者及购买者，在权利人登记后使用 IP 期间不能出售相应的 DIP。如果不再使用 IP，需通知本所有者并取消普通许可权后，经过 4 周后才能出售。与普通许可权使用申请相关的登记费用由 IP 本所有者承担。\n\n
+        第 5 条（用户的义务及限制事项）\n
+        1. 用户不得将本 IP 用于非法用途，或以侵犯第三方权利的方式使用。\n
+        2. 使用本 IP 时，必须明确标示相应内容的来源信息（credit）。\n
+        3. 用户可以对本 IP 进行修改、改编、再加工后使用。\n\n
+        第 6 条（权利人的义务及保证）\n
+        1. 权利人保证本 IP 不侵犯第三方权利。\n
+        2. 发生本 IP 的法律纠纷时，权利人应与用户合作以迅速解决。所有责任由 IP 本所有者承担并解决。\n\n
+        第 7 条（合同的解除及效力中止）\n
+        1. 用户违反本协议条款时，权利人可在立即通知后解除本许可权。\n
+        2. 即使在本协议解除或终止后，第 3 条、第 5 条、第 8 条条款仍持续有效。\n\n
+        第 8 条（争议解决）\n
+        1. 与本协议相关的所有争议均以大韩民国法律为准据法，并以首尔中央地方法院为专属管辖法院。\n发生争议时，当事人应尽最大努力通过相互协商解决。\n\n
+        第 9 条（其他条款）\n
+        本协议未尽事宜，依照大韩民国的相关法律法规及商业惯例处理。\n\n\n
+        [权利人]\n
+        知识产权（IP）名称： \n\n
+        IP 所有者：
+    </string>
+    <string name="more_options_title">更多</string>
+    <string name="profile_image_description">用户头像</string>
+    <string name="user_name_placeholder">郑贤道</string>
+    <string name="more_options_arrow_description">更多</string>
+    <string name="menu_price_alert">行情提醒</string>
+    <string name="menu_mode_settings">模式设置</string>
+    <string name="menu_security_auth">安全/认证</string>
+    <string name="more_name">郑贤道</string>
+    <string name="icon_ip_webtoon_label">IP 网络漫画</string>
+    <string name="icon_ip_auction_label">IP 拍卖</string>
+    <string name="icon_ip_swap_label">IP Swap</string>
+    <string name="icon_ip_donate_label">IP 捐赠</string>
+    <string name="logo_stip_description">STIP 徽标</string>
+    <string name="dip_portfolio">DIP 投资组合</string>
+    <string name="settings_terms">政策与条款</string>
+    <string name="settings_privacy_policy">隐私政策</string>
+    <string name="settings_youth_policy">消费者保护政策</string>
+    <string name="settings_transaction_status">充提状态</string>
+    <string name="settings_stipvelation">STIPvelation</string>
+    <string name="settings_app_version_label">应用版本 1.01</string>
+    <string name="button_customer_center">客服中心</string>
+    <string name="prompt_enter_email">请输入您的邮箱地址</string>
+    <string name="email_label">邮箱</string>
+    <string name="email_hint">jhdoup@gmail.com</string>
+    <string name="info_email_verification">验证码将发送至您的邮箱，请在发送后 10 分钟内进行验证。\n如果验证未完成，该邮箱将在注销会员时自动删除。</string>
+    <string name="button_request_code">获取验证码</string>
+    <string name="settings">设置</string>
+    <string name="more_policy_and_terms">政策与条款</string>
+    <string name="more_privacy_policy">ESG 政策</string>
+    <string name="more_youth_policy">初创企业及中小企业支持政策</string>
+    <string name="more_transaction_status">反洗钱 (AML) 及内部控制政策</string>
+    <string name="policy_title_disclosure_transparency">信息披露透明度强化政策</string>
+    <string name="policy_title_dip_valuation">DIP 估值标准政策</string>
+    <string name="policy_title_user_data_protection">用户数据保护及信息查阅权政策</string>
+    <string name="policy_title_fee_transparency">STIP 手续费透明度政策</string>
+    <string name="more_stipulation">STIPvelation</string>
+    <string name="more_app_version_format">应用版本 1.00</string>
+    <string name="more_current_app_version">1.01</string>
+    <string name="more_policy_and_terms_agreement">(必选) 同意政策与条款</string>
+    <string name="terms_telecom">运营商服务条款</string>
+    <string name="terms_currency_exchange">交易货币及兑换方式说明</string>
+    <string name="terms_investment_risk">投资责任及风险告知</string>
+    <string name="terms_certificate_service">证书服务使用条款</string>
+    <string name="terms_identification_info">验证时处理唯一识别信息同意书</string>
+    <string name="terms_personal_info_collection_auth">验证时个人信息收集同意书</string>
+    <string name="terms_personal_info_collection">个人信息收集同意书</string>
+    <string name="terms_auto_debit">充提自动转账服务</string>
+    <string name="terms_exchange_usage">STIP IP 交易所使用条款及使用说明</string>
+    <string name="terms_youth_protection">消费者保护政策</string>
+    <string name="terms_privacy_policy">隐私政策</string>
+    <string name="terms_personal_info_use">个人信息收集及使用同意书</string>
+    <string name="more_customer_center">客服中心</string>
+    <string name="phone_number">010-000-0000</string> <string name="header_policy_terms">政策与条款</string>
+    <string name="header_customer_center">客服中心</string>
+    <string name="header_customer_center_for_you">期待您的宝贵意见。</string>
+    <string name="user_guide_title">用户指南</string>
+    <string name="phone_consult_title">电话咨询</string>
+    <string name="kakao_inquiry_title">KakaoTalk 咨询</string>
+    <string name="one_on_one_inquiry_title">邮件咨询</string>
+    <string name="inquiry_history_title">在主页咨询</string>
+    <string name="impersonation_report_title">举报冒充诈骗</string>
+    <string name="unfair_trade_title">不公平交易</string>
+    <string name="transaction_statement_title">开具交易记录证明</string>
+    <string name="user_guide_desc">STIP 使用相关指南</string>
+    <string name="common_customer_center_phone">客服中心 09:00 ~ 18:00 运营</string>
+    <string name="common_customer_center_24h">客服中心 24 小时运营</string>
+    <string name="inquiry_history_desc">查看咨询记录。</string>
+    <string name="impersonation_report_desc">举报以承诺上市为前提索取报酬的情况</string>
+    <string name="unfair_trade_desc">举报 STIP 交易中发生的不公平交易行为</string>
+    <string name="transaction_statement_desc">申请开具 DIP 交易证明书、DIP 交易记录</string>
+    <string name="more_info">详细信息</string>
+    <string name="logout_button">登出</string>
+    <string name="member_info_title">会员信息</string>
+    <string name="edit_button">修改</string>
+    <string name="member_info_title_change">修改会员信息</string>
+    <string name="label_name">姓名</string>
+    <string name="label_passport_name">护照英文姓名</string>
+    <string name="label_phone">手机号码</string>
+    <string name="label_dob">出生日期</string>
+    <string name="label_email">邮箱</string>
+    <string name="label_bank">认证银行</string>
+    <string name="label_job">职业</string>
+    <string name="label_job_title">公司名称</string>
+    <string name="label_job_address">工作地址</string>
+    <string name="some_other_string">其他字符串</string> <string name="member_info_edit_title">修改会员信息</string>
+    <string name="email_hint_empty">请输入邮箱地址</string>
+    <string name="prompt_enter_code">请输入发送至新输入邮箱地址的\n验证码</string>
+    <string name="code_hint">输入4位验证码</string>
+    <string name="info_attempts_left">总共可验证5次</string>
+    <string name="button_verify_code">验证确认</string>
+    <string name="language_select">语言选择</string>
+    <string name="language_korean">韩语</string>
+    <string name="language_korean_desc">韩文的科学文字结构</string>
+    <string name="language_english">英语</string>
+    <string name="language_english_desc">丰富的词汇和语感</string>
+    <string name="language_japanese">日语</string>
+    <string name="language_japanese_desc">礼貌而细腻的表达</string>
+    <string name="language_chinese">中文 (简体)</string>
+    <string name="language_chinese_desc">文化影响力和象征性</string>
+    <string name="language_changed">语言已更改</string>
+
+    <string name="dialog_login_inform_title">登录提示</string>
+    <string name="dialog_login_inform_message">登录后即可使用。</string>
+
+    <string name="tab_market">行情</string>
+
+</resources>

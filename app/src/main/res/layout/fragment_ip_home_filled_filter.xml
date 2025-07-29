@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".iptransaction.fragment.NewFilterFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            style="@style/HeaderTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="#FFFFFF"
+            app:navigationIcon="@drawable/ic_arrow_return"
+            app:title="@string/title_transaction_filter"
+            app:titleCentered="true" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom_button_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_reset"
+            style="@style/ResetButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1"
+            android:text="@string/button_reset"
+            app:backgroundTint="#DEDEDE" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_search"
+            style="@style/SearchButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:text="@string/button_search"
+            app:backgroundTint="#30C6E8" />
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@id/bottom_button_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/label_transaction_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/label_transaction_type"
+                android:textAppearance="?attr/textAppearanceSubtitle1" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#DEDEDE"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:id="@+id/chipgroup_transaction_type_filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_type_buy_filled"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="1"
+                        android:text="@string/chip_type_buy"
+                        android:textAlignment="center"
+                        android:textColor="@color/filter_chip_text_selector"
+                        app:chipBackgroundColor="@color/filter_chip_background_selector" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_type_sell_filled"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="1"
+                        android:text="@string/chip_type_sell"
+                        android:textAlignment="center"
+                        android:textColor="@color/filter_chip_text_selector"
+                        app:chipBackgroundColor="@color/filter_chip_background_selector" />
+
+
+
+
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_type_all_filled"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_weight="1"
+                        android:checked="true"
+                        android:text="@string/chip_type_all"
+                        android:textAlignment="center"
+                        android:textColor="@color/filter_chip_text_selector"
+                        app:chipBackgroundColor="@color/filter_chip_background_selector" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"
+                android:background="?android:attr/listDivider" />
+
+            <TextView
+                android:id="@+id/label_date_range"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/label_date_range"
+                android:textAppearance="?attr/textAppearanceSubtitle1" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#DEDEDE"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:id="@+id/chipgroup_date_range_filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_period_1w_filled"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="1"
+                        android:text="@string/chip_period_1w"
+                        android:textAlignment="center"
+                        android:textColor="@color/filter_chip_text_selector"
+                        app:chipBackgroundColor="@color/filter_chip_background_selector" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_period_1m_filled"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="1"
+                        android:checked="true"
+                        android:text="@string/chip_period_1m"
+                        android:textAlignment="center"
+                        android:textColor="@color/filter_chip_text_selector"
+                        app:chipBackgroundColor="@color/filter_chip_background_selector" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_period_3m_filled"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="1"
+                        android:text="@string/chip_period_3m"
+                        android:textAlignment="center"
+                        android:textColor="@color/filter_chip_text_selector"
+                        app:chipBackgroundColor="@color/filter_chip_background_selector" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_period_6m_filled"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="1"
+                        android:text="@string/chip_period_6m"
+                        android:textAlignment="center"
+                        android:textColor="@color/filter_chip_text_selector"
+                        app:chipBackgroundColor="@color/filter_chip_background_selector" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_period_direct_filled"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_weight="1"
+                        android:text="@string/chip_period_direct"
+                        android:textAlignment="center"
+                        android:textColor="@color/filter_chip_text_selector"
+                        app:chipBackgroundColor="@color/filter_chip_background_selector" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/textView_period_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="8dp"
+                android:textAppearance="?attr/textAppearanceCaption"
+                tools:text="1개월 내역보기" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#DEDEDE"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/textView_start_date_filled"
+                        style="@style/DateFieldStyle"
+                        tools:text="@string/report_time" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="~" />
+
+                    <TextView
+                        android:id="@+id/textView_end_date_filled"
+                        style="@style/DateFieldStyle"
+                        tools:text="@string/report_time" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

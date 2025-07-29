@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_more"
+    app:startDestination="@id/moreFragment">
+
+    <!-- Main More Fragment -->
+    <fragment
+        android:id="@+id/moreFragment"
+        android:name="com.stip.stip.more.fragment.MoreFragment"
+        android:label="fragment_more"
+        tools:layout="@layout/fragment_more">
+        
+        <!-- Navigation to Member Info -->
+        <action
+            android:id="@+id/action_moreFragment_to_moreMemberInfoFragment"
+            app:destination="@id/moreMemberInfoFragment" />
+            
+        <!-- Navigation to Price Alert -->
+        <action
+            android:id="@+id/action_moreFragment_to_morePriceAlertFragment"
+            app:destination="@id/morePriceAlertFragment" />
+            
+        <!-- Navigation to Mode Settings -->
+        <action
+            android:id="@+id/action_moreFragment_to_moreModeSettingFragment"
+            app:destination="@id/moreModeSettingFragment" />
+            
+        <!-- Navigation to Security Settings -->
+        <action
+            android:id="@+id/action_moreFragment_to_moreSecurityFragment"
+            app:destination="@id/moreSecurityFragment" />
+            
+        <!-- Navigation to IP Entertainment Sections -->
+        <action
+            android:id="@+id/action_moreFragment_to_ipToonFragment"
+            app:destination="@id/ipToonFragment" />
+            
+        <action
+            android:id="@+id/action_moreFragment_to_ipAuctionFragment"
+            app:destination="@id/ipAuctionFragment" />
+            
+        <action
+            android:id="@+id/action_moreFragment_to_ipSwapFragment"
+            app:destination="@id/ipSwapFragment" />
+            
+        <action
+            android:id="@+id/action_moreFragment_to_ipDonationFragment"
+            app:destination="@id/ipDonationFragment" />
+            
+        <!-- Navigation to Customer Center -->
+        <action
+            android:id="@+id/action_moreFragment_to_moreCustomerCenterFragment"
+            app:destination="@id/moreCustomerCenterFragment" />
+            
+        <!-- Navigation to Login History -->
+        <action
+            android:id="@+id/action_moreFragment_to_moreLoginHistoryFragment"
+            app:destination="@id/moreLoginHistoryFragment" />
+            
+        <!-- Navigation to Policy -->
+        <action
+            android:id="@+id/action_moreFragment_to_morePolicyFragment"
+            app:destination="@id/morePolicyFragment" />
+    </fragment>
+
+    <!-- Member Info Fragment -->
+    <fragment
+        android:id="@+id/moreMemberInfoFragment"
+        android:name="com.stip.stip.more.fragment.MoreMemberInfoFragment"
+        android:label="fragment_more_member_info"
+        tools:layout="@layout/fragment_more_member_info">
+        
+        <!-- Action to Email Change -->
+        <action
+            android:id="@+id/action_moreMemberInfoFragment_to_emailChangeFragment"
+            app:destination="@id/emailChangeFragment" />
+            
+        <!-- Action to Account Deletion -->
+        <action
+            android:id="@+id/action_moreMemberInfoFragment_to_accountDeletionGuideFragment"
+            app:destination="@id/accountDeletionGuideFragment" />
+    </fragment>
+    
+    <!-- Email Change Fragment -->
+    <fragment
+        android:id="@+id/emailChangeFragment"
+        android:name="com.stip.stip.more.fragment.EmailChangeFragment"
+        android:label="fragment_email_change"
+        tools:layout="@layout/fragment_email_change" />
+        
+    <!-- Account Deletion Guide Fragment -->
+    <fragment
+        android:id="@+id/accountDeletionGuideFragment"
+        android:name="com.stip.stip.more.fragment.AccountDeletionGuideFragment"
+        android:label="fragment_account_deletion_guide"
+        tools:layout="@layout/fragment_account_deletion_guide">
+        
+        <action
+            android:id="@+id/action_accountDeletionGuideFragment_to_accountFinalConfirmDialogFragment"
+            app:destination="@id/accountFinalConfirmDialogFragment" />
+    </fragment>
+    
+    <!-- Account Final Confirmation Dialog Fragment -->
+    <dialog
+        android:id="@+id/accountFinalConfirmDialogFragment"
+        android:name="com.stip.stip.more.fragment.AccountFinalConfirmDialogFragment"
+        android:label="fragment_account_final_confirm_dialog"
+        tools:layout="@layout/fragment_account_final_confirm_dialog" />
+
+    <!-- Price Alert Fragment -->
+    <fragment
+        android:id="@+id/morePriceAlertFragment"
+        android:name="com.stip.stip.more.fragment.MorePriceAlertFragment"
+        android:label="fragment_more_price_alert"
+        tools:layout="@layout/fragment_more_price_alert">
+        
+        <action
+            android:id="@+id/action_morePriceAlertFragment_to_marketPriceAlertFragment"
+            app:destination="@id/marketPriceAlertFragment" />
+            
+        <action
+            android:id="@+id/action_morePriceAlertFragment_to_standardAlertFragment"
+            app:destination="@id/standardAlertFragment" />
+    </fragment>
+    
+    <!-- Market Price Alert Fragment -->
+    <fragment
+        android:id="@+id/marketPriceAlertFragment"
+        android:name="com.stip.stip.more.fragment.MarketPriceAlertFragment"
+        android:label="fragment_market_price_alert"
+        tools:layout="@layout/fragment_market_price_alert" />
+        
+    <!-- Standard Alert Fragment -->
+    <fragment
+        android:id="@+id/standardAlertFragment"
+        android:name="com.stip.stip.more.fragment.StandardAlertFragment"
+        android:label="fragment_standard_alert"
+        tools:layout="@layout/fragment_standard_alert" />
+
+    <!-- Mode Settings Fragment -->
+    <fragment
+        android:id="@+id/moreModeSettingFragment"
+        android:name="com.stip.stip.more.fragment.MoreModeSettingFragment"
+        android:label="fragment_more_mode_setting"
+        tools:layout="@layout/fragment_more_mode_setting" />
+
+    <!-- Security Fragment -->
+    <fragment
+        android:id="@+id/moreSecurityFragment"
+        android:name="com.stip.stip.more.fragment.MoreSecurityFragment"
+        android:label="fragment_more_security"
+        tools:layout="@layout/fragment_more_security">
+        
+        <!-- Dialog for Forgot PIN -->
+        <action
+            android:id="@+id/action_moreSecurityFragment_to_forgetPinDialogFragment"
+            app:destination="@id/forgetPinDialogFragment" />
+            
+        <!-- Dialog for PIN Incorrect -->
+        <action
+            android:id="@+id/action_moreSecurityFragment_to_pinIncorrectDialogFragment"
+            app:destination="@id/pinIncorrectDialogFragment" />
+    </fragment>
+    
+    <!-- Forget PIN Dialog Fragment -->
+    <dialog
+        android:id="@+id/forgetPinDialogFragment"
+        android:name="com.stip.stip.more.fragment.ForgetPinDialogFragment"
+        android:label="fragment_forget_pin_dialog"
+        tools:layout="@layout/fragment_forget_pin_dialog" />
+        
+    <!-- PIN Incorrect Dialog Fragment -->
+    <dialog
+        android:id="@+id/pinIncorrectDialogFragment"
+        android:name="com.stip.stip.more.fragment.PinIncorrectDialogFragment"
+        android:label="fragment_pin_incorrect_dialog"
+        tools:layout="@layout/fragment_pin_incorrect_dialog" />
+
+    <!-- IP Entertainment Fragments -->
+    <!-- IP Toon Fragment -->
+    <fragment
+        android:id="@+id/ipToonFragment"
+        android:name="com.stip.stip.more.fragment.ipentertainment.IPToonFragment"
+        android:label="fragment_ip_toon"
+        tools:layout="@layout/fragment_ip_toon" />
+        
+    <!-- IP Auction Fragment -->
+    <fragment
+        android:id="@+id/ipAuctionFragment"
+        android:name="com.stip.stip.more.fragment.ipentertainment.IPAuctionFragment"
+        android:label="fragment_ip_auction"
+        tools:layout="@layout/fragment_ip_auction">
+        
+        <action
+            android:id="@+id/action_ipAuctionFragment_to_auctionDetailFragment"
+            app:destination="@id/auctionDetailFragment" />
+    </fragment>
+    
+    <!-- Auction Detail Fragment -->
+    <fragment
+        android:id="@+id/auctionDetailFragment"
+        android:name="com.stip.stip.more.fragment.ipentertainment.AuctionDetailFragment"
+        android:label="fragment_auction_detail"
+        tools:layout="@layout/fragment_auction_detail">
+        
+        <action
+            android:id="@+id/action_auctionDetailFragment_to_bidDialogFragment"
+            app:destination="@id/bidDialogFragment" />
+    </fragment>
+    
+    <!-- Bid Dialog Fragment -->
+    <dialog
+        android:id="@+id/bidDialogFragment"
+        android:name="com.stip.stip.more.fragment.ipentertainment.BidDialogFragment"
+        android:label="fragment_bid_dialog"
+        tools:layout="@layout/fragment_bid_dialog" />
+
+    <!-- IP Swap Fragment -->
+    <fragment
+        android:id="@+id/ipSwapFragment"
+        android:name="com.stip.stip.more.fragment.ipentertainment.IPSwapFragment"
+        android:label="fragment_ip_swap"
+        tools:layout="@layout/fragment_ip_swap">
+        
+        <action
+            android:id="@+id/action_ipSwapFragment_to_ipSwapDetailFragment"
+            app:destination="@id/ipSwapDetailFragment" />
+            
+        <action
+            android:id="@+id/action_ipSwapFragment_to_ipSwapRegistrationFragment"
+            app:destination="@id/ipSwapRegistrationFragment" />
+    </fragment>
+    
+    <!-- IP Swap Detail Fragment -->
+    <fragment
+        android:id="@+id/ipSwapDetailFragment"
+        android:name="com.stip.stip.more.fragment.ipentertainment.IPSwapDetailFragment"
+        android:label="fragment_ip_swap_detail"
+        tools:layout="@layout/fragment_ip_swap_detail">
+        
+        <action
+            android:id="@+id/action_ipSwapDetailFragment_to_ipSwapApplicationFragment"
+            app:destination="@id/ipSwapApplicationFragment" />
+    </fragment>
+    
+    <!-- IP Swap Application Fragment -->
+    <fragment
+        android:id="@+id/ipSwapApplicationFragment"
+        android:name="com.stip.stip.more.fragment.ipentertainment.IPSwapApplicationFragment"
+        android:label="fragment_ip_swap_application"
+        tools:layout="@layout/fragment_ip_swap_application" />
+        
+    <!-- IP Swap Registration Fragment -->
+    <fragment
+        android:id="@+id/ipSwapRegistrationFragment"
+        android:name="com.stip.stip.more.fragment.ipentertainment.IPSwapRegistrationFragment"
+        android:label="fragment_ip_swap_registration"
+        tools:layout="@layout/fragment_ip_swap_registration" />
+
+    <!-- IP Donation Fragment -->
+    <fragment
+        android:id="@+id/ipDonationFragment"
+        android:name="com.stip.stip.more.fragment.ipentertainment.IPDonationFragment"
+        android:label="fragment_ip_donation"
+        tools:layout="@layout/fragment_ip_donation" />
+
+    <!-- Customer Center Fragment -->
+    <fragment
+        android:id="@+id/moreCustomerCenterFragment"
+        android:name="com.stip.stip.more.fragment.MoreCustomerCenterFragment"
+        android:label="fragment_more_customer_center"
+        tools:layout="@layout/fragment_more_customer_center" />
+
+    <!-- Login History Fragment -->
+    <fragment
+        android:id="@+id/moreLoginHistoryFragment"
+        android:name="com.stip.stip.more.fragment.MoreLoginHistoryFragment"
+        android:label="fragment_more_login_history"
+        tools:layout="@layout/fragment_more_login_history">
+        
+        <action
+            android:id="@+id/action_moreLoginHistoryFragment_to_loginHistoryFragment"
+            app:destination="@id/loginHistoryFragment" />
+    </fragment>
+    
+    <!-- Detailed Login History Fragment -->
+    <fragment
+        android:id="@+id/loginHistoryFragment"
+        android:name="com.stip.stip.more.fragment.LoginHistoryFragment"
+        android:label="fragment_login_history"
+        tools:layout="@layout/fragment_login_history" />
+
+    <!-- Policy Fragment -->
+    <fragment
+        android:id="@+id/morePolicyFragment"
+        android:name="com.stip.stip.more.fragment.MorePolicyFragment"
+        android:label="fragment_more_policy"
+        tools:layout="@layout/fragment_more_policy" />
+
+    <!-- Logout Dialog -->
+    <dialog
+        android:id="@+id/logoutDialogFragment"
+        android:name="com.stip.stip.more.fragment.LogoutDialogFragment"
+        android:label="fragment_logout_dialog"
+        tools:layout="@layout/fragment_logout_dialog" />
+
+    <!-- Required Info Consent Dialog -->
+    <dialog
+        android:id="@+id/requiredInfoConsentDialogFragment"
+        android:name="com.stip.stip.more.fragment.RequiredInfoConsentDialogFragment"
+        android:label="fragment_required_info_consent_dialog"
+        tools:layout="@layout/fragment_required_info_consent_dialog" />
+        
+</navigation>

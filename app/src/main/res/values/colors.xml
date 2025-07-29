@@ -1,0 +1,281 @@
+<resources>
+
+    <color name="color_tab_active">#FFFFFF</color>
+    <color name="color_tab_inactive">#14181B</color>
+
+    <!-- Gray colors -->
+    <color name="gray_700">#616161</color>
+    <color name="gray_600">#757575</color>
+    <color name="gray_500">#9E9E9E</color>
+    <color name="text_gray_808080_100">#808080</color>
+    <color name="black">#000000</color>
+    
+    <color name="color_trading_inactive">#9DEDFF</color>
+    <color name="color_main_point">#30C6E8</color>
+    <color name="main_point">#30C6E8</color>
+
+
+    <color name="color_rise">#ED2A2A</color>
+    <color name="color_fall">#1674EA</color>
+    <color name="price_same_color">#FF000000</color>
+
+    <!-- 고객센터 관련 색상 -->
+    <color name="colorPrimary">#30C6E8</color>
+    <color name="gray">#757575</color>
+    <color name="light_gray">#EEEEEE</color>
+
+
+    <color name="tab_text_active">#14181B</color>
+    <color name="tab_text_inactive">#909195</color>
+
+    <!-- res/values/colors.xml -->
+    <color name="background_f4f7fc">#F4F7FC</color>
+
+    <color name="color_text_default">#14181B</color>
+    <color name="color_text_sub">#666666</color>
+    <color name="color_text_description">#999999</color>
+
+
+    <color name="white">#FFFFFF</color>
+
+
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="dialog_cancel_background_color">#F5F5F5</color>
+    <color name="dialog_cancel_text_color">#757575</color>
+    <color name="dialog_cancel_stroke_color">#E0E0E0</color>
+
+
+    <color name="error_red">#D32F2F</color>
+    <color name="light_blue_bg">#E6F5FF</color>
+    <color name="nominal_profit_color">#1674EA</color>
+
+    <!-- Transaction colors -->
+    <color name="deposit_red">#ED2A2A</color>
+    <color name="withdrawal_blue">#1674EA</color>
+    <color name="primary">#30C6E8</color>
+    <color name="divider_gray">#E0E0E0</color>
+
+    <color name="button_disabled_text_grey">#AFAFAF</color>
+    <color name="text_description">#999999</color>
+
+
+    <color name="text_gery">#909195</color>
+    <color name="grey_text">#909195</color>
+    <color name="button_disabled_grey">#BDBDBD</color>
+    <color name="text_disabled_grey">#9E9E9E</color>
+
+    <color name="dialog_title_error_generic">#14181B</color>
+    <color name="gray_666">#666666</color>
+    <color name="dialog_title_info_blue">#4285F4</color>
+
+
+    <color name="color_increase">#DC3545</color>
+    <color name="color_decrease">#1674EA</color>
+    <color name="color_neutral">#6c757d</color>
+
+    <color name="dialog_confirm_button_blue">#30C6E8</color>
+    <color name="dialog_cancel_button_background">#F0F0F0</color>
+
+    <color name="color_stip_background">#ED2A2A</color>
+    <color name="color_etip_background">#1674EA</color>
+
+    <color name="color_stip_rise">#DC3545</color>
+    <color name="color_stip_fall">#1674EA</color>
+
+    <color name="color_etip_rise">#DC3545</color>
+    <color name="color_etip_fall">#1674EA</color>
+
+    <color name="ip_pop_up_color">#B0B8C1</color>
+
+    <color name="trade_buy_background">#FFFAFA</color>   <!-- 아주 연한 분홍 -->
+    <color name="trade_sell_background">#F9FCFF</color> <!-- 아주 연한 하늘 -->
+
+    <color name="color_filter_background_active">#30C6E8</color>
+    <color name="color_filter_background_inactive">#FFFFFF</color>
+    <color name="profit_loss">#F4F7FC</color>
+
+    <!-- 기본 색상 -->
+
+    <color name="color_selected_text">#30C6E8</color> <!-- 파란색 텍스트 -->
+    <color name="color_unselected_text">#DDDDDD</color> <!-- 회색 텍스트 -->
+
+    <!-- 배경 색상 -->
+    <color name="color_selected_background">#E8F6FD</color> <!-- 선택된 배경 -->
+    <color name="color_unselected_background">#FFFFFF</color> <!-- 비선택된 배경 -->
+
+
+    <!-- Example of adding a missing color -->
+    <color name="percent_color">#FF0000</color> <!-- Add this line -->
+
+
+    <color name="color_selected">#30C6E8</color> <!-- 매수 버튼 색상 -->
+    <color name="color_unselected">#CCCCCC</color> <!-- 매도 버튼 비활성화 색상 -->
+
+
+    <!-- 기존 색상들 -->
+    <color name="button_primary_color">#0066FF</color> <!-- 예시 색상 (파란색) -->
+
+
+    <color name="dialog_title_buy_error_red">#DD3D43</color>
+    <color name="dialog_title_sell_error_blue">#30C6E8</color>
+    <color name="dialog_message_text">#14181B</color>
+    <color name="dialog_button_text">#FFFFFFFF</color>
+    <color name="dialog_button_background">#30C6E8</color>
+    <color name="dialog_background">#FFFFFFFF</color>
+
+    <color name="text_color_default_gray">#969696</color>
+    <color name="text_color_positive_red">#DD3D43</color>
+    <color name="divider_color">#E0E0E0</color>
+
+
+
+
+
+    <color name="gray_300">#D1D5DB</color> <!-- 연회색 (수직선) -->
+
+
+    9A9A9A
+    <color name="trading_page_info">#9A9A9A</color>
+
+
+    <!-- Fall Red color for Profit loss -->
+    <color name="color_fall_red">#0030C6E8</color> <!-- 연한 파란색 -->
+
+
+    <color name="color_rise_green_light">#80A3D9A5</color> <!-- 연한 초록색 -->
+    <color name="color_rise_green">#30C6E8</color> <!-- 기본 초록색 -->
+
+
+    <color name="tab_underline_inactive">#DEDEDE</color>
+
+    <color name="trade_header_background">#FFFFFF</color>
+    <color name="trade_header_text">#14181B
+    </color>
+    <color name="trade_header_separator">#DEDEDE</color>
+
+
+    <color name="list_item_background">#FFFFFF</color>
+    <color name="list_item_text">#14181B
+    </color>
+    <color name="list_item_divider">#DEDEDE</color>
+
+    <color name="color_box_under">#DEDEDE</color>
+
+
+    <color name="border_gray">#DEDEDE</color> <!-- 오늘 날짜 테두리용 (선택) -->
+
+
+    <color name="color_buy_red">#FF5252</color>
+    <color name="color_sell_blue">#448AFF</color>
+
+    <color name="dededed">#DEDEDE</color>
+
+
+    <!-- colors.xml -->
+    <color name="color_deposit_red">#E53935</color>
+    <color name="color_withdraw_blue">#1E88E5</color>
+
+    <color name="color_main_text">#14181B</color>
+
+
+    <color name="text_gray">#999999</color>
+
+    <color name="main_point_blue">#30C6E8</color>
+
+    <!-- 하락 -->
+
+
+    <color name="red">#E64A19</color>
+    <color name="blue">#1976D2</color>
+
+    <color name="flash_red">#FF4D4F</color>
+    <color name="flash_blue">#3C89F5</color>
+
+    <color name="sort_inactive">#D1D1D1</color>
+
+    <color name="order_book_bid_bg">#FDEFEF</color>
+    <color name="order_book_bid_text">#DD3D43</color>
+
+
+    <color name="tab_text_active_buy">#ED2A2A</color>
+    <color name="tab_text_active_sell">#1979F3
+    </color>
+    <color name="tab_text_active_history">#000000</color>
+
+    <color name="percentage_positive_red">#DD3D43</color>
+    <color name="percentage_negative_blue">
+        #1979F3
+    </color>
+
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+    <color name="transparent">#00ff0000</color>
+
+    <color name="sky_30C6E8_10">#1A30C6E8</color>
+    <color name="sky_30C6E8_90">#F230C6E8</color>
+    <color name="sky_30C6E8_100">#30C6E8</color>
+    <color name="gray_E2E7F0_100">#E2E7F0</color>
+    <color name="gray_E2E7EE_100">#E2E7EE</color>
+    <color name="gray_F4F7FC_100">#F4F7FC</color>
+    <color name="gray_DDDDDD_100">#DDDDDD</color>
+    <color name="gray_949698_100">#949698</color>
+    <color name="red_DB3949_100">#DB3949</color>
+
+    <color name="text_black_000000_100">#000000</color>
+    <color name="text_black_14181B_100">#14181B</color>
+    <color name="text_black_3B4246_100">#3B4246</color>
+    <color name="text_sky_30C6E8_100">#30C6E8</color>
+    <color name="text_gray_B0B8C1_100">#B0B8C1</color>
+    <color name="text_gray_595F63_100">#595F63</color>
+    <color name="text_gray_9D9FA0_100">#9D9FA0</color>
+    <color name="text_red_DD3D43_100">#DD3D43</color>
+    <color name="text_blue_0064E6_100">#0064E6</color>
+
+    <!-- Policy highlight color for animation -->
+    <color name="highlight_background">#E6F5FE</color>
+
+    <!-- IP 유형별 색상 -->
+    <color name="ip_patent">#2574A9</color> <!-- 특허: 파란색 -->
+    <color name="ip_trademark">#28A745</color> <!-- 상표: 초록색 -->
+    <color name="ip_copyright">#7952B3</color> <!-- 저작권/음악/영화: 보라색 -->
+    <color name="ip_design">#E15361</color> <!-- 디자인: 분홍색 -->
+    <color name="ip_character">#F0AD4E</color> <!-- 캐릭터: 주황색 -->
+    <color name="ip_franchise">#5BC0BE</color> <!-- 프랜차이즈: 청록색 -->
+    <color name="ip_other">#6C757D</color> <!-- 기타: 회색 -->
+    
+    <!-- IP스왑 필터칩 색상 -->
+    <color name="filter_chip_background_selected">#30C6E8</color>
+    <color name="filter_chip_background_unselected">#F5F7FA</color>
+    <color name="filter_chip_text_selected">#FFFFFF</color>
+    <color name="filter_chip_text_unselected">#14181B</color>
+    <color name="filter_chip_stroke">#E0E0E0</color>
+    
+    <!-- 섹터 필터 색상 -->
+    <color name="blue_50">#E3F2FD</color>
+    <color name="blue_100">#BBDEFB</color>
+    <color name="blue_200">#90CAF9</color>
+    <color name="blue_300">#64B5F6</color>
+    <color name="blue_400">#42A5F5</color>
+    <color name="blue_500">#30C6E8</color>
+    <color name="gray_200">#EEEEEE</color>
+    <color name="gray_400">#BDBDBD</color>
+    
+    <!-- 출금 확인 화면 색상 -->
+    <color name="text_gray_505060_100">#505060</color>
+    <color name="gray_F8FAFF_100">#F8FAFF</color>
+    <color name="text_gray_232D3F_100">#232D3F</color>
+    <color name="gray_F0F0F5_100">#F0F0F5</color>
+    
+    <!-- 입출금 태그 색상 -->
+    <color name="light_pink_deposit">#FFCCD5</color> <!-- 연한 분홍색 - 입금 완료 -->
+    <color name="light_blue_withdrawal">#CCE5FF</color> <!-- 연한 하늘색 - 출금 완료 -->
+    <color name="light_green_return">#D4EDDA</color> <!-- 연한 초록색 - 반환됨 -->
+    <color name="light_orange_in_progress">#FFF3CD</color> <!-- 연한 주황색 - 진행중 -->
+</resources>
+
+

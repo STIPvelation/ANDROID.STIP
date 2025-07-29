@@ -1,0 +1,613 @@
+<resources>
+
+    <!-- ✅ 공통 헤더 스타일 -->
+    <style name="HeaderTextStyle">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/color_text_default</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <!-- ✅ 공통 헤더 스타일 -->
+
+
+    <style name="ip_search">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#595F63</item>
+    </style>
+
+    <style name="all_ip">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="YourCustomDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="DialogTitleStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DialogMessageStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+    </style>
+
+    <style name="DialogCheckboxTextStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+
+    <string name="tnum">거래번호</string>
+
+    <style name="CustomTabLayout" parent="Widget.MaterialComponents.TabLayout">
+        <item name="tabBackground">@drawable/tab_item_background_selector</item>
+        <item name="tabIndicatorHeight">0dp</item>
+        <item name="tabSelectedTextColor">@android:color/white</item>
+        <item name="tabTextColor">@android:color/darker_gray</item>
+        <item name="tabTextAppearance">@style/CustomTabTextAppearance</item>
+    </style>
+
+    <style name="CustomTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">14sp</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="android:letterSpacing">0.01</item>
+    </style>
+
+
+    <!-- ✅ 공통 팝업 스타일 -->
+
+    <style name="PopupProfitType">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+    <!-- ✅ 공통 팝업 스타일 -->
+
+
+    <!-- ✅ 탭바 텍스트 -->
+    <style name="TabTextStyle">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/color_tab_inactive</item>
+    </style>
+
+    <style name="TabTextStyle_Active">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+
+    <style name="TabContentTextStyle">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/color_text_default</item>
+    </style>
+    <!-- ✅ 탭바 텍스트 -->
+
+
+    <!-- ✅ 기본 텍스트 스타일 -->
+    <style name="DefaultTextStyle_20">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/color_text_default</item>
+    </style>
+
+    <style name="DefaultTextStyle_16">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/color_text_default</item>
+    </style>
+
+
+    <style name="DefaultTextStyle_medium_16">
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/color_text_default</item>
+    </style>
+
+
+    <style name="DefaultTextStyle_14">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/color_text_default</item>
+    </style>
+
+
+    <style name="DefaultTextStyle_thin_14">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#595A61</item>
+    </style>
+
+
+    <style name="DefaultTextStyle_medium_14">
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/color_text_default</item>
+    </style>
+
+
+    <style name="DefaultTextStyle_12">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/color_text_default</item>
+        <item name="android:fontFeatureSettings">tnum</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+
+    <style name="DefaultTextStyle_gery_12">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/text_gery</item>
+        <item name="android:fontFeatureSettings">tnum</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+
+    <style name="DefaultTextStyle_thin_12">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#595A61</item>
+    </style>
+
+
+    <style name="DefaultTextStyle_10">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/color_text_default</item>
+    </style>
+
+    <style name="DefaultTextStyle_gery_14">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_gery</item>
+        <item name="android:fontFeatureSettings">tnum</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+
+    <style name="DefaultTextStyle_gery_10">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/text_gery</item>
+        <item name="android:fontFeatureSettings">tnum</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+
+    <style name="DefaultTextStyle_8">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">8sp</item>
+        <item name="android:textColor">@color/color_text_default</item>
+    </style>
+
+    <style name="DefaultTextStyle_6">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">6sp</item>
+        <item name="android:textColor">@color/color_text_default</item>
+    </style><!-- ✅ 기본 텍스트 스타일 -->
+
+
+    <style name="DefaultTextStyle_grey_10">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/text_gray</item>
+    </style>
+
+    <style name="DefaultTextStyle_10_grey">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">8sp</item>
+        <item name="android:textColor">@color/trading_page_info</item>
+    </style>
+
+    <style name="DefaultTextStyle_radio_12">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+
+    <style name="DefaultTextStyle_white_14">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="DefaultTextStyle_trading_inactive_14">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/color_trading_inactive</item>
+    </style>
+
+
+    <style name="MemberInfoItemContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingHorizontal">16dp</item>
+        <item name="android:paddingTop">12dp</item>
+
+    </style>
+
+    <style name="MemberInfoLabel" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#B0B8C1</item>
+    </style>
+
+    <style name="MemberInfoValue" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#14181B</item>
+    </style>
+
+    <style name="MemberInfoDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">#F0F0F0</item>
+        <item name="android:layout_marginHorizontal">16dp</item>
+    </style>
+
+
+    <!-- ✅ 기본 텍스트 스타일 -->
+
+
+    <style name="IPHome_Trading_Header">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#D1D1D1</item>
+        <item name="android:lineSpacingExtra">-3sp</item>
+    </style>
+
+
+    <style name="all_ip_fillter_activ_style">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="all_ip_fillter_inactiv_style">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textColor">@color/ip_pop_up_color</item>
+    </style>
+
+
+    <style name="all_ip_fillter_style">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#B0B8C1</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+    </style>
+
+
+    <style name="DialogErrorTitleStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#DD3D43</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DialogErrorMessageStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#14181B</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+    </style>
+
+    <style name="DialogButtonTextStyle">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Custom Filter Chip Style -->
+    <style name="Widget.App.FilterChip" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="chipCornerRadius">20dp</item>
+        <item name="android:minHeight">36dp</item>
+        <item name="chipBackgroundColor">@color/filter_chip_background_selector</item>
+        <item name="android:textColor">@color/filter_chip_text_selector</item>
+        <item name="rippleColor">#1A3996FF</item>
+        <item name="elevation">0dp</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="chipStrokeColor">@color/filter_chip_stroke</item>
+        <item name="chipStrokeWidth">1dp</item>
+    </style>
+    
+    <!-- Modern Tab Text Appearance for IP Swap -->
+    <style name="ModernTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.01</item>
+    </style>
+
+
+    <!-- ✅ IP트렌드 -->
+    <!-- 선택된 날짜 버튼 텍스트 스타일 -->
+    <style name="DateTextStyle_Selected">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/color_selected_text</item> <!-- 선택된 색상 -->
+    </style>
+
+    <!-- 비선택된 텍스트 스타일 -->
+    <style name="DateTextStyle_Unselected">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/color_unselected_text</item> <!-- 비선택된 텍스트 색상 -->
+    </style>
+
+
+    <!-- 날짜 표시 텍스트 스타일 -->
+    <style name="standard_time_style">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">#999999</item>
+    </style><!-- ✅ IP트렌드 -->
+
+
+    <!-- ✅ IP뉴스 -->
+    <style name="breaking_news_style">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#FFE300</item>
+    </style><!-- ✅ IP뉴스 -->
+
+
+    <!-- ✅ IP보유 -->
+    <style name="IP_Holding_text">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#555555</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+    </style>
+
+    <style name="IP_Holding_White_Text">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style><!-- ✅ IP보유 -->
+
+
+    <!-- ✅ IP손익 -->
+    <style name="NoticeLabel">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#30C6E8</item>
+    </style>
+
+
+    <style name="ProfitInfoLabel" parent="BaseTextStyle">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#14181B</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+    </style>
+
+
+    <style name="TradeHeaderText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:background">@color/trade_header_background</item>
+        <item name="android:textColor">@color/trade_header_text</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+    <style name="DividerStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">#EEEEEE</item>
+    </style>
+
+
+    <style name="ListItemTextBase">
+        <item name="android:textColor">@color/list_item_text</item>
+        <item name="android:textSize">@dimen/list_item_text_size</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/list_item_background</item>
+    </style>
+
+    <style name="ListItemTextCell" parent="ListItemTextBase">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/list_item_cell_height</item>
+    </style>
+
+    <style name="ListItemDateText" parent="ListItemTextBase">
+        <item name="android:layout_width">@dimen/list_item_date_width</item>
+        <item name="android:layout_height">0dp</item>
+    </style>
+
+
+    <style name="IpSearchMaterialButtonStyle" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="android:layout_height">32dp</item>
+        <item name="android:minHeight">32dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="backgroundTint">#30C6E8</item>
+        <item name="cornerRadius">16dp</item>
+        <item name="rippleColor">#A0E7F8</item>
+    </style><!-- ✅ IP손익 -->
+
+
+    <!-- IP투자 -->
+    <!-- IP투자 -->
+
+
+    <!-- 미체결 -->
+    <!-- 미체결 -->
+
+
+    <!-- 작은 텍스트 -->
+    <style name="TextSmallRegular">
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+    </style>
+
+
+    <style name="HeaderCellStyle_Boxed">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/header_cell_height</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#14181B</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:background">@drawable/cell_border_header</item>
+    </style>
+
+    <!-- 일반 셀 스타일 -->
+    <style name="ItemCellStyle_Boxed">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/header_cell_height</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#14181B</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:background">@drawable/cell_item_border</item>
+    </style>
+
+
+    <!-- MDM Text Style -->
+    <style name="TextStyle_Mdm">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#14181B</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+    </style>
+
+
+    <!-- TabTextStyle_White style definition -->
+    <style name="TabTextStyle_White">
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/white</item> <!-- You can customize this color -->
+    </style>
+
+
+    <!-- Define a new style for jwb_percent_text -->
+    <style name="TextStyle_Percent">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">15sp</item> <!-- Adjust size as needed -->
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+
+    <!-- 1개월 버튼 스타일 -->
+
+
+    <style name="TextStyle_OrderAccent" parent="TextStyle_Percent">
+        <item name="android:textColor">#30C6E8</item>
+    </style>
+
+
+    <style name="breaking_news_text">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+
+    <!-- 거래내역 -->
+
+
+    <style name="noipcolor">
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#C4C4C4</item>
+    </style>
+
+
+    <style name="BaseTextStyle">
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+
+    <style name="DateFieldStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:textAppearance">?attr/textAppearanceBody1</item>
+        <item name="android:textColor">#14181B</item>
+    </style>
+
+    <style name="ResetButtonStyle" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/material_on_surface_disabled</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginEnd">4dp</item>
+    </style>
+
+    <style name="SearchButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginStart">4dp</item>
+    </style>
+
+
+    <!-- 공통 스타일 정의 -->
+    <style name="TableHeaderTextStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="BottomNavigationTextStyle">
+        <item name="android:textSize">10dp</item>
+    </style>
+
+    <!-- PopUp Theme -->
+    <style name="PopUpDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:colorForeground">@color/transparent</item>
+        <item name="android:windowMinWidthMajor">100%</item>
+        <item name="android:windowMinWidthMinor">100%</item>
+    </style>
+
+    <style name="BottomSheetWhiteTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/WhiteBottomSheetStyle</item>
+    </style>
+
+    <style name="WhiteBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/white</item>
+    </style>
+
+
+    <!-- Full Screen Dialog Style -->
+    <style name="FullScreenDialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+    </style>
+</resources>

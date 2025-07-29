@@ -1,0 +1,5 @@
+# This file contains local overrides for gradle.properties
+# Copy any needed properties from gradle.properties and add your local settings
+
+# Suppress unsupported compileSdk warning
+android.suppressUnsupportedCompileSdk=35

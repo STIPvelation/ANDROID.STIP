@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 배경색 (연한 빨강) -->
+    <item android:id="@android:id/background">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFEAEA" />
+        </shape>
+    </item>
+
+    <!-- 진행색 (진한 빨강), 반드시 clip 안에!! -->
+    <item android:id="@android:id/progress">
+        <clip android:clipOrientation="horizontal" android:gravity="left">
+            <shape android:shape="rectangle">
+                <solid android:color="#2ABDA8A8" />
+            </shape>
+        </clip>
+    </item>
+</layer-list>

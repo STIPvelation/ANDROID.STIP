@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@android:color/white">
+
+    <!-- 약관 제목 -->
+    <TextView
+        android:id="@+id/textTitle"
+        style="@style/DefaultTextStyle_medium_16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="12dp"
+        android:text="약관 제목" />
+
+    <!-- 약관 본문 스크롤 영역 -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:overScrollMode="ifContentScrolls">
+
+        <TextView
+            android:id="@+id/textContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:gravity="start"
+            android:lineSpacingExtra="4dp"
+            android:textAlignment="viewStart"
+            android:paddingBottom="16dp" />
+
+
+    </ScrollView>
+
+    <!-- 확인 버튼 -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/dialog_confirm"
+        android:textColor="@android:color/white"
+        app:backgroundTint="@color/main_point"
+        app:cornerRadius="0dp"
+        style="@style/DefaultTextStyle_16" />
+</LinearLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_after_login"
+    app:startDestination="@+id/navigation_ip_home">
+
+    <fragment
+        android:id="@+id/navigation_ip_home"
+        android:name="com.stip.stip.iphome.fragment.IpHomeFragment"
+        tools:layout="@layout/fragment_ip_home" />
+
+    <fragment
+        android:id="@+id/navigation_transaction_history"
+        android:name="com.stip.stip.signup.main.transaction.TransactionHistoryFragment"
+        tools:layout="@layout/fragment_transaction_history" />
+
+    <fragment
+        android:id="@+id/navigation_more"
+        android:name="com.stip.stip.signup.main.more.MoreFragment"
+        tools:layout="@layout/fragment_more" />
+</navigation>

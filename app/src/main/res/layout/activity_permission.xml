@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+        
+        <!-- 가이드라인 추가 - 화면 너비에 따라 자동 조정됨 -->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+            
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+        
+        <ScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            android:clipToPadding="false"
+            android:scrollbarStyle="outsideOverlay"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btn_ok"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            android:layout_marginBottom="@dimen/spacing_medium">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/spacing_large">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_permission_explain"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xxxlarge"
+                android:fontFamily="@font/pretendard_medium_font_family"
+                android:lineSpacingMultiplier="1.2"
+                android:textColor="@color/text_black_14181B_100"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="14sp"
+                app:autoSizeMaxTextSize="22sp"
+                app:autoSizeStepGranularity="1sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_default="percent"
+                app:layout_constraintWidth_percent="0.9"
+                tools:text="@string/permission_title" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_camera"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintWidth_percent="0.06"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:src="@drawable/ic_camera"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_permission_explain" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_camera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_small"
+                android:fontFamily="@font/pretendard_regular_font_family"
+                android:text="@string/permission_camera"
+                android:textColor="@color/text_black_14181B_100"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="12sp"
+                app:autoSizeMaxTextSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/iv_camera"
+                app:layout_constraintTop_toTopOf="@+id/iv_camera" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_camera_select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_xsmall"
+                android:fontFamily="@font/pretendard_regular_font_family"
+                android:text="@string/permission_select"
+                android:textColor="@color/text_black_14181B_100"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="10sp"
+                app:autoSizeMaxTextSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_camera"
+                app:layout_constraintStart_toEndOf="@+id/tv_camera" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_camera_comment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xsmall"
+                android:fontFamily="@font/pretendard_regular_font_family"
+                android:text="@string/permission_camera_comment"
+                android:textColor="@color/text_black_14181B_100"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="10sp"
+                app:autoSizeMaxTextSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_camera"
+                app:layout_constraintTop_toBottomOf="@+id/tv_camera" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_picture"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintWidth_percent="0.06"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:src="@drawable/ic_picture"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_camera_comment" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_picture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_small"
+                android:fontFamily="@font/pretendard_regular_font_family"
+                android:text="@string/permission_picture"
+                android:textColor="@color/text_black_14181B_100"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="12sp"
+                app:autoSizeMaxTextSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/iv_picture"
+                app:layout_constraintTop_toTopOf="@+id/iv_picture" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_picture_select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_xsmall"
+                android:fontFamily="@font/pretendard_regular_font_family"
+                android:text="@string/permission_select"
+                android:textColor="@color/text_black_14181B_100"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="10sp"
+                app:autoSizeMaxTextSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_picture"
+                app:layout_constraintStart_toEndOf="@+id/tv_picture" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_picture_comment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xsmall"
+                android:fontFamily="@font/pretendard_regular_font_family"
+                android:text="@string/permission_picture_comment"
+                android:textColor="@color/text_black_14181B_100"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="10sp"
+                app:autoSizeMaxTextSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_picture"
+                app:layout_constraintTop_toBottomOf="@+id/tv_picture" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_biometric_auth"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintWidth_percent="0.06"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:src="@drawable/ic_biometric_auth_24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_picture_comment" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_biometric_auth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_small"
+                android:fontFamily="@font/pretendard_regular_font_family"
+                android:text="@string/permission_biometric_auth"
+                android:textColor="@color/text_black_14181B_100"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="12sp"
+                app:autoSizeMaxTextSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/iv_biometric_auth"
+                app:layout_constraintTop_toTopOf="@+id/iv_biometric_auth" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_biometric_auth_select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_xsmall"
+                android:fontFamily="@font/pretendard_regular_font_family"
+                android:text="@string/permission_select"
+                android:textColor="@color/text_black_14181B_100"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="10sp"
+                app:autoSizeMaxTextSize="14sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tv_biometric_auth"
+                app:layout_constraintStart_toEndOf="@+id/tv_biometric_auth" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_biometric_auth_comment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xsmall"
+                android:fontFamily="@font/pretendard_regular_font_family"
+                android:text="@string/permission_biometric_auth_comment"
+                android:textColor="@color/text_black_14181B_100"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="10sp"
+                app:autoSizeMaxTextSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_biometric_auth"
+                app:layout_constraintTop_toBottomOf="@+id/tv_biometric_auth_select" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_notification"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintWidth_percent="0.06"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:src="@drawable/ic_notification"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_biometric_auth_comment" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_notification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_small"
+                android:fontFamily="@font/pretendard_regular_font_family"
+                android:text="@string/permission_notification"
+                android:textColor="@color/text_black_14181B_100"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="12sp"
+                app:autoSizeMaxTextSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/iv_notification"
+                app:layout_constraintTop_toTopOf="@+id/iv_notification" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_notification_select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_xsmall"
+                android:fontFamily="@font/pretendard_regular_font_family"
+                android:text="@string/permission_select"
+                android:textColor="@color/text_black_14181B_100"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="10sp"
+                app:autoSizeMaxTextSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_notification"
+                app:layout_constraintStart_toEndOf="@+id/tv_notification" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_notification_comment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xsmall"
+                android:fontFamily="@font/pretendard_regular_font_family"
+                android:text="@string/permission_notification_comment"
+                android:textColor="@color/text_black_14181B_100"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="10sp"
+                app:autoSizeMaxTextSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_notification"
+                app:layout_constraintTop_toBottomOf="@+id/tv_notification_select" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_permission_comment_dot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xxxlarge"
+                android:fontFamily="@font/pretendard_regular_font_family"
+                android:text="@string/common_dot"
+                android:textColor="@color/text_black_14181B_100"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="12sp"
+                app:autoSizeMaxTextSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_notification_comment" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_permission_comment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_xsmall"
+                android:fontFamily="@font/pretendard_regular_font_family"
+                android:text="@string/permission_comment"
+                android:textColor="@color/text_black_14181B_100"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="12sp"
+                app:autoSizeMaxTextSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_permission_comment_dot"
+                app:layout_constraintTop_toTopOf="@+id/tv_permission_comment_dot" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btn_ok"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:background="@drawable/round_solid_sky_radius_4dp"
+            android:paddingTop="@dimen/spacing_medium"
+            android:paddingBottom="@dimen/spacing_medium"
+            android:text="@string/common_confirm"
+            android:gravity="center"
+            android:textColor="@color/white"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="14sp"
+            app:autoSizeMaxTextSize="18sp"
+            android:elevation="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.9" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

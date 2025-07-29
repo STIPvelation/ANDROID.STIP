@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/white">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/material_toolbar"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/spacing_xxxlarge"
+        android:background="@color/white"
+        android:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow_left"
+        app:titleCentered="true"
+        app:titleTextAppearance="@style/TitleText"
+        app:title="USD 출금하기"
+        app:titleTextColor="@color/black" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/container_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="32dp"
+        app:cardCornerRadius="@dimen/margin_medium"
+        app:cardElevation="@dimen/card_elevation_normal"
+        android:background="@drawable/bg_card_border_sky"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/material_toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_medium"
+            android:background="@drawable/bg_card_border_sky">
+
+            <LinearLayout
+                android:id="@+id/bank_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_small"
+                    android:layout_height="@dimen/icon_small"
+                    android:src="@drawable/ic_bank"
+                    app:tint="@color/sky_30C6E8_100" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:text="실명계좌"
+                    android:textColor="@color/black" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/text_bank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_medium"
+                    android:textStyle="bold"
+                    android:text="신한은행 110-123-**6789" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/withdrawable_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_small"
+                    android:layout_height="@dimen/icon_small"
+                    android:src="@drawable/ic_dollar_sign"
+                    app:tint="@color/sky_30C6E8_100" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:text="출금가능"
+                    android:textColor="@color/black" />
+                    
+                <ImageView
+                    android:id="@+id/btn_withdrawable_info"
+                    android:layout_width="@dimen/icon_small"
+                    android:layout_height="@dimen/icon_small"
+                    android:layout_marginStart="@dimen/margin_xsmall"
+                    android:src="@drawable/ic_info_circle_small"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/text_withdrawable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_medium"
+                    android:textStyle="bold"
+                    android:text="8,999 USD" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/withdrawal_limit_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_small"
+                    android:layout_height="@dimen/icon_small"
+                    android:src="@drawable/ic_chart"
+                    app:tint="@color/sky_30C6E8_100" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:text="출금한도"
+                    android:textColor="@color/black" />
+                    
+                <ImageView
+                    android:id="@+id/btn_withdrawal_limit_info"
+                    android:layout_width="@dimen/icon_small"
+                    android:layout_height="@dimen/icon_small"
+                    android:layout_marginStart="@dimen/margin_xsmall"
+                    android:src="@drawable/ic_info_circle_small"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/text_limit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_medium"
+                    android:textStyle="bold"
+                    android:text="498,999.00 USD" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- 출금금액 입력 카드 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/withdrawal_input_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/common_side_margin_20dp"
+        android:layout_marginTop="@dimen/margin_medium"
+        app:cardCornerRadius="@dimen/margin_medium"
+        app:cardElevation="@dimen/card_elevation_normal"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/container_info">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card_border_sky">
+
+            <!-- 이미지와 동일하게 테두리가 있는 입력 필드 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:gravity="center_vertical"
+                android:paddingTop="@dimen/padding_small"
+                android:paddingStart="@dimen/padding_medium">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_small"
+                    android:layout_height="@dimen/icon_small"
+                    android:src="@drawable/ic_credit_card"
+                    app:tint="@color/sky_30C6E8_100" />
+
+                <TextView
+                    android:id="@+id/label_withdrawal_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:text="출금금액"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_medium" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/withdrawal_input_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingHorizontal="24dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
+
+                <!-- 최소금액 텍스트 -->
+                <TextView
+                    android:id="@+id/text_min_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="최소 1"
+                    android:textColor="#B0B8C1"
+                    android:textSize="@dimen/text_large" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/policy_divider_height"
+                    android:layout_weight="1" />
+
+                <!-- 입력된 금액 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <EditText
+                        android:id="@+id/withdrawal_input"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1.00"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_xxlarge"
+                        android:textStyle="bold"
+                        android:background="@null"
+                        android:inputType="numberDecimal"
+                        android:maxLines="1"
+                        android:minWidth="80dp"
+                        android:gravity="end" />
+
+                    <!-- USD 라벨 -->
+                    <TextView
+                        android:id="@+id/tv_withdrawal_unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_small"
+                        android:text="USD"
+                        android:textColor="@color/sky_30C6E8_100"
+                        android:textSize="@dimen/text_xxlarge"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+            
+            <!-- 퍼센트 버튼 컨테이너 -->
+            <LinearLayout
+                android:id="@+id/percentage_buttons_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="12dp"
+                android:paddingHorizontal="8dp"
+                android:gravity="center">
+                
+                <!-- 10% 버튼 -->
+                <Button
+                    android:id="@+id/btn_10_percent"
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:text="10%"
+                    android:textSize="12sp"
+                    android:textColor="@color/percentage_button_text_color"
+                    android:backgroundTint="@color/percentage_button_background_tint"
+                    android:textAllCaps="false"/>
+                
+                <!-- 25% 버튼 -->
+                <Button
+                    android:id="@+id/btn_25_percent"
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:text="25%"
+                    android:textSize="12sp"
+                    android:textColor="@color/percentage_button_text_color"
+                    android:backgroundTint="@color/percentage_button_background_tint"
+                    android:textAllCaps="false"/>
+                
+                <!-- 50% 버튼 -->
+                <Button
+                    android:id="@+id/btn_50_percent"
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:text="50%"
+                    android:textSize="12sp"
+                    android:textColor="@color/percentage_button_text_color"
+                    android:backgroundTint="@color/percentage_button_background_tint"
+                    android:textAllCaps="false"/>
+                
+                <!-- MAX 버튼 -->
+                <Button
+                    android:id="@+id/btn_max"
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="1"
+                    android:text="최대"
+                    android:textSize="12sp"
+                    android:textColor="@color/percentage_button_text_color"
+                    android:backgroundTint="@color/percentage_button_background_tint"
+                    android:textAllCaps="false"/>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- 수수료 정보 카드 - 이미지와 정확히 일치하도록 수정 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/fee_info_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
+        app:cardCornerRadius="@dimen/margin_medium"
+        app:cardElevation="@dimen/card_elevation_normal"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/withdrawal_input_card"
+        app:layout_constraintStart_toStartOf="@id/withdrawal_input_card"
+        app:layout_constraintTop_toBottomOf="@id/withdrawal_input_card">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="12dp"
+            android:background="@drawable/bg_card_border_sky">
+
+            <!-- 수수료 행 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/margin_large"
+                android:paddingBottom="@dimen/margin_medium"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_small"
+                    android:layout_height="@dimen/icon_small"
+                    android:src="@drawable/ic_percent"
+                    app:tint="@color/sky_30C6E8_100" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:text="수수료 (부가세 포함)"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_medium" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/fee_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1.00 USD"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_medium"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- 구분선 -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/policy_divider_height"
+                android:background="#F2F2F2" />
+
+            <!-- 총출금 행 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_medium"
+                android:paddingBottom="@dimen/padding_medium"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_small"
+                    android:layout_height="@dimen/icon_small"
+                    android:src="@drawable/ic_sum"
+                    app:tint="@color/sky_30C6E8_100" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:text="총출금 (수수료 포함)"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_medium" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:gravity="end"
+                    android:layout_weight="1">
+                    
+                    <TextView
+                        android:id="@+id/total_withdrawal_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1.00"
+                        android:gravity="end"
+                        android:textColor="@color/sky_30C6E8_100"
+                        android:textSize="@dimen/text_large"
+                        android:textStyle="bold" />
+                        
+                    <TextView
+                        android:id="@+id/total_withdrawal_currency"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_xsmall"
+                        android:text="USD"
+                        android:textColor="@color/sky_30C6E8_100"
+                        android:textSize="@dimen/text_large"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+            
+            <!-- 안내 메시지 -->
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Error Message directly below withdrawal input box -->
+    <TextView
+        android:id="@+id/error_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/common_side_margin_20dp"
+        android:layout_marginTop="@dimen/margin_small"
+        android:gravity="center"
+        android:text="출금 가능 금액을 초과했습니다."
+        android:textColor="@color/color_rise"
+        android:textSize="@dimen/text_normal"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/withdrawal_input_card"
+        app:layout_constraintStart_toStartOf="@id/withdrawal_input_card"
+        app:layout_constraintTop_toBottomOf="@id/withdrawal_input_card" />
+
+    <!-- We've already implemented the fee info card properly above -->
+
+    <!-- 출금신청 버튼 -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_withdrawal_apply"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="@dimen/common_side_margin_20dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/sky_30C6E8_100"
+        android:text="출금신청"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_large"
+        android:textStyle="bold"
+        app:cornerRadius="@dimen/margin_small"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fee_info_card"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <!-- 커스텀 키패드 (주석처리) -->
+    <!--
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_keypad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="20dp"
+        android:paddingVertical="@dimen/margin_xsmall"
+        android:background="@color/white"
+        android:clipToPadding="false"
+        android:fitsSystemWindows="true"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="3"
+        tools:listitem="@layout/item_rv_keypad"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

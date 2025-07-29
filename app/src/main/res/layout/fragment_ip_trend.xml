@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/trend_scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="12dp">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/price_chart_viewpager"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="H,16:9"
+            android:minHeight="180dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <LinearLayout
+            android:id="@+id/dot_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/price_chart_viewpager">
+
+            <ImageView
+                android:id="@+id/dot_1"
+                android:layout_width="6dp"
+                android:layout_height="6dp"
+                android:src="@drawable/ic_dot_active" />
+
+            <ImageView
+                android:id="@+id/dot_2"
+                android:layout_width="6dp"
+                android:layout_height="6dp"
+                android:layout_marginStart="9dp"
+                android:src="@drawable/ic_dot_inactive" />
+
+            <ImageView
+                android:id="@+id/dot_3"
+                android:layout_width="6dp"
+                android:layout_height="6dp"
+                android:layout_marginStart="9dp"
+                android:src="@drawable/ic_dot_inactive" />
+
+            <ImageView
+                android:id="@+id/dot_4"
+                android:layout_width="6dp"
+                android:layout_height="6dp"
+                android:layout_marginStart="9dp"
+                android:src="@drawable/ic_dot_inactive" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/section_separator_1"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            android:background="#E5E5E5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dot_indicator" />
+
+        <ImageView
+            android:id="@+id/stip_main_logo"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/main_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/section_separator_1" />
+
+        <View
+            android:id="@+id/section_separator_2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="#E5E5E5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/stip_main_logo" />
+
+        <!-- Rising IP Section - Modern Card Design -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/rising_ip_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="12dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/section_separator_2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Modern Title with Icon -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_trending_up"
+                        android:tint="@color/colorPrimary"/>
+
+                    <TextView
+                        android:id="@+id/ip"
+                        style="@style/TextAppearance.MaterialComponents.Headline6"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="false"
+                        android:maxLines="2"
+                        android:text="@string/ipriserank_title"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/expand_collapse_button"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_expand_less"
+                        android:tint="#808080" />
+                </LinearLayout>
+
+                <!-- Collapsible Content Container -->
+                <LinearLayout
+                    android:id="@+id/collapsible_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dp">
+                    
+                    <!-- Modern Date Selector with Pill Design -->
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/datebox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:singleSelection="true"
+                        app:selectionRequired="true"
+                        app:chipSpacingHorizontal="8dp"
+                        app:chipSpacingVertical="8dp"
+                        android:gravity="center_horizontal">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/date_1month"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="1개월"
+                            android:textAlignment="center"
+                            android:gravity="center"
+                            app:chipBackgroundColor="@color/chip_background_color"
+                            android:textColor="@color/chip_text_color"
+                            app:chipStartPadding="8dp"
+                            app:chipEndPadding="8dp" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/date_3months"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="3개월"
+                            android:textAlignment="center"
+                            android:gravity="center"
+                            app:chipBackgroundColor="@color/chip_background_color"
+                            android:textColor="@color/chip_text_color"
+                            app:chipStartPadding="8dp"
+                            app:chipEndPadding="8dp" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/date_6months"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="6개월"
+                            android:textAlignment="center"
+                            android:gravity="center"
+                            app:chipBackgroundColor="@color/chip_background_color"
+                            android:textColor="@color/chip_text_color"
+                            app:chipStartPadding="8dp"
+                            app:chipEndPadding="8dp" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/date_1year"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1년"
+                            android:textAlignment="center"
+                            android:gravity="center"
+                            app:chipBackgroundColor="@color/chip_background_color"
+                            android:textColor="@color/chip_text_color"
+                            app:chipStartPadding="20dp"
+                            app:chipEndPadding="20dp" />
+                    </com.google.android.material.chip.ChipGroup>
+
+                    <!-- Enhanced RecyclerView with Dividers -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewIpRise"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="@android:color/transparent"
+                        android:clipToPadding="false"
+                        android:nestedScrollingEnabled="false"
+                        android:overScrollMode="never"
+                        android:paddingBottom="8dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <View
+            android:id="@+id/section_separator_after_iprise"
+            android:layout_width="0dp"
+            android:layout_height="8dp"
+            android:background="#F4F4F4"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rising_ip_card" />
+
+        <!-- STIP Index Card - Modern Design -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/stip_index_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/section_separator_after_iprise">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Modern Title with Icon -->
+                <LinearLayout
+                    android:id="@+id/stip_index"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_trending_up"
+                        android:tint="@color/colorPrimary"/>
+
+                    <TextView
+                        android:id="@+id/stip_index_text_1"
+                        style="@style/TextAppearance.MaterialComponents.Headline6"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="@string/stip_index_text"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/stip_index_expand_button"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_expand_less"
+                        android:tint="#808080" />
+                </LinearLayout>
+
+                <!-- 접기/펼치기 가능한 콘텐츠 컨테이너 -->
+                <LinearLayout
+                    android:id="@+id/stip_index_collapsible_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dp">
+                    
+                    <!-- Modern Period Selector with Pill Design -->
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/time_range_buttons"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_horizontal"
+                        app:chipSpacingHorizontal="8dp"
+                        app:chipSpacingVertical="8dp"
+                        app:selectionRequired="true"
+                        app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/month_text"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="1개월"
+                        android:textAlignment="center"
+                        android:gravity="center"
+                        app:chipBackgroundColor="@color/chip_background_color"
+                        android:textColor="#FFFFFF"
+                        app:chipStartPadding="8dp"
+                        app:chipEndPadding="8dp" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/three_months_text"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3개월"
+                        android:textAlignment="center"
+                        android:gravity="center"
+                        app:chipBackgroundColor="@color/chip_background_color"
+                        android:textColor="#FFFFFF"
+                        app:chipStartPadding="8dp"
+                        app:chipEndPadding="8dp" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/six_months_text"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="6개월"
+                        android:textAlignment="center"
+                        android:gravity="center"
+                        app:chipBackgroundColor="@color/chip_background_color"
+                        android:textColor="#FFFFFF"
+                        app:chipStartPadding="8dp"
+                        app:chipEndPadding="8dp" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/all_text"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1년"
+                        android:textAlignment="center"
+                        android:gravity="center"
+                        app:chipBackgroundColor="@color/chip_background_color"
+                        android:textColor="#FFFFFF"
+                        app:chipStartPadding="20dp"
+                        app:chipEndPadding="20dp" />
+                </com.google.android.material.chip.ChipGroup>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewStipIndex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@android:color/transparent"
+                    android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
+                    android:overScrollMode="never"
+                    android:paddingBottom="8dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <View
+            android:id="@+id/section_separator_after_iprise1"
+            android:layout_width="0dp"
+            android:layout_height="8dp"
+            android:background="#F4F4F4"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/stip_index_card" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>

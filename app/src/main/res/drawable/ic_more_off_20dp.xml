@@ -1,0 +1,36 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="20dp"
+    android:height="21dp"
+    android:viewportWidth="20"
+    android:viewportHeight="21">
+    <path
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M10 18.63c2.16 0 4.22-0.86 5.75-2.38 1.52-1.53 2.38-3.6 2.38-5.75s-0.86-4.22-2.38-5.75c-1.53-1.52-3.6-2.38-5.75-2.38S5.78 3.23 4.26 4.75c-1.53 1.53-2.38 3.6-2.38 5.75s0.85 4.22 2.38 5.75c1.52 1.52 3.59 2.38 5.74 2.38Z"/>
+    <path
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M5.94 10.5h0v0h0v0Z"/>
+    <path
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M6.25 10.5c0 0.08-0.03 0.16-0.09 0.22s-0.14 0.1-0.22 0.1c-0.08 0-0.16-0.04-0.22-0.1-0.06-0.06-0.1-0.14-0.1-0.22 0-0.08 0.04-0.16 0.1-0.22 0.06-0.06 0.14-0.1 0.22-0.1 0.08 0 0.16 0.04 0.22 0.1 0.06 0.06 0.1 0.14 0.1 0.22Zm3.75 0h0v0h0v0Z"/>
+    <path
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M10.31 10.5c0 0.08-0.03 0.16-0.09 0.22s-0.14 0.1-0.22 0.1c-0.08 0-0.16-0.04-0.22-0.1-0.06-0.06-0.1-0.14-0.1-0.22 0-0.08 0.04-0.16 0.1-0.22 0.06-0.06 0.14-0.1 0.22-0.1 0.08 0 0.16 0.04 0.22 0.1 0.06 0.06 0.1 0.14 0.1 0.22Zm3.75 0h0.01v0.01h0v0Z"/>
+    <path
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M14.38 10.5c0 0.09-0.04 0.17-0.1 0.23-0.05 0.06-0.13 0.09-0.22 0.09-0.08 0-0.16-0.03-0.22-0.1-0.06-0.05-0.09-0.13-0.09-0.21 0-0.09 0.03-0.17 0.1-0.23 0.05-0.05 0.13-0.09 0.21-0.09 0.09 0 0.17 0.04 0.23 0.1 0.05 0.05 0.09 0.13 0.09 0.22Z"/>
+</vector>

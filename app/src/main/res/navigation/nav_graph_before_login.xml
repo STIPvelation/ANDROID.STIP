@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_before_login"
+    app:startDestination="@+id/navigation_ip_home">
+
+    <fragment
+        android:id="@+id/navigation_ip_home"
+        android:name="com.stip.stip.iphome.fragment.IpHomeFragment"
+        tools:layout="@layout/fragment_ip_home" />
+
+    <!-- 로그인/회원가입 또는 제한된 더보기 화면 추가 가능 -->
+    <fragment
+        android:id="@+id/navigation_more_limited"
+        android:name="com.stip.stip.signup.main.more.MoreFragment"
+        tools:layout="@layout/fragment_more" />
+</navigation>

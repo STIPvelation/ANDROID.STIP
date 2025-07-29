@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_stock_exchange"
+        android:icon="@drawable/selector_stock_exchange"
+        android:title="@string/title_stock_exchange" />
+
+    <item
+        android:id="@+id/navigation_ip_inform"
+        android:icon="@drawable/selector_ip_inform"
+        android:title="@string/title_ip_inform" />
+
+    <item
+        android:id="@+id/navigation_investment_history"
+        android:icon="@drawable/selector_investment_history"
+        android:title="@string/title_investment_history" />
+
+    <item
+        android:id="@+id/navigation_transaction_history"
+        android:icon="@drawable/selector_transaction_history"
+        android:title="@string/title_transaction_history" />
+
+    <item
+        android:id="@+id/navigation_more"
+        android:icon="@drawable/selector_more"
+        android:title="@string/title_more" />
+
+</menu>

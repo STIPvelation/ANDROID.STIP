@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_license_scope"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:id="@+id/tv_license_scope_header"
+        style="@style/DefaultTextStyle_thin_14"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="#FFFFFF"
+        android:paddingTop="8dp"
+        android:text="@string/license_scope_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_table_header_area"
+        style="@style/DefaultTextStyle_thin_12"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bordered_box_nel_background"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/license_header_area"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_table_header_ratio"
+        app:layout_constraintTop_toBottomOf="@id/tv_license_scope_header" />
+
+    <TextView
+        android:id="@+id/tv_table_header_ratio"
+        style="@style/DefaultTextStyle_thin_12"
+        android:layout_width="48dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:background="#F4F4F4"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/license_header_ratio"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_table_header_area"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_table_header_area" />
+
+
+    <TextView
+        android:id="@+id/tv_area_10"
+        style="@style/DefaultTextStyle_thin_12"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/bordered_box_nel_background"
+        android:padding="8dp"
+        android:text="@string/license_area_10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_ratio_10"
+        app:layout_constraintTop_toBottomOf="@id/tv_table_header_area" />
+
+    <TextView
+        android:id="@+id/tv_ratio_10"
+        style="@style/DefaultTextStyle_thin_12"
+        android:layout_width="48dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:background="#F4F4F4"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/license_ratio_10"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_area_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_area_10" />
+
+    <TextView
+        android:id="@+id/tv_area_7"
+        style="@style/DefaultTextStyle_thin_12"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/bordered_box_nel_background"
+        android:padding="8dp"
+        android:text="@string/license_area_7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_ratio_7"
+        app:layout_constraintTop_toBottomOf="@id/tv_area_10" />
+
+    <TextView
+        android:id="@+id/tv_ratio_7"
+        style="@style/DefaultTextStyle_thin_12"
+        android:layout_width="48dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:background="#F4F4F4"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/license_ratio_7"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_area_7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_area_7" />
+
+    <TextView
+        android:id="@+id/tv_area_5"
+        style="@style/DefaultTextStyle_thin_12"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/bordered_box_nel_background"
+        android:padding="8dp"
+        android:text="@string/license_area_5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_ratio_5"
+        app:layout_constraintTop_toBottomOf="@id/tv_area_7" />
+
+    <TextView
+        android:id="@+id/tv_ratio_5"
+        style="@style/DefaultTextStyle_thin_12"
+        android:layout_width="48dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:background="#F4F4F4"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/license_ratio_5"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_area_5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_area_5" />
+
+    <TextView
+        android:id="@+id/tv_area_1"
+        style="@style/DefaultTextStyle_thin_12"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/bordered_box_nel_background"
+        android:padding="8dp"
+        android:text="@string/license_area_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_ratio_1"
+        app:layout_constraintTop_toBottomOf="@id/tv_area_5" />
+
+    <TextView
+        android:id="@+id/tv_ratio_1"
+        style="@style/DefaultTextStyle_thin_12"
+        android:layout_width="48dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:background="#F4F4F4"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/license_ratio_1"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_area_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_area_1" />
+</androidx.constraintlayout.widget.ConstraintLayout>

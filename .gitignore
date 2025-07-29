@@ -1,0 +1,34 @@
+# Android Studio project files
+.idea/
+*.iml
+
+# Local configuration
+local.properties
+gradle.properties
+*.jks
+# Gradle files
+.gradle/
+build/
+*/build/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# APK and output
+*.apk
+*.ap_
+
+# Native & external builds
+.externalNativeBuild/
+.cxx/
+
+# Compose previews
+*.preview
+
+# Log and temp files
+*.log
+*.tmp
+
+# VS Code settings (if used)
+.vscode/

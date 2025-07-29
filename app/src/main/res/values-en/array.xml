@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="policy_terms_title_array">
+        <item>Trading Currency and Exchange Method</item>
+        <item>Investment Responsibility and Risk Disclosure</item>
+        <item>Identity Verification Service Terms</item>
+        <item>Consent to Use of Unique Identification Information</item>
+        <item>Consent to Collect Personal Information for Verification</item>
+        <item>Consent to Collect Personal Information</item>
+        <item>Automated Deposit/Withdrawal Service</item>
+        <item>Terms of Use and User Guide</item>
+        <item>Consumer Protection Policy</item>
+        <item>Privacy Policy</item>
+        <item>Consent to Collect and Use Personal Information</item>
+        <item>ESG Policy</item>
+        <item>Startup and SME Support Policy</item>
+        <item>AML and Internal Control Policy</item>
+        <item>DIP Valuation Criteria Policy</item>
+        <item>STIP Fee Transparency Policy</item>
+    </string-array>
+    <string-array name="policy_terms_content_array">
+    </string-array>
+</resources>

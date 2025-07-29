@@ -1,0 +1,1346 @@
+<resources>
+    <string name="app_name">STIP IP Exchange</string>
+
+    <string name="tab_iphome">Home</string>
+    <string name="tab_ipinfo">Info</string>
+    <string name="tab_iptransaction">History</string>
+    <string name="tab_ipasset">Asset</string>
+    <string name="tab_more">More</string>
+
+    <string name="header_iphome">IP Home</string>
+    <string name="header_ipinfo">IP Info</string>
+    <string name="header_iptransaction">IP History</string>
+    <string name="header_ipasset">Deposit/Withdrawal</string>
+    <string name="header_more">More</string>
+
+    <string name="common_number">00.00</string>
+    <string name="common_label">Company Name</string>
+    <string name="common_usd_ticker">AAA/USD</string>
+    <string name="common_percent_format">00.00%</string>
+
+    <string name="date_month_format">%1$d.%2$02d</string>
+    <string name="date_range_format">%1$s 01 ~ %2$s %3$02d</string>
+
+    <string name="ip_toon_title">IP Toon</string>
+    <string name="ip_swap_title">IP Swap</string>
+    <string name="ip_auction_title">IP Auction</string>
+    <string name="date_range_picker_title">Select date range</string>
+    <string name="center_label_total_value">Total Value</string>
+
+    <string name="menu_order">Order</string>
+    <string name="menu_chart">Chart</string>
+    <string name="menu_quotes">Quotes</string>
+    <string name="menu_info">Info</string>
+
+    <string name="patent_title">KATV Patent</string>
+
+    <string name="usage_plan_title">Digital IP Usage Plan</string>
+
+    <string name="ip_rating_detail_title">IP Rating Details</string>
+    <string name="close">Close</string>
+    <string name="patent_grade_a">A</string>
+    <string name="axis_label_rights">Rights</string>
+    <string name="axis_label_utilization">Utilization</string>
+    <string name="axis_label_regulation">Regulation</string>
+    <string name="axis_label_transaction">Transaction</string>
+    <string name="axis_label_capability">Capability</string>
+    <string name="axis_label_technology">Technology</string>
+    <string name="legend_label_institutional">Institutional Valuation</string>
+    <string name="legend_label_stip">STIP Valuation</string>
+    <string name="corp_expense_rnd">Research &amp; Development (R&amp;D)</string>
+    <string name="corp_expense_salary">Salaries &amp; Labor Costs</string>
+    <string name="corp_expense_marketing">Marketing &amp; Advertising</string>
+    <string name="corp_expense_operations">Operational Management Costs</string>
+    <string name="corp_expense_facility">Facility Investment &amp; Expansion</string>
+    <string name="corp_expense_expansion">New Business &amp; Branch Expansion</string>
+    <string name="corp_expense_welfare">Employee Welfare</string>
+    <string name="corp_expense_it">IT Infrastructure/System</string>
+    <string name="corp_expense_education">Education &amp; Training</string>
+    <string name="corp_expense_fees">Fees Paid</string>
+    <string name="corp_expense_financial">Financial Costs</string>
+    <string name="corp_expense_etc">Other Operating Expenses</string>
+    <string name="ip_search">IP Search</string>
+    <string name="all_ip">ALL IP</string>
+    <string name="header_ticker">Ticker</string>
+    <string name="header_ticker_english">AXNO</string>
+    <string name="header_current_price">Price</string>
+    <string name="header_change">Change</string>
+    <string name="header_volume">Amount</string>
+    <string name="item_icon_description">Listing Logo Icon</string>
+    <string name="default_ticker_name">----</string>
+    <string name="default_price">0</string>
+    <string name="default_change_percent">0%</string>
+    <string name="default_change_value">0</string>
+    <string name="default_volume">0</string>
+    <string name="search_icon_description">Search Icon</string>
+    <string name="dropdown_arrow_description">Dropdown Arrow</string>
+    <string name="sort_up_description">Sort Ascending Icon</string>
+    <string name="sort_down_description">Sort Descending Icon</string>
+
+
+
+    <string name="popup_item_all">ALL IP</string>
+    <string name="popup_item_patent">Patent</string>
+    <string name="popup_item_movie">Movie/Drama</string>
+    <string name="popup_item_business">Business Model</string>
+    <string name="popup_item_music">Music</string>
+    <string name="popup_item_dance">Dance</string>
+    <string name="popup_item_franchise">Franchise</string>
+    <string name="popup_item_trademark">Trademark</string>
+    <string name="popup_item_character">Character / Art</string>
+    <string name="not_able_to_find">No search results found</string>
+    <string name="empty">----</string>
+
+    <string name="all_ip_filter">ALL IP</string>
+
+    <string name="keypad_error_incorrect_password">Incorrect PIN.</string>
+    <string name="unit_default">N/A</string>
+
+    <string name="volume_24h_label">24h Volume</string>
+    <string name="high_price_24h_label">24h High</string>
+    <string name="low_price_24h_label">24h Low</string>
+    <string name="gather_the_price">View All</string>
+    <string name="quantity_iphome">Quantity</string>
+    <string name="member_edit_phone_label">Phone Number</string>
+    <string name="member_edit_email_label">Email</string>
+    <string name="member_edit_email_hint">support@stip.global</string>
+    <string name="member_edit_required_info_title">Required Information Update</string>
+    <string name="member_edit_english_name_label">Full Name (as shown on passport)</string>
+    <string name="member_edit_english_name_hint">Enter Full Name (as shown on passport)</string>
+    <string name="member_edit_address_label">Address</string>
+    <string name="member_edit_address_hint">Enter Address</string>
+    <string name="member_edit_address_detail_label">Detailed Address</string>
+    <string name="member_edit_address_detail_hint">Enter Detailed Address</string>
+    <string name="sign_up_kyc_address_zipcode_missing">This address does not have a postal code. Please select a different address.</string>
+    <string name="member_edit_job_label">Occupation</string>
+    <string name="member_edit_job_hint">Enter Occupation</string>
+    <string name="member_edit_company_name_label">Company Name</string>
+    <string name="member_edit_company_name_hint">Enter Company Name</string>
+    <string name="member_edit_work_address_label">Work Address</string>
+    <string name="member_edit_work_address_hint">Enter Work Address</string>
+    <string name="member_edit_footer_notice">Required information items can be changed through customer re-verification.\nWe appreciate your understanding for any inconvenience.</string>
+    <string name="member_edit_save_button">Save</string>
+    <string name="info_change">Change</string>
+    <string name="usd_deposit_title">Deposit USD</string>
+
+    <string name="order_mode_buy">Buy</string>
+    <string name="order_mode_sell">Sell</string>
+    <string name="order_mode_history">History</string>
+
+    <string name="order_type_limit">Limit</string>
+    <string name="order_type_market">Mkt</string>
+    <string name="order_type_reserve">Stop</string>
+
+    <string name="label_quantity">Quantity</string>
+    <string name="label_price">Price</string>
+    <string name="label_trigger_price">Trigger Price</string>
+    <string name="label_price_percentage">% vs. Current</string>
+    <string name="label_total_amount">Total Amount</string>
+
+    <string name="hint_order_quantity">Order Quantity</string>
+    <string name="hint_order_price">Order Price</string>
+    <string name="hint_trigger_price">Trigger (Reach) Price</string>
+    <string name="hint_total_amount_input">Order Total Amount</string>
+
+    <string name="unit_coin_default">COIN</string>
+    <string name="unit_usd">USD</string>
+    <string name="initial_total_amount">0</string>
+
+    <string name="button_available">Available</string>
+    <string name="button_minus">-</string>
+    <string name="button_plus">+</string>
+    <string name="button_reset_1">Reset</string>
+    <string name="button_buy">Buy</string>
+    <string name="button_sell">Sell</string>
+    <string name="text_order_type_info">Order Type Guide</string>
+    <string name="label_available_balance">Available Balance</string>
+    <string name="default_available_balance">0 USD</string>
+    <string name="dialog_title_info">Information</string>
+    <string name="confirm_deletion_24hr_message">Upon withdrawal, re-subscription to the service will be restricted for 24 hours.\nDo you still wish to withdraw?</string>
+    <string name="dialog_confirm">Confirm</string>
+    <string name="dialog_close">Close</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_authenticate">Verify</string>
+    <string name="dialog_start">Start</string>
+    <string name="dialog_title_warning_order">Order Confirmation</string>
+    <string name="dialog_title_error_order">Order Error</string>
+    <string name="dialog_title_order_type">Order Type</string>
+    <string name="dialog_title_buy_order_submitted">Buy Order Submitted</string>
+    <string name="dialog_title_sell_order_submitted">Sell Order Submitted</string>
+    <string name="dialog_title_cancel_order_confirm">Cancel Order Confirmation</string>
+    <string name="dialog_message_cancel_order_confirm">Do you want to cancel the selected unfilled order?</string>
+    <string name="dialog_message_cancel_order_confirm_count">Do you want to cancel the selected %d orders?</string>
+    <string name="dialog_button_confirm">Confirm</string>
+    <string name="dialog_button_cancel">Cancel</string>
+    <string name="dialog_title_confirm_sell">Sell Order Confirmation</string>
+    <string name="dialog_confirm_sell">Confirm</string>
+    <string name="dialog_title_confirm_buy">Buy Order Confirmation</string>
+    <string name="dialog_confirm_buy">Confirm</string>
+    <string name="dialog_confirm_button">Confirm</string>
+    <string name="logout_dialog_title">Logout</string>
+    <string name="logout_dialog_message">If you log out now,\nyou will need to perform identity verification again\nwhen attempting to log in after logging out.\n\nDo you want to log out?</string>
+    <string name="dialog_title_phone_change">Notice</string>
+    <string name="dialog_message_phone_change">You can change your phone number through mobile phone identity verification.\nPlease proceed with mobile phone identity verification.</string>
+    <string name="dialog_title_error">Error</string>
+    <string name="dialog_title_notification">Notification</string>
+    <string name="dialog_loading_title">Loading</string>
+    <string name="dialog_loading_sub_title">Please wait a moment.</string>
+    <string name="dialog_auth_agree_title">Please check the terms of service agreement.</string>
+    <string name="dialog_auth_input_inform_title">Please check the entered information and try again.</string>
+    <string name="dialog_auth_request_title">Verification code does not match.\nPlease check the code and try again.\n(Error count: <![CDATA[<font color="#DB3949">%d</font>]]>/3)</string>
+    <string name="dialog_auth_request_over_title">You have exceeded the maximum number of identity verification attempts.</string>
+    <string name="dialog_auth_time_over_title">Verification time has expired. Please try again.</string>
+    <string name="dialog_bank_guide_title">Guide</string>
+    <string name="dialog_bank_account_not_valid_title">The entered account number is invalid.\nPlease check the account number and try again.</string>
+    <string name="dialog_bank_1_help_content">Run your banking app, check text messages, or use telebanking to view transaction history, then enter the <![CDATA[<font color="#30C6E8">first 6 digits</font> ]]> of the sender name from the 1 KRW deposit made by STIP.</string>
+    <string name="dialog_bank_deposit_fail_title">Account Verification Failed</string>
+    <string name="dialog_bank_deposit_fail_content">Account verification failed.\nPlease check the verification code and try again.\n(Error count: <![CDATA[<font color="#DD3D43">%d</font>]]>/3)</string>
+    <string name="dialog_bank_deposit_fail_time_out">Account verification failed.\nPlease try again.</string>
+    <string name="dialog_bank_deposit_three_fail_content">Account verification failed 3 times.\nPlease restart the process from the beginning.</string>
+    <string name="dialog_pin_number_title">Notice</string>
+    <string name="dialog_pin_number_content">Incorrect password entered 5 or more times.\nPlease reset your PIN password.</string>
+    <string name="dialog_pin_number_personal_information_warning">Numbers related to personal information such as date of birth, phone number, etc., cannot be registered. Please enter different numbers.</string>
+    <string name="dialog_pin_number_finish_reset">Resetting the password requires deleting existing login information and re-registering. Would you like to proceed with identity verification again?</string>
+    <string name="dialog_message_required_info_notice">Required info must be updated within 30 days of verification.\nOtherwise, trading and deposit/withdrawal may be restricted.</string>
+    <string name="dialog_prompt_customer_verification">Do you understand the content and wish to proceed with customer verification?</string>
+
+
+
+    <string name="category_patent">Patent</string>
+    <string name="category_trademark">Trademark</string>
+    <string name="category_franchise">Franchise</string>
+    <string name="category_music">Music</string>
+    <string name="category_dance">Dance</string>
+    <string name="category_art">Art</string>
+    <string name="category_movie">Movie</string>
+    <string name="category_drama">Drama</string>
+    <string name="category_bm">Business Model</string>
+    <string name="category_game">Game</string>
+    <string name="category_character">Character</string>
+    <string name="category_comics">Comics</string>
+    <string name="category_other">Other</string>
+
+
+
+
+
+    <string name="quantity_option_available">Avail</string>
+    <string name="quantity_option_max">Max</string>
+    <string name="quantity_option_75">75%</string>
+    <string name="quantity_option_50">50%</string>
+    <string name="quantity_option_25">25%</string>
+    <string name="quantity_option_10">10%</string>
+
+
+
+
+
+
+
+
+
+    <string name="order_price">Order</string>
+
+
+
+
+
+
+
+
+
+
+
+    <string name="order_max_quantity_format">Max: %s</string>
+    <string name="price_percentage_prompt">% vs. Current Price</string>
+    <string name="total_amount_label">Total</string>
+    <string name="quantity_label">Qty</string>
+    <string name="time">00:00:00</string>
+    <string name="label_order_available">Available</string>
+    <string name="initial_available_amount">0</string>
+    <string name="trading_ticker">AXNO</string>
+    <string name="tab_unfilled_order">Unfilled</string>
+    <string name="tab_filled_order">Filled</string>
+    <string name="filter">Filter</string>
+    <string name="hint_enter_quantity">Enter IP Quantity</string>
+    <string name="hint_enter_total_amount">Enter Order Total Amount</string>
+    <string name="buy_order_error_title">Buy Order Error</string>
+    <string name="sell_order_error_title">Sell Order Error</string>
+    <string name="sell_error_insufficient_quantity">Insufficient quantity available for order.</string>
+    <string name="buy_error_minimum_order">Minimum order amount is 10 USD.</string>
+    <string name="no_unfilled_order">No unfilled orders.</string>
+    <string name="error_loading_unfilled">Failed to load unfilled orders.</string>
+    <string name="error_loading_unfilled_toast">An error occurred while loading unfilled orders.</string>
+    <string name="label_assets_held_usd">Assets Held (USD)</string>
+    <string name="label_avg_buy_price">Avg. Buy Price</string>
+    <string name="label_valuation_amount">Valuation Amount</string>
+    <string name="label_valuation_pl">Valuation P/L</string>
+    <string name="label_rate_of_return">Rate of Return</string>
+    <string name="label_min_order_amount">Minimum Order Amount</string>
+    <string name="label_fee_vat_included">Fee (VAT included)</string>
+    <string name="value_min_order_amount">10</string>
+    <string name="value_fee">0.1</string>
+    <string name="value_percent_unit">%</string>
+    <string name="order_type_explain">Order Type Guide</string>
+    <string name="label_assets_held_quantity">Quantity Held</string>
+    <string name="unit_usd_estimated">USD</string>
+    <string name="stop_order_desc">Executes the specified order automatically when the set trigger price is reached. Mainly used for stop-loss or take-profit.</string>
+    <string name="buy_error_insufficient_funds">Insufficient funds available for order.</string>
+    <string name="toast_minimum_order_violation">Minimum order amount is %s USD or more.</string>
+    <string name="label_fee">Fee</string>
+    <string name="limit_order_title">Limit Order</string>
+    <string name="order_type_unknown">Unknown</string>
+    <string name="market_order_title">Market Order</string>
+    <string name="stop_order_title">Stop Order</string>
+    <string name="limit_order_desc">An order type where the user decides the quantity and price directly, used when prioritizing the desired price over execution certainty.</string>
+    <string name="market_order_desc">An order type where you only enter the order amount for buying or quantity for selling, and it executes immediately at the market price.\nSuitable for quick trades.</string>
+    <string name="order_success_message_buy">Buy order submitted successfully.</string>
+    <string name="order_success_message_sell">Sell order submitted successfully.</string>
+    <string name="toast_select_orders_to_cancel">Please select the order(s) to cancel.</string>
+    <string name="toast_cancel_request_sent">Cancel request sent (Implementation needed)</string>
+    <string name="no_filled_orders">No filled orders.</string>
+    <string name="label_estimated_quantity">Estimated Quantity</string>
+    <string name="label_order_price1">Order Price</string>
+    <string name="label_order_type">Order Type</string>
+    <string name="label_order_price">Order Price</string>
+    <string name="label_order_quantity">Order Quantity</string>
+    <string name="label_order_total">Order Total Amount</string>
+    <string name="order_type_limit_sell">Limit Sell</string>
+    <string name="order_type_limit_buy">Limit Buy</string>
+    <string name="tab_unexecuted">Unexecuted</string>
+    <string name="tab_executed">Executed</string>
+    <string name="label_order_amount">Order Total Amount</string>
+    <string name="hint_enter_order_amount">Enter Order Total Amount</string>
+    <string name="reserved_order_error_title">Stop Order Error</string>
+    <string name="buy_trigger_price_error">Buy stop trigger price must be less than or equal to the order price.</string>
+    <string name="sell_trigger_price_error">Sell stop trigger price must be greater than or equal to the order price.</string>
+    <string name="order_type_reserved_limit_buy">Stop Limit Buy</string>
+    <string name="order_type_reserved_limit_sell">Stop Limit Sell</string>
+    <string name="order_type_market_buy">Market Buy</string>
+    <string name="order_type_market_sell">Market Sell</string>
+    <string name="market_price">Market Price</string>
+    <string name="market_quantity">Market Quantity</string>
+    <string name="market_total">Market Total Amount</string>
+    <string name="buy_error_minimum_order_amount">Minimum order amount is 10 USD.</string>
+    <string name="order_type_sell">Sell</string>
+    <string name="order_type_buy">Buy</string>
+    <string name="label_ticker">Ticker</string>
+    <string name="label_filled_quantity">Filled Quantity</string>
+    <string name="filled_price">Price</string>
+    <string name="filled_quantity1">Quantity</string>
+    <string name="filled_total">Amount</string>
+    <string name="watch_price">Trigger</string>
+    <string name="order_quantity">Qty</string>
+    <string name="unfilled_quantity">Unfilled</string>
+    <string name="trade_type">Type</string>
+    <string name="buy">Buy</string>
+    <string name="order_type_all">All Orders</string>
+    <string name="order_type_normal">Normal Order</string>
+    <string name="order_type_reserved">Stop Order</string>
+    <string name="order_type_reserved_simple">Stop</string>
+    <string name="order_cancel">Cancel Order</string>
+    <string name="no_unfilled_orders">No unfilled orders.</string>
+    <string name="toast_invalid_price">Invalid price format.</string>
+    <string name="toast_enter_total_amount">Please enter the total order amount.</string>
+    <string name="toast_invalid_total_amount">Invalid total order amount.</string>
+    <string name="toast_invalid_quantity_from_total">Quantity calculated from total amount is invalid.</string>
+    <string name="toast_enter_quantity">Please enter the quantity.</string>
+    <string name="toast_invalid_quantity">Invalid quantity format.</string>
+    <string name="toast_invalid_final_quantity">Invalid quantity.</string>
+    <string name="toast_invalid_price_for_total">Please enter a valid price when entering the total amount.</string>
+    <string name="toast_invalid_trigger_price">Please enter a valid trigger price.</string>
+    <string name="toast_market_order_no_total_mode">Total amount input mode cannot be used for market orders.</string>
+    <string name="toast_enter_order_amount">Please enter the order total amount.</string>
+    <string name="toast_invalid_order_amount">Invalid order total amount.</string>
+
+    <string name="error_time_expired">Input time limit exceeded. Please request the verification code again.</string>
+    <string name="error_max_attempts_reached">Verification failed due to 5 incorrect code entries.\nPlease resend the verification code to verify.</string>
+    <string name="message_email_verification_complete">Email verification completed.</string>
+    <color name="confirm_button_blue">#1674EA</color>
+    <string name="notification_header">General Notifications</string>
+    <string name="notification_settings_title">Notification Settings</string>
+    <string name="notification_settings_description">Configure notifications</string>
+    <string name="login_alert_title">Login Alert</string>
+    <string name="login_alert_description">Notify on new login.</string>
+    <string name="transaction_alert_title">Transaction Alert</string>
+    <string name="transaction_alert_description">Notify on buy/sell order completion.</string>
+    <string name="deposit_withdrawal_alert_title">Deposit/Withdrawal Alert</string>
+    <string name="deposit_withdrawal_alert_description">Notify on deposit/withdrawal completion.</string>
+    <string name="order_alert_title">Stop Order Alert</string>
+    <string name="order_alert_description">Notify when a stop order is triggered and executed.</string>
+    <string name="staking_alert_title">Staking Alert</string>
+    <string name="staking_alert_description">Notify on staking and unstaking completion.</string>
+    <string name="event_alert_title">Receive Event &amp; Promotion Info</string>
+    <string name="event_alert_description">Agree to receive notifications</string>
+    <string name="setting_title_login_alert">Login Alert</string>
+    <string name="setting_description_login_alert">Notify on new login.</string>
+    <string name="setting_title_trade_alert">Trade Alert</string>
+    <string name="setting_description_trade_alert">Notify on buy/sell order completion.</string>
+    <string name="setting_title_deposit_withdrawal_alert">Deposit/Withdrawal Alert</string>
+    <string name="setting_description_deposit_withdrawal_alert">Notify on deposit/withdrawal completion.</string>
+    <string name="setting_title_reserved_order_alert">Stop Order Alert</string>
+    <string name="setting_description_reserved_order_alert">Notify when a stop order is triggered and executed at the set price.</string>
+    <string name="setting_title_event_reception">Receive Event &amp; Promotion Info</string>
+    <string name="setting_description_event_reception">Agree to receive notifications</string>
+    <string name="setting_title_ip_webtoon_alert">IP Webtoon Alert</string>
+    <string name="setting_description_ip_webtoon_alert">Notification settings for new IP Webtoons.</string>
+    <string name="setting_title_ip_auction_alert">IP Auction Alert</string>
+    <string name="setting_description_ip_auction_alert">Notify 1 hour before IP Auction starts.</string>
+    <string name="setting_title_new_ip_listing_alert">New IP Listing Alert</string>
+    <string name="setting_description_new_ip_listing_alert">Notification for newly listed intellectual property.</string>
+    <string name="setting_title_ip_swap_alert">IP Swap Alert</string>
+    <string name="setting_description_ip_swap_alert">Notification for IP Swap requests.</string>
+    <string name="market_price_settings_title">Quote Settings</string>
+    <string name="tab_standard">Standard</string>
+    <string name="tab_market_price">Quotes</string>
+    <string name="market_alert_screen_title">Quote Alert</string>
+    <string name="market_alert_tab_standard">Standard</string>
+    <string name="market_alert_tab_market">Quotes</string>
+    <string name="dnd_mode_category_title">Do Not Disturb Mode</string>
+    <string name="dnd_mode_rest_title">Rest Mode</string>
+    <string name="dnd_mode_rest_description">Limit notifications during set period.</string>
+    <string name="owned_ip_category_title">Owned IP</string>
+    <string name="owned_ip_alert_title">Owned IP Alert</string>
+    <string name="owned_ip_alert_description">Notify on 10% rise/fall based on set criteria.</string>
+    <string name="comprehensive_alert_category_title">Comprehensive Alert</string>
+    <string name="comprehensive_alert_designated_title">Designated Alert</string>
+    <string name="comprehensive_alert_designated_description">Notify on 10% rise/fall based on set criteria</string>
+    <string name="comprehensive_alert_rise_fall_title">Rise/Fall Alert</string>
+    <string name="comprehensive_alert_rise_fall_description">Notify on short-term rise and fall of designated IP</string>
+    <string name="comprehensive_alert_report_low_price_title">High/Low Price Alert</string>
+    <string name="comprehensive_alert_report_low_price_description">Notify on high/low price occurrence on the specified</string>
+    <string name="comprehensive_alert_ip_cross_compare_title">IP Cross Comparison Alert</string>
+    <string name="comprehensive_alert_ip_cross_compare_description">Notification of price movement.</string>
+    <string name="comprehensive_alert_new_rights_user_title">New License User Alert</string>
+    <string name="comprehensive_alert_new_rights_user_description">A new license user appears for the designated IP.</string>
+    <string name="comprehensive_alert_rights_revoker_title">IP License Revoker Alert</string>
+    <string name="comprehensive_alert_rights_revoker_description">Notify when a user revokes the license.</string>
+    <string name="title_price_alert">Quote Alert</string>
+    <string name="title_mode_setting">Mode Setting</string>
+    <string name="mode_settings_screen_title">Mode Setting</string>
+    <string name="general_section_title">General Screen</string>
+    <string name="display_mode_user_desc">Display the screen in the user design.</string>
+    <string name="screen_on_title">Keep Screen On Mode</string>
+    <string name="screen_on_desc">Prevent screen from turning off while using the app.</string>
+    <string name="exchange_section_title">Exchange Screen</string>
+    <string name="ip_refresh_title">Refresh IP Information</string>
+    <string name="ip_refresh_desc">Updates IP information.</string>
+    <string name="ip_refresh_button">Refresh</string>
+    <string name="display_mode_section_title">Display Mode</string>
+    <string name="display_mode_normal_title">Normal Mode</string>
+    <string name="display_mode_normal_desc">Standard display mode provided by STIP.</string>
+    <string name="display_mode_dark_title">Dark Mode</string>
+    <string name="display_mode_dark_desc">Dark theme design mode provided by STIP.</string>
+    <string name="display_mode_design_title">Design Mode</string>
+    <string name="display_mode_design_desc">Provides new design screens quarterly.</string>
+    <string name="display_mode_user_title">User Mode</string>
+    <string name="login_history_desc">Check the user login history</string>
+
+    <string name="title_security_auth">Security / Authentication</string>
+    <string name="security_auth_screen_title">Security / Authentication</string>
+    <string name="pin_change_title">Change PIN Password</string>
+    <string name="pin_change_desc">Lost PIN? Restart login from the beginning.</string>
+
+    <string name="biometric_auth_title">Use Biometric Authentication</string>
+    <string name="biometric_auth_desc">Verify identity using biometric information.</string>
+    <string name="overseas_login_block_title">Block Overseas Login</string>
+    <string name="overseas_login_block_desc">Restricts login attempts from overseas locations.</string>
+    <string name="login_history_title">Login History</string>
+
+    <string name="login_history_title_manage">Login Management</string>
+    <string name="login_history_description">STIP allows login from three mobile device at a time.</string>
+    <string name="login_history_logout_all">Log Out from All Devices</string>
+    <string name="login_history_header_datetime">Date/Time</string>
+    <string name="login_history_header_os_browser">OS/Browser</string>
+    <string name="login_history_header_ip">Login IP</string>
+    <string name="login_history_item_app_name">STIP Mobile App</string>
+    <string name="login_history_item_location_korea">South Korea</string>
+    <string name="minute_chart">Min</string>
+    <string name="day_chart">Day</string>
+    <string name="week_chart">Week</string>
+    <string name="month_chart">Month</string>
+    <string name="year_chart">Year</string>
+
+
+
+    <string name="quote_header_date">Date</string>
+    <string name="quote_header_close">Close (USD)</string>
+    <string name="quote_header_change">Change (Day)</string>
+    <string name="quote_header_volume_ticker">Volume (Ticker)</string>
+
+
+
+
+
+    <string name="license_scope_default_title">Scope of Non-Exclusive License</string>
+
+
+
+
+
+
+
+
+
+    <string name="label_right">Right</string>
+    <string name="label_utilization">Utilization</string>
+    <string name="label_regulation">Regulation</string>
+    <string name="label_trade">Trade</string>
+    <string name="label_capability">Capability</string>
+    <string name="label_technology">Technology</string>
+    <string name="label_sustainability">Sustainability</string>
+    <string name="label_collaboration">Collaboration</string>
+    <string name="label_partnership">Partnership</string>
+    <string name="label_scalability">Scalability</string>
+    <string name="label_distribution_power">Distribution Power</string>
+    <string name="label_ip_utilization">IP Utilization</string>
+    <string name="label_design">Design</string>
+    <string name="label_recognition">Recognition</string>
+    <string name="label_legal_stability">Legal Stability</string>
+    <string name="label_marketability">Marketability</string>
+    <string name="label_operational_ability">Operational Ability</string>
+    <string name="label_monetization">Monetization</string>
+    <string name="label_branding">Branding</string>
+    <string name="label_content">Content</string>
+    <string name="label_creativity">Creativity</string>
+
+
+
+
+
+
+
+    <plurals name="toast_cancel_order_success_plural">
+        <item quantity="one">Cancelling %d selected order</item>
+        <item quantity="other">Cancelling %d selected orders</item>
+    </plurals>
+
+
+
+
+
+
+
+
+
+
+
+    <string name="toast_txid_copied">TXID has been copied.</string>
+
+
+
+
+
+
+
+
+
+
+
+
+    <string name="quote_tab_time">Hourly</string>
+    <string name="quote_tab_daily">Daily</string>
+    <string name="quote_header_time">Time</string>
+    <string name="quote_header_price_usd">Price (USD)</string>
+    <string name="quote_header_volume">Executed Amount (USD)</string>
+    <string name="error_loading_data">Error loading data.</string>
+    <string name="quote_header_executed">Executed Amount</string>
+    <string name="quote_header_volume_with_ticker">Vol (%1$s)</string>
+    <string name="tab_info">Basic</string>
+    <string name="tab_details">Details</string>
+    <string name="placeholder_ticker_name">Ticker: ETIP AI 1</string>
+    <string name="placeholder_ticker_id">KR-14-20240816</string>
+    <string name="label_shortcuts">Shortcuts</string>
+    <string name="link_block_inquiry">Chain</string>
+    <string name="link_ip_rating">Rating</string>
+    <string name="link_license">License</string>
+    <string name="link_view_video">Video</string>
+    <string name="label_first_issuance">First Issuance</string>
+    <string name="label_total_issuance_limit">Total Issuance Limit</string>
+    <string name="placeholder_total_issuance_limit_value">1,000,000 (Provided by STIP)</string>
+    <string name="ticker_name_format">Ticker: %1$s</string>
+    <string name="label_current_circulation">Current Circulation</string>
+    <string name="value_current_circulation">00,000 ETIP AI</string>
+    <string name="label_digital_ip">Digital IP Usage Plan</string>
+    <string name="label_license">IP Usage Agreement</string>
+    <string name="value_license_amount">0,000 AXNO</string>
+    <string name="value_view">View</string>
+    <string name="license_scope_title">Ordinary License Scope</string>
+    <string name="license_header_ratio">Ratio %</string>
+    <string name="license_header_area">IP Usage Area</string>
+    <string name="license_ratio_10">10%</string>
+    <string name="license_area_10">Usable for all commercial aspects related to this IP.</string>
+    <string name="license_ratio_7">7%</string>
+    <string name="license_area_7">Usable in Asia and Europe regions.</string>
+    <string name="license_ratio_5">5%</string>
+    <string name="license_area_5">Patent usable for commercial purposes only.</string>
+    <string name="license_ratio_1">1%</string>
+    <string name="license_area_1">Usable for research purposes in university institutions.</string>
+    <string name="link_ip_link">IP Link</string>
+    <string name="link_homepage">Home</string>
+    <string name="link_business_plan">BPlan</string>
+    <string name="link_related_video">Related</string>
+    <string name="label_corporation_name">Corporation Name</string>
+    <string name="label_representative">Representative</string>
+    <string name="label_registration_number">Registration Number</string>
+    <string name="label_business_type">Business Type</string>
+    <string name="label_contact">Contact</string>
+    <string name="label_address">Location (Address)</string>
+    <string name="label_sns">SNS</string>
+    <string name="value_corporation_name">STIP Korea</string>
+    <string name="value_representative">Lee Sung-yong</string>
+    <string name="value_registration_number">000-00-00000</string>
+    <string name="value_business_type">Information and Communication Technology</string>
+    <string name="value_contact_email">support@stip.global</string>
+    <string name="value_address_detail">Gwanghwamun Seoul Finance Center</string>
+    <string name="sns_twitter">X(Twitter)</string>
+    <string name="sns_instagram">Instagram</string>
+    <string name="sns_kakaotalk">KakaoTalk</string>
+    <string name="sns_telegram">Telegram</string>
+    <string name="sns_linkedin">LinkedIn</string>
+    <string name="sns_wechat">WeChat</string>
+    <string name="label_katv">KATV</string>
+    <string name="label_avex">AVEX</string>
+    <string name="label_jmv">JMV</string>
+    <string name="value_common">\u0020$ 96,445.00</string>
+    <string name="katv">\u0020KATV</string>
+    <string name="some_id">\u0020$ 96,445.00</string>
+    <string name="ip_entertainment">IP Entertainment</string>
+    <string name="tab_info_trend">IP Trend</string>
+    <string name="tab_info_news">IP News</string>
+    <string name="account_holder_label">Account Holder</string>
+    <string name="account_number_label">Account Number</string>
+    <string name="account_holder_name">IP Media Group Co., Ltd.</string>
+    <string name="account_number">KB Bank 102701-04-435574</string>
+    <string name="account_number2">Shinhan Bank 140-015-070902</string>
+    <string name="account_number3">Woori Bank 1005-804-753434</string>
+    <string name="tab_transaction_holdings">IP Holdings</string>
+    <string name="tab_transaction_profit">IP Profit/Loss</string>
+    <string name="tab_transaction_investment">IP Investment</string>
+    <string name="tab_transaction_unfilled">Unfilled</string>
+    <string name="my_ip">My Owned IP</string>
+    <string name="holding_usd">Holding USD</string>
+    <string name="holding_usd_number">0</string>
+    <string name="total_asset">Total Assets</string>
+    <string name="total_asset_number">0</string>
+    <string name="total_buy">Total Buy Amount</string>
+    <string name="total_buy_number">0</string>
+    <string name="valuation_profit">Valuation Profit/Loss</string>
+    <string name="valuation_profit_number">0</string>
+    <string name="total_valuation">Total Valuation</string>
+    <string name="total_valuation_number">0</string>
+    <string name="profit_rate">Profit Rate</string>
+    <string name="profit_rate_percentage">0.00%</string>
+    <string name="available_order">Available for Order</string>
+    <string name="available_order_number">0</string>
+    <string name="noip">You do not currently own any IP.</string>
+    <string name="myiptext">Owned IP</string>
+    <string name="filter_text">1 Month • All Transactions</string>
+    <string name="ipsearch">IP Search</string>
+    <string name="profit_loss">Valuation P/L</string>
+    <string name="w_ratio">Rate of Return</string>
+    <string name="quantity">Quantity</string>
+    <string name="evaluated_price">Evaluated Price</string>
+    <string name="average_buy">Avg. Buy Price</string>
+    <string name="buy_price">Buy Amount</string>
+    <string name="mark">"-"</string>
+
+
+
+
+
+
+
+
+
+    <string name="country_korea">Korea</string>
+    <string name="country_japan">Japan</string>
+    <string name="country_china">China</string>
+    <string name="country_euro">Euro</string>
+
+    <string name="rate_krw_usd">KRW/USD</string>
+    <string name="rate_jpn_usd">JPN/USD</string>
+    <string name="rate_cny_usd">CNY/USD</string>
+    <string name="rate_eur_usd">EUR/USD</string>
+
+    <string name="rise_ip_1_name">FT</string> <!-- ✅ 올바른 표현 -->
+
+    <string name="rise_ip_1_code">MDM/USD</string>
+
+    <string name="rise_ip_2_name">ContentsWever</string>
+    <string name="rise_ip_2_code">AXNO/USD</string>
+
+    <string name="rise_ip_3_name">Korea Bio Center</string>
+    <string name="rise_ip_3_code">CDM/USD</string>
+
+    <string name="rise_ip_4_name">Dooree Inc.</string>
+    <string name="rise_ip_4_code">WETALK/USD</string>
+
+    <string name="rise_ip_5_name">Junwon GBI</string>
+    <string name="rise_ip_5_code">JWV/USD</string>
+
+
+
+
+
+
+    <string name="stip_index_total">STIP Composite Index</string>
+    <string name="stip_index_ai">STIP AI Patent Index</string>
+    <string name="stip_index_global">STIP Global Patent Index</string>
+    <string name="stip_index_entertainment">STIP Entertainment Index</string>
+    <string name="stip_index_franchise">STIP Franchise Index</string>
+
+
+    <string name="mini_chart_title_stip_1000">STIP 1000</string>
+    <string name="mini_chart_title_etip_500">ETIP 500</string>
+    <string name="mini_chart_title_patent_100">Patent 100</string>
+    <string name="mini_chart_title_etip_movie">ETIP Movie</string>
+    <string name="mini_chart_title_stip_music">STIP Music</string>
+    <string name="mini_chart_title_etip_ai">ETIP AI</string>
+
+
+
+
+
+
+
+
+
+    <string name="ticker_axno">AXNO</string>
+    <string name="ticker_iject">IJECT</string>
+    <string name="ticker_wetalk">WETALK</string>
+    <string name="ticker_mdm">MDM</string>
+    <string name="ticker_jwv">JWV</string>
+    <string name="ticker_kcot">KCOT</string>
+
+    <string name="ticker_movie_shiri">MOVIE Shiri</string>
+    <string name="ticker_music_ggd">MUSIC GGD</string>
+    <string name="ticker_franchise_twosomebucks">FRANCHISE Twosomebucks</string>
+
+    <string name="ticker_etip_renewable">ETIP Renewable Energy</string>
+    <string name="ticker_etip_ai">ETIP Artificial Intelligence</string>
+    <string name="ticker_etip_semiconductor">ETIP Semiconductor</string>
+    <string name="ticker_etip_bio">ETIP Biotechnology</string>
+    <string name="ticker_etip_auto">ETIP Automotive</string>
+    <string name="ticker_etip_finance">ETIP Finance</string>
+    <string name="ticker_etip_energy">ETIP Energy</string>
+    <string name="ticker_etip_chemical">ETIP Chemicals</string>
+    <string name="ticker_etip_telecom">ETIP Telecommunications</string>
+    <string name="ticker_etip_construction">ETIP Construction</string>
+    <string name="ticker_etip_medical">ETIP Medical</string>
+    <string name="ticker_etip_food">ETIP Food</string>
+    <string name="ticker_etip_retail">ETIP Retail</string>
+    <string name="ticker_etip_transport">ETIP Transportation</string>
+    <string name="ticker_etip_entertainment">ETIP Entertainment</string>
+    <string name="ticker_etip_education">ETIP Education</string>
+    <string name="ticker_etip_service">ETIP Service</string>
+
+
+
+
+    <string name="pin_password_input_title">Enter PIN</string>
+
+
+
+    <string name="dialog_header_guidance">Notice</string>
+    <string name="pin_limit_exceeded_dialog_title">You’ve exceeded 5 incorrect attempts.</string>
+    <string name="pin_limit_exceeded_dialog_message">To reset your PIN, identity verification is required.</string>
+
+
+
+
+
+    <string name="pin_error_limit_exceeded">Too many incorrect attempts.\nPlease verify your identity to reset your PIN.</string>
+    <string name="ok">OK</string>
+    <string name="pin_password_wrong_attempt">Incorrect PIN. (%1$d/%2$d)</string>
+
+
+        <string name="dialog_reset_password_title">Notice</string>
+        <string name="dialog_reset_password_message">To reset your password, you need to delete your existing login information and re-register. Would you like to proceed with identity verification again?</string>
+        <string name="dialog_action_cancel">Cancel</string>
+        <string name="dialog_action_confirm">Confirm</string>
+
+
+
+
+
+    <string name="label_notice">Notice</string>
+    <string name="text_notice_profit">This information is for reference only and may differ from actual results.</string>
+    <string name="label_profit_type_weighted">Money-Weighted Rate of Return</string>
+    <string name="placeholder_month">YYYY MM</string>
+    <string name="placeholder_profit_period">YYYY MM DD ~ MM DD</string>
+    <string name="label_period_profit">Period Cumulative Profit/Loss</string>
+    <string name="placeholder_usd_zero">0 USD</string>
+    <string name="label_period_rate">Period Cumulative Rate of Return</string>
+    <string name="placeholder_percent_zero">0.00 %</string>
+    <string name="label_period_average_investment">Period Average Investment Amount</string>
+    <string name="title_profit_graph">IP Profit/Loss Graph</string>
+    <string name="tab_accumulated_rate">Cumulative Rate of Return</string>
+    <string name="tab_profit_loss">Profit/Loss</string>
+    <string name="label_date">Date</string>
+    <string name="title_profit_detail">IP Profit/Loss Details</string>
+    <string name="desc_dropdown_arrow">Dropdown Arrow</string>
+    <string name="desc_sort_arrow">Sort Arrow</string>
+    <string name="date_confirm">Confirm</string>
+    <string name="profit_type_weighted">Money-Weighted Rate of Return</string>
+    <string name="profit_type_time">Time-Weighted Rate of Return</string>
+    <string name="profit_type_simple">Simple Rate of Return</string>
+    <string name="touch_chart">Touch Chart</string>
+    <string name="trade_header_date">Date</string>
+    <string name="trade_header_daily_profit">Daily P/L</string>
+    <string name="trade_header_cumulative_profit">Cumulative P/L</string>
+    <string name="trade_header_daily_rate">Daily Return Rate</string>
+    <string name="trade_header_cumulative_rate">Cumulative Return Rate</string>
+    <string name="trade_header_ending_assets">Ending Assets</string>
+    <string name="trade_header_beginning_assets">Beginning Assets</string>
+    <string name="trade_header_deposit">Deposit</string>
+    <string name="trade_header_withdrawal">Withdrawal</string>
+    <string name="list_item_placeholder_date">06.01</string>
+    <string name="list_item_placeholder_zero">0.00</string>
+    <string name="list_item_placeholder_percent">0.00%</string>
+    <string name="filter_label_text">1 Week • View History</string>
+    <string name="filter_icon_desc">IP History Filter</string>
+    <string name="ip_search_text">IP Search</string>
+    <string name="title_transaction_filter">IP Investment History Search</string>
+    <string name="label_transaction_type">Transaction Type</string>
+    <string name="label_date_range">Search Period</string>
+    <string name="chip_type_all">All</string>
+    <string name="chip_type_buy">Buy</string>
+    <string name="chip_type_sell">Sell</string>
+    <string name="chip_type_deposit">Deposit</string>
+    <string name="chip_type_withdraw">W/D</string>
+    <string name="chip_period_1w">1W</string>
+    <string name="chip_period_1m">1M</string>
+    <string name="chip_period_3m">3M</string>
+    <string name="chip_period_6m">6M</string>
+    <string name="chip_period_direct">Custom</string>
+    <string name="button_reset">Reset</string>
+    <string name="button_search">Search</string>
+    <string name="desc_back_button">Back Button</string>
+    <string name="desc_start_date_input">Select Start Date</string>
+    <string name="desc_end_date_input">Select End Date</string>
+    <string name="desc_date_select">Back</string>
+    <string name="ticker">Ticker</string>
+    <string name="type">Type</string>
+    <string name="quantity1">Qty</string>
+    <string name="tradingave">Unit Price</string>
+    <string name="amount">Amount</string>
+    <string name="commission">Commission</string>
+    <string name="settlement">Settlement</string>
+    <string name="order_time">Order Time</string>
+    <string name="execution_time">Execution</string>
+    <string name="no_data_text">No transaction history for this period\n2025.01.15 ~ 2025.06.15.</string>
+    <string name="all_orders">All Orders</string>
+    <string name="no_order_found">No transaction history found.</string>
+    <string name="label_stip">STIP</string>
+    <string name="price_stip">1000.00</string>
+    <string name="change_stip">00.00</string>
+    <string name="percent_stip">0.00%</string>
+    <string name="label_etip">ETIP</string>
+    <string name="price_etip">500.00</string>
+    <string name="change_etip">00.00</string>
+    <string name="percent_etip">0.00%</string>
+    <string name="label_etip_ai">ETIP AI</string>
+    <string name="price_etip_ai">100.00</string>
+    <string name="change_etip_ai">00.00</string>
+    <string name="percent_etip_ai">0.00%</string>
+    <string name="price_format">%.2f</string>
+    <string name="change_format">%.2f</string>
+    <string name="percent_format">%.2f%%</string>
+    <string name="ipriserank_title">Top Rising IPs</string>
+    <string name="date_1week">1 Week</string>
+    <string name="date_1month">1 Month</string>
+    <string name="date_3months">3 Months</string>
+    <string name="date_6months">6 Months</string>
+    <string name="date_1year">1 Year</string>
+    <string name="mdm_label">MDM</string>
+    <string name="mdm_usd_ticker">MDM/USD</string>
+    <string name="mdm_percent_format">00.00%</string>
+    <string name="stip_index_text">STIP Index</string>
+    <string name="stip_index_today">Today</string>
+    <string name="stip_index_month">1 Month</string>
+    <string name="stip_index_threemonth">3 Months</string>
+    <string name="stip_index_text_english">STIP Index</string>
+    <string name="stip_ai_index">STIP AI Index</string>
+    <string name="dip_market_cap_number">0,000,000</string>
+    <string name="dip_market_cap_order">Order</string>
+    <string name="dip_market_logo1">JWV </string>
+    <string name="dip_market_logo2">MDM </string>
+    <string name="ip_news">IP News</string>
+    <string name="title_latest_news">Latest IP News</string>
+    <string name="time_sample">10:15</string>
+    <string name="report_time">2025-06-01</string>
+    <string name="date_just_now">25.06.01</string>
+    <string name="filled_time">06.11 04:10:14</string>
+    <string name="error_news_load_failed">News loading failed</string>
+    <string name="error_open_link_failed">Failed to open link</string>
+    <string name="time_just_now">Just now</string>
+    <string name="time_minutes_ago">%1$d min ago</string>
+    <string name="time_hours_ago">%1$d hr ago</string>
+    <string name="time_yesterday">Yesterday %1$s</string>
+    <string name="time_format_full">%1$s</string>
+    <string name="breaking_news">Breaking News</string>
+    <string name="ip_breaking_news">Breaking NEWS</string>
+    <string name="dip_listing_info">IP NEWS</string>
+
+    <string name="title_stock_exchange">Exchange</string>
+    <string name="title_ip_inform">IP Info</string>
+    <string name="title_investment_history">Investment History</string>
+    <string name="title_transaction_history">Deposit/Withdrawal</string>
+    <string name="title_more">More</string>
+    <string name="common_confirm">Confirm</string>
+    <string name="common_cancel">Cancel</string>
+    <string name="common_dot">\u2022</string>
+    <string name="common_change">Change</string>
+    <string name="common_yes">Yes</string>
+    <string name="common_no">No</string>
+    <string name="common_re_order">Reorder</string>
+    <string name="common_lg">LG U+</string>
+    <string name="common_kt">KT</string>
+    <string name="common_skt">SKT</string>
+    <string name="common_only_english">Please enter in English.</string>
+    <string name="common_invalid_email">Please enter a valid email format.</string>
+    <string name="common_ready">Coming Soon</string>
+    <string name="common_camera_permission">Camera/Gallery access permission denied. Please grant permission to use.</string>
+    <string name="common_not_password">Passwords do not match.</string>
+    <string name="common_app_end">Press again to exit.</string>
+    <string name="common_dont_show_again_today">Don\'t show again today.</string>
+    <string name="common_deposit">Deposit</string>
+    <string name="common_deposit_action">Deposit</string>
+    <string name="common_withdrawal">Withdrawal</string>
+    <string name="common_withdrawal_action">Withdraw</string>
+    <string name="common_pending_transaction_amount">Pending Transaction</string>
+    <string name="common_withdrawable_amount">Withdrawable</string>
+    <string name="common_copy">Copy</string>
+    <string name="common_real_name_account">Bank Account</string>
+    <string name="common_withdrawal_account">Withdrawal Account</string>
+    <string name="common_withdrawal_wallet">Withdrawal Wallet</string>
+    <string name="common_notice">Notice</string>
+    <string name="button_verify">Confirm</string>
+    <string name="button_verify_with_timer">Confirm (%s)</string>
+    <string name="info_verification_time_limit">Verification time available: 5:00 minutes</string>
+    <string name="checkbox_agree">I agree</string>
+    <string name="error_duplicate_409">Member information already registered.</string>
+    <string name="error_admin_500">An unknown error occurred. Please contact the administrator.</string>
+    <string name="error_network_999">Network connection failed.</string>
+    <string name="error_login_fail_888">Login connection failed.</string>
+    <string name="permission_title">For safe and convenient use of <![CDATA[<br/><font color="#30C6E8">STIP</font>, the following<br/>]]> permissions are required.</string>
+    <string name="permission_camera">Camera</string>
+    <string name="permission_camera_comment">ID card photo capture and document submission, withdrawal address QR code scanning, photo capture for 1:1 inquiry and transaction support fraud reports.</string>
+    <string name="permission_picture">Photos</string>
+    <string name="permission_picture_comment">Document submission, saving screen share images, sending photos for 1:1 inquiries.</string>
+    <string name="permission_biometric_auth">Biometric Information (Touch ID)</string>
+    <string name="permission_biometric_auth_comment">Identity verification and user identification.</string>
+    <string name="permission_notification">Notifications</string>
+    <string name="permission_notification_comment">Push Notifications</string>
+    <string name="permission_select">(Optional)</string>
+    <string name="permission_comment">Even if you do not allow optional access rights, you can still use STIP\nservices other than those specific features.</string>
+    <string name="login_stip">Sign up</string>
+    <string name="log_in_home">Log in</string>
+    <string name="login_later">Log in later?</string>
+    <string name="login_look_around">Look Around</string>
+    <string name="login_start_title"><![CDATA[<br/><font color="#30C6E8">STIP</font> Login<br/>]]>is starting.</string>
+    <string name="login_start">Start STIP</string>
+    <string name="login_pin_number_title">Log in with PIN</string>
+    <string name="login_pin_number_forget_password"><u>Forgot your password?</u></string>
+    <string name="login_pin_number_basic_login_setting">Set as Default Login</string>
+    <string name="login_pin_number_another_login_method"><u>Other Login Methods</u></string>
+    <string name="login_biometric_auth_title">Biometric Login</string>
+    <string name="login_biometric_auth_re_registration"><u>Re-register</u></string>
+    <string name="login_biometric_auth_basic_login_setting">Set as Default Login</string>
+    <string name="login_biometric_auth_another_login_method"><u>Other Login Methods</u></string>
+    <string name="login_biometric_auth_login_method_change">Change Login Method</string>
+    <string name="login_biometric_auth">Biometric Auth</string>
+    <string name="login_biometric_auth_pin_number">PIN Number</string>
+    <string name="main_login_required">Login required to use this feature.</string>
+    <string name="sign_up_title"><![CDATA[<br/>Proceeding with identity verification<br/>to use <font color="#30C6E8">STIP</font>.]]></string>
+    <string name="sign_up_all_agree">Agree to All</string>
+    <string name="sign_up_phone_auth_confirm">Mobile Phone Identity Verification</string>
+    <string name="sign_up_name">Name</string>
+    <string name="sign_up_name_hint">Enter Full Name</string>
+    <string name="sign_up_resident_number">Resident Registration Number</string>
+    <string name="sign_up_resident_number_hint">Date of Birth</string>
+    <string name="sign_up_communication_agency">Mobile Carrier</string>
+    <string name="sign_up_communication_agency_hint">Select Mobile Carrier</string>
+    <string name="sign_up_phone_number">Mobile Phone Number</string>
+    <string name="sign_up_phone_number_hint">Enter without hyphens</string>
+    <string name="sign_up_auth_request">Request Verification</string>
+    <string name="sign_up_auth_request_re">Request Again</string>
+    <string name="sign_up_auth_request_hint">Enter 6-digit verification code</string>
+    <string name="sign_up_communication_select">Select Mobile Carrier</string>
+    <string name="sign_up_communication_skt">SKT</string>
+    <string name="sign_up_communication_kt">KT</string>
+    <string name="sign_up_communication_lg">LG U+</string>
+    <string name="sign_up_communication_frugality_skt">SKT MVNO</string>
+    <string name="sign_up_communication_frugality_kt">KT MVNO</string>
+    <string name="sign_up_communication_frugality_lg">LG U+ MVNO</string>
+    <string name="sign_up_agree_pop_up_title">Please check the terms of service agreement</string>
+    <string name="sign_up_input_inform_pop_up_title">Please check the entered information and try again</string>
+    <string name="sign_up_auth_number_disaccord_pop_up_title">Verification code does not match.\nPlease check the code and try again.\n(Error count: %s/3)</string>
+    <string name="sign_up_auth_number_over_count_pop_up_title">You have exceeded the maximum number of identity verification attempts.</string>
+    <string name="sign_up_auth_number_over_time_pop_up_title">Verification time has expired. Please try again.</string>
+    <string name="sign_up_bank_title">Please proceed with\nbank account verification.</string>
+    <string name="sign_up_bank_sub_title">Verification is possible only if your real name\nmatches the name registered on the account.</string>
+    <string name="sign_up_bank_bank">Bank</string>
+    <string name="sign_up_bank_number">Account Number</string>
+    <string name="sign_up_bank_number_hint">Enter without hyphens</string>
+    <string name="sign_up_bank_warning">\u2022 Account verification is not possible during bank server maintenance hours.</string>
+    <string name="sign_up_bank_auth_request">Send Account Verification Code</string>
+    <string name="sign_up_bank_select_title">Select Bank</string>
+    <string name="sign_up_bank_search_hint">Search Bank/Securities Firm Name</string>
+    <string name="sign_up_bank_1_won_title">1 KRW has been deposited.<![CDATA[<br/>Please enter the <font color="#30C6E8">6 digits</font>.<br/>]]></string>
+    <string name="sign_up_bank_1_won_help_1"><u>How do I check the verification code?</u></string>
+    <string name="sign_up_bank_1_won_help_2">\u2022 If there are many requests, the 1 KRW deposit may take more than 5 minutes.</string>
+    <string name="sign_up_bank_1_won_help_3">\u2022 If there is no deposit record, please check your account information again.</string>
+    <string name="sign_up_bank_1_won_auth">Verify 1 KRW (%s)</string>
+    <string name="sign_up_kyc_title">Please enter KYC information</string>
+    <string name="sign_up_kyc_email">Email</string>
+    <string name="sign_up_kyc_email_hint">Enter Email</string>
+    <string name="sign_up_kyc_name">Name</string>
+    <string name="sign_up_kyc_name_hint">Enter in English</string>
+    <string name="sign_up_kyc_address">Address</string>
+    <string name="sign_up_kyc_address_hint">Enter Address</string>
+    <string name="sign_up_kyc_address_old">Lot Number Address</string>
+    <string name="sign_up_kyc_address_new">Street Name Address</string>
+    <string name="sign_up_kyc_address_not_found">No matching address found.</string>
+    <string name="sign_up_kyc_account_open">Are you opening the account for your own use?</string>
+    <string name="sign_up_kyc_purpose">Purpose of Use</string>
+    <string name="sign_up_kyc_purpose_hint">General Investment Purpose</string>
+    <string name="sign_up_kyc_purpose_select">Select Purpose of Use</string>
+    <string name="sign_up_kyc_source">Source of Funds</string>
+    <string name="sign_up_kyc_source_hint">Salary/Pension</string>
+    <string name="sign_up_kyc_source_select">Select Source of Funds</string>
+    <string name="sign_up_kyc_job">Occupation</string>
+    <string name="sign_up_kyc_job_hint">Employee</string>
+    <string name="sign_up_kyc_job_select">Select Occupation</string>
+    <string name="sign_up_kyc_inform_title">Please enter\n%s\'s information</string>
+    <string name="sign_up_kyc_inform_passport_name">Full Name (as shown on passport)</string>
+    <string name="sign_up_kyc_inform_passport_last_name_hint">Last Name (English)</string>
+    <string name="sign_up_kyc_inform_passport_first_name_hint">First Name (English)</string>
+    <string name="sign_up_kyc_inform_current_address">Current Residence</string>
+    <string name="sign_up_kyc_inform_current_address_hint">Search Address</string>
+    <string name="sign_up_kyc_search_address_title">Address Search</string>
+    <string name="sign_up_kyc_search_address_hint">e.g.) 166 Pangyoyeok-ro, Baekhyeon-dong 532 Bundang Jugong</string>
+    <string name="sign_up_kyc_search_address_detail_hint">Enter Detailed Address</string>
+    <string name="sign_up_pin_number_title">Please prepare your Resident Registration Card or\nDriver\'s License.</string>
+    <string name="sign_up_pin_number_sub_title">To open an account, you need to take a photo of your ID\nthat can verify your real name.</string>
+    <string name="sign_up_pin_number_identification_take">Start ID Photo Capture</string>
+    <string name="sign_up_pin_number_setting_title">Set PIN Password</string>
+    <string name="sign_up_pin_number_setting_same_condition_warning">Identical or consecutive numbers, and numbers related\nto personal information are restricted.</string>
+    <string name="sign_up_pin_number_setting_confirm_warning">Please enter again for confirmation.</string>
+    <string name="sign_up_pin_number_setting_confirm_not_correct">Does not match.\n(%d/5)</string>
+    <string name="sign_up_pin_number_biometric_title">For faster access,\nset up biometric authentication.</string>
+    <string name="sign_up_pin_number_biometric_sub_title">You can also set it up in the\nMore > Authentication/Security menu.</string>
+    <string name="sign_up_pin_number_biometric_basic_login_setting">Set as Default Login</string>
+    <string name="sign_up_pin_number_biometric_basic_login_warning">Uses biometric information registered on the device for identity verification\nduring STIP login and is not transmitted/stored on the server.</string>
+    <string name="sign_up_pin_number_biometric_later">Later</string>
+    <string name="sign_up_pin_number_biometric_use_agree">Agree to Use Biometric Authentication</string>
+    <string name="sign_up_pin_number_start_title">Now you can start investing<![CDATA[<br/>with <font color="#30C6E8">STIP</font>!]]></string>
+    <string name="sign_up_pin_number_start_sub_title">Digital Intellectual Property (DIP) trading is available.\n\nSTIP operates a 24/7 exchange\nto support DIP trading anytime.\n\nNow trade DIP freely without time and\nplace constraints!</string>
+    <string name="sign_up_pin_number_start">Start Trading</string>
+    <string name="sign_up_pin_number_finish_title">Enter PIN Password</string>
+    <string name="sign_up_pin_number_finish_forget">Forgot your PIN password?</string>
+    <string name="ip_asset_search_ticker_ip">Search Ticker/IP</string>
+    <string name="ip_asset_krw_deposit">USD Deposit</string>
+    <string name="phone_fraud_alert_title">Telecommunication Financial Fraud Warning</string>
+    <string name="phone_fraud_alert_message1">Recently, there have been many cases of telecommunication financial fraud (voice phishing) using Digital IP (DIP) assets.</string>
+    <string name="phone_fraud_alert_message2">If any of the above applies, it could be a voice phishing scam.</string>
+    <string name="phone_fraud_alert_message3">If you have even the slightest suspicion, stop the transaction immediately and contact the STIP KakaoTalk channel.</string>
+    <string name="phone_fraud_alert_message4">Anyone can become a victim of voice phishing. You can prevent it with extra caution.</string>
+    <string name="phone_fraud_alert_bullet_point1">Did employees of domestic/international exchanges or financial institution representatives ask for financial information or induce Digital IP (DIP) deposits?</string>
+    <string name="phone_fraud_alert_bullet_point2">Did a foreigner you befriended on SNS, dating apps, etc., introduce an unfamiliar overseas trading site and induce you to sign up?</string>
+    <string name="phone_fraud_alert_bullet_point3">Did someone offer to compensate for investment losses and demand you join a specific site, install an app, or create a wallet?</string>
+    <string name="deposit_address">Deposit Address</string>
+    <string name="deposit_notice_title_not_usd">Important Notes Before Depositing!</string>
+    <string name="deposit_notice_message_not_usd">"This address is exclusively for {currencyCode} deposits.
+Depositing other Digital IPs may result in errors or loss, which cannot be recovered.\n\n
+Furthermore, according to our suspicious transaction review process, submission of documents verifying the source of funds may be required, potentially delaying deposit reflection. Based on the document review results, the deposit may not be approved, and withdrawal fees may apply upon return.\n\n
+This address is for deposits only."
+    </string>
+    <string name="deposit_notice_title_usd">[Deposit Information]</string>
+    <string name="deposit_notice_message_usd">Please deposit to the designated account shown above.\nAfter the deposit is confirmed, it will be reflected in your account.</string>
+    <string name="filter_all">All</string>
+    <string name="filter_deposit">Deposit</string>
+    <string name="filter_withdraw">Withdrawal</string>
+    <string name="filter_refund">Refund</string>
+    <string name="filter_pending">Pending</string>
+    <string name="total_holdings">Total Holdings</string>
+    <string name="deposit_completed">Deposit Completed</string>
+    <string name="withdrawal_completed">Withdrawal Completed</string>
+    <string name="withdrawal_limit">Withdrawal Limit</string>
+    <string name="withdrawal_request">Withdrawal Request</string>
+    <string name="withdrawal_request_confirm">Confirm Withdrawal Request</string>
+    <string name="withdrawal_notice_message_withdrawal_completed">Withdrawal request completed successfully.</string>
+    <string name="withdrawal_warning_title1">Proceeding with confirmation will complete the withdrawal request, and it cannot be canceled.</string>
+    <string name="withdrawal_warning_title2">The withdrawal request is completed immediately upon confirmation and cannot be canceled afterwards.</string>
+    <string name="withdrawal_confirm_warning_title">Please Confirm Once More</string>
+    <string name="withdrawal_confirm_warning_message1">Lending your STIP account under your name upon request or instruction from others may lead to legal penalties, and sharing a real-name verified account carries risks of personal information leakage. Additionally, withdrawal services may not be smooth during bank maintenance hours (daily 23:50~00:10), and using a VPN may result in withdrawal holds or restrictions.
+        \n\nWithdrawals may also be blocked if suspected of fraudulent transactions.
+Furthermore, as part of our suspicious transaction review process, we may request documents to verify the source of funds and withdrawal destination upon withdrawal request, which may cause delays.
+\n\nPlease note that based on the document review results, the withdrawal may not be approved.</string>
+    <string name="withdrawal_confirm_warning_message2">Lending your STIP account under your name to others can lead to legal penalties, and sharing a real-name verified account risks personal information leakage.\n\nWithdrawal services may not be smooth during bank maintenance hours (23:50~00:10).\n\nUsing a VPN may delay or restrict withdrawals, and withdrawals may be blocked if suspected of fraudulent transactions.\n\nDuring the suspicious transaction review process, document submission may be required to verify the source of funds and withdrawal destination, potentially causing delays. Withdrawal may be rejected based on the review results.</string>
+    <string name="withdrawal_amount">Withdrawal Amount</string>
+    <string name="withdrawal_quantity">Withdrawal Quantity</string>
+    <string name="withdrawal_total_vat_included">Total Withdrawal (Fee Included)</string>
+    <string name="withdrawal_min_amount">Min 1</string>
+    <string name="withdrawal_error_available_amount_exceeded">Exceeded withdrawable amount.</string>
+    <string name="withdrawal_error_limit_exceeded">Exceeded withdrawal limit.</string>
+    <string name="filter_owned">Own</string>
+    <string name="desc_back">Back</string>
+    <string name="desc_share">Share</string>
+    <string name="status_withdrawal_complete">Withdrawal Complete</string>
+    <string name="label_completion_datetime">Completion Date/Time</string>
+    <string name="label_type">Type</string>
+    <string name="value_type_krw_withdrawal">USD Withdrawal</string>
+    <string name="label_withdrawal_account">Withdrawal Account</string>
+    <string name="button_confirm">Confirm</string>
+    <string name="title_krw_deposit_detail">KRW Deposit Details</string>
+    <string name="title_krw_withdrawal_detail">KRW Withdrawal Details</string>
+    <string name="title_usd_deposit_detail">USD Deposit Details</string>
+    <string name="title_usd_withdrawal_detail">USD Withdrawal Details</string>
+    <string name="title_deposit_detail">Deposit Details</string>
+    <string name="title_withdrawal_detail">Withdrawal Details</string>
+    <string name="status_deposit_completed">Deposit Completed</string>
+    <string name="value_type_krw_deposit">USD Deposit</string>
+    <string name="label_deposit_account">Deposit Account</string>
+    <string name="value_type_usd_deposit">USD Deposit</string>
+    <string name="value_type_usd_withdrawal">USD Withdrawal</string>
+    <string name="value_type_deposit">Deposit</string>
+    <string name="value_type_withdrawal">Withdrawal</string>
+    <string name="value_type_unknown">Unknown</string>
+    <string name="deposit_warning">Deposit Warning</string>
+    <string name="withdraw_warning">Withdrawal Warning</string>
+    <string name="label_network">Network</string>
+    <string name="label_to">To</string>
+    <string name="label_txid">Transaction ID</string>
+    <string name="usd_equivalent_placeholder">USD</string>
+    <string name="network_value">Network Info (e.g., Ethereum)</string>
+    <string name="transaction_id_value">0x123abc456def789...</string>
+    <string name="deletion_guide_title">Membership Withdrawal Guide</string>
+    <string name="deletion_guide_intro">Before withdrawing your membership, please ensure you complete any necessary actions if you hold IP assets.</string>
+    <string name="deletion_guide_consequence1">Once withdrawal proceeds, all held IP assets and related data will be deleted and cannot be recovered.</string>
+    <string name="deletion_guide_consequence2">Registered personal information will also be deleted upon withdrawal, although information required to be stored for a certain period according to relevant laws may be retained. Additionally, external services linked to the STIP IP Exchange account (e.g., third-party linked services) will be automatically terminated and become unusable.</string>
+    <string name="deletion_guide_consequence3">After membership withdrawal, all information including IP assets and transaction history will be deleted, and consent for use of individual services within the STIP IP Exchange will also be withdrawn.</string>
+    <string name="deletion_guide_consequence4">Please note that withdrawal is possible even if you hold IP assets.</string>
+    <string name="deletion_guide_notes_title">Other Notes</string>
+    <string name="deletion_guide_note1">• If real-name verified account information is not available, payment of service fees may be restricted.</string>
+    <string name="deletion_guide_note2">• Re-joining the STIP IP Exchange is not possible for 24 hours after withdrawal.</string>
+    <string name="deletion_guide_note3">• If you withdraw and rejoin more than twice within one year, joining may be restricted for one year. However, re-joining application may be possible if a valid reason is acknowledged through customer service.</string>
+    <string name="withdraw_membership">Delete account</string>
+    <string name="license_agreement_title">Digital IP Usage Agreement</string>
+    <string name="license_agreement_content">
+        This Agreement (hereinafter referred to as the \"Agreement\") includes provisions regulating the ordinary license for the use of Digital IP (hereinafter referred to as \"this DIP\").\n\n
+        Article 1 (Purpose)\n
+        The purpose of this Agreement is to clarify the rights and obligations of the owner of this IP (hereinafter referred to as the \"Right Holder\") and the investor intending to use it, thereby ensuring the lawful use of this IP.\n\n
+        Article 2 (Definition of this IP)\n
+        This IP refers to IP listed through the STIP IP Exchange, which may include patent rights, copyrights, trademark rights, design rights, music, dance, franchises, artworks, game codes, business models, and other intellectual property rights.\n\n
+        Article 3 (Grant of Ordinary License)\n
+        1. By listing this IP, the Right Holder grants the user the right to use this IP according to the ordinary license ratio set by the Right Holder.\n
+        2. If the user holds Digital IP (DIP) satisfying the ordinary license ratio for the corresponding IP, the user may use this intellectual property within the defined scope.\n
+        3. If a DIP holder requests the right to use this IP, the Right Holder must register the usage right with the relevant IP registration authority within 2 weeks from the application date.\n
+        4. The user may use this IP only for the purposes defined in the ordinary license and may not assign, lend, or sublicense this license to others without the prior written consent of the Right Holder. In case of violation, the Right Holder may immediately terminate the user\'s usage right, claim damages, and impose relevant legal sanctions.\n
+        5. Investors and buyers intending to use this IP can legally exercise the ordinary license only after the Right Holder has registered the IP with the competent authority. During the period of using the IP, the corresponding DIP cannot be sold. If the user no longer uses the IP, they must notify the owner, cancel the ordinary license right, and wait 4 weeks before the DIP can be sold.\n\n
+        Article 4 (Method of IP Usage)\n
+        1. The method for using this IP is to purchase the DIP specified for each IP on the STIP IP Exchange.\n
+        2. The user shall bear all legal, tax, fee, and other costs associated with the use of the license. However, investors and buyers purchasing this IP for use cannot sell the corresponding DIP during the period they are using the IP after the Right Holder has registered it. If they no longer use the IP, they must notify the owner, cancel the ordinary license right, and wait 4 weeks before selling the DIP. Registration costs related to the application for ordinary license use shall be borne by the IP owner.\n\n
+        Article 5 (User\'s Obligations and Restrictions)\n
+        1. The user may not use this IP for illegal purposes or in a manner that infringes upon the rights of third parties.\n
+        2. When utilizing this IP, credit for the content must be clearly indicated.\n
+        3. The user may modify, adapt, or reprocess this IP for use.\n\n
+        Article 6 (Right Holder\'s Obligations and Warranties)\n
+        1. The Right Holder warrants that this IP does not infringe upon the rights of third parties.\n
+        2. In the event of a legal dispute regarding this IP, the Right Holder shall cooperate with the user for a swift resolution. All responsibility shall be borne and resolved by the IP owner.\n\n
+        Article 7 (Termination and Suspension of Agreement)\n
+        1. If the user violates the terms of this Agreement, the Right Holder may terminate this license immediately after notification.\n
+        2. Even after the termination or expiration of this Agreement, Articles 3, 5, and 8 shall remain in effect.\n\n
+        Article 8 (Dispute Resolution)\n
+        1. All disputes arising in connection with this Agreement shall be governed by the laws of the Republic of Korea, and the Seoul Central District Court shall have exclusive jurisdiction.\nIn the event of a dispute, the parties shall make their best efforts to resolve it through mutual consultation.\n\n
+        Article 9 (Miscellaneous Provisions)\n
+        Matters not specified in this Agreement shall be governed by the relevant laws and commercial practices of the Republic of Korea.\n\n\n
+        [Right Holder]\n
+        Intellectual Property (IP) Name: \n\n
+        IP Owner:
+    </string>
+    <string name="more_options_title">More</string>
+    <string name="profile_image_description">User Profile Image</string>
+    <string name="user_name_placeholder">Jeong Hyeon-do</string>
+    <string name="more_options_arrow_description">More</string>
+    <string name="menu_price_alert">Quote Alert</string>
+    <string name="menu_mode_settings">Mode Setting</string>
+    <string name="menu_security_auth">Security/Auth</string>
+    <string name="more_name">Jeong Hyeon-do</string>
+    <string name="icon_ip_webtoon_label">IP Webtoon</string>
+    <string name="icon_ip_auction_label">IP Auction</string>
+    <string name="icon_ip_swap_label">IP Swap</string>
+    <string name="icon_ip_donate_label">IP Donation</string>
+    <string name="logo_stip_description">STIP Logo</string>
+    <string name="dip_portfolio">DIP Portfolio</string>
+    <string name="settings_terms">Policies and Terms</string>
+    <string name="settings_privacy_policy">Privacy Policy</string>
+    <string name="settings_youth_policy">Consumer Protection Policy</string>
+    <string name="settings_transaction_status">Deposit/Withdrawal Status</string>
+    <string name="settings_stipvelation">STIPvelation</string>
+    <string name="settings_app_version_label">App Version 1.01</string>
+    <string name="button_customer_center">Customer Center</string>
+    <string name="prompt_enter_email">Please enter your email address</string>
+    <string name="email_label">Email</string>
+    <string name="email_hint">jhdoup@gmail.com</string>
+    <string name="info_email_verification">A verification code will be sent to your email, and you must verify within 10 minutes.\nIf verification is not completed, this email will be automatically deleted upon membership withdrawal.</string>
+    <string name="button_request_code">Request Code</string>
+    <string name="settings">Settings</string>
+    <string name="more_policy_and_terms">Policies and Terms</string>
+    <string name="more_privacy_policy">ESG Policy</string>
+    <string name="more_youth_policy">Startup and SME Support Policy</string>
+    <string name="more_transaction_status">AML and Internal Control Policy</string>
+    <string name="policy_title_disclosure_transparency">Disclosure Transparency Enhancement Policy</string>
+    <string name="policy_title_dip_valuation">DIP Valuation Standards Policy</string>
+    <string name="policy_title_user_data_protection">User Data Protection and Information Access Rights Policy</string>
+    <string name="policy_title_fee_transparency">STIP Fee Transparency Policy</string>
+    <string name="more_stipulation">STIPvelation</string>
+    <string name="more_app_version_format">App Version 1.00</string>
+    <string name="more_current_app_version">1.01</string>
+    <string name="more_policy_and_terms_agreement">(Required) Policies and Terms Agreement</string>
+    <string name="terms_telecom">Mobile Carrier Terms of Service</string>
+    <string name="terms_currency_exchange">Trading Currency and Exchange Method</string>
+    <string name="terms_investment_risk">Investment Responsibility and Risk</string>
+    <string name="terms_certificate_service">Certificate Service Terms of Use</string>
+    <string name="terms_identification_info">Identification Information Verification</string>
+    <string name="terms_personal_info_collection_auth">Consent to Personal Information Collection</string>
+    <string name="terms_personal_info_collection">Personal Information Collection</string>
+    <string name="terms_auto_debit">D/W Automatic Transfer Service</string>
+    <string name="terms_exchange_usage">STIP IP Exchange Terms of Use and Guide</string>
+    <string name="terms_youth_protection">Consumer Protection Policy</string>
+    <string name="terms_privacy_policy">Privacy Policy</string>
+    <string name="terms_personal_info_use">Personal Information Collection</string>
+    <string name="more_customer_center">Customer Center</string>
+    <string name="phone_number">010-000-0000</string>
+    <string name="header_policy_terms">Policies and Terms</string>
+    <string name="header_customer_center">Customer Center</string>
+    <string name="header_customer_center_for_you">We look forward to your valuable feedback.</string>
+    <string name="user_guide_title">User Guide</string>
+    <string name="phone_consult_title">Phone Consultation</string>
+    <string name="kakao_inquiry_title">KakaoTalk Inquiry</string>
+    <string name="one_on_one_inquiry_title">Email Inquiry</string>
+    <string name="inquiry_history_title">Inquire on Homepage</string>
+    <string name="impersonation_report_title">Report Impersonation Scam</string>
+    <string name="unfair_trade_title">Unfair Trading</string>
+    <string name="transaction_statement_title">Issue Transaction Statement</string>
+    <string name="user_guide_desc">Guide related to STIP usage</string>
+    <string name="common_customer_center_phone">Customer Center 09:00 ~ 18:00 Operation</string>
+    <string name="common_customer_center_24h">Customer Center 24-Hour Operation</string>
+    <string name="inquiry_history_desc">Check inquiry history.</string>
+    <string name="impersonation_report_desc">Report if requested payment in exchange for listing</string>
+    <string name="unfair_trade_desc">Report unfair trading practices occurring during STIP transactions</string>
+    <string name="transaction_statement_desc">Request issuance of DIP Trade Certificate, DIP Transaction History</string>
+    <string name="more_info">More Info</string>
+    <string name="logout_button">Logout</string>
+    <string name="member_info_title">Member Information</string>
+    <string name="edit_button">Edit</string>
+    <string name="member_info_title_change">Edit Member Information</string>
+    <string name="label_name">Name</string>
+    <string name="label_passport_name">Full Name (as shown on passport)</string>
+    <string name="label_phone">Phone Number</string>
+    <string name="label_dob">Date of Birth</string>
+    <string name="label_email">Email</string>
+    <string name="label_bank">Verified Bank</string>
+    <string name="label_job">Occupation</string>
+    <string name="label_job_title">Company Name</string>
+    <string name="label_job_address">Work Address</string>
+    <string name="some_other_string">Some other string</string>
+    <string name="member_info_edit_title">Edit Member Information</string>
+    <string name="email_hint_empty">Please enter your email address</string>
+    <string name="prompt_enter_code">Please enter the verification code\nsent to the newly entered email address</string>
+    <string name="code_hint">Enter 4-digit code</string>
+    <string name="info_attempts_left">Verification possible up to 5 times</string>
+    <string name="button_verify_code">Verify Code</string>
+
+
+        <string name="no_ip_link">No IP link available.</string>
+        <string name="no_homepage_link">No Homepage link available.</string>
+        <string name="no_business_plan_link">No business plan link available.</string>
+        <string name="no_related_video_link">No related video link available.</string>
+        <string name="error_loading_details">Failed to load details.</string>
+
+
+
+
+
+    <string name="withdraw_navigation_error">Failed to navigate to the withdrawal screen</string>
+    <string name="withdraw_status_null_warning">Fetching withdrawal information. Please try again shortly.</string>
+
+
+    <string name="withdrawal_limit_message">
+    One-time withdrawal limit: 100,000 USD\nDaily withdrawal limit: 300,000 USD\nPending withdrawals count toward the daily limit.
+</string>
+    <string name="withdrawable_amount_message">
+    Applies to one verified account per member. Limits may vary depending on bank status and KYC, and maximum deposits/withdrawals may be restricted.
+</string>
+    <string name="deposit_network_warning">
+    This digital IP supports deposits via Polygon network only.\nDeposits via other networks will not be processed.
+</string>
+    <string name="withdraw_network_warning">
+    Before withdrawing a digital IP, make sure your wallet supports deposits via Polygon network.
+</string>
+    <string name="deposit_navigation_error">Failed to navigate to the deposit screen.</string>
+
+
+
+
+
+
+
+
+    <string name="tab_market">Market</string>
+
+
+
+
+
+
+    <string name="dialog_login_inform_title">Login Information</string>
+    <string name="dialog_login_inform_message">Available after login.</string>
+
+
+
+
+    <string name="language_select">Language Selection</string>
+    <string name="language_korean">Korean</string>
+    <string name="language_korean_desc">Scientific structure of Hangeul characters</string>
+    <string name="language_english">English</string>
+    <string name="language_english_desc">Rich vocabulary and nuances</string>
+    <string name="language_japanese">Japanese</string>
+    <string name="language_japanese_desc">Polite and delicate expressions</string>
+    <string name="language_chinese">Chinese</string>
+    <string name="language_chinese_desc">Cultural influence and symbolism</string>
+    <string name="language_changed">Language has been changed</string>
+
+    <!-- More Page -->
+    <string name="more_esg_policy">ESG Policy</string>
+    <string name="more_startup_support">Startup Support</string>
+    <string name="more_aml_policy">AML Policy</string>
+    <string name="more_ip_webtoon_evaluation">IP Webtoon Evaluation Standards</string>
+    <string name="more_fee_policy">Fee Policy</string>
+    <string name="more_stipvelation">STIPvelation</string>
+    <string name="more_version">Version %s</string>
+    <string name="more_inquiries">Inquiries</string>
+    <string name="more_mode_settings">Mode Settings</string>
+    <string name="more_notification_settings">Notification Settings</string>
+    <string name="more_language_settings">Language Settings</string>
+    <string name="more_account_settings">Account Settings</string>
+    <string name="more_menu_title_ip_entertainment">IP Entertainment</string>
+    <string name="more_menu_title_information">Information</string>
+    <string name="more_menu_title_settings">Settings</string>
+    <!-- More Page Missing Resources -->
+    <string name="more_security_auth">Security/Auth</string>
+    <string name="more_ip_entertainment">IP Entertainment</string>
+    <string name="more_screen_too_small">Screen is too small</string>
+    <string name="more_ip_webtoon">IP Webtoon</string>
+    <string name="more_ip_webtoon_description">Check out various webtoon IPs</string>
+    <string name="more_ip_auction">IP Auction</string>
+    <string name="more_ip_auction_description">Trade IPs through auctions</string>
+    <string name="more_ip_swap">IP Swap</string>
+    <string name="more_ip_swap_description">Exchange your IPs</string>
+    <string name="more_ip_donation">IP Donation</string>
+    <string name="more_ip_donation_description">Donate your IPs</string>
+    <string name="more_policy">Policy</string>
+</resources>

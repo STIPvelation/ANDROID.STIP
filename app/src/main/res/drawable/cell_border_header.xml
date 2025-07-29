@@ -1,0 +1,7 @@
+<!-- res/drawable/cell_border_header.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@android:color/transparent" />
+    <stroke
+        android:width="0.5dp"
+        android:color="#DEDEDE" /> <!-- 유지 -->
+</shape>

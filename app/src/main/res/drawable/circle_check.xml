@@ -1,0 +1,7 @@
+<!-- res/drawable/circle_check.xml -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+  <!-- 선택됨 -->
+  <item android:drawable="@drawable/ic_circle_check_filled" android:state_selected="true" />
+  <!-- 기본 -->
+  <item android:drawable="@drawable/ic_circle_check_outline" />
+</selector>

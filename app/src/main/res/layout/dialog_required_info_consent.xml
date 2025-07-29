@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dialog_required_info_consent_root"
+    android:layout_width="360dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/dialog_background_rounded_white"
+    android:clipToOutline="true"
+    android:minHeight="240dp"
+    android:paddingBottom="14dp">
+
+    <TextView
+        android:id="@+id/text_dialog_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/dialog_title_info"
+        android:textAppearance="@style/DialogTitleStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_message1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:lineSpacingExtra="4sp"
+        style="@style/DefaultTextStyle_12"
+        android:text="@string/dialog_message_required_info_notice"
+        android:textAppearance="@style/DialogMessageStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_dialog_title" />
+
+    <TextView
+        android:id="@+id/text_message2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:gravity="center"
+        android:lineSpacingExtra="4sp"
+        style="@style/DefaultTextStyle_12"
+        android:text="@string/dialog_prompt_customer_verification"
+        android:textAppearance="@style/DialogMessageStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_message1" />
+
+    <CheckBox
+        android:id="@+id/checkbox_agree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/checkbox_agree"
+        android:textAppearance="@style/DialogCheckboxTextStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_message2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_button_top_consent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="57dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_cancel_consent"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="14dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="@string/dialog_cancel"
+        android:textColor="@color/dialog_cancel_text_color"
+        app:backgroundTint="@color/dialog_cancel_background_color"
+        app:cornerRadius="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_start_consent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline_button_top_consent"
+        app:strokeColor="@color/dialog_cancel_stroke_color"
+        app:strokeWidth="1dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_start_consent"
+        style="@style/DialogButtonTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="14dp"
+        android:layout_marginTop="24dp"
+        android:enabled="false"
+        android:gravity="center"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="@string/dialog_start"
+        android:textColor="@color/button_disabled_text_grey"
+        app:backgroundTint="@color/button_disabled_grey"
+        app:cornerRadius="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_cancel_consent"
+        app:layout_constraintTop_toTopOf="@id/guideline_button_top_consent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

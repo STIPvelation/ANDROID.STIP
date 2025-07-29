@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <!-- Header removed as requested -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@id/btnUpload"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <!-- IP 등록증 업로드 섹션 -->
+            <EditText
+                android:id="@+id/etIpCertificate"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_edit_text"
+                android:hint="스왑할 IP등록증을 업로드 해주세요"
+                android:padding="16dp"
+                android:enabled="false"
+                android:textColor="@color/gray_600"
+                android:textSize="16sp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- 연락처 섹션 -->
+            <TextView
+                android:id="@+id/textContactLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="연락처"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@id/etIpCertificate" />
+
+            <EditText
+                android:id="@+id/etContact"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edit_text"
+                android:hint="연락처를 입력하세요"
+                android:padding="16dp"
+                android:textColor="@color/gray_600"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@id/textContactLabel" />
+
+            <!-- IP 번호 섹션 -->
+            <TextView
+                android:id="@+id/textIpNumberLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="IP번호"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@id/etContact" />
+
+            <EditText
+                android:id="@+id/etIpNumberInput"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edit_text"
+                android:hint="IP번호를 입력하세요"
+                android:padding="16dp"
+                android:textColor="@color/gray_600"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@id/textIpNumberLabel" />
+
+            <!-- 스왑 제안 설명 섹션 -->
+            <TextView
+                android:id="@+id/textSwapReasonLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="스왑 제안 설명"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@id/etIpNumberInput" />
+
+            <EditText
+                android:id="@+id/etSwapReason"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edit_text"
+                android:gravity="top|start"
+                android:hint="스왑을 원하시는 이유를 설명해주세요"
+                android:padding="16dp"
+                android:textColor="@color/gray_600"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@id/textSwapReasonLabel" />
+
+            <!-- 동의 조항 -->
+            <TextView
+                android:id="@+id/textAgreementLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="동의 조항"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@id/etSwapReason" />
+
+            <CheckBox
+                android:id="@+id/checkboxAgree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="스왑 진행 시 회사 정책을 준수하겠습니다..."
+                android:textColor="@color/gray_600"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@id/textAgreementLabel" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <!-- 업로드 버튼 -->
+    <Button
+        android:id="@+id/btnUpload"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_primary_button"
+        android:text="업로드"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent" />
+    
+    <!-- Bottom Navigation Bar removed as requested -->
+</androidx.constraintlayout.widget.ConstraintLayout>

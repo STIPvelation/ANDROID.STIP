@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_header_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back_black_24dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:paddingTop="12dp"
+                android:paddingStart="@dimen/common_side_margin_20dp"
+                android:paddingEnd="@dimen/common_side_margin_20dp"
+                android:paddingBottom="12dp"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_sign_up_kyc_search_address_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_side_margin_20dp"
+            android:fontFamily="@font/pretendard_medium_font_family"
+            android:text="@string/sign_up_kyc_search_address_title"
+            android:textColor="@color/text_black_14181B_100"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_header_section" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_sign_up_kyc_search_address"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/text_black_14181B_100"
+            android:hint="@string/sign_up_kyc_search_address_hint"
+            android:textColorHint="@color/text_gray_B0B8C1_100"
+            android:fontFamily="@font/pretendard_regular_font_family"
+            android:maxLines="1"
+            android:inputType="text"
+            android:imeOptions="actionSearch"
+            android:ellipsize="end"
+            android:backgroundTint="@color/text_gray_B0B8C1_100"
+            app:layout_constraintTop_toBottomOf="@+id/tv_sign_up_kyc_search_address_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/iv_sign_up_kyc_search"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="20dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="30dp"
+            android:paddingBottom="12dp"
+            />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_sign_up_kyc_del"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_x_gray_12dp"
+            app:layout_constraintTop_toTopOf="@+id/et_sign_up_kyc_search_address"
+            app:layout_constraintEnd_toEndOf="@+id/et_sign_up_kyc_search_address"
+            app:layout_constraintBottom_toBottomOf="@id/et_sign_up_kyc_search_address"
+            android:layout_marginEnd="5dp"
+            android:visibility="gone"
+            />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_sign_up_kyc_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_search_gray_b0b8c1_25dp"
+            app:layout_constraintTop_toTopOf="@+id/et_sign_up_kyc_search_address"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/et_sign_up_kyc_search_address"
+            android:layout_marginEnd="@dimen/common_side_margin_20dp"
+            />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_sign_up_kyc_search_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_search_address_hint"
+            app:layout_constraintTop_toBottomOf="@+id/cl_header_section"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:visibility="gone"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_address"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/et_sign_up_kyc_search_address"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="30dp"
+            tools:listitem="@layout/item_rv_address"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
