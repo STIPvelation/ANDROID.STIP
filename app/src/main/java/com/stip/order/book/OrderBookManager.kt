@@ -216,6 +216,10 @@ class OrderBookManager(
             addAll(paddedBuys)
         }
 
+        // 호가창 데이터 업데이트 전에 강조 표시 초기화
+        orderBookAdapter.resetHighlight()
+        
+        // 새로운 데이터로 업데이트
         orderBookAdapter.updateData(listWithoutGap, currentPrice)
     }
 

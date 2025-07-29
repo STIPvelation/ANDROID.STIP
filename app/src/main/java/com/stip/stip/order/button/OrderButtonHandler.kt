@@ -40,7 +40,8 @@ class OrderButtonHandler(
     private val parentFragmentManager: FragmentManager,
     private val getCurrentPairId: () -> String?,
     private val orderDataCoordinator: com.stip.stip.order.coordinator.OrderDataCoordinator? = null,
-    private val orderInputHandler: com.stip.stip.order.OrderInputHandler? = null
+    private val orderInputHandler: com.stip.stip.order.OrderInputHandler? = null,
+    private val onOrderSuccess: (() -> Unit)? = null
 ) {
     companion object {
         private const val TAG = "OrderButtonHandler"
@@ -550,6 +551,12 @@ class OrderButtonHandler(
                             
                             // 주문 성공 후 TradingDataHolder 데이터 새로고침 및 TradingFragment 업데이트
                             refreshTradingDataAfterOrder()
+                            
+                            // 실시간 시세 동기화를 위한 즉시 업데이트
+                            orderDataCoordinator?.refreshBalance()
+                            
+                            // 주문 성공 콜백 호출
+                            onOrderSuccess?.invoke()
                             
                             // 주문 성공 후 강제로 주문가능 금액 업데이트 (지연 실행)
                             CoroutineScope(Dispatchers.Main).launch {
