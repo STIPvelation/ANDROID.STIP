@@ -47,7 +47,7 @@
             android:maxLines="1"
             android:text=""
             android:includeFontPadding="false"
-            tools:text="" />
+            tools:text="JWV" />
     </LinearLayout>
 
 

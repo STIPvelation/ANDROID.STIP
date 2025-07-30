@@ -101,7 +101,11 @@ class TradingFragment : Fragment(), InfoTabListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as? AppCompatActivity)?.supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        // IP홈 헤더 텍스트 제거를 위해 액션바 완전히 숨김
+        (activity as? AppCompatActivity)?.supportActionBar?.hide()
+        
+        // MainActivity의 headerLayout도 숨김
+        activity?.findViewById<View>(R.id.headerLayout)?.visibility = View.GONE
 
         val marqueeViews = listOf(
             binding.marqueeText1,
@@ -391,6 +395,12 @@ class TradingFragment : Fragment(), InfoTabListener {
         super.onResume()
         Log.d(TAG, "onResume - 화면 복귀 시 가격 데이터 새로고침")
         
+        // IP홈 헤더 텍스트 제거를 위해 액션바 숨김 (onResume에서도 확실히 적용)
+        (activity as? AppCompatActivity)?.supportActionBar?.hide()
+        
+        // MainActivity의 headerLayout도 숨김 (onResume에서도 확실히 적용)
+        activity?.findViewById<View>(R.id.headerLayout)?.visibility = View.GONE
+        
         // 화면으로 돌아올 때마다 가격 데이터 새로고침
         refreshPriceData()
         
@@ -413,20 +423,18 @@ class TradingFragment : Fragment(), InfoTabListener {
     }
 
     private fun setupTopInfoAndPriceData() {
-        // name[symbol] 형식으로 표시
-        val currentItemData = TradingDataHolder.ipListingItems.firstOrNull { it.ticker == currentTicker }
-        val displayText = currentItemData?.let { item ->
-            if (item.name.isNotBlank()) {
-                "${item.name}[${item.symbol}]"
-            } else {
-                "${item.ticker}[${item.symbol}]"
-            }
-        } ?: "${companyName ?: ""} ${currentTicker ?: ""}/USD"
+        // 티커/USD 형식으로 간단하게 표시
+        val displayText = if (currentTicker.isNullOrBlank()) {
+            ""
+        } else {
+            "$currentTicker/USD"
+        }
         
         binding.textCompanyName.text = displayText
         binding.icArrowIcon.setOnClickListener { activity?.onBackPressedDispatcher?.onBackPressed() }
         // TODO: more_options_icon 리스너
 
+        val currentItemData = TradingDataHolder.ipListingItems.firstOrNull { it.ticker == currentTicker }
         if (currentItemData != null) {
             displayPriceInfo(currentItemData)
             // 개별 마켓 정보도 가져와서 업데이트
@@ -638,15 +646,15 @@ class TradingFragment : Fragment(), InfoTabListener {
         val targetIndex = (currentIndex + offset + fullIpList.size) % fullIpList.size
         val targetItem = fullIpList[targetIndex]
 
-        // 🔁 현재 TradingFragment 상태 유지한 채, 헤더와 내부 Fragment만 업데이트
+        // 현재 TradingFragment 상태 유지한 채, 헤더와 내부 Fragment만 업데이트
         currentTicker = targetItem.ticker
         companyName = targetItem.companyName
 
-        // ⬆️ 헤더 정보 업데이트
-        binding.textCompanyName.text = "${companyName ?: ""} ${currentTicker ?: ""}/USD"
+        // 헤더 정보 업데이트 - 티커/USD 형식으로 간단하게 표시
+        binding.textCompanyName.text = if (currentTicker.isNullOrBlank()) "" else "$currentTicker/USD"
         displayPriceInfo(targetItem)
 
-        // ⬇️ 현재 childFragment에 티커 업데이트 전달
+        // 현재 childFragment에 티커 업데이트 전달
         val currentChild = childFragmentManager.findFragmentById(R.id.trading_content_container)
         when (currentChild) {
             is OrderContentViewFragment -> currentChild.updateTicker(currentTicker)

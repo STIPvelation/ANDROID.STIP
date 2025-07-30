@@ -107,7 +107,7 @@ class IpListingAdapter(var items: List<IpListingItem>) :
                     
                     if (isLoggedIn) {
                         // 로그인된 경우 거래 화면으로 이동
-                        val fragment = TradingFragment.newInstance(item.ticker, item.companyName)
+                        val fragment = TradingFragment.newInstance(item.ticker, item.ticker)
                         activity.supportFragmentManager.beginTransaction()
                             .replace(R.id.fragment_container, fragment)
                             .addToBackStack(null)
