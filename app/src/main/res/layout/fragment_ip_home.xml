@@ -103,7 +103,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/bg_frame_fillter_rounded"
+        android:background="@drawable/bg_dropdown_white_rounded"
         android:visibility="gone"
         android:elevation="6dp"
         android:layout_marginTop="2dp"
