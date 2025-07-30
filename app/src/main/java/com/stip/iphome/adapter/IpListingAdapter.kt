@@ -44,8 +44,14 @@ class IpListingAdapter(var items: List<IpListingItem>) :
                 }, 300)
             }
 
-            // 텍스트 설정 (symbol 표시)
-            binding.itemTickerName.text = item.symbol
+            // 텍스트 설정 (symbol 표시 - /USD 제거)
+            val tickerOnly = item.symbol.substringBefore("/")
+            binding.itemTickerName.text = tickerOnly
+            
+            // 카테고리 텍스트 표시 (Patent 또는 BM)
+            binding.itemCategoryText.visibility = View.VISIBLE
+            binding.itemCategoryText.text = if (tickerOnly == "AXNO") "BM" else "Patent"
+            
             binding.itemCurrentPrice.text = item.currentPrice
             binding.itemChangePercent.text = item.changePercent
             binding.itemChangeAbsolute.text = item.changeAbsolute

@@ -10,21 +10,7 @@
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:elevation="0dp">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            app:navigationIcon="@drawable/ic_navigate_back"
-            app:title="IP옥션"
-            app:titleCentered="true"
-            app:titleTextColor="@android:color/black"
-            app:navigationIconTint="@android:color/black" />
-
-    </com.google.android.material.appbar.AppBarLayout>
+        android:background="@color/white"/>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -40,7 +26,10 @@
                 android:id="@+id/searchBarCard"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
-                android:layout_margin="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="16dp"
                 app:cardBackgroundColor="#F8F9FC"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="1dp"
