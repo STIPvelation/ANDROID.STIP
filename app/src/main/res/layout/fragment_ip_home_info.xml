@@ -143,95 +143,123 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/navigation_links_box"
+            <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/bordered_box_background"
-                android:gravity="center_vertical"
-                android:minHeight="40dp"
-                android:orientation="horizontal"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp">
+                android:scrollbars="none"
+                android:fillViewport="true">
 
-                <TextView
-                    style="@style/DefaultTextStyle_thin_14"
+                <LinearLayout
+                    android:id="@+id/navigation_links_box"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:text="@string/label_shortcuts" />
+                    android:minHeight="40dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingHorizontal="8dp"
-                    android:text="|"
-                    android:textColor="#EFEFEF" />
+                    <TextView
+                        style="@style/DefaultTextStyle_thin_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="6dp"
+                        android:text="@string/label_shortcuts"
+                        android:singleLine="true"
+                        android:ellipsize="none" />
 
-                <TextView
-                    android:id="@+id/tv_link_block_inquiry"
-                    style="@style/DefaultTextStyle_thin_14"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/link_block_inquiry"
-                    android:textColor="#30C6E8" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="4dp"
+                        android:text="|"
+                        android:textColor="#EFEFEF"
+                        android:singleLine="true" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingHorizontal="8dp"
-                    android:text="|"
-                    android:textColor="#EFEFEF" />
+                    <TextView
+                        android:id="@+id/tv_link_block_inquiry"
+                        style="@style/DefaultTextStyle_thin_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="6dp"
+                        android:paddingVertical="4dp"
+                        android:text="@string/link_block_inquiry"
+                        android:textColor="#30C6E8"
+                        android:background="?attr/selectableItemBackground"
+                        android:singleLine="true"
+                        android:ellipsize="none" />
 
-                <TextView
-                    android:id="@+id/tv_link_ip_rating"
-                    style="@style/DefaultTextStyle_thin_14"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/link_ip_rating"
-                    android:textColor="#30C6E8" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="4dp"
+                        android:text="|"
+                        android:textColor="#EFEFEF"
+                        android:singleLine="true" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingHorizontal="8dp"
-                    android:text="|"
-                    android:textColor="#EFEFEF" />
+                    <TextView
+                        android:id="@+id/tv_link_ip_rating"
+                        style="@style/DefaultTextStyle_thin_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="6dp"
+                        android:paddingVertical="4dp"
+                        android:text="@string/link_ip_rating"
+                        android:textColor="#30C6E8"
+                        android:background="?attr/selectableItemBackground"
+                        android:singleLine="true"
+                        android:ellipsize="none" />
 
-                <TextView
-                    android:id="@+id/tv_link_license"
-                    style="@style/DefaultTextStyle_thin_14"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/link_license"
-                    android:textColor="#30C6E8" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="4dp"
+                        android:text="|"
+                        android:textColor="#EFEFEF"
+                        android:singleLine="true" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingHorizontal="8dp"
-                    android:text="|"
-                    android:textColor="#EFEFEF" />
+                    <TextView
+                        android:id="@+id/tv_link_license"
+                        style="@style/DefaultTextStyle_thin_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="6dp"
+                        android:paddingVertical="4dp"
+                        android:text="@string/link_license"
+                        android:textColor="#30C6E8"
+                        android:background="?attr/selectableItemBackground"
+                        android:singleLine="true"
+                        android:ellipsize="none" />
 
-                <TextView
-                    android:id="@+id/tv_link_view_video"
-                    style="@style/DefaultTextStyle_thin_14"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/link_view_video"
-                    android:textColor="#30C6E8" />
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="4dp"
+                        android:text="|"
+                        android:textColor="#EFEFEF"
+                        android:singleLine="true" />
+
+                    <TextView
+                        android:id="@+id/tv_link_view_video"
+                        style="@style/DefaultTextStyle_thin_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="6dp"
+                        android:paddingVertical="4dp"
+                        android:text="@string/link_view_video"
+                        android:textColor="#30C6E8"
+                        android:background="?attr/selectableItemBackground"
+                        android:singleLine="true"
+                        android:ellipsize="none" />
+
+                </LinearLayout>
+            </HorizontalScrollView>
 
             <LinearLayout
                 android:id="@+id/first_issuance_box"
