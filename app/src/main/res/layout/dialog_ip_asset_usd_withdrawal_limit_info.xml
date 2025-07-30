@@ -3,6 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:minWidth="280dp"
+    android:maxWidth="400dp"
     android:background="@drawable/bg_rounded_white_24dp">
 
     <!-- Header -->
@@ -10,11 +12,12 @@
         android:id="@+id/text_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_large"
-        android:layout_marginTop="@dimen/margin_large"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:text="출금한도 안내"
         android:textColor="#232D3F"
-        android:textSize="@dimen/text_xlarge"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/btn_close"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,11 +25,11 @@
 
     <ImageButton
         android:id="@+id/btn_close"
-        android:layout_width="@dimen/icon_medium"
-        android:layout_height="@dimen/icon_medium"
-        android:layout_marginEnd="@dimen/margin_large"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="12dp"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:padding="@dimen/margin_small"
+        android:padding="8dp"
         android:src="@drawable/ic_close"
         android:tint="#9098A0"
         app:layout_constraintBottom_toBottomOf="@+id/text_title"
@@ -36,9 +39,9 @@
     <View
         android:id="@+id/divider"
         android:layout_width="0dp"
-        android:layout_height="@dimen/policy_divider_height"
-        android:layout_marginHorizontal="@dimen/common_side_margin_20dp"
-        android:layout_marginTop="@dimen/padding_medium"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
         android:background="#F0F0F5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,10 +52,10 @@
         android:id="@+id/card_limit_info"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
         app:cardBackgroundColor="#F8FAFF"
-        app:cardCornerRadius="@dimen/margin_small"
+        app:cardCornerRadius="8dp"
         app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/common_side_margin_20dp">
+            android:padding="16dp">
 
             <!-- 1회 출금 한도 -->
             <LinearLayout
@@ -133,7 +136,7 @@
                     android:id="@+id/text_daily_limit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="500,000 USD"
+                    android:text="300,000 USD"
                     android:textColor="#232D3F"
                     android:textSize="@dimen/text_medium"
                     android:textStyle="bold" />
@@ -146,8 +149,8 @@
         android:id="@+id/container_info"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
