@@ -121,6 +121,9 @@ class OrderContentViewFragment : Fragment(), OnOrderBookItemClickListener {
                         orderButtonHandler.updateOrderButtonStates()
                         // 포트폴리오 데이터 새로고침
                         loadPortfolioData()
+                        
+                        // 실시간 시세 동기화를 위한 호가창 업데이트
+                        orderBookManager.triggerManualUpdate()
                     } catch (e: Exception) {
                         Log.e(TAG, "잔액 업데이트 중 UI 오류", e)
                     }
@@ -202,7 +205,12 @@ class OrderContentViewFragment : Fragment(), OnOrderBookItemClickListener {
                         .find { it.ticker == orderDataCoordinator.currentTicker }?.registrationNumber 
                 },
                 orderDataCoordinator = orderDataCoordinator,
-                orderInputHandler = orderInputHandler
+                orderInputHandler = orderInputHandler,
+                onOrderSuccess = {
+                    // 주문 성공 시 호가창 즉시 업데이트
+                    orderBookManager.triggerManualUpdate()
+                    Log.d(TAG, "주문 성공 후 호가창 업데이트 트리거")
+                }
             )
 
             uiStateManager = OrderUIStateManager(

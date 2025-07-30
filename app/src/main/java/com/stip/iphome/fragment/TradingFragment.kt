@@ -47,6 +47,11 @@ class TradingFragment : Fragment(), InfoTabListener {
     private lateinit var priceUpdateHandler: Handler
     private lateinit var priceUpdateRunnable: Runnable
     private val priceUpdateInterval = 5000L
+    
+    // 마켓페어 정보 폴링을 위한 변수들
+    private lateinit var marketInfoHandler: Handler
+    private lateinit var marketInfoRunnable: Runnable
+    private val marketInfoInterval = 5000L // 5초 폴링
 
     private var currentTicker: String? = null
     private var companyName: String? = null
@@ -96,7 +101,11 @@ class TradingFragment : Fragment(), InfoTabListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as? AppCompatActivity)?.supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        // IP홈 헤더 텍스트 제거를 위해 액션바 완전히 숨김
+        (activity as? AppCompatActivity)?.supportActionBar?.hide()
+        
+        // MainActivity의 headerLayout도 숨김
+        activity?.findViewById<View>(R.id.headerLayout)?.visibility = View.GONE
 
         val marqueeViews = listOf(
             binding.marqueeText1,
@@ -138,6 +147,9 @@ class TradingFragment : Fragment(), InfoTabListener {
 
         // 주기적 가격 업데이트 시작
         startPriceUpdateTimer()
+        
+        // 마켓페어 정보 폴링 시작
+        startMarketInfoPolling()
 
         if (savedInstanceState == null) {
             val selectedMenuId =
@@ -176,6 +188,127 @@ class TradingFragment : Fragment(), InfoTabListener {
             }
         }
         priceUpdateHandler.post(priceUpdateRunnable)
+    }
+    
+    /**
+     * 마켓페어 정보 폴링 시작
+     */
+    private fun startMarketInfoPolling() {
+        marketInfoHandler = Handler(Looper.getMainLooper())
+        marketInfoRunnable = object : Runnable {
+            override fun run() {
+                refreshMarketInfo()
+                marketInfoHandler.postDelayed(this, marketInfoInterval)
+            }
+        }
+        marketInfoHandler.post(marketInfoRunnable)
+        Log.d(TAG, "마켓페어 정보 폴링 시작 - 5초 간격")
+    }
+    
+    /**
+     * 마켓페어 정보 새로고침 (실시간 시세 갱신용)
+     */
+    private fun refreshMarketInfo() {
+        if (_binding == null || !isAdded || currentTicker == null) return
+        
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                Log.d(TAG, "마켓페어 정보 새로고침 시작: $currentTicker")
+                
+                // 티커로부터 marketPairId 가져오기
+                val ipListingRepository = com.stip.stip.api.repository.IpListingRepository()
+                val marketPairId = ipListingRepository.getPairIdForTicker(currentTicker)
+                
+                if (marketPairId != null) {
+                    // Market API 호출
+                    val marketRepository = com.stip.stip.api.repository.MarketRepository()
+                    val marketResponse = marketRepository.getMarket(marketPairId)
+                    
+                    if (marketResponse != null) {
+                        Log.d(TAG, "마켓페어 정보 업데이트: lastPrice=${marketResponse.lastPrice}, volume=${marketResponse.volume}")
+                        
+                        // TradingDataHolder 업데이트 (실시간 시세 동기화)
+                        updateTradingDataHolder(marketResponse)
+                        
+                        // UI 업데이트
+                        updateMarketDetailInfo(marketResponse)
+                        
+                        // 현재가 업데이트
+                        updateCurrentPriceFromMarketResponse(marketResponse)
+                        
+                    } else {
+                        Log.w(TAG, "마켓페어 정보 응답이 null")
+                    }
+                } else {
+                    Log.w(TAG, "marketPairId를 찾을 수 없음: $currentTicker")
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "마켓페어 정보 새로고침 실패", e)
+            }
+        }
+    }
+    
+    /**
+     * TradingDataHolder 업데이트 (실시간 시세 동기화)
+     */
+    private fun updateTradingDataHolder(marketResponse: com.stip.stip.api.model.MarketResponse) {
+        try {
+            val currentItem = TradingDataHolder.ipListingItems.firstOrNull { it.ticker == currentTicker }
+            if (currentItem != null) {
+                val lastPrice = marketResponse.lastPrice?.toDouble() ?: 0.0
+                val priceChange = marketResponse.priceChange?.toDouble() ?: 0.0
+                val changeRate = marketResponse.changeRate ?: 0.0
+                val volume = marketResponse.volume?.toDouble() ?: 0.0
+                val high = marketResponse.highTicker?.toDouble() ?: 0.0
+                val low = marketResponse.lowTicker?.toDouble() ?: 0.0
+                
+                // 포맷팅
+                val formatter = DecimalFormat("#,##0.00").apply { roundingMode = RoundingMode.DOWN }
+                val changePercentFormatted = if (changeRate >= 0) "+${formatter.format(changeRate)}%" else "${formatter.format(changeRate)}%"
+                val changeAbsoluteFormatted = if (priceChange >= 0) "+${formatter.format(priceChange)}" else formatter.format(priceChange)
+                
+                val updatedItem = currentItem.copy(
+                    currentPrice = formatter.format(lastPrice),
+                    changePercent = changePercentFormatted,
+                    changeAbsolute = changeAbsoluteFormatted,
+                    volume = String.format("%,.0f USD", volume),
+                    high24h = formatter.format(high),
+                    low24h = formatter.format(low)
+                )
+                
+                val index = TradingDataHolder.ipListingItems.indexOf(currentItem)
+                if (index != -1) {
+                    val updatedList = TradingDataHolder.ipListingItems.toMutableList()
+                    updatedList[index] = updatedItem
+                    TradingDataHolder.ipListingItems = updatedList
+                    
+                    Log.d(TAG, "TradingDataHolder 업데이트 완료: ${updatedItem.currentPrice}")
+                }
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "TradingDataHolder 업데이트 실패", e)
+        }
+    }
+    
+    /**
+     * Market API 응답으로부터 현재가 업데이트
+     */
+    private fun updateCurrentPriceFromMarketResponse(marketResponse: com.stip.stip.api.model.MarketResponse) {
+        try {
+            val lastPrice = marketResponse.lastPrice?.toFloat() ?: 0f
+            if (lastPrice > 0) {
+                // 현재가 텍스트 업데이트
+                binding.currentPriceText.text = formatPrice(lastPrice.toString())
+                
+                // OrderDataCoordinator 업데이트 (주문창 동기화)
+                val globalCoordinator = OrderContentViewFragment.getGlobalOrderDataCoordinator()
+                globalCoordinator?.updateCurrentPrice(lastPrice)
+                
+                Log.d(TAG, "현재가 업데이트: $lastPrice")
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "현재가 업데이트 실패", e)
+        }
     }
 
     /**
@@ -262,11 +395,18 @@ class TradingFragment : Fragment(), InfoTabListener {
         super.onResume()
         Log.d(TAG, "onResume - 화면 복귀 시 가격 데이터 새로고침")
         
+        // IP홈 헤더 텍스트 제거를 위해 액션바 숨김 (onResume에서도 확실히 적용)
+        (activity as? AppCompatActivity)?.supportActionBar?.hide()
+        
+        // MainActivity의 headerLayout도 숨김 (onResume에서도 확실히 적용)
+        activity?.findViewById<View>(R.id.headerLayout)?.visibility = View.GONE
+        
         // 화면으로 돌아올 때마다 가격 데이터 새로고침
         refreshPriceData()
         
         // 주기적 업데이트 재시작
         startPriceUpdateTimer()
+        startMarketInfoPolling()
     }
 
     override fun onPause() {
@@ -277,23 +417,24 @@ class TradingFragment : Fragment(), InfoTabListener {
         if (::priceUpdateHandler.isInitialized) {
             priceUpdateHandler.removeCallbacks(priceUpdateRunnable)
         }
+        if (::marketInfoHandler.isInitialized) {
+            marketInfoHandler.removeCallbacks(marketInfoRunnable)
+        }
     }
 
     private fun setupTopInfoAndPriceData() {
-        // name[symbol] 형식으로 표시
-        val currentItemData = TradingDataHolder.ipListingItems.firstOrNull { it.ticker == currentTicker }
-        val displayText = currentItemData?.let { item ->
-            if (item.name.isNotBlank()) {
-                "${item.name}[${item.symbol}]"
-            } else {
-                "${item.ticker}[${item.symbol}]"
-            }
-        } ?: "${companyName ?: ""} ${currentTicker ?: ""}/USD"
+        // 티커/USD 형식으로 간단하게 표시
+        val displayText = if (currentTicker.isNullOrBlank()) {
+            ""
+        } else {
+            "$currentTicker/USD"
+        }
         
         binding.textCompanyName.text = displayText
         binding.icArrowIcon.setOnClickListener { activity?.onBackPressedDispatcher?.onBackPressed() }
         // TODO: more_options_icon 리스너
 
+        val currentItemData = TradingDataHolder.ipListingItems.firstOrNull { it.ticker == currentTicker }
         if (currentItemData != null) {
             displayPriceInfo(currentItemData)
             // 개별 마켓 정보도 가져와서 업데이트
@@ -505,15 +646,15 @@ class TradingFragment : Fragment(), InfoTabListener {
         val targetIndex = (currentIndex + offset + fullIpList.size) % fullIpList.size
         val targetItem = fullIpList[targetIndex]
 
-        // 🔁 현재 TradingFragment 상태 유지한 채, 헤더와 내부 Fragment만 업데이트
+        // 현재 TradingFragment 상태 유지한 채, 헤더와 내부 Fragment만 업데이트
         currentTicker = targetItem.ticker
         companyName = targetItem.companyName
 
-        // ⬆️ 헤더 정보 업데이트
-        binding.textCompanyName.text = "${companyName ?: ""} ${currentTicker ?: ""}/USD"
+        // 헤더 정보 업데이트 - 티커/USD 형식으로 간단하게 표시
+        binding.textCompanyName.text = if (currentTicker.isNullOrBlank()) "" else "$currentTicker/USD"
         displayPriceInfo(targetItem)
 
-        // ⬇️ 현재 childFragment에 티커 업데이트 전달
+        // 현재 childFragment에 티커 업데이트 전달
         val currentChild = childFragmentManager.findFragmentById(R.id.trading_content_container)
         when (currentChild) {
             is OrderContentViewFragment -> currentChild.updateTicker(currentTicker)
@@ -611,6 +752,11 @@ class TradingFragment : Fragment(), InfoTabListener {
         // 가격 업데이트 타이머 정리
         if (::priceUpdateHandler.isInitialized) {
             priceUpdateHandler.removeCallbacks(priceUpdateRunnable)
+        }
+        
+        // 마켓페어 정보 폴링 정리
+        if (::marketInfoHandler.isInitialized) {
+            marketInfoHandler.removeCallbacks(marketInfoRunnable)
         }
         
         _binding = null

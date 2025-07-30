@@ -9,6 +9,7 @@ import com.stip.stip.databinding.ItemIpIvestmentFillteredBinding
 import com.stip.stip.iptransaction.model.IpInvestmentItem
 import java.text.DecimalFormat
 import java.util.Locale
+import android.util.Log
 
 class IpInvestmentAdapter(
     private var items: List<IpInvestmentItem> = emptyList()
@@ -61,20 +62,24 @@ class IpInvestmentAdapter(
             binding.textViewItemQuantity.text = formatNumber(item.quantity)
             binding.textViewItemUnitPrice.text = formatCurrency(item.unitPrice)
             binding.textViewItemAmount.text = formatCurrency(item.amount)
-            
             binding.textViewItemFee.text = formatCurrencyWithCheck(item.fee)
-            
-            binding.textViewItemSettlement.text = formatCurrencyWithCheck(item.settlement)
+            Log.d("IpInvestmentAdapter", "settlement=${item.settlement}")
+            binding.textViewItemSettlement.text = formatCurrency(item.settlement)
             binding.textViewItemOrderTime.text = item.orderTime
             binding.textViewItemExecutionTime.text = item.executionTime
         }
 
         private fun formatCurrency(value: String): String {
+            if (value.isBlank() || value == "-") return "-"
             return try {
-                val bigDecimal = java.math.BigDecimal(value)
-                "$${bigDecimal.stripTrailingZeros().toPlainString()}"
+                val cleanValue = value.replace("$", "").trim()
+                val bigDecimal = java.math.BigDecimal(cleanValue)
+                val df = DecimalFormat("#,##0.0000").apply {
+                    roundingMode = java.math.RoundingMode.DOWN
+                }
+                "$${df.format(bigDecimal)}"
             } catch (e: Exception) {
-                "$0"
+                value
             }
         }
 
