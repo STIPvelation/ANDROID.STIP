@@ -811,8 +811,8 @@ class IpAssetsAdapter(private val fragment: Fragment) : ListAdapter<IpAssetItem,
             }
             binding.tokenLogoBackground.backgroundTintList = context.getColorStateList(colorResId)
 
-            // 티커 이름과 가격 설정 (symbol 표시)
-            binding.name.text = item.symbol
+            // 티커 이름과 가격 설정 (symbol 표시, /USD 제거)
+            binding.name.text = item.symbol.replace("/USD", "")
 
             // 천 단위 구분자가 있는 포맷으로 변경
             val formatter = NumberFormat.getNumberInstance(Locale.US)
