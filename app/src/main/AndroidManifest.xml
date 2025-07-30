@@ -76,7 +76,8 @@
         <activity
             android:name="com.stip.stip.MainActivity"
             android:exported="true"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
 
         <activity
             android:name="com.stip.stip.more.activity.MemberInfoEditActivity"

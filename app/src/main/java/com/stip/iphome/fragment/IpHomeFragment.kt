@@ -180,7 +180,7 @@ class IpHomeFragment : Fragment() {
                 textSize = 12f
                 gravity = Gravity.START or Gravity.CENTER_VERTICAL
                 setTextColor(ContextCompat.getColor(requireContext(), R.color.text_primary))
-                setBackgroundResource(R.drawable.bg_dropdown_item)
+                setBackgroundColor(ContextCompat.getColor(requireContext(), android.R.color.white))
                 layoutParams = LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
@@ -337,45 +337,59 @@ class IpHomeFragment : Fragment() {
 //        "ALL IP", "Patent", "Trademark", "Franchise",
 //        "Music", "Art", "Movie", "Drama", "BM", "Dance", "Game", "Comics", "Character"
 //    )
+    /**
+     * 카테고리 데이터를 로드하고 드롭다운을 설정하는 최적화된 메서드
+     */
     private fun loadCategoriesAndSetupDropdown() {
         val repository = com.stip.stip.api.repository.IpListingRepository()
         viewLifecycleOwner.lifecycleScope.launch {
             try {
-                // Fragment가 여전히 활성 상태인지 확인
-                if (!isAdded) {
-                    android.util.Log.w("IpHomeFragment", "loadCategoriesAndSetupDropdown: Fragment not added")
-                    return@launch
-                }
-
-                // 카테고리 목록 가져오기
+                // API에서 카테고리 데이터 가져오기 (매핑용)
                 val categories = repository.getMarketCategories()
-                val categoryNames = categories.map { it.name }
-                categoryOptions = listOf("ALL IP") + categoryNames
                 
-                // 카테고리 ID 매핑 생성
+                // 사용자 지정 순서로 모든 카테고리 표시
+                val desiredOrder = listOf(
+                    "ALL IP", "Favourite", "Patent", "Movie", "Drama", "Comics", 
+                    "BM", "Music", "Dance", "Franchise", "Trademark", "Character", "Art"
+                )
+                
+                // 모든 지정된 카테고리를 드롭다운에 표시
+                categoryOptions = desiredOrder
+                
+                // 카테고리 ID 매핑 생성 (API에서 가져온 데이터 사용)
                 categoryIdMap = categories.associate { it.name to it.categoryId }
                 
-                // UI 업데이트는 메인 스레드에서
-                activity?.runOnUiThread {
-                    if (isAdded && _binding != null) {
-                        setupCategoryDropdown()
-                        android.util.Log.d("IpHomeFragment", "카테고리 로드 완료: ${categories.size}개 - ${categoryNames.joinToString(", ")}")
+                // 기본 카테고리 ID 추가 (없는 경우 대비)
+                val defaultCategoryMap = mutableMapOf<String, Int>()
+                defaultCategoryMap.putAll(categoryIdMap)
+                
+                // API에 없는 카테고리에 대한 기본 ID 설정
+                desiredOrder.forEachIndexed { index, category ->
+                    if (category != "ALL IP" && !defaultCategoryMap.containsKey(category)) {
+                        defaultCategoryMap[category] = index + 100 // 기본 ID 부여
                     }
                 }
+                
+                categoryIdMap = defaultCategoryMap
+                
+                setupCategoryDropdown()
+                android.util.Log.d("IpHomeFragment", "카테고리 로드 완료: ${desiredOrder.size}개 - 전체 카테고리: ${desiredOrder.joinToString(", ")}")
             } catch (e: Exception) {
                 android.util.Log.e("IpHomeFragment", "카테고리 로드 실패: ${e.message}")
-                // 실패 시 기본값 사용
-                categoryOptions = listOf("ALL IP")
-                
-                activity?.runOnUiThread {
-                    if (isAdded && _binding != null) {
-                        setupCategoryDropdown()
-                    }
-                }
+                // 실패 시에도 전체 카테고리 목록 사용
+                categoryOptions = listOf(
+                    "ALL IP", "Favourite", "Patent", "Movie", "Drama", "Comics", 
+                    "BM", "Music", "Dance", "Franchise", "Trademark", "Character", "Art"
+                )
+                categoryIdMap = emptyMap()
+                setupCategoryDropdown()
             }
         }
     }
 
+    /**
+     * 카테고리 ID로 데이터 로드
+     */
     private fun loadCategoryData(categoryId: Int) {
         val repository = com.stip.stip.api.repository.IpListingRepository()
         viewLifecycleOwner.lifecycleScope.launch {
