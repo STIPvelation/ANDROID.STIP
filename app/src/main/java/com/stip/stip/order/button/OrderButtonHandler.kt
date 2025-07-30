@@ -547,9 +547,33 @@ class OrderButtonHandler(
                 
                 Log.d(TAG, "$orderType API 응답 - isSuccessful: ${response.isSuccessful}, code: ${response.code()}")
                 
+                // API 응답 내용 로깅 추가
+                try {
+                    val responseBody = response.body()
+                    Log.d(TAG, "$orderType API 응답 body: $responseBody")
+                    
+                    // 에러 응답도 로깅
+                    if (!response.isSuccessful) {
+                        val errorBody = response.errorBody()?.string()
+                        Log.e(TAG, "$orderType API 에러 응답: $errorBody")
+                    }
+                } catch (e: Exception) {
+                    Log.e(TAG, "$orderType API 응답 파싱 중 오류: ${e.message}", e)
+                }
+                
                 CoroutineScope(Dispatchers.Main).launch {
                     if (response.isSuccessful) {
                         val orderResponse = response.body()
+                        
+                        // data 필드 타입 처리
+                        val dataType = orderResponse?.data?.javaClass?.simpleName ?: "null"
+                        
+                        // data 필드가 문자열인 경우
+                        val dataString = orderResponse?.getDataString()
+                        if (dataString != null) {
+                            Log.d(TAG, "$orderType 주문 응답 data 문자열: $dataString")
+                        }
+                        
                         if (orderResponse?.success == true) {
                             Log.d(TAG, "$orderType 주문 성공: ${orderResponse.message}")
                             showToast("${orderType} 주문이 성공적으로 실행되었습니다.")
@@ -623,6 +647,7 @@ class OrderButtonHandler(
                 }
             } catch (e: Exception) {
                 Log.e(TAG, "$orderType 주문 실행 중 오류 발생: ${e.message}", e)
+                
                 CoroutineScope(Dispatchers.Main).launch {
                     showErrorDialog(
                         R.string.dialog_title_error_order,

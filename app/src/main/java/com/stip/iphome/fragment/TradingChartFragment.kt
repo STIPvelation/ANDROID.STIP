@@ -67,15 +67,15 @@ class TradingChartFragment : Fragment() {
     private var ohlcvData: List<OHLCVData> = emptyList()
     private var pollingJob: kotlinx.coroutines.Job? = null
     private var isPollingActive = false
-
+    
     // 시간 필터 관련 변수
     private var currentTimeFilter: TimeFilter = TimeFilter.HOURS
     private var currentMinuteFilter: MinuteFilter = MinuteFilter.MIN_1
     private var isMinuteSubFilterVisible = false
-
+    
     @Inject
     lateinit var tapiHourlyDataService: TapiHourlyDataService
-
+    
     @Inject
     lateinit var tapiDailyDataService: TapiDailyDataService
 
@@ -133,7 +133,7 @@ class TradingChartFragment : Fragment() {
                 setSupportMultipleWindows(false)
                 javaScriptCanOpenWindowsAutomatically = false
             }
-
+            
             webViewClient = object : WebViewClient() {
                 override fun onPageFinished(view: WebView?, url: String?) {
                     super.onPageFinished(view, url)
@@ -145,20 +145,20 @@ class TradingChartFragment : Fragment() {
                         }
                     }, 500) // 0.5초 지연
                 }
-
+                
                 override fun onReceivedError(view: WebView?, errorCode: Int, description: String?, failingUrl: String?) {
                     super.onReceivedError(view, errorCode, description, failingUrl)
                     Log.e(TAG, "WebView 오류: $errorCode - $description")
                 }
             }
-
+            
             webChromeClient = object : WebChromeClient() {
                 override fun onConsoleMessage(message: String?, lineNumber: Int, sourceID: String?) {
                     super.onConsoleMessage(message, lineNumber, sourceID)
                     Log.d(TAG, "WebView Console: $message (line: $lineNumber, source: $sourceID)")
                 }
             }
-
+            
 
         }
     }
@@ -184,7 +184,7 @@ class TradingChartFragment : Fragment() {
 
     private fun selectTimeFilter(filter: TimeFilter) {
         currentTimeFilter = filter
-
+        
         // 분 단위 선택 시 서브 필터 표시
         if (filter == TimeFilter.MINUTES) {
             if (!isMinuteSubFilterVisible) {
@@ -201,7 +201,7 @@ class TradingChartFragment : Fragment() {
             updateTimeFilterUI()
             loadTradeData(showLoading = true)
         }
-
+        
         // 분 단위 선택 시에는 UI만 업데이트하고 데이터 로드는 하지 않음
         if (filter == TimeFilter.MINUTES) {
             updateTimeFilterUI()
@@ -211,11 +211,11 @@ class TradingChartFragment : Fragment() {
     private fun selectMinuteFilter(filter: MinuteFilter) {
         currentMinuteFilter = filter
         updateMinuteFilterUI()
-
+        
         // 서브 필터 숨김
         binding.minuteSubFilters.visibility = View.GONE
         isMinuteSubFilterVisible = false
-
+        
         loadTradeData(showLoading = true)
     }
 
@@ -261,7 +261,7 @@ class TradingChartFragment : Fragment() {
             Log.w(TAG, "loadTradeData: binding이 null입니다. Fragment가 destroy되었을 수 있습니다.")
             return
         }
-
+        
         // 로딩 상태 표시 (폴링 시에는 표시하지 않음)
         if (showLoading) {
             try {
@@ -280,7 +280,7 @@ class TradingChartFragment : Fragment() {
                 Log.w(TAG, "loadTradeData 코루틴: binding이 null입니다. Fragment가 destroy되었을 수 있습니다.")
                 return@launch
             }
-
+            
             val currentTicker = ticker
             if (currentTicker.isNullOrBlank()) {
                 Log.e(TAG, "티커 코드가 없습니다. ticker: $currentTicker")
@@ -301,7 +301,7 @@ class TradingChartFragment : Fragment() {
 
                 // 2. 모든 필터에서 hourly API 사용 (데이터를 그룹화하여 처리)
                 val tickerData = fetchHourlyTickerData(pairId)
-
+                
                 if (tickerData.isEmpty()) {
                     Log.w(TAG, "API 데이터가 비어있습니다. 거래 데이터가 없습니다.")
                     showEmptyState()
@@ -325,7 +325,7 @@ class TradingChartFragment : Fragment() {
             val reader = BufferedReader(InputStreamReader(connection.getInputStream()))
             val response = StringBuilder()
             var line: String?
-
+            
             while (reader.readLine().also { line = it } != null) {
                 response.append(line)
             }
@@ -351,16 +351,16 @@ class TradingChartFragment : Fragment() {
             // 현재 날짜 기준으로 3개월 전부터 현재까지 데이터 요청
             val calendar = Calendar.getInstance()
             val endDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
-
+            
             calendar.add(Calendar.MONTH, -3)
             val startDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
-
+            
             val url = URL("$API_BASE_URL/api/tickers/hourly?marketPairId=$pairId&from=$startDate&to=$endDate")
             val connection = url.openConnection()
             val reader = BufferedReader(InputStreamReader(connection.getInputStream()))
             val response = StringBuilder()
             var line: String?
-
+            
             while (reader.readLine().also { line = it } != null) {
                 response.append(line)
             }
@@ -368,7 +368,7 @@ class TradingChartFragment : Fragment() {
 
             val jsonArray = JSONArray(response.toString())
             val tickerDataList = mutableListOf<TickerData>()
-
+            
             for (i in 0 until jsonArray.length()) {
                 val item = jsonArray.getJSONObject(i)
                 tickerDataList.add(
@@ -379,10 +379,10 @@ class TradingChartFragment : Fragment() {
                     )
                 )
             }
-
+            
             // 시간순으로 정렬 (과거순)
             return@withContext tickerDataList.sortedBy { it.timestamp }
-
+            
         } catch (e: Exception) {
             Log.e(TAG, "hourly ticker 데이터 조회 실패: ${e.message}")
             emptyList()
@@ -394,16 +394,16 @@ class TradingChartFragment : Fragment() {
             // 현재 날짜 기준으로 1년 전부터 현재까지 데이터 요청
             val calendar = Calendar.getInstance()
             val endDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
-
+            
             calendar.add(Calendar.YEAR, -1)
             val startDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
-
+            
             val url = URL("$API_BASE_URL/api/tickers/daily?marketPairId=$pairId&from=$startDate&to=$endDate")
             val connection = url.openConnection()
             val reader = BufferedReader(InputStreamReader(connection.getInputStream()))
             val response = StringBuilder()
             var line: String?
-
+            
             while (reader.readLine().also { line = it } != null) {
                 response.append(line)
             }
@@ -411,7 +411,7 @@ class TradingChartFragment : Fragment() {
 
             val jsonArray = JSONArray(response.toString())
             val tickerDataList = mutableListOf<TickerData>()
-
+            
             for (i in 0 until jsonArray.length()) {
                 val item = jsonArray.getJSONObject(i)
                 tickerDataList.add(
@@ -422,10 +422,10 @@ class TradingChartFragment : Fragment() {
                     )
                 )
             }
-
+            
             // 시간순으로 정렬 (과거순)
             return@withContext tickerDataList.sortedBy { it.timestamp }
-
+            
         } catch (e: Exception) {
             Log.e(TAG, "daily ticker 데이터 조회 실패: ${e.message}")
             emptyList()
@@ -456,7 +456,7 @@ class TradingChartFragment : Fragment() {
                 val sortedData = dataList.sortedBy { it.timestamp }
                 val prices = sortedData.map { it.price.toFloat() }
                 val volumes = sortedData.map { it.amount.toFloat() }
-
+                
                 val open = prices.first()
                 val close = prices.last()
                 val high = prices.maxOrNull() ?: open
@@ -482,7 +482,7 @@ class TradingChartFragment : Fragment() {
         ohlcvData = ohlcvList.sortedBy { it.date }
 
         Log.d(TAG, "OHLCV 데이터 변환 완료: ${ohlcvData.size}개 (필터: $currentTimeFilter)")
-
+        
         activity?.runOnUiThread {
             updateChart()
         }
@@ -494,12 +494,12 @@ class TradingChartFragment : Fragment() {
             val utcDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS", Locale.getDefault())
             utcDateFormat.timeZone = TimeZone.getTimeZone("UTC")
             val utcDate = utcDateFormat.parse(timestamp)
-
+            
             val kstTimeZone = TimeZone.getTimeZone("Asia/Seoul")
             val calendar = Calendar.getInstance(kstTimeZone)
             calendar.time = utcDate
             calendar.set(Calendar.MILLISECOND, 0)
-
+            
             SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(calendar.time)
         }
     }
@@ -510,11 +510,11 @@ class TradingChartFragment : Fragment() {
             val utcDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS", Locale.getDefault())
             utcDateFormat.timeZone = TimeZone.getTimeZone("UTC")
             val utcDate = utcDateFormat.parse(timestamp)
-
+            
             val kstTimeZone = TimeZone.getTimeZone("Asia/Seoul")
             val calendar = Calendar.getInstance(kstTimeZone)
             calendar.time = utcDate
-
+            
             // 분 단위 필터에 따라 그룹화
             when (currentMinuteFilter) {
                 MinuteFilter.MIN_1 -> {
@@ -548,14 +548,14 @@ class TradingChartFragment : Fragment() {
             val utcDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS", Locale.getDefault())
             utcDateFormat.timeZone = TimeZone.getTimeZone("UTC")
             val utcDate = utcDateFormat.parse(timestamp)
-
+            
             val kstTimeZone = TimeZone.getTimeZone("Asia/Seoul")
             val calendar = Calendar.getInstance(kstTimeZone)
             calendar.time = utcDate
             calendar.set(Calendar.MINUTE, 0)
             calendar.set(Calendar.SECOND, 0)
             calendar.set(Calendar.MILLISECOND, 0)
-
+            
             SimpleDateFormat("yyyy-MM-dd HH:00", Locale.getDefault()).format(calendar.time)
         }
     }
@@ -566,7 +566,7 @@ class TradingChartFragment : Fragment() {
             val utcDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS", Locale.getDefault())
             utcDateFormat.timeZone = TimeZone.getTimeZone("UTC")
             val utcDate = utcDateFormat.parse(timestamp)
-
+            
             val kstTimeZone = TimeZone.getTimeZone("Asia/Seoul")
             val calendar = Calendar.getInstance(kstTimeZone)
             calendar.time = utcDate
@@ -574,7 +574,7 @@ class TradingChartFragment : Fragment() {
             calendar.set(Calendar.MINUTE, 0)
             calendar.set(Calendar.SECOND, 0)
             calendar.set(Calendar.MILLISECOND, 0)
-
+            
             SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
         }
     }
@@ -585,7 +585,7 @@ class TradingChartFragment : Fragment() {
             val utcDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS", Locale.getDefault())
             utcDateFormat.timeZone = TimeZone.getTimeZone("UTC")
             val utcDate = utcDateFormat.parse(timestamp)
-
+            
             val kstTimeZone = TimeZone.getTimeZone("Asia/Seoul")
             val calendar = Calendar.getInstance(kstTimeZone)
             calendar.time = utcDate
@@ -594,7 +594,7 @@ class TradingChartFragment : Fragment() {
             calendar.set(Calendar.MINUTE, 0)
             calendar.set(Calendar.SECOND, 0)
             calendar.set(Calendar.MILLISECOND, 0)
-
+            
             SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
         }
     }
@@ -605,7 +605,7 @@ class TradingChartFragment : Fragment() {
             val utcDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS", Locale.getDefault())
             utcDateFormat.timeZone = TimeZone.getTimeZone("UTC")
             val utcDate = utcDateFormat.parse(timestamp)
-
+            
             val kstTimeZone = TimeZone.getTimeZone("Asia/Seoul")
             val calendar = Calendar.getInstance(kstTimeZone)
             calendar.time = utcDate
@@ -614,7 +614,7 @@ class TradingChartFragment : Fragment() {
             calendar.set(Calendar.MINUTE, 0)
             calendar.set(Calendar.SECOND, 0)
             calendar.set(Calendar.MILLISECOND, 0)
-
+            
             SimpleDateFormat("yyyy-MM", Locale.getDefault()).format(calendar.time)
         }
     }
@@ -625,7 +625,7 @@ class TradingChartFragment : Fragment() {
             val utcDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS", Locale.getDefault())
             utcDateFormat.timeZone = TimeZone.getTimeZone("UTC")
             val utcDate = utcDateFormat.parse(timestamp)
-
+            
             val kstTimeZone = TimeZone.getTimeZone("Asia/Seoul")
             val calendar = Calendar.getInstance(kstTimeZone)
             calendar.time = utcDate
@@ -634,7 +634,7 @@ class TradingChartFragment : Fragment() {
             calendar.set(Calendar.MINUTE, 0)
             calendar.set(Calendar.SECOND, 0)
             calendar.set(Calendar.MILLISECOND, 0)
-
+            
             SimpleDateFormat("yyyy", Locale.getDefault()).format(calendar.time)
         }
     }
@@ -670,7 +670,7 @@ class TradingChartFragment : Fragment() {
             TimeFilter.MONTHS -> "true"
             TimeFilter.YEARS -> "true"
         }
-
+        
         val secondsVisible = when (currentTimeFilter) {
             TimeFilter.SECONDS -> "true"
             else -> "false"
@@ -1024,7 +1024,7 @@ class TradingChartFragment : Fragment() {
             Log.w(TAG, "updateChartData: binding이 null입니다. Fragment가 destroy되었을 수 있습니다.")
             return
         }
-
+        
         try {
             if (ohlcvData.isEmpty()) {
                 Log.w(TAG, "OHLCV 데이터가 비어있습니다.")
@@ -1045,14 +1045,14 @@ class TradingChartFragment : Fragment() {
                     TimeFilter.MONTHS -> SimpleDateFormat("yyyy-MM", Locale.getDefault())
                     TimeFilter.YEARS -> SimpleDateFormat("yyyy", Locale.getDefault())
                 }
-
+                
                 val date = dateFormat.parse(data.date)
                 val timestamp = date?.time?.div(1000) ?: 0L
-
+                
                 // 캔들스틱 상승/하락 여부에 따라 거래량 색상 결정
                 val isUp = data.close >= data.open
                 val volumeColor = if (isUp) "rgba(38, 166, 154, 0.3)" else "rgba(239, 83, 80, 0.3)" // 녹색/빨간색 반투명
-
+                
                 mapOf(
                     "time" to timestamp,
                     "open" to data.open,
@@ -1125,7 +1125,7 @@ class TradingChartFragment : Fragment() {
     // 폴링 시작
     private fun startPolling() {
         if (isPollingActive) return
-
+        
         isPollingActive = true
         pollingJob = viewLifecycleOwner.lifecycleScope.launch {
             while (isPollingActive) {
@@ -1172,7 +1172,7 @@ class TradingChartFragment : Fragment() {
             Log.w(TAG, "showEmptyState: binding이 null입니다. Fragment가 destroy되었을 수 있습니다.")
             return
         }
-
+        
         try {
             binding.loadingIndicator.visibility = View.GONE
             binding.chartWebView.visibility = View.GONE
