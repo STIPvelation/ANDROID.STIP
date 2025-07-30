@@ -571,7 +571,7 @@
     <style name="TableHeaderTextStyle">
         <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">@font/pretendard_medium</item>
-        <item name="android:textColor">#333333</item>
+        <item name="android:textColor">#FFFFFF</item>
         <item name="android:gravity">center</item>
     </style>
 
@@ -609,44 +609,5 @@
         <item name="android:windowFullscreen">false</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
-    </style>
-
-    <!-- 시간 필터 버튼 스타일 -->
-    <style name="TimeFilterButtonStyle" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">32dp</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:layout_marginStart">2dp</item>
-        <item name="android:layout_marginEnd">2dp</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:textColor">#333333</item>
-        <item name="android:fontFamily">@font/pretendard_medium</item>
-        <item name="android:background">@drawable/bg_time_filter_button</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:minHeight">32dp</item>
-        <item name="android:minWidth">0dp</item>
-        <item name="android:paddingStart">8dp</item>
-        <item name="android:paddingEnd">8dp</item>
-        <item name="android:paddingTop">4dp</item>
-        <item name="android:paddingBottom">4dp</item>
-    </style>
-
-    <style name="TimeFilterSubButtonStyle" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">28dp</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:layout_marginStart">2dp</item>
-        <item name="android:layout_marginEnd">2dp</item>
-        <item name="android:textSize">11sp</item>
-        <item name="android:textColor">#333333</item>
-        <item name="android:fontFamily">@font/pretendard_medium</item>
-        <item name="android:background">@drawable/bg_time_filter_sub_button</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:minHeight">28dp</item>
-        <item name="android:minWidth">0dp</item>
-        <item name="android:paddingStart">6dp</item>
-        <item name="android:paddingEnd">6dp</item>
-        <item name="android:paddingTop">2dp</item>
-        <item name="android:paddingBottom">2dp</item>
     </style>
 </resources>

@@ -70,11 +70,11 @@
                     app:constraint_referenced_ids="guideline_content_start"
                     app:layout_constraintWidth_max="@dimen/content_max_width" />
 
-                <!-- 상단 여백 증가로 텍스트 잘림 방지 -->
+                <!-- 상단 여백 최소화 -->
                 <Space
                     android:id="@+id/space_top_notch_area"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="20dp"
                     app:layout_constraintTop_toTopOf="parent" />
                     
                 <androidx.appcompat.widget.AppCompatTextView
@@ -83,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_medium"
                     android:layout_marginEnd="@dimen/margin_medium"
-                    android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/margin_xsmall"
                     android:fontFamily="@font/pretendard_regular_font_family"
                     android:gravity="center"
                     android:textColor="@color/text_black_14181B_100"

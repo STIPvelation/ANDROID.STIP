@@ -168,24 +168,19 @@ class IpHomeQuotesFragment : Fragment() {
                     return@launch
                 }
 
-                // 시간별 데이터를 시간 순으로 정렬 (최신순) - 실제 Date 객체로 파싱하여 정확한 시간 순서 비교
-                val timeFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS", Locale.getDefault()).apply {
-                    timeZone = java.util.TimeZone.getTimeZone("UTC")
-                }
-                val sortedData = hourlyData.sortedByDescending { hourlyItem ->
-                    try {
-                        timeFormat.parse(hourlyItem.timestamp)?.time ?: 0L
-                    } catch (e: Exception) {
-                        Log.e(TAG, "시간 파싱 오류: ${hourlyItem.timestamp}", e)
-                        0L
-                    }
-                }
+                // 시간별 데이터를 시간 순으로 정렬 (최신순)
+                val sortedData = hourlyData.sortedByDescending { it.timestamp }
                 
-                // 매번 새로운 데이터로 교체 (최신순 정렬된 데이터 사용)
-                timeQuotesList.clear()
+                // 기존 데이터 초기화 (첫 로드시에만)
+                if (isFirstLoad) {
+                    timeQuotesList.clear()
+                }
 
-                // 최신순으로 정렬된 데이터를 순서대로 추가 (최대 30개)
-                sortedData.take(30).forEachIndexed { index, hourlyItem ->
+                // 새로운 데이터 추가
+                sortedData.forEach { hourlyItem ->
+                    val timeFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault()).apply {
+                        timeZone = java.util.TimeZone.getTimeZone("UTC")
+                    }
                     val displayFormat = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).apply {
                         timeZone = java.util.TimeZone.getTimeZone("Asia/Seoul")
                     }
@@ -194,17 +189,10 @@ class IpHomeQuotesFragment : Fragment() {
                         val timestamp = timeFormat.parse(hourlyItem.timestamp)
                         val displayTime = displayFormat.format(timestamp)
                         
-                        // 이전 거래와의 시간 순서 비교로 가격 변동 상태 결정
-                        val priceChangeStatus = if (index < sortedData.size - 1) {
-                            val previousItem = sortedData[index + 1] // 시간상 이전 거래
-                            when {
-                                hourlyItem.price > previousItem.price -> PriceChangeStatus.UP
-                                hourlyItem.price < previousItem.price -> PriceChangeStatus.DOWN
-                                else -> PriceChangeStatus.SAME
-                            }
-                        } else {
-                            // 첫 번째 거래(가장 최신)는 이전 거래가 없으므로 SAME으로 처리
-                            PriceChangeStatus.SAME
+                        val priceChangeStatus = when {
+                            hourlyItem.price > lastPrice -> PriceChangeStatus.UP
+                            hourlyItem.price < lastPrice -> PriceChangeStatus.DOWN
+                            else -> PriceChangeStatus.SAME
                         }
 
                         val newQuote = QuoteTick(
@@ -215,8 +203,17 @@ class IpHomeQuotesFragment : Fragment() {
                             priceChangeStatus = priceChangeStatus
                         )
 
-                        timeQuotesList.add(newQuote)
-                        Log.d(TAG, "시간별 시세 업데이트 - 시간: $displayTime, 가격: ${hourlyItem.price}, 체결량: ${hourlyItem.volume}, 상태: $priceChangeStatus")
+                        // 중복 방지
+                        val existingIndex = timeQuotesList.indexOfFirst { it.id == newQuote.id }
+                        if (existingIndex == -1) {
+                            timeQuotesList.add(0, newQuote)
+                            if (timeQuotesList.size > 30) {
+                                timeQuotesList.removeAt(timeQuotesList.size - 1)
+                            }
+                        }
+
+                        lastPrice = hourlyItem.price
+                        Log.d(TAG, "시간별 시세 업데이트 - 시간: $displayTime, 가격: ${hourlyItem.price}, 체결량: ${hourlyItem.volume}")
                     } catch (e: Exception) {
                         Log.e(TAG, "시간 파싱 오류: ${e.message}")
                     }

@@ -20,7 +20,6 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 import com.stip.stip.api.RetrofitClient
 import com.stip.stip.api.service.TapiHourlyDataService
-import com.stip.stip.api.service.TapiDailyDataService
 import com.stip.stip.api.service.MarketPairsService
 
 @Module
@@ -147,18 +146,6 @@ object ApiModule {
             .addCallAdapterFactory(CoroutinesResponseCallAdapterFactory.create())
             .build()
             .create(MarketPairsService::class.java)
-    }
-
-    @Provides
-    @Singleton
-    fun provideTapiDailyDataService(): TapiDailyDataService {
-        return Retrofit.Builder()
-            .client(provideOkhttpClient())
-            .baseUrl(TAPI_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(CoroutinesResponseCallAdapterFactory.create())
-            .build()
-            .create(TapiDailyDataService::class.java)
     }
 
 }

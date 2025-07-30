@@ -172,71 +172,55 @@ class IpHomeInfoFragment : Fragment() { // <<< 인터페이스 구현 제거
 
     // 바로가기 링크 설정
     private fun setupShortcutLinks() {
-        // 블록 조회 링크
+        // BlockchainExplorerUrls 클래스 활용
         binding.tvLinkBlockInquiry.setOnClickListener {
             val blockchainUrl = com.stip.stip.iphome.constants.BlockchainExplorerUrls.getUrlForTicker(currentTicker)
-            Log.d(TAG, "Block Inquiry clicked for ticker: $currentTicker, URL: $blockchainUrl")
             openExternalUrl(blockchainUrl)
         }
-        
-        // IP 등급 링크
         binding.tvLinkIpRating.setOnClickListener {
+            // currentItem 이 null 이 아닌지 먼저 확인
             currentItem?.let { item ->
                 Log.d(TAG, "IP Rating link clicked for ticker: ${item.ticker}")
+                // --- ✅ 새로운 newInstance 호출 방식으로 수정 ---
                 val dialogFragment = RadarChartDialogFragment.newInstance(
-                    grade = item.patentGrade,
-                    institutionalValues = item.institutionalValues,
-                    stipValues = item.stipValues,
-                    category = item.category
+                    // ★ IpListingItem 모델에서 실제 필드 이름 확인 필요
+                    grade = item.patentGrade,          // 예: 등급 정보 필드
+                    institutionalValues = item.institutionalValues,  // 예: 기관 평가 값 리스트 필드 (List<Float>?)
+                    stipValues = item.stipValues,           // 예: STIP 평가 값 리스트 필드 (List<Float>?)
+                    category = item.category             // 예: 카테고리 정보 필드
                 )
+                // --- ✅ 수정 끝 ---
+
+                // 다이얼로그 표시 (childFragmentManager 사용 권장)
                 dialogFragment.show(childFragmentManager, RadarChartDialogFragment.TAG)
+
             } ?: run {
+                // currentItem이 null일 경우 오류 처리
                 Log.w(TAG, "setupShortcutLinks: currentItem is null, cannot show IP Rating.")
                 Toast.makeText(requireContext(), "IP 등급 정보를 표시할 수 없습니다.", Toast.LENGTH_SHORT).show()
             }
         }
 
-        // 실시권 링크 (License) - 올바른 함수 사용
         binding.tvLinkLicense.setOnClickListener {
-            Log.d(TAG, "=== 실시권 링크 클릭 ===")
-            Log.d(TAG, "Current ticker: $currentTicker")
-            
-            // 실시권 링크 가져오기
-            val licenseUrl = com.stip.stip.iphome.constants.IpDetailInfo.getLicenseForTicker(currentTicker)
-            Log.d(TAG, "License URL from IpDetailInfo: $licenseUrl")
-            
-            // 비교를 위해 사업계획 URL도 가져오기
+            // IpDetailInfo에서 사업계획서 URL 가져오기 (추가하거나 사용 가능한 경우)
+            // 불가능하면 IpListingItem.linkLicense 필드 사용
             val businessPlanUrl = com.stip.stip.iphome.constants.IpDetailInfo.getBusinessPlanForTicker(currentTicker)
-            Log.d(TAG, "Business Plan URL (for comparison): $businessPlanUrl")
-            
-            // URL이 사업계획과 다른지 확인
-            if (licenseUrl == businessPlanUrl) {
-                Log.w(TAG, "WARNING: License URL is same as Business Plan URL!")
-            }
-            
-            if (licenseUrl != com.stip.stip.iphome.constants.IpDetailInfo.DEFAULT_VALUE) {
-                Log.d(TAG, "Opening license URL: $licenseUrl")
-                openExternalUrl(licenseUrl)
+            if (businessPlanUrl != com.stip.stip.iphome.constants.IpDetailInfo.DEFAULT_VALUE) {
+                openExternalUrl(businessPlanUrl)
             } else {
-                // 폴백: IpListingItem의 linkLicense 필드 사용
-                val fallbackUrl = currentItem?.linkLicense ?: "https://stipvelation.com/license"
-                Log.d(TAG, "Using fallback license URL: $fallbackUrl")
-                openExternalUrl(fallbackUrl)
+                openExternalUrl(currentItem?.linkLicense ?: "https://stipvelation.com/license")
             }
-            Log.d(TAG, "=== 실시권 링크 처리 완료 ===")
         }
 
-        // 영상 보기 링크
+
         binding.tvLinkViewVideo.setOnClickListener {
+            // IpDetailInfo에서 관련영상 URL 가져오기
+            // 불가능하면 IpListingItem.linkVideo 필드 사용
             val videoUrl = com.stip.stip.iphome.constants.IpDetailInfo.getVideoForTicker(currentTicker)
-            Log.d(TAG, "Video link clicked for ticker: $currentTicker, URL: $videoUrl")
             if (videoUrl != com.stip.stip.iphome.constants.IpDetailInfo.DEFAULT_VALUE) {
                 openExternalUrl(videoUrl)
             } else {
-                // 폴백: IpListingItem의 linkVideo 필드 사용
-                val fallbackUrl = currentItem?.linkVideo ?: "https://stipvelation.com/video"
-                Log.d(TAG, "Using fallback video URL: $fallbackUrl")
-                openExternalUrl(fallbackUrl)
+                openExternalUrl(currentItem?.linkVideo ?: "https://stipvelation.com/video")
             }
         }
     }
@@ -336,14 +320,10 @@ class IpHomeInfoFragment : Fragment() { // <<< 인터페이스 구현 제거
     private fun setupLicenseScopeRecycler(item: IpListingItem) {
         if (!isAdded || context == null) return
 
-        // 현재 티커에 대한 LicenseScopeInfo 데이터 가져오기
-        val ticker = item.ticker
-        val licenseScopes = com.stip.stip.iphome.constants.LicenseScopeInfo.getLicenseScopesForTicker(ticker)
-        
         val licenseScopeItems = listOf(
             LicenseScopeItem(
-                title = getString(R.string.license_scope_title),
-                licenseScopes = licenseScopes
+                title = getString(R.string.license_scope_default_title),
+                entries = listOf(/* ... 예시 데이터 ... */)
             )
         )
 
@@ -353,9 +333,13 @@ class IpHomeInfoFragment : Fragment() { // <<< 인터페이스 구현 제거
             binding.recyclerViewLicenseScope.layoutManager = LinearLayoutManager(requireContext())
         }
 
-        Log.d(TAG, "setupLicenseScopeRecycler: Adapter set for ticker $ticker with ${licenseScopes.size} license scopes")
-        Log.d(TAG, "License scopes for $ticker: ${licenseScopes.map { "${it.percentage} - ${it.usageArea}" }}")
+        Log.d(TAG, "setupLicenseScopeRecycler: Adapter set for recyclerViewLicenseScope")
     }
+
+
+
+
+
 
 
 

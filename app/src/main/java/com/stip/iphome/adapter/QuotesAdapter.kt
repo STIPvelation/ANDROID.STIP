@@ -36,9 +36,9 @@ class QuotesAdapter(private val context: Context) : ListAdapter<QuoteTick, Quote
 
             // 가격 변동 상태에 따라 텍스트 색상 변경
             val priceColor = when (quote.priceChangeStatus) {
-                PriceChangeStatus.UP -> ContextCompat.getColor(context, R.color.color_fall)     // 상승: 파란색
-                PriceChangeStatus.DOWN -> ContextCompat.getColor(context, R.color.color_rise)   // 하락: 빨간색
-                PriceChangeStatus.SAME -> ContextCompat.getColor(context, R.color.price_same_color) // 동일: 검은색
+                PriceChangeStatus.UP -> ContextCompat.getColor(context, R.color.color_rise)
+                PriceChangeStatus.DOWN -> ContextCompat.getColor(context, R.color.color_fall)
+                PriceChangeStatus.SAME -> ContextCompat.getColor(context, R.color.price_same_color)
             }
             binding.itemPriceTextView.setTextColor(priceColor)
         }

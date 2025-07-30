@@ -30,8 +30,7 @@ class OrderBookAdapter(
     private var openPrice: Float = 0f
     private var maxValueForScale: Float = 1f
     private var currentDisplayModeIsTotalAmount: Boolean = false
-    private var highlightedPrice: String? = null
-    private var lastTradePrice: Float = 0f
+    private var highlightedPosition: Int = -1
 
     private val twoDecimalFormatter = DecimalFormat("#,##0.00").apply {
         decimalFormatSymbols = decimalFormatSymbols.apply {
@@ -72,105 +71,89 @@ class OrderBookAdapter(
     fun updateData(newList: List<OrderBookItem>, newCurrentPrice: Float) {
         Log.d(TAG, "🔁 updateData called with newCurrentPrice = $newCurrentPrice")
 
+        val oldCurrentPrice = this.currentPrice
+        this.currentPrice = newCurrentPrice
+        this.maxValueForScale = calculateMaxValue(newList.filter { !it.isGap }, currentDisplayModeIsTotalAmount)
+
+        // 간격 아이템 제거 - 실제 호가만 표시
         val listWithoutGap = newList.filter { !it.isGap }
 
-        // 하이라이트 position 계산
+        // 현재 가격과 가장 가까운 행 찾기
         var closestPosition = -1
         var minDifference = Float.MAX_VALUE
         var exactMatchPosition = -1
-        val priceThreshold = 0.001f
+        
         listWithoutGap.forEachIndexed { index, item ->
             try {
                 val itemPrice = numberParseFormat.parse(item.price)?.toFloat() ?: 0f
                 if (itemPrice > 0) {
-                    val difference = kotlin.math.abs(itemPrice - newCurrentPrice)
-                    if (difference <= priceThreshold) {
-                        if (exactMatchPosition == -1) {
-                            exactMatchPosition = index
-                        }
+                    // 정확히 일치하는 경우 우선 저장
+                    if (itemPrice == newCurrentPrice) {
+                        exactMatchPosition = index
                     }
+                    
+                    val difference = kotlin.math.abs(itemPrice - newCurrentPrice)
                     if (difference < minDifference) {
                         minDifference = difference
                         closestPosition = index
                     }
                 }
-            } catch (_: Exception) {}
-        }
-        val newHighlightedPosition = if (exactMatchPosition != -1) exactMatchPosition else -1
-        val oldHighlightedPrice = highlightedPrice
-        highlightedPrice = if (newHighlightedPosition != -1) listWithoutGap.getOrNull(newHighlightedPosition)?.price else null
-
-        this.currentPrice = newCurrentPrice
-        this.maxValueForScale = calculateMaxValue(listWithoutGap, currentDisplayModeIsTotalAmount)
-
-        submitList(listWithoutGap) {
-            if (oldHighlightedPrice != highlightedPrice) {
-                val oldIdx = if (oldHighlightedPrice != null) listWithoutGap.indexOfFirst { it.price == oldHighlightedPrice } else -1
-                if (oldIdx != -1) notifyItemChanged(oldIdx)
-                val newIdx = if (highlightedPrice != null) listWithoutGap.indexOfFirst { it.price == highlightedPrice } else -1
-                if (newIdx != -1) notifyItemChanged(newIdx)
+            } catch (e: Exception) {
+                Log.e(TAG, "가격 파싱 하이라이트 에러", e)
             }
         }
+        
+        val oldHighlightedPosition = highlightedPosition
+        // 정확히 일치하는 호가가 있으면 그것을 사용, 없으면 가장 가까운 호가 사용
+        highlightedPosition = if (exactMatchPosition != -1) exactMatchPosition else closestPosition
+
+        submitList(listWithoutGap)
         Log.d(TAG, "✅ Final list submitted. Size: ${listWithoutGap.size}, MaxValue: $maxValueForScale")
     }
 
     fun updateCurrentPrice(newPrice: Float) {
-        Log.d(TAG, "🔁 updateCurrentPrice called with newPrice = $newPrice")
-
-        val currentListNoGap = currentList.filter { !it.isGap }
+        this.currentPrice = newPrice
+        
+        // 현재 리스트에서 현재가와 가장 가까운 위치 다시 계산
+        val currentList = currentList.filter { !it.isGap }
         var closestPosition = -1
         var minDifference = Float.MAX_VALUE
         var exactMatchPosition = -1
-        val priceThreshold = 0.001f
-        currentListNoGap.forEachIndexed { index, item ->
+        
+        currentList.forEachIndexed { index, item ->
             try {
                 val itemPrice = numberParseFormat.parse(item.price)?.toFloat() ?: 0f
                 if (itemPrice > 0) {
-                    val difference = kotlin.math.abs(itemPrice - newPrice)
-                    if (difference <= priceThreshold) {
-                        if (exactMatchPosition == -1) {
-                            exactMatchPosition = index
-                        }
+                    // 정확히 일치하는 경우 우선 저장
+                    if (itemPrice == newPrice) {
+                        exactMatchPosition = index
                     }
+                    
+                    val difference = kotlin.math.abs(itemPrice - newPrice)
                     if (difference < minDifference) {
                         minDifference = difference
                         closestPosition = index
                     }
                 }
-            } catch (_: Exception) {}
+            } catch (e: Exception) {
+                Log.e(TAG, "가격 파싱 하이라이트 에러", e)
+            }
         }
-        val newHighlightedPosition = if (exactMatchPosition != -1) exactMatchPosition else -1
-        val oldHighlightedPrice = highlightedPrice
-        highlightedPrice = if (newHighlightedPosition != -1) currentListNoGap.getOrNull(newHighlightedPosition)?.price else null
-
-        this.currentPrice = newPrice
-        if (oldHighlightedPrice != highlightedPrice) {
-            val oldIdx = if (oldHighlightedPrice != null) currentListNoGap.indexOfFirst { it.price == oldHighlightedPrice } else -1
-            if (oldIdx != -1) notifyItemChanged(oldIdx)
-            val newIdx = if (highlightedPrice != null) currentListNoGap.indexOfFirst { it.price == highlightedPrice } else -1
-            if (newIdx != -1) notifyItemChanged(newIdx)
-        }
-    }
-
-    /**
-     * 마지막 체결 가격에 맞는 호가만 하이라이트 (price 기준)
-     */
-    fun updateTradePrice(newTradePrice: Float) {
-        lastTradePrice = newTradePrice
-
-        val currentListNoGap = currentList.filter { !it.isGap }
-        var foundPrice: String? = null
-        currentListNoGap.forEach { item ->
-            try {
-                val itemPrice = numberParseFormat.parse(item.price)?.toFloat() ?: 0f
-                if (itemPrice > 0 && itemPrice == lastTradePrice) {
-                    foundPrice = item.price
-                }
-            } catch (_: Exception) {}
-        }
-        val oldHighlightedPrice = highlightedPrice
-        highlightedPrice = foundPrice
-        if (oldHighlightedPrice != highlightedPrice) {
+        
+        val oldHighlightedPosition = highlightedPosition
+        // 정확히 일치하는 호가가 있으면 그것을 사용, 없으면 가장 가까운 호가 사용
+        highlightedPosition = if (exactMatchPosition != -1) exactMatchPosition else closestPosition
+        
+        // 하이라이트가 변경된 경우에만 해당 아이템들 업데이트
+        if (oldHighlightedPosition != highlightedPosition) {
+            if (oldHighlightedPosition >= 0 && oldHighlightedPosition < itemCount) {
+                notifyItemChanged(oldHighlightedPosition)
+            }
+            if (highlightedPosition >= 0 && highlightedPosition < itemCount) {
+                notifyItemChanged(highlightedPosition)
+            }
+        } else {
+            // 하이라이트 위치가 같아도 현재가가 변경되었으므로 전체 업데이트
             notifyDataSetChanged()
         }
     }
@@ -188,18 +171,6 @@ class OrderBookAdapter(
 
     fun getFirstBuyOrderIndex(): Int {
         return currentList.indexOfFirst { it.isBuy }
-    }
-    
-    /**
-     * 강조 표시를 완전히 초기화
-     */
-    fun resetHighlight() {
-        val oldHighlightedPrice = highlightedPrice
-        highlightedPrice = null
-        if (oldHighlightedPrice != null) {
-            val idx = currentList.indexOfFirst { it.price == oldHighlightedPrice }
-            if (idx != -1) notifyItemChanged(idx)
-        }
     }
 
     // ⛔️ 반드시 아래에 DiffUtil 정의가 있어야 함!
@@ -274,12 +245,12 @@ class OrderBookAdapter(
         return when (viewType) {
             VIEW_TYPE_SELL -> {
                 val view = inflater.inflate(R.layout.item_order_book_sell, parent, false)
-                OrderBookViewHolder(view, listener, { pos -> getItem(pos) }, this)
+                OrderBookViewHolder(view, listener) { pos -> getItem(pos) }
             }
 
             VIEW_TYPE_BUY -> {
                 val view = inflater.inflate(R.layout.item_order_book_buy, parent, false)
-                OrderBookViewHolder(view, listener, { pos -> getItem(pos) }, this)
+                OrderBookViewHolder(view, listener) { pos -> getItem(pos) }
             }
 
             else -> {
@@ -314,8 +285,8 @@ class OrderBookAdapter(
                         borderDrawable = borderDrawable,
                         defaultBackground = defaultBackground,
                         openPrice = openPrice,
-                        fixedTextColorResId = textColorResId
-                        // highlightedPrice는 OrderBookAdapter의 필드로 직접 접근
+                        fixedTextColorResId = textColorResId,
+                        highlightedPosition = highlightedPosition
                     )
                 }
             }
@@ -330,8 +301,7 @@ class OrderBookAdapter(
     class OrderBookViewHolder(
         itemView: View,
         private val listener: OnOrderBookItemClickListener,
-        private val getItemForPosition: (Int) -> OrderBookItem?,
-        private val adapter: OrderBookAdapter
+        private val getItemForPosition: (Int) -> OrderBookItem?
     ) : RecyclerView.ViewHolder(itemView) {
 
         private val priceText: TextView? = itemView.findViewById(R.id.text_order_price_v1)
@@ -367,7 +337,8 @@ class OrderBookAdapter(
             borderDrawable: Drawable?,
             defaultBackground: Drawable?,
             openPrice: Float,
-            fixedTextColorResId: Int
+            fixedTextColorResId: Int, // ✅ 외부에서 강제 지정된 색상
+            highlightedPosition: Int
         ) {
             itemView.visibility = View.VISIBLE
 
@@ -418,13 +389,18 @@ class OrderBookAdapter(
             priceText?.setTextColor(textColor)
             percentText?.setTextColor(textColor)
 
-            // 현재가 강조 표시: 정확히 하나의 행에만 테두리 적용
-            val shouldHighlight = adapter.highlightedPrice != null && item.price == adapter.highlightedPrice
+            // 현재가 강조 표시: 가장 가까운 하나의 행에만 테두리 적용
+            val shouldHighlight = bindingAdapterPosition == highlightedPosition
+            
             if (shouldHighlight) {
+                Log.d(TAG, "Highlighting position $bindingAdapterPosition with price: $priceFloat (current: $currentPrice)")
+                // 검은색 테두리 적용
                 itemView.background = borderDrawable
+                // 테두리가 잘 보이도록 패딩 추가
                 itemView.setPadding(4, 4, 4, 4)
             } else {
-                itemView.background = defaultBackground ?: ColorDrawable(Color.TRANSPARENT)
+                itemView.background = defaultBackground
+                // 기본 패딩으로 되돌림
                 itemView.setPadding(0, 0, 0, 0)
             }
 

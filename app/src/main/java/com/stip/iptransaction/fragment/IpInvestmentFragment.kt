@@ -6,8 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.util.Log
 import androidx.core.content.ContextCompat
-import android.os.Handler
-import android.os.Looper
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -233,13 +231,6 @@ class IpInvestmentFragment : Fragment(), ScrollableToTop, TickerSelectionDialogF
         binding.progressBar.visibility = View.VISIBLE
         binding.recyclerViewInvestmentList.visibility = View.GONE
         binding.noDataContainer.visibility = View.GONE
-        
-        // 2초 후 자동으로 ProgressBar 숨기기
-        Handler(Looper.getMainLooper()).postDelayed({
-            if (_binding != null) {
-                binding.progressBar.visibility = View.GONE
-            }
-        }, 2000)
         
         // 입출금 내역과 매수/매도 내역을 모두 로드
         viewLifecycleOwner.lifecycleScope.launch {
