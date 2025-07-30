@@ -102,11 +102,16 @@ class IpListingAdapter(var items: List<IpListingItem>) :
             binding.root.setOnClickListener {
                 val activity = binding.root.context as? AppCompatActivity
                 if (activity != null) {
-                    // 로그인 상태 확인
+                    // 로그인 상태 상세 확인
+                    val token = com.stip.stip.signup.utils.PreferenceUtil.getToken()
+                    val isGuest = com.stip.stip.signup.utils.PreferenceUtil.isGuestMode()
                     val isLoggedIn = com.stip.stip.signup.utils.PreferenceUtil.isRealLoggedIn()
+                    
+                    Log.d("IpListingAdapter", "실시권 클릭 - 토큰: ${token != null}, 게스트모드: $isGuest, 실제로그인: $isLoggedIn")
                     
                     if (isLoggedIn) {
                         // 로그인된 경우 거래 화면으로 이동
+                        Log.d("IpListingAdapter", "로그인 상태 확인됨 - TradingFragment로 이동: ${item.ticker}")
                         val fragment = TradingFragment.newInstance(item.ticker, item.ticker)
                         activity.supportFragmentManager.beginTransaction()
                             .replace(R.id.fragment_container, fragment)
@@ -114,6 +119,7 @@ class IpListingAdapter(var items: List<IpListingItem>) :
                             .commit()
                     } else {
                         // 로그인되지 않은 경우 로그인 필요 다이얼로그 표시
+                        Log.d("IpListingAdapter", "로그인 상태 아님 - 로그인 다이얼로그 표시")
                         showLoginRequiredDialog(activity)
                     }
                 }
