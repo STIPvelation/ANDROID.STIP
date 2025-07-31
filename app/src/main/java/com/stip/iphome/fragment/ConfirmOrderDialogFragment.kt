@@ -129,6 +129,13 @@ class ConfirmOrderDialogFragment : DialogFragment() {
         }
 
         binding.buttonConfirmSell.setOnClickListener {
+            // 버튼 비활성화하여 중복 클릭 방지
+            binding.buttonConfirmSell.isEnabled = false
+            binding.buttonClose.isEnabled = false
+            
+            // 로딩 상태 표시
+            binding.buttonConfirmSell.text = "주문 처리 중..."
+            
             val resultBundle = Bundle()
             resultBundle.putBoolean(RESULT_KEY_CONFIRMED, true)
 
@@ -176,7 +183,6 @@ class ConfirmOrderDialogFragment : DialogFragment() {
                 }
             }
             parentFragmentManager.setFragmentResult(REQUEST_KEY, resultBundle)
-            dismiss()
         }
     }
 
@@ -197,6 +203,46 @@ class ConfirmOrderDialogFragment : DialogFragment() {
         parentFragmentManager.setFragmentResult(REQUEST_KEY, Bundle().apply {
             putBoolean(RESULT_KEY_CONFIRMED, false)
         })
+    }
+
+    /**
+     * API 응답 후 다이얼로그 닫는 메소드
+     */
+    fun dismissAfterResponse() {
+        try {
+            if (isAdded && !isDetached) {
+                dismiss()
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "응답 후 다이얼로그 dismiss 하던 중 에러남", e)
+        }
+    }
+
+    /**
+     * 에러 발생 시 모달을 닫고 버튼 상태를 복원하는 메서드
+     */
+    fun dismissOnError() {
+        try {
+            // 버튼 상태 복원
+            binding.buttonConfirmSell.isEnabled = true
+            binding.buttonClose.isEnabled = true
+            
+            // 버튼 텍스트 복원
+            arguments?.let { args ->
+                val isBuyOrder = args.getBoolean(ARG_IS_BUY_ORDER)
+                binding.buttonConfirmSell.text = if (isBuyOrder) {
+                    getString(R.string.dialog_confirm_buy)
+                } else {
+                    getString(R.string.dialog_confirm_sell)
+                }
+            }
+            
+            if (isAdded && !isDetached) {
+                dismiss()
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "응답 후 다이얼로그 dismiss 하던 중 에러남", e)
+        }
     }
 
     override fun onDestroyView() {

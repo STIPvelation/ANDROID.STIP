@@ -36,12 +36,24 @@ class OrderInputHandler(
     private enum class LastEdited { QUANTITY, TOTAL_AMOUNT, PRICE, NONE }
     private var lastEditedFocus: LastEdited = LastEdited.NONE
 
-    // 소수점 2자리 제한을 위한 InputFilter
-    private val decimalFilter = InputFilter { source, start, end, dest, dstart, dend ->
+    // 소수점 2자리 제한을 위한 InputFilter (가격용)
+    private val priceDecimalFilter = InputFilter { source, start, end, dest, dstart, dend ->
         val newText = dest.subSequence(0, dstart).toString() + source.subSequence(start, end) + dest.subSequence(dend, dest.length)
         
-        // 빈 문자열이거나 숫자만 있는 경우 허용
+        // 빈 문자열이거나 숫자만 있는 경우 허용 (정수자리 제한 없음, 소수점 2자리까지)
         if (newText.isEmpty() || newText.matches(Regex("^\\d*\\.?\\d{0,2}$"))) {
+            null
+        } else {
+            ""
+        }
+    }
+    
+    // 수량용 InputFilter (정수자리 제한 없음, 소수점 2자리까지)
+    private val quantityDecimalFilter = InputFilter { source, start, end, dest, dstart, dend ->
+        val newText = dest.subSequence(0, dstart).toString() + source.subSequence(start, end) + dest.subSequence(dend, dest.length)
+        
+        // 빈 문자열이거나 숫자만 있는 경우 허용 (정수자리 제한 없음, 소수점 2자리까지)
+        if (newText.isEmpty() || newText.matches(Regex("^[\\d,]*\\.?\\d{0,2}$"))) {
             null
         } else {
             ""
@@ -67,18 +79,25 @@ class OrderInputHandler(
 
     val formatOnFocusLostListener = View.OnFocusChangeListener { view, hasFocus ->
         if (!hasFocus && view is EditText) {
+            // 수량과 가격 입력 필드 모두 포맷팅을 건너뛰고 원본 텍스트 유지
+            if (view.id == R.id.editTextQuantity || view.id == R.id.editTextLimitPrice) {
+                updateCalculatedTotal()
+                if (view.id == R.id.editTextLimitPrice) {
+                    calculateAndDisplayMaxQuantity()
+                }
+                return@OnFocusChangeListener
+            }
+            
             val currentText = view.text.toString()
             try {
-                val number = if (currentText.isBlank()) 0.0 else (numberParseFormat.parse(currentText)?.toDouble() ?: 0.0)
+                val number = if (currentText.isBlank()) 0.0 else numberParseFormat.parse(currentText)?.toDouble() ?: 0.0
+                
                 val watcher = getWatcherForEditText(view)
                 watcher?.let { view.removeTextChangedListener(it) }
                 view.setText(fixedTwoDecimalFormatter.format(number))
                 watcher?.let { view.addTextChangedListener(it) }
 
                 updateCalculatedTotal()
-                if (view.id == R.id.editTextLimitPrice) {
-                    calculateAndDisplayMaxQuantity()
-                }
             } catch (e: Exception) {
                 Log.e("OrderInputHandler", "Error formatting number on focus lost: $currentText", e)
                 val watcher = getWatcherForEditText(view)
@@ -86,9 +105,6 @@ class OrderInputHandler(
                 view.setText(fixedTwoDecimalFormatter.format(0.0))
                 watcher?.let { view.addTextChangedListener(it) }
                 updateCalculatedTotal()
-                if (view.id == R.id.editTextLimitPrice) {
-                    calculateAndDisplayMaxQuantity()
-                }
             }
         } else if (hasFocus && view is EditText) {
             when(view.id) {
@@ -107,10 +123,10 @@ class OrderInputHandler(
     }
 
     fun setupInputListeners() {
-        // 소수점 2자리 제한 필터 적용
-        binding.editTextQuantity.filters = arrayOf(decimalFilter)
-        binding.editTextLimitPrice.filters = arrayOf(decimalFilter)
-        binding.editTextTriggerPrice?.filters = arrayOf(decimalFilter)
+        // 각 필드에 맞는 필터 적용
+        binding.editTextQuantity.filters = arrayOf(quantityDecimalFilter) // 수량은 정수자리 제한 없음, 소수점 2자리까지
+        binding.editTextLimitPrice.filters = arrayOf(priceDecimalFilter) // 가격은 정수자리 제한 없음, 소수점 2자리까지
+        binding.editTextTriggerPrice?.filters = arrayOf(priceDecimalFilter) // 트리거 가격도 정수자리 제한 없음, 소수점 2자리까지
         
         binding.editTextQuantity.addTextChangedListener(quantityTextWatcher)
         binding.editTextLimitPrice.addTextChangedListener(priceTextWatcher)
@@ -124,7 +140,8 @@ class OrderInputHandler(
         binding.rowCalculatedTotal.setOnClickListener {
             Log.d("OrderInputHandler", "Calculated Total Row clicked - Applying Max Quantity")
             val maxQty = calculateMaxQuantity()
-            binding.editTextQuantity.setText(fixedTwoDecimalFormatter.format(maxQty.coerceAtLeast(0.0)))
+            val commaFormatter = DecimalFormat("#,##0.##")
+            binding.editTextQuantity.setText(commaFormatter.format(maxQty.coerceAtLeast(0.0)))
             updateCalculatedTotal()
             showKeyboard(binding.editTextQuantity)
         }
@@ -295,27 +312,34 @@ class OrderInputHandler(
     private fun resetEditText(editText: EditText) {
         val watcher = getWatcherForEditText(editText)
         watcher?.let { editText.removeTextChangedListener(it) }
-        editText.setText(fixedTwoDecimalFormatter.format(0.0))
+        
+        // 수량 입력 필드의 경우 더 정밀한 포맷터 사용
+        val formatter = when (editText.id) {
+            R.id.editTextQuantity -> DecimalFormat("#,##0.########")
+            else -> fixedTwoDecimalFormatter
+        }
+        editText.setText(formatter.format(0.0))
         watcher?.let { editText.addTextChangedListener(it) }
     }
 
     fun setupQuantitySpinner() {
-        val ctx = binding.root.context
-        val options = listOf(
-            ctx.getString(R.string.quantity_option_available),
-            ctx.getString(R.string.quantity_option_max),
-            ctx.getString(R.string.quantity_option_75),
-            ctx.getString(R.string.quantity_option_50),
-            ctx.getString(R.string.quantity_option_25),
-            ctx.getString(R.string.quantity_option_10)
-        )
+        try {
+            val ctx = binding.root.context
+            val options = listOf(
+                ctx.getString(R.string.quantity_option_available),
+                ctx.getString(R.string.quantity_option_max),
+                ctx.getString(R.string.quantity_option_75),
+                ctx.getString(R.string.quantity_option_50),
+                ctx.getString(R.string.quantity_option_25),
+                ctx.getString(R.string.quantity_option_10)
+            )
 
-        val adapter = ArrayAdapter(ctx, R.layout.custom_spinner_item_quantity, options)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.spinnerAvailableQuantity.adapter = adapter
+            val adapter = ArrayAdapter(ctx, R.layout.custom_spinner_item_quantity, options)
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.spinnerAvailableQuantity.adapter = adapter
 
-        binding.spinnerAvailableQuantity.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+            binding.spinnerAvailableQuantity.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 if (position == 0) return
 
                 val factor = when (position) {
@@ -334,37 +358,31 @@ class OrderInputHandler(
                         
                         val watcher = quantityTextWatcher
                         binding.editTextQuantity.removeTextChangedListener(watcher)
-                        binding.editTextQuantity.setText(fixedTwoDecimalFormatter.format(targetAmount.coerceAtLeast(0.0)))
+                        val commaFormatter = DecimalFormat("#,##0.##")
+                        binding.editTextQuantity.setText(commaFormatter.format(targetAmount.coerceAtLeast(0.0)))
                         binding.editTextQuantity.addTextChangedListener(watcher)
                         
                         lastEditedFocus = LastEdited.TOTAL_AMOUNT
                     } else {
+                        // 지정가 매수: 가격이 입력되지 않은 경우 메시지 표시
                         val priceStr = binding.editTextLimitPrice.text?.toString()
                         val currentPrice = parseDouble(priceStr)
                         
                         if (currentPrice <= 0) {
-                            // 가격이 입력되지 않은 경우 토스트 메시지 표시
                             Toast.makeText(context, "가격을 먼저 입력해주세요", Toast.LENGTH_SHORT).show()
                             binding.spinnerAvailableQuantity.setSelection(0, false)
                             return
                         }
                         
-                        // 가격이 입력된 경우 주문가능 금액의 퍼센트만큼 수량 필드에 입력 (수수료 없음)
+                        // 가격이 입력된 경우 주문가능 금액의 퍼센트만큼 수량 필드에 입력
                         val availableBalance = availableUsdBalance()
                         val targetAmount = availableBalance * factor
-//                        val fee = getFeeRate()
-
-                        // 수수료를 고려한 수량 계산: (주문가능금액 * 퍼센트) / (가격 * (1 + 수수료))
-                        // 이렇게 하면 수량 * 가격 * (1 + 수수료) = 주문가능금액 * 퍼센트가 됨
-//                        val targetQty = floor((targetAmount / (currentPrice * (1 + fee))) * 100_000_000) / 100_000_00 수수료 계산하면 이거 사용
-                        // 수수료 없이 수량 계산: (주문가능금액 * 퍼센트) / 가격
                         val targetQty = floor((targetAmount / currentPrice) * 100_000_000) / 100_000_000
                         
                         val watcher = quantityTextWatcher
                         binding.editTextQuantity.removeTextChangedListener(watcher)
-                        // 수량 표시 소수점 8자리까지 표시
-                        val preciseFormatter = DecimalFormat("#,##0.########")
-                        binding.editTextQuantity.setText(preciseFormatter.format(targetQty.coerceAtLeast(0.0)))
+                        val commaFormatter = DecimalFormat("#,##0.##")
+                        binding.editTextQuantity.setText(commaFormatter.format(targetQty.coerceAtLeast(0.0)))
                         binding.editTextQuantity.addTextChangedListener(watcher)
                         
                         lastEditedFocus = LastEdited.QUANTITY
@@ -386,18 +404,17 @@ class OrderInputHandler(
                         
                         val watcher = quantityTextWatcher
                         binding.editTextQuantity.removeTextChangedListener(watcher)
-                        binding.editTextQuantity.setText(fixedTwoDecimalFormatter.format(targetQty.coerceAtLeast(0.0)))
+                        val commaFormatter = DecimalFormat("#,##0.##")
+                        binding.editTextQuantity.setText(commaFormatter.format(targetQty.coerceAtLeast(0.0)))
                         binding.editTextQuantity.addTextChangedListener(watcher)
                         
                         lastEditedFocus = LastEdited.QUANTITY
-                        Log.d("OrderInputHandler", "시장가 매도 - heldQty: $heldQty, targetQty: $targetQty, factor: $factor")
                     } else {
                         // 지정가/예약 매도: 가격이 입력되지 않은 경우 메시지 표시
                         val priceStr = binding.editTextLimitPrice.text?.toString()
                         val currentPrice = parseDouble(priceStr)
                         
                         if (currentPrice <= 0) {
-                            // 가격이 입력되지 않은 경우 토스트 메시지 표시
                             Toast.makeText(context, "가격을 먼저 입력해주세요", Toast.LENGTH_SHORT).show()
                             binding.spinnerAvailableQuantity.setSelection(0, false)
                             return
@@ -416,38 +433,50 @@ class OrderInputHandler(
                         
                         val watcher = quantityTextWatcher
                         binding.editTextQuantity.removeTextChangedListener(watcher)
-                        binding.editTextQuantity.setText(fixedTwoDecimalFormatter.format(targetQty.coerceAtLeast(0.0)))
+                        val commaFormatter = DecimalFormat("#,##0.##")
+                        binding.editTextQuantity.setText(commaFormatter.format(targetQty.coerceAtLeast(0.0)))
                         binding.editTextQuantity.addTextChangedListener(watcher)
                         
                         lastEditedFocus = LastEdited.QUANTITY
-                        Log.d("OrderInputHandler", "지정가 매도 - heldQty: $heldQty, targetQty: $targetQty, factor: $factor, price: $currentPrice")
                     }
                 }
 
-                updateCalculatedTotal()
+                binding.root.post {
+                    updateCalculatedTotal()
+                }
             }
 
-            override fun onNothingSelected(parent: AdapterView<*>) {}
+                override fun onNothingSelected(parent: AdapterView<*>) {}
+            }
+            
+        } catch (e: Exception) {
+            Log.e("OrderInputHandler", "setupQuantitySpinner() 오류 발생", e)
         }
     }
 
 
     fun updateCalculatedTotal() {
         val qtyStr = binding.editTextQuantity.text?.toString()
-        val priceStr = binding.editTextLimitPrice.text?.toString()
         val qty = parseDouble(qtyStr)
-        val price = parseDouble(priceStr)
+        
+        val isMarketOrder = getCurrentOrderType() == R.id.radio_market_order
+        val price = if (isMarketOrder) {
+            getCurrentPrice()
+        } else {
+            val priceStr = binding.editTextLimitPrice.text?.toString()
+            parseDouble(priceStr)
+        }
         var displayTotal = 0.0
 
         try {
-            if (price > 0 && qty > 0) {
-                val isBuy = binding.tabLayoutOrderMode.selectedTabPosition == 0
-                val isMarketOrder = getCurrentOrderType() == R.id.radio_market_order
-//                val fee = getFeeRate()
-//                displayTotal = if (isBuy && !isMarketOrder) grossAmount * (1 + fee) else if (!isBuy) grossAmount * (1 - fee) else grossAmount 수수료 계산하면 이거 사용
-                val grossAmount = qty * price
-                // 수수료 계산 제거 - 매수/매도 모두 수수료 없이 계산
-                displayTotal = grossAmount
+            val isBuy = binding.tabLayoutOrderMode.selectedTabPosition == 0
+            
+            if (isMarketOrder && isBuy) {
+                // 시장가 매수: 수량 필드가 실제로는 총액을 의미함
+                displayTotal = qty
+            } else if (price > 0 && qty > 0) {
+                // 지정가 매수/매도, 시장가 매도: 일반적인 수량 * 가격 계산
+                displayTotal = qty * price
             }
         } catch (e: Exception) {
             Log.e("OrderInputHandler", "Error calculating total", e)
@@ -622,7 +651,14 @@ class OrderInputHandler(
 
     private fun parseDouble(value: String?): Double {
         return try {
-            if (value.isNullOrBlank()) 0.0 else (numberParseFormat.parse(value)?.toDouble() ?: 0.0)
+            if (value.isNullOrBlank()) 0.0 else {
+                val cleanValue = value.replace(",", "")
+                try {
+                    cleanValue.toDouble()
+                } catch (e: NumberFormatException) {
+                    numberParseFormat.parse(value)?.toDouble() ?: 0.0
+                }
+            }
         } catch (e: Exception) {
             Log.w("OrderInputHandler", "Failed to parse double: '$value'")
             0.0

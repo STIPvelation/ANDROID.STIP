@@ -63,6 +63,12 @@ interface IpTransactionApi {
     ): Call<TradeListResponse>
     
     @GET("api/trades")
+    fun getAllTrades(
+        @Query("startDate") startDate: String,
+        @Query("endDate") endDate: String
+    ): Call<TradeListResponse>
+    
+    @GET("api/trades")
     fun getTradesByStatus(
         @Query("marketPairId") marketPairId: String,
         @Query("status") status: String
@@ -523,6 +529,48 @@ object IpTransactionService {
 
                 override fun onFailure(call: Call<TradeListResponse>, t: Throwable) {
                     Log.e("IpTransactionService", "API 호출 실패", t)
+                    callback(null, t)
+                }
+            }
+        )
+    }
+    
+    // 모든 체결 내역 조회 (날짜 범위 기반)
+    fun getAllTrades(
+        startDate: String,
+        endDate: String,
+        callback: (TradeListResponse?, Throwable?) -> Unit
+    ) {
+        Log.d("IpTransactionService", "모든 체결 내역 조회 호출: startDate=$startDate, endDate=$endDate")
+        Log.d("IpTransactionService", "API URL: ${TAPI_URL}api/trades?startDate=$startDate&endDate=$endDate")
+        
+        ipTransactionApi.getAllTrades(startDate, endDate).enqueue(
+            object : retrofit2.Callback<TradeListResponse> {
+                override fun onResponse(
+                    call: Call<TradeListResponse>,
+                    response: retrofit2.Response<TradeListResponse>
+                ) {
+                    Log.d("IpTransactionService", "모든 거래내역 API 응답 - code: ${response.code()}, isSuccessful: ${response.isSuccessful()}")
+                    
+                    if (response.isSuccessful) {
+                        val body = response.body()
+                        Log.d("IpTransactionService", "모든 거래내역 응답: $body")
+                        
+                        if (body?.success == true) {
+                            Log.d("IpTransactionService", "모든 거래내역 API 성공, trades count: ${body.data.size}")
+                            callback(body, null)
+                        } else {
+                            Log.e("IpTransactionService", "모든 거래내역 API 실패, message: ${body?.message}")
+                            callback(null, Exception("모든 거래내역 API 응답 실패: ${body?.message}"))
+                        }
+                    } else {
+                        Log.e("IpTransactionService", "모든 거래내역 HTTP 오류: ${response.code()}, ${response.message()}")
+                        callback(null, Exception("모든 거래내역 API 호출 실패: ${response.code()}"))
+                    }
+                }
+
+                override fun onFailure(call: Call<TradeListResponse>, t: Throwable) {
+                    Log.e("IpTransactionService", "모든 거래내역 API 호출 실패", t)
                     callback(null, t)
                 }
             }

@@ -17,8 +17,10 @@ import kotlinx.coroutines.withContext
 import java.math.BigDecimal
 import java.text.DecimalFormat
 
-class PortfolioHoldingsAdapter(private var holdings: List<PortfolioIPHoldingDto>) :
-    RecyclerView.Adapter<PortfolioHoldingsAdapter.PortfolioViewHolder>() {
+class PortfolioHoldingsAdapter(
+    private var holdings: List<PortfolioIPHoldingDto>,
+    private val marketPairMap: Map<String, Pair<String, String>>? = null
+) : RecyclerView.Adapter<PortfolioHoldingsAdapter.PortfolioViewHolder>() {
 
     // marketPairId와 name, symbol 매핑을 캐시
     private val marketPairDataCache = mutableMapOf<String, Pair<String, String>>()
@@ -74,13 +76,19 @@ class PortfolioHoldingsAdapter(private var holdings: List<PortfolioIPHoldingDto>
      * market/pairs API에서 marketPairId에 해당하는 name을 가져오는 함수
      */
     private fun loadMarketPairName(marketPairId: String, onComplete: (String, String) -> Unit) {
+        // 먼저 미리 전달받은 marketPairMap에서 찾기
+        marketPairMap?.get(marketPairId)?.let { 
+            onComplete(it.first, it.second)
+            return
+        }
+        
         // 캐시된 값이 있으면 사용
         marketPairDataCache[marketPairId]?.let { 
-            onComplete(it.first, it.second) // 캐시된 값만 사용
+            onComplete(it.first, it.second)
             return
         }
 
-        // API 호출하여 name 가져오기
+        // 최후의 수단: API 호출
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val marketPairs = marketPairsService.getMarketPairs()
@@ -96,7 +104,8 @@ class PortfolioHoldingsAdapter(private var holdings: List<PortfolioIPHoldingDto>
                     onComplete(name, symbol)
                 }
             } catch (e: Exception) {
-                // 에러 발생 시 symbol 사용
+                android.util.Log.e("PortfolioHoldingsAdapter", "마켓페어 정보 로드 실패: $marketPairId", e)
+                // 에러 발생 시 빈 값 사용
                 withContext(Dispatchers.Main) {
                     onComplete("", "")
                 }
@@ -121,6 +130,16 @@ class PortfolioHoldingsAdapter(private var holdings: List<PortfolioIPHoldingDto>
 
     fun updateData(newHoldings: List<PortfolioIPHoldingDto>) {
         this.holdings = newHoldings
+        notifyDataSetChanged()
+    }
+    
+    /**
+     * 데이터와 마켓페어 맵을 함께 업데이트
+     */
+    fun updateData(newHoldings: List<PortfolioIPHoldingDto>, newMarketPairMap: Map<String, Pair<String, String>>) {
+        this.holdings = newHoldings
+        // 새로운 마켓페어 정보를 캐시에 추가
+        marketPairDataCache.putAll(newMarketPairMap)
         notifyDataSetChanged()
     }
 } 

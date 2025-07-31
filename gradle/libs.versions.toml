@@ -24,7 +24,7 @@ mpandroidchart = "v3.1.0"
 prof18Rssparser = "6.0.10"
 
 # Build & Tools
-androidGradlePlugin = "8.7.2"
+androidGradlePlugin = "8.5.1"
 googleDevtoolsKsp = "2.0.0-1.0.21"
 
 # TODO 로그인과 입출금 기능에 사용된 라이브러리들입니다. 차후 스타일에 맞게 정렬하시면 됩니다. -- kmong

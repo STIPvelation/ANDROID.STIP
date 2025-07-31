@@ -60,4 +60,29 @@ class IpTransactionViewModel @Inject constructor(
             }
         }
     }
+    
+    fun cancelOrders(orderIds: List<String>) {
+        viewModelScope.launch {
+            try {
+                val result = repository.cancelOrders(orderIds)
+                _cancelOrderResult.value = result
+                
+                // 주문 취소 시도 후 항상 잔액 새로고침 (성공/실패 관계없이)
+                onBalanceRefreshCallback?.invoke()
+                
+                // 전역 OrderDataCoordinator를 통해 잔액 새로고침
+                val globalCoordinator = com.stip.stip.iphome.fragment.OrderContentViewFragment.getGlobalOrderDataCoordinator()
+                globalCoordinator?.refreshBalance()
+                
+                // 주문 취소 성공 시 추가 처리
+                if (result.isSuccess) {
+                    Log.d("IpTransactionViewModel", "다중 주문 취소 성공 - 잔액 새로고침 완료")
+                } else {
+                    Log.w("IpTransactionViewModel", "다중 주문 취소 실패 - 잔액 새로고침은 수행됨")
+                }
+            } catch (e: Exception) {
+                _cancelOrderResult.value = Result.failure(e)
+            }
+        }
+    }
 } 

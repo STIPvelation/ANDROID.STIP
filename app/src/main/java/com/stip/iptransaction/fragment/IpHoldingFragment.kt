@@ -113,24 +113,29 @@ class IpHoldingFragment : Fragment(), ScrollableToTop {
                         }
                         
                         if (nonZeroWallets.isNotEmpty()) {
-                            val portfolioAdapter = PortfolioHoldingsAdapter(nonZeroWallets.map { wallet ->
-                                // PortfolioWalletItemDto를 PortfolioIPHoldingDto로 변환
-                                com.stip.stip.iptransaction.model.PortfolioIPHoldingDto(
-                                    marketPairId = wallet.marketPairId,
-                                    symbol = wallet.symbol,
-                                    walletId = wallet.walletId,
-                                    balance = wallet.balance,
-                                    address = wallet.address,
-                                    price = wallet.price,
-                                    evalAmount = wallet.evalAmount,
-                                    buyAmount = wallet.buyAmount,
-                                    buyAvgPrice = wallet.buyAvgPrice,
-                                    profit = wallet.profit,
-                                    profitRate = wallet.profitRate,
-                                    name = wallet.symbol,
-                                    amount = wallet.balance
-                                )
-                            })
+                            // 마켓페어 정보를 미리 로드
+                            val marketPairMap = loadMarketPairMapForHoldings(nonZeroWallets)
+                            
+                            val portfolioAdapter = PortfolioHoldingsAdapter(
+                                holdings = nonZeroWallets.map { wallet ->
+                                    com.stip.stip.iptransaction.model.PortfolioIPHoldingDto(
+                                        marketPairId = wallet.marketPairId,
+                                        symbol = wallet.symbol,
+                                        walletId = wallet.walletId,
+                                        balance = wallet.balance,
+                                        address = wallet.address,
+                                        price = wallet.price,
+                                        evalAmount = wallet.evalAmount,
+                                        buyAmount = wallet.buyAmount,
+                                        buyAvgPrice = wallet.buyAvgPrice,
+                                        profit = wallet.profit,
+                                        profitRate = wallet.profitRate,
+                                        name = wallet.symbol,
+                                        amount = wallet.balance
+                                    )
+                                },
+                                marketPairMap = marketPairMap
+                            )
                             
                             binding.holdingsRecyclerView.apply {
                                 layoutManager = LinearLayoutManager(requireContext())
@@ -423,6 +428,35 @@ class IpHoldingFragment : Fragment(), ScrollableToTop {
 
     private fun formatPercent(value: Double): String {
         return String.format("%.2f%%", value)
+    }
+    
+    /**
+     * 보유 종목들의 마켓페어 정보를 로드
+     */
+    private suspend fun loadMarketPairMapForHoldings(
+        wallets: List<com.stip.api.model.PortfolioWalletItemDto>
+    ): Map<String, Pair<String, String>> = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
+        try {
+            android.util.Log.d("IpHoldingFragment", "마켓페어 정보 로딩 시작: ${wallets.size}개 보유 종목")
+            
+            // 전체 마켓페어 목록을 한 번만 가져옴
+            val marketPairsService = com.stip.stip.api.RetrofitClient.createTapiService(com.stip.stip.api.service.MarketPairsService::class.java)
+            val allMarketPairs = marketPairsService.getMarketPairs()
+            
+            // 보유 종목의 marketPairId만 추출
+            val holdingMarketPairIds = wallets.map { it.marketPairId }.toSet()
+            
+            // 필요한 마켓페어만 필터링해서 맵 생성
+            val resultMap = allMarketPairs
+                .filter { marketPair -> holdingMarketPairIds.contains(marketPair.id) }
+                .associate { marketPair -> 
+                    marketPair.id to Pair(marketPair.name ?: "", marketPair.symbol ?: "") 
+                }
+            resultMap
+        } catch (e: Exception) {
+            android.util.Log.e("IpHoldingFragment", "마켓페어 정보 로딩 실패", e)
+            emptyMap()
+        }
     }
 
     private fun simulateDipHoldings(): Pair<List<DipHoldingitem>, MyIpHoldingsSummaryItem> {

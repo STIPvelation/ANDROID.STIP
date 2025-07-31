@@ -456,10 +456,6 @@ class OrderButtonHandler(
             ConfirmOrderDialogFragment.REQUEST_KEY,
             context as androidx.lifecycle.LifecycleOwner
         ) { _, result ->
-            // 모달이 닫힐 때 상태 업데이트
-            isOrderConfirmDialogShowing = false
-            updateOrderButtonStates()
-            
             val confirmed = result.getBoolean(ConfirmOrderDialogFragment.RESULT_KEY_CONFIRMED, false)
             if (confirmed) {
                 val resultIsBuy = result.getBoolean(ConfirmOrderDialogFragment.RESULT_KEY_IS_BUY, false)
@@ -467,14 +463,18 @@ class OrderButtonHandler(
                 val resultPrice = result.getDouble(ConfirmOrderDialogFragment.RESULT_KEY_PRICE, 0.0)
                 
                 Log.d(TAG, "Order confirmed - isBuy: $resultIsBuy, quantity: $resultQuantity, price: $resultPrice")
-                executeOrder(resultIsBuy, resultPrice, resultQuantity)
+                executeOrder(resultIsBuy, resultPrice, resultQuantity, dialog)
+            } else {
+                // 취소된 경우 모달 상태 업데이트
+                isOrderConfirmDialogShowing = false
+                updateOrderButtonStates()
             }
         }
 
         dialog.show(parentFragmentManager, ConfirmOrderDialogFragment.TAG)
     }
 
-    private fun executeOrder(isBuyOrder: Boolean, price: Double, quantity: Double) {
+    private fun executeOrder(isBuyOrder: Boolean, price: Double, quantity: Double, dialog: ConfirmOrderDialogFragment) {
         // 주문 실행 중 버튼 비활성화
         isOrderConfirmDialogShowing = true
         updateOrderButtonStates()
@@ -487,7 +487,8 @@ class OrderButtonHandler(
                 "사용자 정보를 찾을 수 없습니다.",
                 R.color.red
             )
-            // 에러 발생 시 버튼 다시 활성화
+            // 에러 발생 시 모달 닫기 및 버튼 상태 복원
+            dialog.dismissOnError()
             isOrderConfirmDialogShowing = false
             updateOrderButtonStates()
             return
@@ -501,6 +502,10 @@ class OrderButtonHandler(
                 "선택된 IP 정보를 찾을 수 없습니다.",
                 R.color.red
             )
+            // 에러 발생 시 모달 닫기 및 버튼 상태 복원
+            dialog.dismissOnError()
+            isOrderConfirmDialogShowing = false
+            updateOrderButtonStates()
             return
         }
 
@@ -578,6 +583,9 @@ class OrderButtonHandler(
                             Log.d(TAG, "$orderType 주문 성공: ${orderResponse.message}")
                             showToast("${orderType} 주문이 성공적으로 실행되었습니다.")
                             
+                            // 주문 성공 후 모달 닫기
+                            dialog.dismissAfterResponse()
+                            
                             // 주문 성공 후 잔액 새로고침
                             orderDataCoordinator?.refreshBalance()
                             Log.d(TAG, "$orderType 주문 완료 후 잔액 새로고침 요청")
@@ -629,7 +637,8 @@ class OrderButtonHandler(
                                 "${orderType} 주문 실패: ${orderResponse?.message}",
                                 R.color.red
                             )
-                            // 주문 실패 시 버튼 다시 활성화
+                            // 주문 실패 시 모달 닫기 및 버튼 상태 복원
+                            dialog.dismissOnError()
                             isOrderConfirmDialogShowing = false
                             updateOrderButtonStates()
                         }
@@ -640,7 +649,8 @@ class OrderButtonHandler(
                             "${orderType} 주문 실패: ${response.errorBody()?.string()}",
                             R.color.red
                         )
-                        // 주문 실패 시 버튼 다시 활성화
+                        // 주문 실패 시 모달 닫기 및 버튼 상태 복원
+                        dialog.dismissOnError()
                         isOrderConfirmDialogShowing = false
                         updateOrderButtonStates()
                     }
@@ -653,7 +663,8 @@ class OrderButtonHandler(
                         "${orderType} 주문 실행 중 오류가 발생했습니다: ${e.message}",
                         R.color.red
                     )
-                    // 예외 발생 시 버튼 다시 활성화
+                    // 예외 발생 시 모달 닫기 및 버튼 상태 복원
+                    dialog.dismissOnError()
                     isOrderConfirmDialogShowing = false
                     updateOrderButtonStates()
                 }   
