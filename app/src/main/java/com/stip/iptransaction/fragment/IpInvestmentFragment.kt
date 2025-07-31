@@ -413,7 +413,7 @@ class IpInvestmentFragment : Fragment(), ScrollableToTop, TickerSelectionDialogF
                     name = baseAsset,
                     quantity = DecimalFormat("#,##0.00").apply { roundingMode = java.math.RoundingMode.DOWN }.format(trade.quantity),
                     unitPrice = DecimalFormat("#,##0.00").apply { roundingMode = java.math.RoundingMode.DOWN }.format(trade.price),
-                    amount = trade.tradeAmount.stripTrailingZeros().toPlainString(),
+                    amount = DecimalFormat("#,##0.0000").apply { roundingMode = java.math.RoundingMode.DOWN }.format(trade.tradeAmount),
                     fee = feeText,
                     settlement = settlementText,
                     orderTime = orderTime,

@@ -10,6 +10,9 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.webkit.WebSettings
 import android.webkit.WebChromeClient
+import android.view.MotionEvent
+import android.view.GestureDetector
+import android.view.ScaleGestureDetector
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.stip.stip.databinding.FragmentTradingChartBinding
@@ -24,6 +27,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.Calendar
 import javax.inject.Inject
 import java.net.URL
 import java.io.BufferedReader
@@ -67,15 +71,21 @@ class TradingChartFragment : Fragment() {
     private var ohlcvData: List<OHLCVData> = emptyList()
     private var pollingJob: kotlinx.coroutines.Job? = null
     private var isPollingActive = false
-    
+
     // 시간 필터 관련 변수
     private var currentTimeFilter: TimeFilter = TimeFilter.HOURS
     private var currentMinuteFilter: MinuteFilter = MinuteFilter.MIN_1
     private var isMinuteSubFilterVisible = false
     
+    // 터치 이벤트 처리 변수
+    private var gestureDetector: GestureDetector? = null
+    private var scaleGestureDetector: ScaleGestureDetector? = null
+    private var isTouchActive = false
+    private var isScaling = false
+
     @Inject
     lateinit var tapiHourlyDataService: TapiHourlyDataService
-    
+
     @Inject
     lateinit var tapiDailyDataService: TapiDailyDataService
 
@@ -123,17 +133,44 @@ class TradingChartFragment : Fragment() {
                 allowContentAccess = true
                 mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
                 cacheMode = WebSettings.LOAD_NO_CACHE
-                // 디버깅을 위한 설정
-                setSupportZoom(true)
-                builtInZoomControls = true
+                
+                // WebView 자체 줌 및 스크롤 완전 비활성화
+                setSupportZoom(false)
+                builtInZoomControls = false
                 displayZoomControls = false
+                
                 // 추가 설정
                 useWideViewPort = true
                 loadWithOverviewMode = true
                 setSupportMultipleWindows(false)
                 javaScriptCanOpenWindowsAutomatically = false
+                
+                // 터치 성능 최적화
+                setRenderPriority(WebSettings.RenderPriority.HIGH)
+                setEnableSmoothTransition(true)
             }
             
+            // 터치 이벤트 처리 개선 - 차트 라이브러리 전용
+            isFocusable = true
+            isFocusableInTouchMode = true
+            requestFocus()
+            
+            // 모든 WebView 스크롤 비활성화
+            isHorizontalScrollBarEnabled = false
+            isVerticalScrollBarEnabled = false
+            overScrollMode = View.OVER_SCROLL_NEVER
+            
+            // 터치 이벤트 최적화
+            isClickable = true
+            isLongClickable = false
+            
+            // 터치 지연 제거
+            isHapticFeedbackEnabled = false
+            isSoundEffectsEnabled = false
+            
+            // 네이티브 터치 이벤트 처리 설정
+            setupTouchHandling()
+
             webViewClient = object : WebViewClient() {
                 override fun onPageFinished(view: WebView?, url: String?) {
                     super.onPageFinished(view, url)
@@ -145,21 +182,175 @@ class TradingChartFragment : Fragment() {
                         }
                     }, 500) // 0.5초 지연
                 }
-                
+
                 override fun onReceivedError(view: WebView?, errorCode: Int, description: String?, failingUrl: String?) {
                     super.onReceivedError(view, errorCode, description, failingUrl)
                     Log.e(TAG, "WebView 오류: $errorCode - $description")
                 }
             }
-            
+
             webChromeClient = object : WebChromeClient() {
-                override fun onConsoleMessage(message: String?, lineNumber: Int, sourceID: String?) {
-                    super.onConsoleMessage(message, lineNumber, sourceID)
-                    Log.d(TAG, "WebView Console: $message (line: $lineNumber, source: $sourceID)")
+                override fun onConsoleMessage(consoleMessage: android.webkit.ConsoleMessage?): Boolean {
+                    consoleMessage?.let {
+                        val level = when (it.messageLevel()) {
+                            android.webkit.ConsoleMessage.MessageLevel.ERROR -> "ERROR"
+                            android.webkit.ConsoleMessage.MessageLevel.WARNING -> "WARNING"
+                            android.webkit.ConsoleMessage.MessageLevel.DEBUG -> "DEBUG"
+                            else -> "LOG"
+                        }
+                        Log.d(TAG, "WebView [$level]: ${it.message()} (line: ${it.lineNumber()}, source: ${it.sourceId()})")
+                    }
+                    return true
+                }
+            }
+
+
+        }
+    }
+    
+    // 네이티브 터치 이벤트 처리 설정
+    private fun setupTouchHandling() {
+        // 제스처 감지기 설정
+        gestureDetector = GestureDetector(requireContext(), object : GestureDetector.SimpleOnGestureListener() {
+            override fun onDown(e: MotionEvent): Boolean {
+                isTouchActive = true
+                isScaling = false // 스케일 상태 초기화
+                Log.d(TAG, "터치 시작: (${e.x}, ${e.y}) - 상태 리셋")
+                
+                // JavaScript로 터치 시작 이벤트 전달
+                binding.chartWebView.evaluateJavascript("""
+                    if (window.handleNativeTouch) {
+                        window.handleNativeTouch('start', ${e.x}, ${e.y});
+                    }
+                """.trimIndent(), null)
+                
+                return true
+            }
+            
+            override fun onScroll(e1: MotionEvent?, e2: MotionEvent, distanceX: Float, distanceY: Float): Boolean {
+                if (isTouchActive && !isScaling) {
+                    Log.d(TAG, "스크롤: dx=$distanceX, dy=$distanceY, active=$isTouchActive, scaling=$isScaling")
+                    
+                    // JavaScript로 스크롤 이벤트 전달
+                    binding.chartWebView.evaluateJavascript("""
+                        if (window.handleNativeTouch) {
+                            window.handleNativeTouch('scroll', ${e2.x}, ${e2.y}, $distanceX, $distanceY);
+                        }
+                    """.trimIndent()) { result ->
+                        if (result != "null") {
+                            Log.d(TAG, "JavaScript 스크롤 결과: $result")
+                        }
+                    }
+                }
+                return true
+            }
+            
+            override fun onLongPress(e: MotionEvent) {
+                Log.d(TAG, "롱프레스 감지")
+                
+                // JavaScript로 롱프레스 이벤트 전달
+                binding.chartWebView.evaluateJavascript("""
+                    if (window.handleNativeTouch) {
+                        window.handleNativeTouch('longpress', ${e.x}, ${e.y});
+                    }
+                """.trimIndent(), null)
+            }
+        })
+        
+        // 스케일 제스처 감지기 설정
+        scaleGestureDetector = ScaleGestureDetector(requireContext(), object : ScaleGestureDetector.SimpleOnScaleGestureListener() {
+            override fun onScaleBegin(detector: ScaleGestureDetector): Boolean {
+                isScaling = true
+                Log.d(TAG, "핀치 줌 시작")
+                
+                // JavaScript로 스케일 시작 이벤트 전달
+                binding.chartWebView.evaluateJavascript("""
+                    if (window.handleNativeTouch) {
+                        window.handleNativeTouch('scalestart', ${detector.focusX}, ${detector.focusY}, ${detector.scaleFactor});
+                    }
+                """.trimIndent(), null)
+                
+                return true
+            }
+            
+            override fun onScale(detector: ScaleGestureDetector): Boolean {
+                val scaleFactor = detector.scaleFactor
+                Log.d(TAG, "핀치 줌: scale=$scaleFactor, span=${detector.currentSpan}, previous=${detector.previousSpan}")
+                
+                // 스케일 팩터가 1에 너무 가까우면 무시 (노이즈 제거)
+                if (Math.abs(scaleFactor - 1.0f) > 0.01f) {
+                    // JavaScript로 스케일 이벤트 전달
+                    binding.chartWebView.evaluateJavascript("""
+                        if (window.handleNativeTouch) {
+                            window.handleNativeTouch('scale', ${detector.focusX}, ${detector.focusY}, $scaleFactor);
+                        }
+                    """.trimIndent(), null)
+                }
+                
+                return true
+            }
+            
+            override fun onScaleEnd(detector: ScaleGestureDetector) {
+                isScaling = false
+                Log.d(TAG, "핀치 줌 종료")
+                
+                // JavaScript로 스케일 종료 이벤트 전달
+                binding.chartWebView.evaluateJavascript("""
+                    if (window.handleNativeTouch) {
+                        window.handleNativeTouch('scaleend', ${detector.focusX}, ${detector.focusY});
+                    }
+                """.trimIndent(), null)
+            }
+        })
+        
+        // WebView에 터치 리스너 설정
+        binding.chartWebView.setOnTouchListener { _, event ->
+            var handled = false
+            
+            // 스케일 제스처 처리
+            scaleGestureDetector?.onTouchEvent(event)?.let { handled = it || handled }
+            
+            // 일반 제스처 처리 (스케일 중이 아닐 때만)
+            if (!isScaling) {
+                gestureDetector?.onTouchEvent(event)?.let { handled = it || handled }
+            }
+            
+            // 터치 종료 처리
+            when (event.action) {
+                MotionEvent.ACTION_UP -> {
+                    isTouchActive = false
+                    isScaling = false
+                    Log.d(TAG, "터치 종료 (UP)")
+                    
+                    // JavaScript로 터치 종료 이벤트 전달
+                    binding.chartWebView.evaluateJavascript("""
+                        if (window.handleNativeTouch) {
+                            window.handleNativeTouch('end', ${event.x}, ${event.y});
+                        }
+                    """.trimIndent(), null)
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    isTouchActive = false
+                    isScaling = false
+                    Log.d(TAG, "터치 취소 (CANCEL)")
+                    
+                    // JavaScript로 터치 취소 이벤트 전달
+                    binding.chartWebView.evaluateJavascript("""
+                        if (window.handleNativeTouch) {
+                            window.handleNativeTouch('cancel', ${event.x}, ${event.y});
+                        }
+                    """.trimIndent(), null)
+                }
+                MotionEvent.ACTION_POINTER_UP -> {
+                    // 멀티터치에서 손가락 하나가 떨어질 때
+                    if (event.pointerCount <= 2) {
+                        isScaling = false
+                        Log.d(TAG, "포인터 UP - 스케일 종료")
+                    }
                 }
             }
             
-
+            handled
         }
     }
 
@@ -184,7 +375,7 @@ class TradingChartFragment : Fragment() {
 
     private fun selectTimeFilter(filter: TimeFilter) {
         currentTimeFilter = filter
-        
+
         // 분 단위 선택 시 서브 필터 표시
         if (filter == TimeFilter.MINUTES) {
             if (!isMinuteSubFilterVisible) {
@@ -197,11 +388,11 @@ class TradingChartFragment : Fragment() {
                 binding.minuteSubFilters.visibility = View.GONE
                 isMinuteSubFilterVisible = false
             }
-            // 다른 필터 선택 시에만 데이터 로드
+            // 다른 필터 선택 시에만 데이터 로드 (블링크 방지를 위해 로딩 표시 최소화)
             updateTimeFilterUI()
-            loadTradeData(showLoading = true)
+            loadTradeData(showLoading = false)
         }
-        
+
         // 분 단위 선택 시에는 UI만 업데이트하고 데이터 로드는 하지 않음
         if (filter == TimeFilter.MINUTES) {
             updateTimeFilterUI()
@@ -211,12 +402,13 @@ class TradingChartFragment : Fragment() {
     private fun selectMinuteFilter(filter: MinuteFilter) {
         currentMinuteFilter = filter
         updateMinuteFilterUI()
-        
+
         // 서브 필터 숨김
         binding.minuteSubFilters.visibility = View.GONE
         isMinuteSubFilterVisible = false
-        
-        loadTradeData(showLoading = true)
+
+        // 블링크 방지를 위해 로딩 표시 최소화
+        loadTradeData(showLoading = false)
     }
 
     private fun updateTimeFilterUI() {
@@ -261,12 +453,13 @@ class TradingChartFragment : Fragment() {
             Log.w(TAG, "loadTradeData: binding이 null입니다. Fragment가 destroy되었을 수 있습니다.")
             return
         }
-        
+
         // 로딩 상태 표시 (폴링 시에는 표시하지 않음)
         if (showLoading) {
             try {
                 binding.loadingIndicator.visibility = View.VISIBLE
-                binding.chartWebView.visibility = View.GONE
+                // 차트를 숨기지 않고 로딩 오버레이만 표시하여 블링크 방지
+                binding.chartWebView.visibility = View.VISIBLE
                 binding.emptyStateContainer.visibility = View.GONE
             } catch (e: Exception) {
                 Log.e(TAG, "로딩 상태 설정 중 오류: ${e.message}", e)
@@ -280,7 +473,7 @@ class TradingChartFragment : Fragment() {
                 Log.w(TAG, "loadTradeData 코루틴: binding이 null입니다. Fragment가 destroy되었을 수 있습니다.")
                 return@launch
             }
-            
+
             val currentTicker = ticker
             if (currentTicker.isNullOrBlank()) {
                 Log.e(TAG, "티커 코드가 없습니다. ticker: $currentTicker")
@@ -301,7 +494,7 @@ class TradingChartFragment : Fragment() {
 
                 // 2. 모든 필터에서 hourly API 사용 (데이터를 그룹화하여 처리)
                 val tickerData = fetchHourlyTickerData(pairId)
-                
+
                 if (tickerData.isEmpty()) {
                     Log.w(TAG, "API 데이터가 비어있습니다. 거래 데이터가 없습니다.")
                     showEmptyState()
@@ -325,7 +518,7 @@ class TradingChartFragment : Fragment() {
             val reader = BufferedReader(InputStreamReader(connection.getInputStream()))
             val response = StringBuilder()
             var line: String?
-            
+
             while (reader.readLine().also { line = it } != null) {
                 response.append(line)
             }
@@ -351,16 +544,16 @@ class TradingChartFragment : Fragment() {
             // 현재 날짜 기준으로 3개월 전부터 현재까지 데이터 요청
             val calendar = Calendar.getInstance()
             val endDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
-            
+
             calendar.add(Calendar.MONTH, -3)
             val startDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
-            
+
             val url = URL("$API_BASE_URL/api/tickers/hourly?marketPairId=$pairId&from=$startDate&to=$endDate")
             val connection = url.openConnection()
             val reader = BufferedReader(InputStreamReader(connection.getInputStream()))
             val response = StringBuilder()
             var line: String?
-            
+
             while (reader.readLine().also { line = it } != null) {
                 response.append(line)
             }
@@ -368,7 +561,7 @@ class TradingChartFragment : Fragment() {
 
             val jsonArray = JSONArray(response.toString())
             val tickerDataList = mutableListOf<TickerData>()
-            
+
             for (i in 0 until jsonArray.length()) {
                 val item = jsonArray.getJSONObject(i)
                 tickerDataList.add(
@@ -379,10 +572,10 @@ class TradingChartFragment : Fragment() {
                     )
                 )
             }
-            
+
             // 시간순으로 정렬 (과거순)
             return@withContext tickerDataList.sortedBy { it.timestamp }
-            
+
         } catch (e: Exception) {
             Log.e(TAG, "hourly ticker 데이터 조회 실패: ${e.message}")
             emptyList()
@@ -394,16 +587,16 @@ class TradingChartFragment : Fragment() {
             // 현재 날짜 기준으로 1년 전부터 현재까지 데이터 요청
             val calendar = Calendar.getInstance()
             val endDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
-            
+
             calendar.add(Calendar.YEAR, -1)
             val startDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
-            
+
             val url = URL("$API_BASE_URL/api/tickers/daily?marketPairId=$pairId&from=$startDate&to=$endDate")
             val connection = url.openConnection()
             val reader = BufferedReader(InputStreamReader(connection.getInputStream()))
             val response = StringBuilder()
             var line: String?
-            
+
             while (reader.readLine().also { line = it } != null) {
                 response.append(line)
             }
@@ -411,7 +604,7 @@ class TradingChartFragment : Fragment() {
 
             val jsonArray = JSONArray(response.toString())
             val tickerDataList = mutableListOf<TickerData>()
-            
+
             for (i in 0 until jsonArray.length()) {
                 val item = jsonArray.getJSONObject(i)
                 tickerDataList.add(
@@ -422,10 +615,10 @@ class TradingChartFragment : Fragment() {
                     )
                 )
             }
-            
+
             // 시간순으로 정렬 (과거순)
             return@withContext tickerDataList.sortedBy { it.timestamp }
-            
+
         } catch (e: Exception) {
             Log.e(TAG, "daily ticker 데이터 조회 실패: ${e.message}")
             emptyList()
@@ -456,7 +649,7 @@ class TradingChartFragment : Fragment() {
                 val sortedData = dataList.sortedBy { it.timestamp }
                 val prices = sortedData.map { it.price.toFloat() }
                 val volumes = sortedData.map { it.amount.toFloat() }
-                
+
                 val open = prices.first()
                 val close = prices.last()
                 val high = prices.maxOrNull() ?: open
@@ -482,7 +675,7 @@ class TradingChartFragment : Fragment() {
         ohlcvData = ohlcvList.sortedBy { it.date }
 
         Log.d(TAG, "OHLCV 데이터 변환 완료: ${ohlcvData.size}개 (필터: $currentTimeFilter)")
-        
+
         activity?.runOnUiThread {
             updateChart()
         }
@@ -494,12 +687,12 @@ class TradingChartFragment : Fragment() {
             val utcDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS", Locale.getDefault())
             utcDateFormat.timeZone = TimeZone.getTimeZone("UTC")
             val utcDate = utcDateFormat.parse(timestamp)
-            
+
             val kstTimeZone = TimeZone.getTimeZone("Asia/Seoul")
             val calendar = Calendar.getInstance(kstTimeZone)
             calendar.time = utcDate
             calendar.set(Calendar.MILLISECOND, 0)
-            
+
             SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(calendar.time)
         }
     }
@@ -510,11 +703,11 @@ class TradingChartFragment : Fragment() {
             val utcDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS", Locale.getDefault())
             utcDateFormat.timeZone = TimeZone.getTimeZone("UTC")
             val utcDate = utcDateFormat.parse(timestamp)
-            
+
             val kstTimeZone = TimeZone.getTimeZone("Asia/Seoul")
             val calendar = Calendar.getInstance(kstTimeZone)
             calendar.time = utcDate
-            
+
             // 분 단위 필터에 따라 그룹화
             when (currentMinuteFilter) {
                 MinuteFilter.MIN_1 -> {
@@ -548,14 +741,14 @@ class TradingChartFragment : Fragment() {
             val utcDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS", Locale.getDefault())
             utcDateFormat.timeZone = TimeZone.getTimeZone("UTC")
             val utcDate = utcDateFormat.parse(timestamp)
-            
+
             val kstTimeZone = TimeZone.getTimeZone("Asia/Seoul")
             val calendar = Calendar.getInstance(kstTimeZone)
             calendar.time = utcDate
             calendar.set(Calendar.MINUTE, 0)
             calendar.set(Calendar.SECOND, 0)
             calendar.set(Calendar.MILLISECOND, 0)
-            
+
             SimpleDateFormat("yyyy-MM-dd HH:00", Locale.getDefault()).format(calendar.time)
         }
     }
@@ -566,7 +759,7 @@ class TradingChartFragment : Fragment() {
             val utcDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS", Locale.getDefault())
             utcDateFormat.timeZone = TimeZone.getTimeZone("UTC")
             val utcDate = utcDateFormat.parse(timestamp)
-            
+
             val kstTimeZone = TimeZone.getTimeZone("Asia/Seoul")
             val calendar = Calendar.getInstance(kstTimeZone)
             calendar.time = utcDate
@@ -574,7 +767,7 @@ class TradingChartFragment : Fragment() {
             calendar.set(Calendar.MINUTE, 0)
             calendar.set(Calendar.SECOND, 0)
             calendar.set(Calendar.MILLISECOND, 0)
-            
+
             SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
         }
     }
@@ -585,7 +778,7 @@ class TradingChartFragment : Fragment() {
             val utcDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS", Locale.getDefault())
             utcDateFormat.timeZone = TimeZone.getTimeZone("UTC")
             val utcDate = utcDateFormat.parse(timestamp)
-            
+
             val kstTimeZone = TimeZone.getTimeZone("Asia/Seoul")
             val calendar = Calendar.getInstance(kstTimeZone)
             calendar.time = utcDate
@@ -594,7 +787,7 @@ class TradingChartFragment : Fragment() {
             calendar.set(Calendar.MINUTE, 0)
             calendar.set(Calendar.SECOND, 0)
             calendar.set(Calendar.MILLISECOND, 0)
-            
+
             SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
         }
     }
@@ -605,7 +798,7 @@ class TradingChartFragment : Fragment() {
             val utcDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS", Locale.getDefault())
             utcDateFormat.timeZone = TimeZone.getTimeZone("UTC")
             val utcDate = utcDateFormat.parse(timestamp)
-            
+
             val kstTimeZone = TimeZone.getTimeZone("Asia/Seoul")
             val calendar = Calendar.getInstance(kstTimeZone)
             calendar.time = utcDate
@@ -614,7 +807,7 @@ class TradingChartFragment : Fragment() {
             calendar.set(Calendar.MINUTE, 0)
             calendar.set(Calendar.SECOND, 0)
             calendar.set(Calendar.MILLISECOND, 0)
-            
+
             SimpleDateFormat("yyyy-MM", Locale.getDefault()).format(calendar.time)
         }
     }
@@ -625,7 +818,7 @@ class TradingChartFragment : Fragment() {
             val utcDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS", Locale.getDefault())
             utcDateFormat.timeZone = TimeZone.getTimeZone("UTC")
             val utcDate = utcDateFormat.parse(timestamp)
-            
+
             val kstTimeZone = TimeZone.getTimeZone("Asia/Seoul")
             val calendar = Calendar.getInstance(kstTimeZone)
             calendar.time = utcDate
@@ -634,7 +827,7 @@ class TradingChartFragment : Fragment() {
             calendar.set(Calendar.MINUTE, 0)
             calendar.set(Calendar.SECOND, 0)
             calendar.set(Calendar.MILLISECOND, 0)
-            
+
             SimpleDateFormat("yyyy", Locale.getDefault()).format(calendar.time)
         }
     }
@@ -670,7 +863,7 @@ class TradingChartFragment : Fragment() {
             TimeFilter.MONTHS -> "true"
             TimeFilter.YEARS -> "true"
         }
-        
+
         val secondsVisible = when (currentTimeFilter) {
             TimeFilter.SECONDS -> "true"
             else -> "false"
@@ -692,16 +885,30 @@ class TradingChartFragment : Fragment() {
                     overflow: hidden;
                     width: 100%;
                     height: 100%;
+                    touch-action: none;
+                    -ms-touch-action: none;
+                    -webkit-touch-callout: none;
+                    -webkit-user-select: none;
+                    user-select: none;
+                    overflow: hidden;
                 }
                 #chart {
                     width: 100%;
                     height: 100%;
-                    min-height: 300px;
+                    min-height: 400px;
                     background-color: #FFFFFF;
                     position: relative;
                     display: block;
                     margin: 0;
                     padding: 0;
+                    touch-action: none;
+                    -webkit-touch-callout: none;
+                    -webkit-user-select: none;
+                    user-select: none;
+                    pointer-events: auto;
+                    overflow: hidden;
+                    border: 1px solid #E1E5E9;
+                    border-radius: 4px;
                 }
             </style>
         </head>
@@ -753,46 +960,49 @@ class TradingChartFragment : Fragment() {
                         
                         // 기존 차트가 있으면 제거
                         if (chart) {
-                            chart.remove();
+                            try {
+                                chart.remove();
+                            } catch (e) {
+                                console.log('기존 차트 제거 중 오류:', e);
+                            }
                             chart = null;
                         }
                         
-                        // 차트 생성
+                        // 차트 생성 - 기본 설정만 사용
+                        console.log('LightweightCharts.createChart 호출');
+                        // 터치 기능을 포함한 차트 설정 (블링크 방지 설정 추가)
                         chart = LightweightCharts.createChart(container, {
-                            width: container.clientWidth || window.innerWidth,
-                            height: container.clientHeight || window.innerHeight,
+                            width: container.clientWidth || 350,
+                            height: container.clientHeight || 500,
                             layout: {
                                 background: { color: '#FFFFFF' },
-                                textColor: '#333333',
+                                textColor: '#333333'
                             },
                             grid: {
                                 vertLines: { color: '#E1E5E9' },
-                                horzLines: { color: '#E1E5E9' },
-                            },
-                            crosshair: {
-                                mode: LightweightCharts.CrosshairMode.Normal,
-                                vertLine: {
-                                    visible: true,
-                                    labelVisible: false,
-                                },
-                                horzLine: {
-                                    visible: true,
-                                    labelVisible: true,
-                                },
+                                horzLines: { color: '#E1E5E9' }
                             },
                             rightPriceScale: {
                                 borderColor: '#E1E5E9',
                                 textColor: '#333333',
                                 scaleMargins: {
-                                    top: 0.05,
-                                    bottom: 0.25,
-                                },
+                                    top: 0.05,  // 상단 여백
+                                    bottom: 0.25  // 하단 여백 (거래량 차트 공간 확보)
+                                }
                             },
+                            // 블링크 방지를 위한 애니메이션 설정
+                            animation: false,
                             timeScale: {
                                 borderColor: '#E1E5E9',
-                                textColor: '#333333',
-                                timeVisible: $timeVisible,
-                                secondsVisible: $secondsVisible,
+                                timeVisible: true,
+                                secondsVisible: false,
+                                rightOffset: 0,
+                                fixLeftEdge: true,
+                                fixRightEdge: true,
+                                lockVisibleTimeRangeOnResize: true,
+                                rightBarStaysOnScroll: false,
+                                // 한국 시간대 설정
+                                timeUnit: 'second',
                                 tickMarkFormatter: function(time) {
                                     // Unix timestamp는 UTC 기준이므로, UTC로 파싱 후 KST로 변환
                                     var utcDate = new Date(time * 1000);
@@ -825,14 +1035,33 @@ class TradingChartFragment : Fragment() {
                                     return formatDate(kstDate, format);
                                 }
                             },
-                            leftPriceScale: {
-                                visible: false,
+                            crosshair: {
+                                mode: LightweightCharts.CrosshairMode.Normal
                             },
+                            // 모든 내장 터치 처리 비활성화 - 네이티브에서 처리
+                            handleScroll: {
+                                mouseWheel: false,
+                                pressedMouseMove: false,
+                                horzTouchDrag: false,
+                                vertTouchDrag: false
+                            },
+                            handleScale: {
+                                axisPressedMouseMove: false,
+                                mouseWheel: false,
+                                pinch: false,
+                                axisDoubleClickReset: false
+                            },
+                            kineticScroll: {
+                                touch: false,
+                                mouse: false
+                            }
                         });
+                        
+                        console.log('차트 생성 완료:', chart);
 
 
 
-                        // 캔들스틱 시리즈 생성
+                        // 기본 캔들스틱 시리즈 생성 (블링크 방지 설정 추가)
                         candlestickSeries = chart.addCandlestickSeries({
                             upColor: '#26A69A',
                             downColor: '#EF5350',
@@ -840,40 +1069,49 @@ class TradingChartFragment : Fragment() {
                             borderUpColor: '#26A69A',
                             wickDownColor: '#EF5350',
                             wickUpColor: '#26A69A',
-                            // 같은 가격일 때는 하락으로 처리
-                            priceFormat: {
-                                type: 'price',
-                                precision: 2,
-                                minMove: 0.01,
-                            },
-                            // 애니메이션 비활성화로 깜빡임 방지
+                            // 블링크 방지를 위한 설정
                             lastValueVisible: false,
-                            priceLineVisible: false,
+                            priceLineVisible: false
                         });
+                        
+                        console.log('캔들스틱 시리즈 생성 완료');
 
-                        // 거래량 시리즈 생성 (하단에 별도 영역)
+                        // 거래량 시리즈 생성 (하단에 별도 영역으로 분리)
                         volumeSeries = chart.addHistogramSeries({
+                            color: 'rgba(76, 175, 80, 0.3)',
                             priceFormat: {
-                                type: 'volume',
+                                type: 'volume'
                             },
                             priceScaleId: 'volume',
                             scaleMargins: {
-                                top: 0.8,
-                                bottom: 0,
+                                top: 0.8,  // 상단 80%는 캔들스틱 차트용
+                                bottom: 0   // 하단 20%는 거래량 차트용
                             },
-                            // 애니메이션 비활성화로 깜빡임 방지
-                            lastValueVisible: false,
-                            // 반투명 설정
-                            color: 'rgba(76, 175, 80, 0.3)',
+                            // 블링크 방지를 위한 설정
+                            lastValueVisible: false
                         });
-
+                        
                         // 거래량 스케일 설정
                         chart.priceScale('volume').applyOptions({
                             scaleMargins: {
                                 top: 0.8,
-                                bottom: 0,
+                                bottom: 0
                             },
+                            borderColor: '#E1E5E9',
+                            textColor: '#333333',
+                            visible: true,
+                            autoScale: true
                         });
+                        
+                        // 시간축 설정 (캔들스틱과 거래량이 공유)
+                        chart.timeScale().applyOptions({
+                            scaleMargins: {
+                                top: 0.05,
+                                bottom: 0.05
+                            }
+                        });
+                        
+                        console.log('거래량 시리즈 생성 완료');
 
                         // 전역 변수로 노출
                         window.candlestickSeries = candlestickSeries;
@@ -881,6 +1119,15 @@ class TradingChartFragment : Fragment() {
                         window.chart = chart;
                         
                         console.log('차트 초기화 완료');
+                        
+                        // 차트 초기화 완료 후 애니메이션 다시 활성화 (블링크 방지)
+                        requestAnimationFrame(() => {
+                            if (chart) {
+                                chart.applyOptions({
+                                    animation: true
+                                });
+                            }
+                        });
                         
                         // 차트가 제대로 생성되었는지 확인
                         setTimeout(() => {
@@ -913,38 +1160,6 @@ class TradingChartFragment : Fragment() {
                         .replace('ss', seconds);
                 }
                 
-                // 차트 데이터 설정 함수 (제거 - 중복 정의)
-                
-                // 라이브러리 로드 후 차트 초기화 (한 번만 실행)
-                if (!libraryLoaded) {
-                    loadLibrary().then(function() {
-                        console.log('라이브러리 로드 완료, 차트 초기화 시작');
-                        initChart();
-                    }).catch(function(error) {
-                        console.error('라이브러리 로드 실패:', error);
-                    });
-                }
-                
-                // 윈도우 리사이즈 이벤트
-                window.addEventListener('resize', function() {
-                    if (chart) {
-                        chart.applyOptions({
-                            width: window.innerWidth,
-                            height: window.innerHeight,
-                        });
-                    }
-                });
-
-                // 윈도우 리사이즈 처리
-                window.addEventListener('resize', () => {
-                    if (chart) {
-                        chart.applyOptions({
-                            width: window.innerWidth,
-                            height: window.innerHeight,
-                        });
-                    }
-                });
-
                 // 차트 데이터 설정 함수
                 function setChartData(candlestickData) {
                     try {
@@ -954,30 +1169,47 @@ class TradingChartFragment : Fragment() {
                         }
                         
                         console.log('차트 데이터 설정 시작:', candlestickData.length + '개');
-                        console.log('데이터 샘플:', JSON.stringify(candlestickData[0]));
+                        
+                        // 블링크 방지를 위해 애니메이션 일시 비활성화
+                        chart.applyOptions({
+                            animation: false
+                        });
                         
                         // 캔들스틱 데이터 설정
                         candlestickSeries.setData(candlestickData);
                         
-                        // 거래량 데이터 설정 (색상 포함)
+                        // 거래량 데이터 설정 (캔들스틱 색상과 일치, 더 명확한 구분)
                         var volumeData = candlestickData.map(function(item) {
+                            var isUp = item.close >= item.open;
                             return {
                                 time: item.time,
                                 value: item.volume,
-                                color: item.close >= item.open ? 'rgba(38, 166, 154, 0.5)' : 'rgba(239, 83, 80, 0.5)'
+                                color: isUp ? 'rgba(38, 166, 154, 0.4)' : 'rgba(239, 83, 80, 0.4)'
                             };
                         });
                         volumeSeries.setData(volumeData);
                         
-                        // 차트 자동 스케일링
-                        chart.timeScale().fitContent();
+                        // 현재가 라인 색상 업데이트
+                        updateCurrentPriceLineColor(candlestickData);
                         
-                        // 차트가 보이도록 강제 리사이즈
-                        setTimeout(() => {
-                            if (chart) {
-                                chart.resize(container.clientWidth, container.clientHeight);
-                            }
-                        }, 50);
+                        // 차트 범위 설정 (즉시 실행하여 블링크 방지)
+                        if (chart && container) {
+                            // 논리적 범위로 초기 설정 (일부 데이터만 표시해서 스크롤 여유 공간 확보)
+                            const visibleCount = Math.min(10, candlestickData.length); // 최대 10개 캔들만 표시
+                            const startIndex = Math.max(0, candlestickData.length - visibleCount);
+                            
+                            chart.timeScale().setVisibleLogicalRange({
+                                from: startIndex,
+                                to: candlestickData.length - 1
+                            });
+                        }
+                        
+                        // 애니메이션 다시 활성화 (다음 프레임에서)
+                        requestAnimationFrame(() => {
+                            chart.applyOptions({
+                                animation: true
+                            });
+                        });
                         
                         console.log('차트 데이터 설정 완료');
                         
@@ -986,14 +1218,45 @@ class TradingChartFragment : Fragment() {
                     }
                 }
 
+                // 현재가 라인 색상 업데이트 함수
+                function updateCurrentPriceLineColor(candlestickData) {
+                    if (candlestickData && candlestickData.length > 0) {
+                        const lastCandle = candlestickData[candlestickData.length - 1];
+                        if (lastCandle && candlestickSeries) {
+                            // 캔들 색상에 따라 현재가 라인 색상 결정
+                            const isUp = lastCandle.close >= lastCandle.open;
+                            const lineColor = isUp ? '#26A69A' : '#EF5350'; // 상승: 초록, 하락: 빨강
+                            
+                            candlestickSeries.applyOptions({
+                                priceLineColor: lineColor,
+                                priceLineWidth: 2,
+                                priceLineStyle: 1 // 점선
+                            });
+                        }
+                    }
+                }
+                
                 // Android에서 호출할 수 있도록 전역 함수로 노출
                 window.setChartData = setChartData;
+                window.updateCurrentPriceLineColor = updateCurrentPriceLineColor;
                 
-                // 라이브러리 로드 후 차트 초기화 (한 번만 실행)
+                // 차트 초기화 (여러 시점에서 시도)
+                function tryInitChart() {
+                    console.log('차트 초기화 시도...');
+                    if (typeof LightweightCharts !== 'undefined' && !chart) {
+                        initChart();
+                        return true;
+                    }
+                    return false;
+                }
+                
+                // 라이브러리 로드 후 차트 초기화
                 if (!libraryLoaded) {
                     loadLibrary().then(() => {
-                        console.log('라이브러리 로드 완료, 차트 초기화 시작');
-                        initChart();
+                        console.log('라이브러리 로드 완료');
+                        setTimeout(() => {
+                            tryInitChart();
+                        }, 100);
                     }).catch((error) => {
                         console.error('라이브러리 로드 실패:', error);
                     });
@@ -1001,17 +1264,27 @@ class TradingChartFragment : Fragment() {
                 
                 // 페이지 로드 시에도 초기화 시도
                 window.addEventListener('load', function() {
-                    if (libraryLoaded && !chart) {
-                        initChart();
-                    }
+                    console.log('페이지 로드 완료');
+                    setTimeout(() => {
+                        tryInitChart();
+                    }, 200);
                 });
                 
                 // DOMContentLoaded 이벤트에서도 초기화 시도
                 document.addEventListener('DOMContentLoaded', function() {
-                    if (libraryLoaded && !chart) {
-                        initChart();
-                    }
+                    console.log('DOM 로드 완료');
+                    setTimeout(() => {
+                        tryInitChart();
+                    }, 300);
                 });
+                
+                // 백업용 타이머 (5초 후 강제 시도)
+                setTimeout(() => {
+                    if (!chart) {
+                        console.log('백업 타이머로 차트 초기화 시도');
+                        tryInitChart();
+                    }
+                }, 5000);
             </script>
         </body>
         </html>
@@ -1024,7 +1297,7 @@ class TradingChartFragment : Fragment() {
             Log.w(TAG, "updateChartData: binding이 null입니다. Fragment가 destroy되었을 수 있습니다.")
             return
         }
-        
+
         try {
             if (ohlcvData.isEmpty()) {
                 Log.w(TAG, "OHLCV 데이터가 비어있습니다.")
@@ -1048,11 +1321,11 @@ class TradingChartFragment : Fragment() {
                 
                 val date = dateFormat.parse(data.date)
                 val timestamp = date?.time?.div(1000) ?: 0L
-                
+
                 // 캔들스틱 상승/하락 여부에 따라 거래량 색상 결정
                 val isUp = data.close >= data.open
                 val volumeColor = if (isUp) "rgba(38, 166, 154, 0.3)" else "rgba(239, 83, 80, 0.3)" // 녹색/빨간색 반투명
-                
+
                 mapOf(
                     "time" to timestamp,
                     "open" to data.open,
@@ -1063,6 +1336,8 @@ class TradingChartFragment : Fragment() {
                     "volumeColor" to volumeColor
                 )
             }
+            
+
 
             val candlestickJson = org.json.JSONArray(candlestickData).toString()
 
@@ -1083,34 +1358,45 @@ class TradingChartFragment : Fragment() {
             """.trimIndent()
 
             binding.chartWebView.post {
-                binding.chartWebView.evaluateJavascript(checkReadyCode) { result ->
-                    Log.d(TAG, "차트 준비 상태: $result")
+                binding.chartWebView.evaluateJavascript(checkReadyCode) { result: String? ->
+                    Log.d(TAG, "차트 준비 상태 확인: $result")
                     if (result == "\"ready\"") {
+                        Log.d(TAG, "차트가 준비됨 - 데이터 설정 시작")
                         // 차트가 준비되었으면 데이터 설정
                         val jsCode = """
                             try {
+                                console.log('차트 데이터 설정 시작');
                                 if (window.setChartData) {
+                                    console.log('setChartData 함수 호출');
                                     window.setChartData($candlestickJson);
+                                    console.log('차트 데이터 설정 완료');
+                                    
+                                    // 현재가 라인 색상 업데이트
+                                    if (window.updateCurrentPriceLineColor && $candlestickJson.length > 0) {
+                                        window.updateCurrentPriceLineColor($candlestickJson);
+                                    }
+                                } else {
+                                    console.error('setChartData 함수가 정의되지 않음');
                                 }
                             } catch (error) {
                                 console.error('차트 데이터 설정 오류:', error);
                             }
                         """.trimIndent()
 
-                        binding.chartWebView.evaluateJavascript(jsCode) { jsResult ->
-                            Log.d(TAG, "JavaScript 실행 결과: $jsResult")
+                        binding.chartWebView.evaluateJavascript(jsCode) { jsResult: String? ->
+                            Log.d(TAG, "JavaScript 실행 완료: $jsResult")
                         }
                     } else {
-                        // 차트가 준비되지 않았으면 1초 후 재시도
-                        Log.d(TAG, "차트가 준비되지 않음, 1초 후 재시도")
+                        // 차트가 준비되지 않았으면 500ms 후 재시도
+                        Log.d(TAG, "차트가 준비되지 않음, 500ms 후 재시도")
                         binding.chartWebView.postDelayed({
                             // Fragment가 destroy된 경우 binding이 null일 수 있으므로 체크
                             if (_binding != null) {
                                 updateChartData()
                             } else {
-                                Log.w(TAG, "postDelayed: binding이 null입니다. Fragment가 destroy되었을 수 있습니다.")
+                                Log.w(TAG, "postDelayed: binding이 null입니다. Fragment가 destroy되었을 수 있ㅇㅡㅁ.")
                             }
-                        }, 1000)
+                        }, 500)
                     }
                 }
             }
@@ -1125,7 +1411,7 @@ class TradingChartFragment : Fragment() {
     // 폴링 시작
     private fun startPolling() {
         if (isPollingActive) return
-        
+
         isPollingActive = true
         pollingJob = viewLifecycleOwner.lifecycleScope.launch {
             while (isPollingActive) {
@@ -1172,7 +1458,7 @@ class TradingChartFragment : Fragment() {
             Log.w(TAG, "showEmptyState: binding이 null입니다. Fragment가 destroy되었을 수 있습니다.")
             return
         }
-        
+
         try {
             binding.loadingIndicator.visibility = View.GONE
             binding.chartWebView.visibility = View.GONE
@@ -1186,8 +1472,14 @@ class TradingChartFragment : Fragment() {
         super.onDestroyView()
         // 폴링 중지 및 리소스 정리
         stopPolling()
+        
+        // 터치 이벤트 리소스 정리
+        gestureDetector = null
+        scaleGestureDetector = null
+        
         // WebView 정리
         try {
+            _binding?.chartWebView?.setOnTouchListener(null)
             _binding?.chartWebView?.destroy()
         } catch (e: Exception) {
             Log.e(TAG, "WebView 정리 중 오류: ${e.message}", e)

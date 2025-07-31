@@ -3,6 +3,7 @@ package com.stip.stip.order.button
 import android.content.Context
 import android.content.Intent
 import android.text.Editable
+import android.text.InputFilter
 import android.text.TextWatcher
 import androidx.fragment.app.FragmentManager
 import com.stip.stip.R
@@ -49,6 +50,18 @@ class OrderButtonHandler(
     
     // 주문확인 모달 상태 추적
     private var isOrderConfirmDialogShowing = false
+    
+    // 소수점 2자리 제한을 위한 InputFilter
+    private val decimalFilter = InputFilter { source, start, end, dest, dstart, dend ->
+        val newText = dest.subSequence(0, dstart).toString() + source.subSequence(start, end) + dest.subSequence(dend, dest.length)
+        
+        // 빈 문자열이거나 숫자만 있는 경우 허용
+        if (newText.isEmpty() || newText.matches(Regex("^\\d*\\.?\\d{0,2}$"))) {
+            null
+        } else {
+            ""
+        }
+    }
     
     /**
      * 최신 시장가를 동기적으로 가져오는 메서드
@@ -148,6 +161,11 @@ class OrderButtonHandler(
     }
 
     private fun setupInputListeners() {
+        // 소수점 2자리 제한 필터 적용
+        binding.editTextQuantity.filters = arrayOf(decimalFilter)
+        binding.editTextLimitPrice.filters = arrayOf(decimalFilter)
+        binding.editTextTriggerPrice?.filters = arrayOf(decimalFilter)
+        
         // 가격 입력 리스너
         binding.editTextLimitPrice.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -397,21 +415,27 @@ class OrderButtonHandler(
 
         val feeRate = getFeeRate()
         if (params.isMarketOrder && isBuyOrder) {
-            calculatedFee = (grossTotalValue ?: 0.0) * feeRate / (1.0 + feeRate)
+            // 시장가 매수: USD 금액으로 매수할 수량 계산 후 수수료 적용
+            val currentPrice = getCurrentPrice().toDouble()
+            val buyQuantity = (grossTotalValue ?: 0.0) / currentPrice
+            calculatedFee = buyQuantity * feeRate
             displayTotalValueStr = fixedTwoDecimalFormatter.format(grossTotalValue ?: 0.0)
+            feeConfirmStr = fixedTwoDecimalFormatter.format(calculatedFee)
         } else if (params.isMarketOrder && !isBuyOrder) {
             calculatedFee = (grossTotalValue ?: 0.0) * feeRate
             displayTotalValueStr = context.getString(R.string.market_total)
+            feeConfirmStr = fixedTwoDecimalFormatter.format(calculatedFee)
         } else if (price != null && quantity != null){
             val calculatedGross = price * quantity
             calculatedFee = calculatedGross * feeRate
-            val finalDisplayAmount = if (isBuyOrder) calculatedGross * (1.0 + feeRate) else calculatedGross * (1.0 - feeRate)
-            displayTotalValueStr = fixedTwoDecimalFormatter.format(finalDisplayAmount)
+            // 주문 총액은 수수료 제외한 순수 주문 금액
+            displayTotalValueStr = fixedTwoDecimalFormatter.format(calculatedGross)
+            feeConfirmStr = fixedTwoDecimalFormatter.format(calculatedFee)
         } else {
             calculatedFee = 0.0
             displayTotalValueStr = "--"
+            feeConfirmStr = "0.00"
         }
-        feeConfirmStr = fixedTwoDecimalFormatter.format(calculatedFee)
 
         val dialog = ConfirmOrderDialogFragment.newInstance(
             isBuyOrder = isBuyOrder,
@@ -547,33 +571,9 @@ class OrderButtonHandler(
                 
                 Log.d(TAG, "$orderType API 응답 - isSuccessful: ${response.isSuccessful}, code: ${response.code()}")
                 
-                // API 응답 내용 로깅 추가
-                try {
-                    val responseBody = response.body()
-                    Log.d(TAG, "$orderType API 응답 body: $responseBody")
-                    
-                    // 에러 응답도 로깅
-                    if (!response.isSuccessful) {
-                        val errorBody = response.errorBody()?.string()
-                        Log.e(TAG, "$orderType API 에러 응답: $errorBody")
-                    }
-                } catch (e: Exception) {
-                    Log.e(TAG, "$orderType API 응답 파싱 중 오류: ${e.message}", e)
-                }
-                
                 CoroutineScope(Dispatchers.Main).launch {
                     if (response.isSuccessful) {
                         val orderResponse = response.body()
-                        
-                        // data 필드 타입 처리
-                        val dataType = orderResponse?.data?.javaClass?.simpleName ?: "null"
-                        
-                        // data 필드가 문자열인 경우
-                        val dataString = orderResponse?.getDataString()
-                        if (dataString != null) {
-                            Log.d(TAG, "$orderType 주문 응답 data 문자열: $dataString")
-                        }
-                        
                         if (orderResponse?.success == true) {
                             Log.d(TAG, "$orderType 주문 성공: ${orderResponse.message}")
                             showToast("${orderType} 주문이 성공적으로 실행되었습니다.")
@@ -647,7 +647,6 @@ class OrderButtonHandler(
                 }
             } catch (e: Exception) {
                 Log.e(TAG, "$orderType 주문 실행 중 오류 발생: ${e.message}", e)
-                
                 CoroutineScope(Dispatchers.Main).launch {
                     showErrorDialog(
                         R.string.dialog_title_error_order,

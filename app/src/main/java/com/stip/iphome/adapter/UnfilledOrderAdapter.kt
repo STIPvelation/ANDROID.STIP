@@ -22,6 +22,9 @@ class UnfilledOrderAdapter(
 
     var onSelectionChanged: ((Boolean) -> Unit)? = null
     private var checkedStates = BooleanArray(items.size) { false }
+    
+    // 주문 취소 로딩 상태 관리
+    private var isCancellingOrders = false
 
     override fun getItemCount(): Int = items.size + 1
 
@@ -72,6 +75,26 @@ class UnfilledOrderAdapter(
         onSelectionChanged?.invoke(false)
         Log.d(TAG, "선택 상태 초기화 완료")
     }
+    
+    /**
+     * 주문 취소 로딩 상태 설정
+     */
+    fun setCancellingOrdersState(cancelling: Boolean) {
+        isCancellingOrders = cancelling
+        Log.d(TAG, "주문 취소 로딩 상태 변경: $cancelling")
+        
+        // 로딩 중일 때는 선택 상태를 비활성화
+        if (cancelling) {
+            clearSelection()
+        }
+    }
+    
+    /**
+     * 현재 주문 취소 로딩 상태 확인
+     */
+    fun isCancellingOrders(): Boolean {
+        return isCancellingOrders
+    }
 
     inner class HeaderViewHolder(binding: ItemUnfilledHeaderBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -110,6 +133,12 @@ class UnfilledOrderAdapter(
         }
 
         private fun toggleSelection(index: Int) {
+            // 로딩 중이면 선택 방지
+            if (isCancellingOrders) {
+                Log.d(TAG, "주문 취소 중이므로 선택이 비활성화됩니다.")
+                return
+            }
+            
             if (index in checkedStates.indices) {
                 checkedStates[index] = !checkedStates[index]
                 notifyItemChanged(index + 1)

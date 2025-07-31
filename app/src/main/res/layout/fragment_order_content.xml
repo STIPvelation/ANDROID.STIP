@@ -702,6 +702,16 @@
             tools:enabled="true"
             tools:visibility="gone" />
 
+        <ProgressBar
+            android:id="@+id/progress_bar_cancel_orders"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/button_cancel_selected_orders"
+            app:layout_constraintEnd_toEndOf="@+id/button_cancel_selected_orders"
+            app:layout_constraintStart_toStartOf="@+id/button_cancel_selected_orders"
+            app:layout_constraintTop_toTopOf="@+id/button_cancel_selected_orders" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
