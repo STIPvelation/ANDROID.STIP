@@ -41,6 +41,10 @@ class OrderHistoryManager(
 
     private var isVisible: Boolean = false
     private var orderCache: Map<String, ApiOrderResponse> = emptyMap()
+    
+    // 주문 취소 로딩 상태 관리
+    private var isCancellingOrders = false
+    
     companion object { private const val TAG = "OrderHistoryManager" }
 
     init {
@@ -516,7 +520,7 @@ class OrderHistoryManager(
     }
 
     fun updateCancelButtonState(hasSelection: Boolean) {
-        Log.d(TAG, "updateCancelButtonState 호출: hasSelection=$hasSelection, isVisible=$isVisible, isUnfilledTabSelected=$isUnfilledTabSelected")
+        Log.d(TAG, "updateCancelButtonState 호출: hasSelection=$hasSelection, isVisible=$isVisible, isUnfilledTabSelected=$isUnfilledTabSelected, isCancellingOrders=$isCancellingOrders")
         
         val hasData = unfilledAdapter.itemCount > 1
         val shouldBeVisible = isVisible && isUnfilledTabSelected && hasData
@@ -524,13 +528,21 @@ class OrderHistoryManager(
         binding.buttonCancelSelectedOrders.visibility = if (shouldBeVisible) View.VISIBLE else View.GONE
 
         if (binding.buttonCancelSelectedOrders.visibility == View.VISIBLE) {
-            binding.buttonCancelSelectedOrders.isEnabled = hasSelection
-            val bgColorRes = if (hasSelection) R.color.main_point else R.color.button_disabled_grey
-            val textColorRes = if (hasSelection) R.color.white else R.color.text_disabled_grey
+            // 로딩 중이면 버튼 비활성화
+            val shouldBeEnabled = hasSelection && !isCancellingOrders
+            binding.buttonCancelSelectedOrders.isEnabled = shouldBeEnabled
+            
+            val bgColorRes = if (shouldBeEnabled) R.color.main_point else R.color.button_disabled_grey
+            val textColorRes = if (shouldBeEnabled) R.color.white else R.color.text_disabled_grey
+            
+            // 로딩 중일 때 텍스트 변경
+            val buttonText = if (isCancellingOrders) "취소 중..." else "선택 취소"
+            binding.buttonCancelSelectedOrders.text = buttonText
+            
             try {
                 binding.buttonCancelSelectedOrders.setBackgroundColor(ContextCompat.getColor(context, bgColorRes))
                 binding.buttonCancelSelectedOrders.setTextColor(ContextCompat.getColor(context, textColorRes))
-                Log.d(TAG, "취소 버튼 상태 업데이트: enabled=$hasSelection, visible=true")
+                Log.d(TAG, "취소 버튼 상태 업데이트: enabled=$shouldBeEnabled, visible=true, loading=$isCancellingOrders")
             } catch (e: Exception) {
                 Log.e(TAG, "Error setting cancel button colors", e)
             }
@@ -541,6 +553,12 @@ class OrderHistoryManager(
     }
 
     private fun performCancelSelectedOrders() {
+        // 로딩 중이면 중복 실행 방지
+        if (isCancellingOrders) {
+            Log.w(TAG, "주문 취소가 이미 진행 중입니다.")
+            return
+        }
+        
         val selectedOrderIds = unfilledAdapter.getSelectedOrderIds()
 
         if (selectedOrderIds.isEmpty()) {
@@ -613,5 +631,24 @@ class OrderHistoryManager(
         
         // API 재호출
         loadUnfilledOrders(isUnfilledRefresh = true)
+    }
+    
+    /**
+     * 주문 취소 로딩 상태 설정
+     */
+    fun setCancellingOrdersState(cancelling: Boolean) {
+        isCancellingOrders = cancelling
+        Log.d(TAG, "주문 취소 로딩 상태 변경: $cancelling")
+        
+        // 로딩 상태 변경 시 버튼 상태 업데이트
+        val hasSelection = unfilledAdapter.getSelectedOrderIds().isNotEmpty()
+        updateCancelButtonState(hasSelection)
+    }
+    
+    /**
+     * 현재 주문 취소 로딩 상태 확인
+     */
+    fun isCancellingOrders(): Boolean {
+        return isCancellingOrders
     }
 }

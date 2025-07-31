@@ -105,7 +105,8 @@ class ConfirmOrderDialogFragment : DialogFragment() {
 
             binding.labelFeeConfirm.text = getString(R.string.label_fee)
             binding.textFeeValueConfirm.text = feeValue
-            binding.textFeeUnitConfirm.text = getString(R.string.unit_usd)
+            // 매수 시에는 baseAsset 단위, 매도 시에는 USD 단위
+            binding.textFeeUnitConfirm.text = if (isBuyOrder) tickerSymbol else getString(R.string.unit_usd)
 
             binding.textOrderTotalValueConfirm.text = totalValue
             binding.textOrderTotalUnitConfirm.text = getString(R.string.unit_usd)

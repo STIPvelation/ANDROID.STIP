@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:fillViewport="true">
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     android:paddingStart="12dp"
     android:paddingTop="16dp"
     android:paddingEnd="12dp"
@@ -70,8 +65,8 @@
     <RelativeLayout
         android:id="@+id/frame_4043"
         android:layout_width="140dp"
-        android:layout_height="36dp"
-        android:minHeight="36dp"
+        android:layout_height="48dp"
+        android:minHeight="48dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/bg_frame_fillter_rounded"
         android:paddingStart="8dp"
@@ -120,8 +115,8 @@
     <RelativeLayout
         android:id="@+id/frame_17074"
         android:layout_width="0dp"
-        android:layout_height="36dp"
-        android:minHeight="36dp"
+        android:layout_height="40dp"
+        android:minHeight="40dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/bg_frame_rounded"
         app:layout_constraintEnd_toEndOf="parent"
@@ -337,10 +332,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerIpList"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:nestedScrollingEnabled="false"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp" app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/frame_17074"
@@ -360,5 +354,3 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-</ScrollView>

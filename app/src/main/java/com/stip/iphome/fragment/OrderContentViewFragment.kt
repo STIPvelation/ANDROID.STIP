@@ -59,6 +59,9 @@ class OrderContentViewFragment : Fragment(), OnOrderBookItemClickListener {
     private val orderService: OrderService = RetrofitClient.createOrderService()
     private val portfolioRepository = PortfolioRepository()
     private val priceFormatter = DecimalFormat("#,##0.00")
+    
+    // 주문 취소 로딩 상태 관리
+    private var isCancellingOrders = false
 
     companion object {
         private const val TAG = "OrderContentViewFragment"
@@ -177,7 +180,7 @@ class OrderContentViewFragment : Fragment(), OnOrderBookItemClickListener {
                 numberParseFormat = DecimalFormat("#,##0.00").apply { roundingMode = java.math.RoundingMode.DOWN },
                 fixedTwoDecimalFormatter = DecimalFormat("#,##0.00").apply { roundingMode = java.math.RoundingMode.DOWN },
                 getCurrentPrice = { orderDataCoordinator.currentPrice.toDouble() },
-                getFeeRate = { 0.0 }, // 수수료 추가 가능
+                getFeeRate = { 0.001 }, // 수수료 0.1%
                 availableUsdBalance = { orderDataCoordinator.availableUsdBalance },
                 heldAssetQuantity = { orderDataCoordinator.heldAssetQuantity },
                 getCurrentTicker = { orderDataCoordinator.currentTicker },
@@ -192,7 +195,7 @@ class OrderContentViewFragment : Fragment(), OnOrderBookItemClickListener {
                 numberParseFormat = DecimalFormat("#,##0.00").apply { roundingMode = java.math.RoundingMode.DOWN },
                 fixedTwoDecimalFormatter = DecimalFormat("#,##0.00").apply { roundingMode = java.math.RoundingMode.DOWN },
                 getCurrentPrice = { orderDataCoordinator.currentPrice },
-                getFeeRate = { 0.0 }, // 수수료 추가 가능
+                getFeeRate = { 0.001 }, // 수수료 0.1%
                 currentTicker = { orderDataCoordinator.currentTicker },
                 minimumOrderValue = 10.0,
                 availableUsdBalance = { orderDataCoordinator.availableUsdBalance },
@@ -466,17 +469,61 @@ class OrderContentViewFragment : Fragment(), OnOrderBookItemClickListener {
                     return@setFragmentResultListener
                 }
 
-                // 즉시 UI 상태 초기화
-                unfilledOrderAdapter.clearSelection()
-                historyManager.updateCancelButtonState(false)
-                
-                // 실제 주문 삭제 API 호출
-                Log.d(TAG, "주문 삭제 API 호출 시작: $selectedOrderIds")
-                deleteOrdersSequentially(selectedOrderIds)
+                // 주문 취소 시작 - 로딩 상태 활성화
+                startOrderCancellation(selectedOrderIds)
 
             } else {
                 Log.d(TAG, "사용자가 주문 취소를 거부했습니다.")
             }
+        }
+    }
+    
+    /**
+     * 주문 취소 프로세스 시작
+     */
+    private fun startOrderCancellation(orderIds: List<String>) {
+        if (isCancellingOrders) {
+            Log.w(TAG, "이미 주문 취소가 진행 중입니다.")
+            return
+        }
+        
+        isCancellingOrders = true
+        
+        // UI 상태 초기화 및 로딩 상태 표시
+        unfilledOrderAdapter.clearSelection()
+        unfilledOrderAdapter.setCancellingOrdersState(true)
+        historyManager.setCancellingOrdersState(true)
+        showCancellationLoading(true)
+        
+        // 실제 주문 삭제 API 호출
+        Log.d(TAG, "주문 삭제 API 호출 시작: $orderIds")
+        deleteOrdersSequentially(orderIds)
+    }
+    
+    /**
+     * 주문 취소 로딩 상태 표시/숨김
+     */
+    private fun showCancellationLoading(show: Boolean) {
+        try {
+            if (show) {
+                // 로딩 중일 때 UI 비활성화
+                binding.unfilledFilledBoxRoot.isEnabled = false
+                
+                // 로딩 인디케이터 표시
+                binding.progressBarCancelOrders.visibility = View.VISIBLE
+                
+                Log.d(TAG, "주문 취소 로딩 상태 활성화")
+            } else {
+                // 로딩 완료 시 UI 활성화
+                binding.unfilledFilledBoxRoot.isEnabled = true
+                
+                // 로딩 인디케이터 숨김
+                binding.progressBarCancelOrders.visibility = View.GONE
+                
+                Log.d(TAG, "주문 취소 로딩 상태 비활성화")
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "로딩 상태 표시 중 오류", e)
         }
     }
     
@@ -487,10 +534,12 @@ class OrderContentViewFragment : Fragment(), OnOrderBookItemClickListener {
     private fun deleteOrdersSequentially(orderIds: List<String>) {
         if (orderIds.isEmpty()) {
             Log.w(TAG, "삭제할 주문 ID가 없습니다.")
+            isCancellingOrders = false
+            unfilledOrderAdapter.setCancellingOrdersState(false)
+            historyManager.setCancellingOrdersState(false)
+            showCancellationLoading(false)
             return
         }
-
-        // UI 상태는 이미 setupCancelConfirmResultListener에서 초기화됨
 
         var successCount = 0
         var failCount = 0
@@ -521,8 +570,14 @@ class OrderContentViewFragment : Fragment(), OnOrderBookItemClickListener {
                 }
             }
 
-            // 최종 결과 처리
+            // 모든 주문 취소 완료 후 UI 업데이트
             CoroutineScope(Dispatchers.Main).launch {
+                // 로딩 상태 비활성화
+                isCancellingOrders = false
+                unfilledOrderAdapter.setCancellingOrdersState(false)
+                historyManager.setCancellingOrdersState(false)
+                showCancellationLoading(false)
+                
                 val totalCount = orderIds.size
                 val resultMessage = when {
                     failCount == 0 -> "${totalCount}개 주문이 취소되었습니다."
@@ -532,12 +587,12 @@ class OrderContentViewFragment : Fragment(), OnOrderBookItemClickListener {
 
                 Toast.makeText(context, resultMessage, Toast.LENGTH_LONG).show()
                 
-                // 주문 취소 시도 후 항상 잔액 새로고침 (성공/실패 관계없이)
+                // 주문 취소 완료 후 잔액 새로고침 (성공/실패 관계없이)
                 orderDataCoordinator.refreshBalance()
                 
-                // 성공한 주문이 있으면 목록 새로고침
+                // 성공한 주문이 있으면 목록 새로고침 (한 번만)
                 if (successCount > 0) {
-                    refreshUnfilledOrders()
+                    refreshUnfilledOrdersOnce()
                 }
             }
         }

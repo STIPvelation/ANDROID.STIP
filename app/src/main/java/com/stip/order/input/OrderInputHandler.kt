@@ -2,6 +2,7 @@ package com.stip.stip.order
 
 import android.content.Context
 import android.text.Editable
+import android.text.InputFilter
 import android.text.InputType
 import android.text.TextWatcher
 import android.util.Log
@@ -34,6 +35,18 @@ class OrderInputHandler(
     private var calculatedMaxQty: Double = 0.0
     private enum class LastEdited { QUANTITY, TOTAL_AMOUNT, PRICE, NONE }
     private var lastEditedFocus: LastEdited = LastEdited.NONE
+
+    // 소수점 2자리 제한을 위한 InputFilter
+    private val decimalFilter = InputFilter { source, start, end, dest, dstart, dend ->
+        val newText = dest.subSequence(0, dstart).toString() + source.subSequence(start, end) + dest.subSequence(dend, dest.length)
+        
+        // 빈 문자열이거나 숫자만 있는 경우 허용
+        if (newText.isEmpty() || newText.matches(Regex("^\\d*\\.?\\d{0,2}$"))) {
+            null
+        } else {
+            ""
+        }
+    }
 
     val quantityTextWatcher = object : TextWatcher {
         override fun afterTextChanged(s: Editable?) {
@@ -94,6 +107,11 @@ class OrderInputHandler(
     }
 
     fun setupInputListeners() {
+        // 소수점 2자리 제한 필터 적용
+        binding.editTextQuantity.filters = arrayOf(decimalFilter)
+        binding.editTextLimitPrice.filters = arrayOf(decimalFilter)
+        binding.editTextTriggerPrice?.filters = arrayOf(decimalFilter)
+        
         binding.editTextQuantity.addTextChangedListener(quantityTextWatcher)
         binding.editTextLimitPrice.addTextChangedListener(priceTextWatcher)
         binding.editTextQuantity.onFocusChangeListener = formatOnFocusLostListener
