@@ -4,6 +4,7 @@ import com.stip.order.data.OrderRequest
 import com.stip.order.data.MarketBuyRequest
 import com.stip.order.data.MarketSellRequest
 import com.stip.stip.order.data.OrderDeleteResponse
+import com.stip.stip.order.data.OrderCancelRequest
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
@@ -25,6 +26,9 @@ interface OrderService {
     
     @DELETE("api/orders/{orderId}")
     suspend fun deleteOrder(@Path("orderId") orderId: String): Response<OrderDeleteResponse>
+    
+    @POST("api/orders/cancel")
+    suspend fun cancelOrders(@Body orderCancelRequest: OrderCancelRequest): Response<OrderDeleteResponse>
 }
 
 data class OrderResponse(

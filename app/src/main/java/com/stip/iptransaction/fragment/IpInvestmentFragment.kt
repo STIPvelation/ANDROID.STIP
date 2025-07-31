@@ -64,13 +64,24 @@ class IpInvestmentFragment : Fragment(), ScrollableToTop, TickerSelectionDialogF
     }
 
     init {
-        // 초기 날짜 범위를 1개월로 설정
-        val endDate = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(java.util.Date())
-        val startDate = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(
-            java.util.Calendar.getInstance().apply { add(java.util.Calendar.MONTH, -1) }.time
-        )
-        currentStartDate = startDate
-        currentEndDate = endDate
+        // 초기 날짜 범위를 1개월로 설정 (오늘부터 한달 전까지)
+        updateDateRangeToOneMonth()
+    }
+
+    /**
+     * 오늘부터 한달 전까지의 날짜 범위로 업데이트
+     */
+    private fun updateDateRangeToOneMonth() {
+        val dateFormat = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault())
+        val calendar = java.util.Calendar.getInstance()
+        
+        // 오늘 날짜를 종료일로 설정
+        currentEndDate = dateFormat.format(calendar.time)
+        
+        // 한달 전 날짜를 시작일로 설정
+        calendar.add(java.util.Calendar.MONTH, -1)
+        currentStartDate = dateFormat.format(calendar.time)
+        
     }
 
     override fun onCreateView(
@@ -96,16 +107,17 @@ class IpInvestmentFragment : Fragment(), ScrollableToTop, TickerSelectionDialogF
         // 저장된 티커 필터 복원
         restoreTickerFilter()
         
-        // 마켓 페어 매핑 먼저 불러온 후 거래내역 로드 (1개월 기간으로 초기 로드)
+        // 마켓 페어 매핑 먼저 불러온 후 거래내역 로드
         viewLifecycleOwner.lifecycleScope.launch {
             marketPairMap = fetchMarketPairs()
-            // 1개월 기간으로 초기 데이터 로드
-            val endDate = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(java.util.Date())
-            val startDate = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(
-                java.util.Calendar.getInstance().apply { add(java.util.Calendar.MONTH, -1) }.time
-            )
-            // 초기 로드 시에는 1개월 기간으로만 데이터 조회
-            loadAllData(null, startDate, endDate)
+            // 날짜 필터가 없을 때만 기본 한달 범위로 설정
+            if (currentStartDate.isEmpty() || currentEndDate.isEmpty()) {
+                Log.d("IpInvestmentFragment", "초기 로딩: 기본 한달 범위로 설정")
+                updateDateRangeToOneMonth()
+            } else {
+                Log.d("IpInvestmentFragment", "초기 로딩: 기존 날짜 필터 유지: $currentStartDate ~ $currentEndDate")
+            }
+            loadAllData(null, currentStartDate, currentEndDate)
         }
 
         binding.imageViewFilterIcon.setOnClickListener {
@@ -122,12 +134,17 @@ class IpInvestmentFragment : Fragment(), ScrollableToTop, TickerSelectionDialogF
             val startDate = bundle.getString("filterStartDate")
             val endDate = bundle.getString("filterEndDate")
             val periodLabel = bundle.getString("filterPeriodLabel") ?: ""
+            
+            Log.d("IpInvestmentFragment", "필터 결과 수신: startDate=$startDate, endDate=$endDate, periodLabel=$periodLabel")
+            
             binding.textViewFilterLabel.text = "$periodLabel 내역보기"
             
             // 트랜잭션 타입 필터 저장 (기존 티커 필터는 유지)
             currentTransactionTypeFilters = types.toList()
             currentStartDate = startDate ?: ""
             currentEndDate = endDate ?: ""
+            
+            Log.d("IpInvestmentFragment", "날짜 필터 업데이트: $currentStartDate ~ $currentEndDate")
             
             
             viewLifecycleOwner.lifecycleScope.launch {
@@ -140,12 +157,28 @@ class IpInvestmentFragment : Fragment(), ScrollableToTop, TickerSelectionDialogF
     
     override fun onResume() {
         super.onResume()
-        // 필터 결과가 처리 중이 아닐 때만 저장된 필터 로드
+        // 필터 결과가 처리 중이 아닐 때만 데이터 새로고침 (날짜는 사용자 설정 유지)
         if (!isFilterResultPending) {
-            Log.d("IpInvestmentFragment", "onResume: 필터 결과 처리 중이 아님, 저장된 필터 로드")
-            // 여기서 저장된 필터 상태를 복원하는 로직을 추가할 수 있음
+            Log.d("IpInvestmentFragment", "onResume: 필터 결과 처리 중이 아님")
+            
+            // 사용자가 설정한 날짜 필터가 없을 때만 기본 한달 범위로 설정
+            if (currentStartDate.isEmpty() || currentEndDate.isEmpty()) {
+                Log.d("IpInvestmentFragment", "날짜 필터가 없어서 기본 한달 범위로 설정")
+                updateDateRangeToOneMonth()
+            } else {
+                Log.d("IpInvestmentFragment", "기존 날짜 필터 유지: $currentStartDate ~ $currentEndDate")
+            }
+            
+            // 필터가 설정되지 않은 상태라면 데이터 새로고침
+            if (currentTransactionTypeFilters.isEmpty()) {
+                viewLifecycleOwner.lifecycleScope.launch {
+                    if (marketPairMap.isNotEmpty()) {
+                        loadAllData(null, currentStartDate, currentEndDate)
+                    }
+                }
+            }
         } else {
-            Log.d("IpInvestmentFragment", "onResume: 필터 결과 처리 중, 저장된 필터 로드 건너뜀")
+            Log.d("IpInvestmentFragment", "onResume: 필터 결과 처리 중, 업데이트 건너뜀")
         }
     }
 
@@ -318,53 +351,66 @@ class IpInvestmentFragment : Fragment(), ScrollableToTop, TickerSelectionDialogF
             val effectiveStartDate = startDate ?: currentStartDate
             val effectiveEndDate = endDate ?: currentEndDate
             
+            Log.d("IpInvestmentFragment", "날짜 범위: $effectiveStartDate ~ $effectiveEndDate")
+            
             // 새로운 trades API 사용
             val trades = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
                 val allTrades = mutableListOf<com.stip.stip.iptransaction.model.TradeResponse>()
                 var error: Throwable? = null
                 
-                if (effectiveStartDate.isNotEmpty() && effectiveEndDate.isNotEmpty() && marketPairMap.isNotEmpty()) {
-                    // 필터링할 마켓 페어 결정
-                    val targetMarketPairs = if (currentTickerFilter != null) {
-                        // 특정 티커가 선택된 경우 해당 마켓 페어만
-                        marketPairMap.filter { (_, symbol) -> 
+                if (effectiveStartDate.isNotEmpty() && effectiveEndDate.isNotEmpty()) {
+                    if (currentTickerFilter != null) {
+                        // 특정 티커가 선택된 경우 해당 마켓 페어에 대해서만 조회
+                        val targetMarketPairs = marketPairMap.filter { (_, symbol) -> 
                             symbol.substringBefore("/") == currentTickerFilter 
                         }
-                    } else {
-                        // 전체 선택된 경우 모든 마켓 페어
-                        marketPairMap
-                    }
-                    
-                    if (targetMarketPairs.isNotEmpty()) {
-                        val latch = java.util.concurrent.CountDownLatch(targetMarketPairs.size)
                         
-                        // 선택된 마켓 페어에 대해서만 trades API 호출
-                        targetMarketPairs.forEach { (marketPairId, symbol) ->
-                            IpTransactionService.getTrades(marketPairId, effectiveStartDate, effectiveEndDate) { tradeListResponse, err ->
-                                if (err != null) {
-                                    Log.e("IpInvestmentFragment", "Trades API 호출 실패: $marketPairId", err)
-                                    error = err
-                                } else {
-                                    tradeListResponse?.data?.let { trades ->
-                                        allTrades.addAll(trades)
-                                        Log.d("IpInvestmentFragment", "마켓 페어 $symbol: ${trades.size}개 거래")
+                        if (targetMarketPairs.isNotEmpty()) {
+                            val latch = java.util.concurrent.CountDownLatch(targetMarketPairs.size)
+                            
+                            // 선택된 마켓 페어에 대해서만 trades API 호출
+                            targetMarketPairs.forEach { (marketPairId, symbol) ->
+                                IpTransactionService.getTrades(marketPairId, effectiveStartDate, effectiveEndDate) { tradeListResponse, err ->
+                                    if (err != null) {
+                                        Log.e("IpInvestmentFragment", "Trades API 호출 실패: $marketPairId", err)
+                                        error = err
+                                    } else {
+                                        tradeListResponse?.data?.let { trades ->
+                                            allTrades.addAll(trades)
+                                            Log.d("IpInvestmentFragment", "마켓 페어 $symbol: ${trades.size}개 거래")
+                                        }
                                     }
+                                    latch.countDown()
                                 }
-                                latch.countDown()
                             }
+                            
+                            // 모든 API 호출이 완료될 때까지 대기
+                            latch.await()
+                        } else {
+                            Log.d("IpInvestmentFragment", "필터링된 마켓 페어가 없음")
+                        }
+                    } else {
+                        // 전체 선택된 경우 단일 API 호출로 모든 거래 조회
+                        val latch = java.util.concurrent.CountDownLatch(1)
+                        
+                        IpTransactionService.getAllTrades(effectiveStartDate, effectiveEndDate) { tradeListResponse, err ->
+                            if (err != null) {
+                                Log.e("IpInvestmentFragment", "전체 거래내역 API 호출 실패", err)
+                                error = err
+                            } else {
+                                tradeListResponse?.data?.let { trades ->
+                                    allTrades.addAll(trades)
+                                    Log.d("IpInvestmentFragment", "전체 거래내역: ${trades.size}개 거래")
+                                }
+                            }
+                            latch.countDown()
                         }
                         
-                        // 모든 API 호출이 완료될 때까지 대기
+                        // API 호출 완료까지 대기
                         latch.await()
-                    } else {
-                        Log.d("IpInvestmentFragment", "필터링된 마켓 페어가 없음")
                     }
                 } else {
-                    if (marketPairMap.isEmpty()) {
-                        Log.d("IpInvestmentFragment", "마켓 페어 정보가 없음")
-                    } else {
-                        Log.d("IpInvestmentFragment", "날짜 범위가 설정되지 않음")
-                    }
+                    Log.d("IpInvestmentFragment", "날짜 범위가 설정되지 않음: startDate=$effectiveStartDate, endDate=$effectiveEndDate")
                 }
                 
                 if (error != null) throw error!!

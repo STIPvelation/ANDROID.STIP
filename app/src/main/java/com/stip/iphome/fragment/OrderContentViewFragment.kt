@@ -261,6 +261,15 @@ class OrderContentViewFragment : Fragment(), OnOrderBookItemClickListener {
                         binding.editTextQuantity.setText("")
                         binding.editTextTriggerPrice?.setText("")
                         
+                        // 퍼센트 스피너 초기화 ("가능"으로 리셋)
+                        try {
+                            if (binding.spinnerAvailableQuantity.adapter?.count ?: 0 > 0) {
+                                binding.spinnerAvailableQuantity.setSelection(0, false)
+                            }
+                        } catch (e: Exception) {
+                            Log.e(TAG, "퍼센트 스피너 초기화 에러", e)
+                        }
+                        
                         uiStateManager.handleTabSelection(it.position)
                         
                         // 탭 변경 시 API 데이터 새로고침 후 UI 업데이트
@@ -497,7 +506,7 @@ class OrderContentViewFragment : Fragment(), OnOrderBookItemClickListener {
         
         // 실제 주문 삭제 API 호출
         Log.d(TAG, "주문 삭제 API 호출 시작: $orderIds")
-        deleteOrdersSequentially(orderIds)
+        deleteOrdersBatch(orderIds)
     }
     
     /**
@@ -528,10 +537,10 @@ class OrderContentViewFragment : Fragment(), OnOrderBookItemClickListener {
     }
     
     /**
-     * 주문들을 순차적으로 삭제합니다.
+     * 주문들을 일괄 삭제합니다.
      * @param orderIds 삭제할 주문 ID 리스트
      */
-    private fun deleteOrdersSequentially(orderIds: List<String>) {
+    private fun deleteOrdersBatch(orderIds: List<String>) {
         if (orderIds.isEmpty()) {
             Log.w(TAG, "삭제할 주문 ID가 없습니다.")
             isCancellingOrders = false
@@ -541,58 +550,68 @@ class OrderContentViewFragment : Fragment(), OnOrderBookItemClickListener {
             return
         }
 
-        var successCount = 0
-        var failCount = 0
-        
-        // 각 주문을 개별적으로 처리
+        // 새로운 다중 주문 취소 API 사용
         CoroutineScope(Dispatchers.IO).launch {
-            for (orderId in orderIds) {
-                try {
-                    Log.d(TAG, "주문 삭제 API 호출: $orderId")
-                    val response = orderService.deleteOrder(orderId)
-                    
-                    if (response.isSuccessful) {
-                        val deleteResponse = response.body()
-                        if (deleteResponse?.success == true) {
-                            successCount++
-                            Log.d(TAG, "주문 삭제 성공: $orderId - ${deleteResponse.message}")
-                        } else {
-                            failCount++
-                            Log.e(TAG, "주문 삭제 실패: $orderId - ${deleteResponse?.message ?: "알 수 없는 오류"}")
-                        }
-                    } else {
-                        failCount++
-                        Log.e(TAG, "주문 삭제 HTTP 오류: $orderId - ${response.code()}: ${response.message()}")
-                    }
-                } catch (e: Exception) {
-                    failCount++
-                    Log.e(TAG, "주문 삭제 예외 발생: $orderId", e)
-                }
-            }
-
-            // 모든 주문 취소 완료 후 UI 업데이트
-            CoroutineScope(Dispatchers.Main).launch {
-                // 로딩 상태 비활성화
-                isCancellingOrders = false
-                unfilledOrderAdapter.setCancellingOrdersState(false)
-                historyManager.setCancellingOrdersState(false)
-                showCancellationLoading(false)
+            try {
+                Log.d(TAG, "다중 주문 삭제 API 호출: $orderIds")
+                val orderCancelRequest = com.stip.stip.order.data.OrderCancelRequest(orderIds = orderIds)
+                val response = orderService.cancelOrders(orderCancelRequest)
                 
                 val totalCount = orderIds.size
-                val resultMessage = when {
-                    failCount == 0 -> "${totalCount}개 주문이 취소되었습니다."
-                    successCount == 0 -> "모든 주문 취소에 실패했습니다."
-                    else -> "${successCount}개 성공, ${failCount}개 실패"
+                val resultMessage: String
+                val isSuccess: Boolean
+                
+                if (response.isSuccessful) {
+                    val deleteResponse = response.body()
+                    if (deleteResponse?.success == true) {
+                        isSuccess = true
+                        resultMessage = "${totalCount}개 주문이 취소되었습니다."
+                        Log.d(TAG, "다중 주문 삭제 성공 - ${deleteResponse.message}")
+                    } else {
+                        isSuccess = false
+                        resultMessage = "주문 취소에 실패했습니다: ${deleteResponse?.message ?: "알 수 없는 오류"}"
+                        Log.e(TAG, "다중 주문 삭제 실패 - ${deleteResponse?.message ?: "알 수 없는 오류"}")
+                    }
+                } else {
+                    isSuccess = false
+                    resultMessage = "주문 취소에 실패했습니다: HTTP ${response.code()}"
+                    Log.e(TAG, "다중 주문 삭제 HTTP 오류 - ${response.code()}: ${response.message()}")
                 }
-
-                Toast.makeText(context, resultMessage, Toast.LENGTH_LONG).show()
                 
-                // 주문 취소 완료 후 잔액 새로고침 (성공/실패 관계없이)
-                orderDataCoordinator.refreshBalance()
+                // UI 업데이트는 메인 스레드에서
+                CoroutineScope(Dispatchers.Main).launch {
+                    // 로딩 상태 비활성화
+                    isCancellingOrders = false
+                    unfilledOrderAdapter.setCancellingOrdersState(false)
+                    historyManager.setCancellingOrdersState(false)
+                    showCancellationLoading(false)
+                    
+                    Toast.makeText(context, resultMessage, Toast.LENGTH_LONG).show()
+                    
+                    // 주문 취소 완료 후 잔액 새로고침 (성공/실패 관계없이)
+                    orderDataCoordinator.refreshBalance()
+                    
+                    // 성공한 경우에만 목록 새로고침
+                    if (isSuccess) {
+                        refreshUnfilledOrdersOnce()
+                    }
+                }
                 
-                // 성공한 주문이 있으면 목록 새로고침 (한 번만)
-                if (successCount > 0) {
-                    refreshUnfilledOrdersOnce()
+            } catch (e: Exception) {
+                Log.e(TAG, "다중 주문 삭제 예외 발생", e)
+                
+                // UI 업데이트는 메인 스레드에서
+                CoroutineScope(Dispatchers.Main).launch {
+                    // 로딩 상태 비활성화
+                    isCancellingOrders = false
+                    unfilledOrderAdapter.setCancellingOrdersState(false)
+                    historyManager.setCancellingOrdersState(false)
+                    showCancellationLoading(false)
+                    
+                    Toast.makeText(context, "주문 취소 중 오류가 발생했습니다", Toast.LENGTH_LONG).show()
+                    
+                    // 오류 발생 시에도 잔액 새로고침
+                    orderDataCoordinator.refreshBalance()
                 }
             }
         }
