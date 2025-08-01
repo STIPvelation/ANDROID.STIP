@@ -14,8 +14,9 @@ import com.stip.stip.signup.utils.PreferenceUtil
  * API 서버와의 통신을 담당하는 인스턴스를 생성하고 관리
  */
 object RetrofitClient {
-    private const val ENGINE_URL = "http://34.64.197.80:5000/"
-    private const val TAPI_URL = "https://tapi.sharetheip.com/"
+    private const val isProduction = true;
+    private val API_URL =
+        if (isProduction) "https://api.sharetheip.com/" else "https://tapi.sharetheip.com/"
     private const val TIMEOUT = 30L // 30초 타임아웃
     
     private val okHttpClient by lazy {
@@ -70,7 +71,7 @@ object RetrofitClient {
     // 인증이 필요없는 API 서비스용 Retrofit 인스턴스
     private val retrofit: Retrofit by lazy {
         Retrofit.Builder()
-            .baseUrl(TAPI_URL)
+            .baseUrl(API_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -79,7 +80,7 @@ object RetrofitClient {
     // 인증이 필요한 API 서비스용 Retrofit 인스턴스
     private val authRetrofit: Retrofit by lazy {
         Retrofit.Builder()
-            .baseUrl(TAPI_URL)
+            .baseUrl(API_URL)
             .client(authOkHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -157,7 +158,7 @@ object RetrofitClient {
     // 엔진 서버용 Retrofit 인스턴스
     private val engineRetrofit: Retrofit by lazy {
         Retrofit.Builder()
-            .baseUrl(ENGINE_URL)
+            .baseUrl(API_URL)
             .client(engineOkHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -166,7 +167,7 @@ object RetrofitClient {
     // TAPI 서버용 Retrofit 인스턴스
     private val tapiRetrofit: Retrofit by lazy {
         Retrofit.Builder()
-            .baseUrl(TAPI_URL)
+            .baseUrl(API_URL)
             .client(tapiOkHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()

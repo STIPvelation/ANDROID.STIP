@@ -11,22 +11,25 @@ import retrofit2.http.GET
 interface IpInfoApiService {
     @GET("api/v1/ip/trend/top")
     suspend fun getTopRisingIps(): Response<IpTrendResponse>
-    
+
     @GET("api/v1/ip/trend/top")
     suspend fun getTopRisingIps(@retrofit2.http.Query("period") period: String): Response<IpTrendResponse>
-    
+
     @GET("api/v1/ip/index")
     suspend fun getStipIndices(): Response<StipIndexResponse>
-    
+
     @GET("api/v1/fx/rates")
     suspend fun getFxRates(): Response<FxRateResponse>
-    
+
     companion object {
-        private const val TAPI_URL = "https://tapi.sharetheip.com/"
-        
+        private const val isProduction = true;
+        private val API_URL =
+            if (isProduction) "https://api.sharetheip.com/" else "https://tapi.sharetheip.com/"
+
+
         fun create(): IpInfoApiService {
             return Retrofit.Builder()
-                .baseUrl(TAPI_URL)
+                .baseUrl(API_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(IpInfoApiService::class.java)

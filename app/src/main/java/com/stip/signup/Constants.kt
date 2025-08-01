@@ -1,5 +1,7 @@
 package com.stip.stip.signup
 
+import com.stip.stip.api.RetrofitClient
+
 object Constants {
 
     const val TAG = "STIP LOG"
@@ -22,8 +24,8 @@ object Constants {
     const val PREF_KEY_AUTH_TOKEN_VALUE = "PREF_KEY_AUTH_TOKEN_VALUE"
 
     /** Basic Login Type */
-    const val BASIC_LOGIN_TYPE_PIN_NUMBER       = "PIN_NUMBER"
-    const val BASIC_LOGIN_TYPE_BIOMETRIC_AUTH   = "BIOMETRIC_AUTH"
+    const val BASIC_LOGIN_TYPE_PIN_NUMBER = "PIN_NUMBER"
+    const val BASIC_LOGIN_TYPE_BIOMETRIC_AUTH = "BIOMETRIC_AUTH"
 
     /** 외부 연동 Key */
     const val KAKAO_LOCATION_KEY = "KakaoAK fcd7adc40e4d47b076bec34a54306599"
@@ -32,16 +34,16 @@ object Constants {
     const val USBE_OCR_KEY = "xC2Wyj4EJRX!p4Y"
 
     /** Bundle Key */
-    const val BUNDLE_AUTH_DI_KEY =  "BUNDLE_AUTH_DI_KEY"
-    const val BUNDLE_AUTH_NAME_KEY =  "BUNDLE_AUTH_NAME_KEY"
-    const val BUNDLE_SELECT_BANK_KEY =  "BUNDLE_SELECT_BANK_KEY"
-    const val BUNDLE_ACCOUNT_NAME_KEY =  "BUNDLE_ACCOUNT_NAME_KEY"
-    const val BUNDLE_ACCOUNT_NUMBER_KEY =  "BUNDLE_ACCOUNT_NUMBER_KEY"
-    const val BUNDLE_REQUEST_NO_KEY =  "BUNDLE_REQUEST_NO_KEY"
-    const val BUNDLE_REQUEST_RESPONSE_UNIQUE_ID_KEY =  "BUNDLE_REQUEST_RESPONSE_UNIQUE_ID_KEY"
-    const val BUNDLE_KYC_LAST_NAME_KEY =  "BUNDLE_KYC_LAST_NAME_KEY"
-    const val BUNDLE_KYC_FIRST_NAME_KEY =  "BUNDLE_KYC_FIRST_NAME_KEY"
-    const val BUNDLE_KYC_ADDRESS_KEY =  "BUNDLE_KYC_ADDRESS_KEY"
+    const val BUNDLE_AUTH_DI_KEY = "BUNDLE_AUTH_DI_KEY"
+    const val BUNDLE_AUTH_NAME_KEY = "BUNDLE_AUTH_NAME_KEY"
+    const val BUNDLE_SELECT_BANK_KEY = "BUNDLE_SELECT_BANK_KEY"
+    const val BUNDLE_ACCOUNT_NAME_KEY = "BUNDLE_ACCOUNT_NAME_KEY"
+    const val BUNDLE_ACCOUNT_NUMBER_KEY = "BUNDLE_ACCOUNT_NUMBER_KEY"
+    const val BUNDLE_REQUEST_NO_KEY = "BUNDLE_REQUEST_NO_KEY"
+    const val BUNDLE_REQUEST_RESPONSE_UNIQUE_ID_KEY = "BUNDLE_REQUEST_RESPONSE_UNIQUE_ID_KEY"
+    const val BUNDLE_KYC_LAST_NAME_KEY = "BUNDLE_KYC_LAST_NAME_KEY"
+    const val BUNDLE_KYC_FIRST_NAME_KEY = "BUNDLE_KYC_FIRST_NAME_KEY"
+    const val BUNDLE_KYC_ADDRESS_KEY = "BUNDLE_KYC_ADDRESS_KEY"
 
     /** Network Error Code */
     const val NETWORK_DUPLICATE_ERROR_CODE = 409
@@ -50,5 +52,9 @@ object Constants {
     const val NETWORK_LOGIN_FAIL_CODE = 888
 
     /** 나이스페이 */
-    const val NICE_PAY_AUTH_URL = "https://tapi.sharetheip.com/web/pass"
+    const val isProduction = true;
+    private val API_URL =
+        if (isProduction) "https://api.sharetheip.com/" else "https://tapi.sharetheip.com/"
+    val NICE_PAY_AUTH_URL =
+        if (isProduction) "https://api.sharetheip.com/web/pass" else "https://tapi.sharetheip.com/web/pass"
 }
