@@ -104,8 +104,9 @@ interface IpTransactionApi {
 }
 
 object IpTransactionService {
-    private const val TAPI_URL = "https://tapi.sharetheip.com/"
-    private const val ENGINE_URL = "http://34.64.197.80:5000/"
+    private const val isProduction = true;
+    private val API_URL =
+        if (isProduction) "https://api.sharetheip.com/" else "https://tapi.sharetheip.com/"
     private const val X_API_KEY: String = "AIzaSyAM4J1XFF6SAkXeY78ONDyRtgo3mhk78kE"
     
     private val okHttpClient = OkHttpClient.Builder()
@@ -130,14 +131,14 @@ object IpTransactionService {
         .build()
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl(TAPI_URL)
+        .baseUrl(API_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .client(okHttpClient)
         .build()
         
     // 엔진 서버용 Retrofit 인스턴스
     private val engineRetrofit = Retrofit.Builder()
-        .baseUrl(ENGINE_URL)
+        .baseUrl(API_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .client(okHttpClient)
         .build()
@@ -230,7 +231,7 @@ object IpTransactionService {
         callback: (List<ApiOrderResponse>?, Throwable?) -> Unit
     ) {
         Log.d("IpTransactionService", "미체결 주문 조회 호출: $memberId, page: $page, limit: $limit")
-        Log.d("IpTransactionService", "API URL: ${TAPI_URL}api/orders?userId=$memberId&status=open&page=$page&limit=$limit")
+        Log.d("IpTransactionService", "API URL: ${API_URL}api/orders?userId=$memberId&status=open&page=$page&limit=$limit")
         
         ipTransactionApi.getOrders(memberId, "open", page, limit).enqueue(
             object : retrofit2.Callback<OrderListResponse> {
@@ -288,7 +289,7 @@ object IpTransactionService {
         callback: (List<ApiOrderResponse>?, Throwable?) -> Unit
     ) {
         Log.d("IpTransactionService", "체결 주문 조회 호출: $memberId, page: $page, limit: $limit")
-        Log.d("IpTransactionService", "API URL: ${TAPI_URL}api/orders?userId=$memberId&status=filled&page=$page&limit=$limit")
+        Log.d("IpTransactionService", "API URL: ${API_URL}api/orders?userId=$memberId&status=filled&page=$page&limit=$limit")
         
         ipTransactionApi.getOrders(memberId, "filled", page, limit).enqueue(
             object : retrofit2.Callback<OrderListResponse> {
@@ -344,7 +345,7 @@ object IpTransactionService {
         callback: (List<ApiOrderResponse>?, Throwable?) -> Unit
     ) {
         Log.d("IpTransactionService", "미체결 주문 조회 호출: marketPairId=$marketPairId, status=open")
-        Log.d("IpTransactionService", "API URL: ${TAPI_URL}api/orders?marketPairId=$marketPairId&status=open")
+        Log.d("IpTransactionService", "API URL: ${API_URL}api/orders?marketPairId=$marketPairId&status=open")
         
         ipTransactionApi.getOrdersByMarketPair(marketPairId, "open").enqueue(
             object : retrofit2.Callback<OrderListResponse> {
@@ -400,7 +401,7 @@ object IpTransactionService {
         callback: (List<ApiOrderResponse>?, Throwable?) -> Unit
     ) {
         Log.d("IpTransactionService", "체결된 주문 조회 호출: marketPairId=$marketPairId, status=filled")
-        Log.d("IpTransactionService", "API URL: ${TAPI_URL}api/orders?marketPairId=$marketPairId&status=filled")
+        Log.d("IpTransactionService", "API URL: ${API_URL}api/orders?marketPairId=$marketPairId&status=filled")
         
         ipTransactionApi.getOrdersByMarketPair(marketPairId, "filled").enqueue(
             object : retrofit2.Callback<OrderListResponse> {
@@ -457,7 +458,7 @@ object IpTransactionService {
         callback: (List<TradeResponse>?, Throwable?) -> Unit
     ) {
         Log.d("IpTransactionService", "체결 내역 조회 호출: marketPairId=$marketPairId, status=$status")
-        Log.d("IpTransactionService", "API URL: ${TAPI_URL}api/trades?marketPairId=$marketPairId&status=$status")
+        Log.d("IpTransactionService", "API URL: ${API_URL}api/trades?marketPairId=$marketPairId&status=$status")
         
         ipTransactionApi.getTradesByStatus(marketPairId, status).enqueue(
             object : retrofit2.Callback<TradeListResponse> {
@@ -500,7 +501,7 @@ object IpTransactionService {
         callback: (TradeListResponse?, Throwable?) -> Unit
     ) {
         Log.d("IpTransactionService", "새로운 체결 내역 조회 호출: marketPairId=$marketPairId, startDate=$startDate, endDate=$endDate")
-        Log.d("IpTransactionService", "API URL: ${TAPI_URL}api/trades?marketPairId=$marketPairId&startDate=$startDate&endDate=$endDate")
+        Log.d("IpTransactionService", "API URL: ${API_URL}api/trades?marketPairId=$marketPairId&startDate=$startDate&endDate=$endDate")
         
         ipTransactionApi.getTrades(marketPairId, startDate, endDate).enqueue(
             object : retrofit2.Callback<TradeListResponse> {
@@ -542,7 +543,7 @@ object IpTransactionService {
         callback: (TradeListResponse?, Throwable?) -> Unit
     ) {
         Log.d("IpTransactionService", "모든 체결 내역 조회 호출: startDate=$startDate, endDate=$endDate")
-        Log.d("IpTransactionService", "API URL: ${TAPI_URL}api/trades?startDate=$startDate&endDate=$endDate")
+        Log.d("IpTransactionService", "API URL: ${API_URL}api/trades?startDate=$startDate&endDate=$endDate")
         
         ipTransactionApi.getAllTrades(startDate, endDate).enqueue(
             object : retrofit2.Callback<TradeListResponse> {
@@ -668,7 +669,7 @@ object IpTransactionService {
         limit: Int = 10,
         callback: (OrderListResponse?, Throwable?) -> Unit
     ) {
-        Log.d("IpTransactionService", "주문 내역 조회 시작: ${TAPI_URL}api/orders?userId=$memberId&status=$status&page=$page&limit=$limit")
+        Log.d("IpTransactionService", "주문 내역 조회 시작: ${API_URL}api/orders?userId=$memberId&status=$status&page=$page&limit=$limit")
         
         ipTransactionApi.getOrders(memberId, status, page, limit).enqueue(
             object : retrofit2.Callback<OrderListResponse> {
@@ -709,7 +710,7 @@ object IpTransactionService {
         endDate: String,
         callback: (OrderListResponse?, Throwable?) -> Unit
     ) {
-        Log.d("IpTransactionService", "기간별 주문 내역 조회 시작: ${TAPI_URL}api/orders?startDate=$startDate&endDate=$endDate")
+        Log.d("IpTransactionService", "기간별 주문 내역 조회 시작: ${API_URL}api/orders?startDate=$startDate&endDate=$endDate")
         
         ipTransactionApi.getOrdersByDateRange(startDate, endDate).enqueue(
             object : retrofit2.Callback<OrderListResponse> {
@@ -750,7 +751,7 @@ object IpTransactionService {
         callback: (PortfolioIPResponseDto?, Throwable?) -> Unit
     ) {
         Log.d("IpTransactionService", "포트폴리오 조회 호출: $userId")
-        Log.d("IpTransactionService", "API URL: ${TAPI_URL}api/portfolio?userId=$userId")
+        Log.d("IpTransactionService", "API URL: ${API_URL}api/portfolio?userId=$userId")
         
         ipTransactionApi.getPortfolio(userId).enqueue(
             object : retrofit2.Callback<PortfolioIPResponseDto> {

@@ -338,7 +338,9 @@ class TradingChartFragment : Fragment() {
     companion object {
         private const val ARG_TICKER = "ticker"
         private const val TAG = "TradingChart"
-        private const val API_BASE_URL = "https://tapi.sharetheip.com"
+        private val isProduction = true;
+        private val API_URL =
+            if (isProduction) "https://api.sharetheip.com" else "https://tapi.sharetheip.com"
 
         fun newInstance(ticker: String?): TradingChartFragment {
             return TradingChartFragment().apply {
@@ -690,7 +692,7 @@ class TradingChartFragment : Fragment() {
 
     private suspend fun getPairIdForTicker(ticker: String): String? = withContext(Dispatchers.IO) {
         try {
-            val url = URL("$API_BASE_URL/api/market/pairs")
+            val url = URL("$API_URL/api/market/pairs")
             val connection = url.openConnection()
             val reader = BufferedReader(InputStreamReader(connection.getInputStream()))
             val response = StringBuilder()
@@ -725,7 +727,7 @@ class TradingChartFragment : Fragment() {
             calendar.add(Calendar.MONTH, -3)
             val startDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
 
-            val url = URL("$API_BASE_URL/api/tickers/hourly?marketPairId=$pairId&from=$startDate&to=$endDate")
+            val url = URL("$API_URL/api/tickers/hourly?marketPairId=$pairId&from=$startDate&to=$endDate")
             val connection = url.openConnection()
             val reader = BufferedReader(InputStreamReader(connection.getInputStream()))
             val response = StringBuilder()
@@ -768,7 +770,7 @@ class TradingChartFragment : Fragment() {
             calendar.add(Calendar.YEAR, -1)
             val startDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
 
-            val url = URL("$API_BASE_URL/api/tickers/daily?marketPairId=$pairId&from=$startDate&to=$endDate")
+            val url = URL("$API_URL/api/tickers/daily?marketPairId=$pairId&from=$startDate&to=$endDate")
             val connection = url.openConnection()
             val reader = BufferedReader(InputStreamReader(connection.getInputStream()))
             val response = StringBuilder()

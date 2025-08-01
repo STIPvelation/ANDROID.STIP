@@ -27,10 +27,12 @@ import com.stip.stip.api.service.MarketPairsService
 @InstallIn(SingletonComponent::class)
 object ApiModule {
 
-    private const val TAPI_URL: String = "https://tapi.sharetheip.com/"
+    private const val isProduction = true;
+    private val API_URL =
+        if (isProduction) "https://api.sharetheip.com/" else "https://tapi.sharetheip.com/"
+
     const val KAKAO_BASE_URL: String = "https://dapi.kakao.com/"
     private const val X_API_Key: String = "AIzaSyAM4J1XFF6SAkXeY78ONDyRtgo3mhk78kE"
-    private const val Authorization: String = ""
 
     private const val HTTP_CONNECT_TIMEOUT: Long = 20
     private const val HTTP_WRITE_TIMEOUT: Long = 60
@@ -94,7 +96,7 @@ object ApiModule {
     fun provideAuthService(): AuthService {
         return Retrofit.Builder()
             .client(provideOkhttpClient())
-            .baseUrl(TAPI_URL)
+            .baseUrl(API_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(CoroutinesResponseCallAdapterFactory.create())
             .build()
@@ -106,7 +108,7 @@ object ApiModule {
     fun provideMemberService(): MemberService {
         return Retrofit.Builder()
             .client(provideOkhttpClient())
-            .baseUrl(TAPI_URL)
+            .baseUrl(API_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(CoroutinesResponseCallAdapterFactory.create())
             .build()
@@ -130,7 +132,7 @@ object ApiModule {
     fun provideTapiHourlyDataService(): TapiHourlyDataService {
         return Retrofit.Builder()
             .client(provideOkhttpClient())
-            .baseUrl(TAPI_URL)
+            .baseUrl(API_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(CoroutinesResponseCallAdapterFactory.create())
             .build()
@@ -142,7 +144,7 @@ object ApiModule {
     fun provideMarketPairsService(): MarketPairsService {
         return Retrofit.Builder()
             .client(provideOkhttpClient())
-            .baseUrl(TAPI_URL)
+            .baseUrl(API_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(CoroutinesResponseCallAdapterFactory.create())
             .build()
@@ -154,7 +156,7 @@ object ApiModule {
     fun provideTapiDailyDataService(): TapiDailyDataService {
         return Retrofit.Builder()
             .client(provideOkhttpClient())
-            .baseUrl(TAPI_URL)
+            .baseUrl(API_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(CoroutinesResponseCallAdapterFactory.create())
             .build()
