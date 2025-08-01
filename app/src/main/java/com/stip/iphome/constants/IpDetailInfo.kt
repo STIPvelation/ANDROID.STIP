@@ -50,7 +50,7 @@ object IpDetailInfo {
      */
     private val tickerToBusinessPlan = mapOf<String, String>(
         "WETALK" to "https://drive.google.com/file/d/1tsdU2Pc8eMl0cazPNgW-nWJwuCXknmNh/view?usp=sharing",
-        "IJECT" to "https://drive.google.com/file/d/1ZFR3dLPIcFspA7L9sP_ohuOhCLdmfc6p/view?usp=sharing",
+        "IJECT" to "https://drive.google.com/file/d/1hsZT7pHEckC6w0MM3jkNeRjybitdUuDt/view?usp=sharing",
         "MDM" to "https://drive.google.com/file/d/1WPfcTgrCGdftDrESh4p6_zllR9JDJrqj/view?usp=sharing",
         "KATV" to "https://drive.google.com/file/d/1ajFZTEZrv3zXyCK8NaWIXRUdJILUk2Ea/view?usp=sharing",
         "KCOT" to "https://drive.google.com/file/d/1dcyyt2rq6STBK57yPec-LLivf2_JmhPR/view?usp=sharing",
@@ -99,17 +99,17 @@ object IpDetailInfo {
      * 티커별 실시권(License) 관련 Google Drive 문서 URL 정보를 저장
      */
     private val tickerToLicense = mapOf<String, String>(
-        "AXNO" to "https://docs.google.com/document/d/10rzjXHKAEEN2QNfjmmBdA2APoCxR2BXv/edit?usp=sharing",
-        "MSK" to "https://docs.google.com/document/d/1n1ICgtb_2cHhWgesv3_GuiA3HsDGRDYZ/edit?usp=sharing",
-        "CDM" to "https://docs.google.com/document/d/1n2mfS8HZyMzTKaRS40-l-Loz29H8dXsW/edit?usp=sharing",
-        "IJECT" to "https://docs.google.com/document/d/11acX5-1tR3ktE3HU8uEu4oi2DEc9rCcW/edit?usp=sharing",
-        "KATV" to "https://docs.google.com/document/d/16CJZGbLnz7_FB5zWFkj3TP_PKkyR5dso/edit?usp=sharing",
-        "JWV" to "https://docs.google.com/document/d/1RMooP-Y_6Cn-CTGZQz7rGSZsjd--_Ob-/edit?usp=sharing",
-        "MDM" to "https://docs.google.com/document/d/1ZewIu7ie99GInWyWyg99bPZo8_vjvOqt/edit?usp=sharing",
-        "SMT" to "https://docs.google.com/document/d/1rkN24N250phQ38zWt2GSvfGvBP5IQYb-/edit?usp=sharing",
-        "WETALK" to "https://docs.google.com/document/d/1tsdU2Pc8eMl0cazPNgW-nWJwuCXknmNh/edit?usp=sharing",
-        "KCOT" to "https://docs.google.com/document/d/1dcyyt2rq6STBK57yPec-LLivf2_JmhPR/edit?usp=sharing",
-        "SLEEP" to "https://docs.google.com/document/d/10-oAZ4HdmQnKjLE1i6_l2BM1jk8wC6vQ/edit?usp=sharing"
+        "AXNO" to "https://docs.google.com/document/d/10rzjXHKAEEN2QNfjmmBdA2APoCxR2BXv/view?usp=sharing",
+        "MSK" to "https://docs.google.com/document/d/1n1ICgtb_2cHhWgesv3_GuiA3HsDGRDYZ/view?usp=sharing",
+        "CDM" to "https://docs.google.com/document/d/1n2mfS8HZyMzTKaRS40-l-Loz29H8dXsW/view?usp=sharing",
+        "IJECT" to "https://docs.google.com/document/d/11acX5-1tR3ktE3HU8uEu4oi2DEc9rCcW/view?usp=sharing",
+        "KATV" to "https://docs.google.com/document/d/16CJZGbLnz7_FB5zWFkj3TP_PKkyR5dso/view?usp=sharing",
+        "JWV" to "https://docs.google.com/document/d/1RMooP-Y_6Cn-CTGZQz7rGSZsjd--_Ob-/view?usp=sharing",
+        "MDM" to "https://docs.google.com/document/d/1ZewIu7ie99GInWyWyg99bPZo8_vjvOqt/view?usp=sharing",
+        "SMT" to "https://docs.google.com/document/d/1rkN24N250phQ38zWt2GSvfGvBP5IQYb-/view?usp=sharing",
+        "WETALK" to "https://docs.google.com/document/d/1tsdU2Pc8eMl0cazPNgW-nWJwuCXknmNh/view?usp=sharing",
+        "KCOT" to "https://docs.google.com/document/d/1dcyyt2rq6STBK57yPec-LLivf2_JmhPR/view?usp=sharing",
+        "SLEEP" to "https://drive.google.com/file/d/1wOPBZlW43O6hpK9_eDU0yjmEO8QhpQE-/view?usp=sharing"
     )
 
     /**
@@ -240,13 +240,13 @@ object IpDetailInfo {
         }?.value
 
         android.util.Log.d("IpDetailInfo", "Found license URL for $upperBaseTicker: $result")
-        
+
         // 사업계획 URL과 비교
         val businessPlanUrl = getBusinessPlanForTicker(ticker)
         if (result == businessPlanUrl) {
             android.util.Log.w("IpDetailInfo", "WARNING: License URL matches Business Plan URL!")
         }
-        
+
         val finalResult = result ?: defaultValue ?: DEFAULT_VALUE
         android.util.Log.d("IpDetailInfo", "Final license URL: $finalResult")
         android.util.Log.d("IpDetailInfo", "=== getLicenseForTicker END ===")
