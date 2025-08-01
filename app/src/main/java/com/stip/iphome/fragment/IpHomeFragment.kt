@@ -1,5 +1,6 @@
 package com.stip.stip.iphome.fragment
 
+import android.util.Log
 import android.widget.RelativeLayout
 import android.os.Bundle
 import android.os.Handler
@@ -493,6 +494,13 @@ class IpHomeFragment : Fragment() {
         // 기존 리스트 업데이트
         fullList.clear()
         fullList.addAll(items)
+        
+        // === API 데이터 순서 디버깅 ===
+        Log.d("IpHomeFragment", "=== API에서 가져온 데이터 순서 ===")
+        items.forEachIndexed { index, item ->
+            Log.d("IpHomeFragment", "[$index] ticker: ${item.ticker}, name: ${item.name}, symbol: ${item.symbol}")
+        }
+        Log.d("IpHomeFragment", "=== API 데이터 순서 끝 ===")
         
         // 현재 필터링된 리스트 업데이트
         updateCurrentListWithFilter()
