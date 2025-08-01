@@ -31,18 +31,21 @@ import java.util.Locale
 class LoginHistoryFragment : Fragment() {
 
     // Using direct view references since databinding isn't generating binding classes
-    
+
     private val viewModel: MainViewModel by activityViewModels()
-    
+
     private val loginHistoryAdapter by lazy { LoginHistoryAdapter() }
-    
+    private val isProduction = true;
+    private val API_URL =
+        if (isProduction) "https://api.sharetheip.com/" else "https://tapi.sharetheip.com/"
+
     private val retrofit by lazy {
         Retrofit.Builder()
-            .baseUrl("https://tapi.sharetheip.com/")
+            .baseUrl(API_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
-    
+
     private val loginHistoryService by lazy {
         retrofit.create(LoginHistoryService::class.java)
     }
@@ -53,7 +56,11 @@ class LoginHistoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Using the layout resource ID directly to avoid ambiguity
-        return inflater.inflate(com.stip.stip.R.layout.fragment_more_login_history2, container, false)
+        return inflater.inflate(
+            com.stip.stip.R.layout.fragment_more_login_history2,
+            container,
+            false
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -63,27 +70,33 @@ class LoginHistoryFragment : Fragment() {
         viewModel.enableBackNavigation {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
-        
+
         setupRecyclerView()
         loadLoginHistory()
     }
-    
+
     private fun setupRecyclerView() {
-        val recyclerView = view?.findViewById<RecyclerView>(com.stip.stip.R.id.recycler_login_history)
+        val recyclerView =
+            view?.findViewById<RecyclerView>(com.stip.stip.R.id.recycler_login_history)
         recyclerView?.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = loginHistoryAdapter
-            addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
+            addItemDecoration(
+                DividerItemDecoration(
+                    requireContext(),
+                    DividerItemDecoration.VERTICAL
+                )
+            )
         }
     }
-    
+
     private fun loadLoginHistory() {
         val progressBar = view?.findViewById<View>(com.stip.stip.R.id.progress_bar)
         val textNoHistory = view?.findViewById<View>(com.stip.stip.R.id.text_no_history)
-        
+
         progressBar?.visibility = View.VISIBLE
         textNoHistory?.visibility = View.GONE
-        
+
         // 2초 후에도 로딩이 계속되면 프로그레스바 숨기기
         Handler(Looper.getMainLooper()).postDelayed({
             val progressBar = view?.findViewById<View>(com.stip.stip.R.id.progress_bar)
@@ -91,14 +104,14 @@ class LoginHistoryFragment : Fragment() {
                 progressBar.visibility = View.GONE
             }
         }, 2000)
-        
+
         // JWT 토큰 가져오기
         val token = PreferenceUtil.getString("jwt_token")
         if (token.isEmpty()) {
             showNoHistoryMessage("로그인이 필요합니다")
             return
         }
-        
+
         // 로그인 이력 API 호출
         loginHistoryService.getLoginHistory("Bearer $token")
             .enqueue(object : Callback<LoginHistoryResponse> {
@@ -107,7 +120,7 @@ class LoginHistoryFragment : Fragment() {
                     response: Response<LoginHistoryResponse>
                 ) {
                     view?.findViewById<View>(R.id.progress_bar)?.visibility = View.GONE
-                    
+
                     if (response.isSuccessful) {
                         val data = response.body()?.data
                         if (data.isNullOrEmpty()) {
@@ -117,17 +130,17 @@ class LoginHistoryFragment : Fragment() {
                             val maxDevices = 3
                             val currentDevicesList = data.filter { it.isCurrentDevice }
                             val otherDevicesList = data.filter { !it.isCurrentDevice }
-                            
+
                             // 현재 디바이스는 반드시 포함하고, 나머지 공간에 다른 기기 표시
                             val finalList = currentDevicesList.toMutableList()
                             val remainingSlots = maxDevices - finalList.size
-                            
+
                             if (remainingSlots > 0 && otherDevicesList.isNotEmpty()) {
                                 finalList.addAll(otherDevicesList.take(remainingSlots))
                             }
-                            
+
                             loginHistoryAdapter.submitList(finalList)
-                            
+
                             // 최대 기기 수 알림 표시 (현재 기기 수가 3개 이상이면)
                             if (data.size > maxDevices) {
                                 Toast.makeText(
@@ -150,7 +163,7 @@ class LoginHistoryFragment : Fragment() {
                 }
             })
     }
-    
+
     private fun showNoHistoryMessage(message: String) {
         val textNoHistory = view?.findViewById<TextView>(com.stip.stip.R.id.text_no_history)
         textNoHistory?.apply {
@@ -158,56 +171,61 @@ class LoginHistoryFragment : Fragment() {
             visibility = View.VISIBLE
         }
     }
-    
+
     override fun onDestroyView() {
         super.onDestroyView()
     }
-    
+
     // 로그인 이력 어댑터
-    private inner class LoginHistoryAdapter : 
+    private inner class LoginHistoryAdapter :
         RecyclerView.Adapter<LoginHistoryAdapter.LoginHistoryViewHolder>() {
-        
+
         private var items: List<LoginHistoryItem> = emptyList()
-        
+
         fun submitList(newItems: List<LoginHistoryItem>) {
             items = newItems
             notifyDataSetChanged()
         }
-        
+
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LoginHistoryViewHolder {
             val view = LayoutInflater.from(parent.context)
                 .inflate(com.stip.stip.R.layout.item_modern_login_history, parent, false)
             return LoginHistoryViewHolder(view)
         }
-        
+
         override fun onBindViewHolder(holder: LoginHistoryViewHolder, position: Int) {
             holder.bind(items[position])
         }
-        
+
         override fun getItemCount(): Int = items.size
-        
-        inner class LoginHistoryViewHolder(itemView: View) : 
+
+        inner class LoginHistoryViewHolder(itemView: View) :
             RecyclerView.ViewHolder(itemView) {
-            
-            private val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).apply {
-                timeZone = java.util.TimeZone.getTimeZone("Asia/Seoul")
-            }
-            private val tvDateTime = itemView.findViewById<TextView>(com.stip.stip.R.id.tv_date_time)
-            private val tvDeviceValue = itemView.findViewById<TextView>(com.stip.stip.R.id.tv_device_value)
-            private val tvIpAddressValue = itemView.findViewById<TextView>(com.stip.stip.R.id.tv_ip_address_value)
-            private val tvLocationValue = itemView.findViewById<TextView>(com.stip.stip.R.id.tv_location_value)
-            
+
+            private val dateFormat =
+                SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).apply {
+                    timeZone = java.util.TimeZone.getTimeZone("Asia/Seoul")
+                }
+            private val tvDateTime =
+                itemView.findViewById<TextView>(com.stip.stip.R.id.tv_date_time)
+            private val tvDeviceValue =
+                itemView.findViewById<TextView>(com.stip.stip.R.id.tv_device_value)
+            private val tvIpAddressValue =
+                itemView.findViewById<TextView>(com.stip.stip.R.id.tv_ip_address_value)
+            private val tvLocationValue =
+                itemView.findViewById<TextView>(com.stip.stip.R.id.tv_location_value)
+
             fun bind(item: LoginHistoryItem) {
                 // 로그인 시간
                 tvDateTime.text = dateFormat.format(item.loginTime)
-                
+
                 // 디바이스 정보
                 tvDeviceValue.text = item.deviceInfo
-                
+
                 // IP 및 위치 정보
                 tvIpAddressValue.text = item.ipAddress
                 tvLocationValue.text = item.location
-                
+
                 // 현재 디바이스 표시
                 itemView.setBackgroundResource(
                     if (item.isCurrentDevice) com.stip.stip.R.color.light_blue_bg else android.R.color.transparent
