@@ -23,22 +23,13 @@
             android:layout_height="20dp"
             android:layout_marginEnd="4dp"
             android:background="@drawable/bg_ohlc_vertical"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <com.stip.stip.iphome.view.OhlcMiniBarView
                 android:id="@+id/viewOhlc"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </FrameLayout>
-
-        <ImageView
-            android:id="@+id/item_country_image"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:layout_marginEnd="4dp"
-            android:scaleType="fitCenter"
-            android:visibility="gone"
-            tools:src="@drawable/ic_launcher_foreground" />
 
         <LinearLayout
             android:layout_width="wrap_content"

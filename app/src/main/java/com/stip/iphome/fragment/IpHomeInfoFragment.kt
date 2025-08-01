@@ -84,20 +84,22 @@ class IpHomeInfoFragment : Fragment() { // <<< 인터페이스 구현 제거
         }
         Log.d(TAG, "updateUiForTicker: Updating UI for ticker = $ticker")
         
-        // name[symbol] 형식으로 표시
+        // 먼저 currentItem을 찾아서 설정
+        currentItem = TradingDataHolder.ipListingItems.firstOrNull { it.ticker == ticker }
+        
+        // 회사이름만 표시 - 티커/USD 형식 삭제
         currentItem?.let { item ->
-            
             val displayText = if (item.name.isNotBlank()) {
-                "${item.name}[${item.symbol}]"
+                item.name
             } else {
-                "${item.ticker}[${item.symbol}]"
+                item.ticker
             }
             binding.tvTickerName.text = displayText
         } ?: run {
-            binding.tvTickerName.text = getString(R.string.ticker_name_format, ticker ?: "N/A")
+            binding.tvTickerName.text = ticker ?: "N/A"
         }
 
-        // 티커 로고 설정 (이니셜과 색상)
+        // 티커 로고 설정 (이니셜과 색상) - 현재 ticker 파라미터 사용
         ticker?.let { code ->
             // 티커 이니셜 설정 (첫 두 글자 사용)
             val tickerInitials = code.take(2)
@@ -115,54 +117,30 @@ class IpHomeInfoFragment : Fragment() { // <<< 인터페이스 구현 제거
             val totalIssuanceLimit = com.stip.stip.iphome.constants.TokenIssuanceData.getTotalIssuanceLimit()
             binding.tvTotalIssuanceLimit.text = totalIssuanceLimit
             
-            // PatentRegistrationNumbers 클래스에서 특허 등록번호 가져오기
-            val registrationNumber = com.stip.stip.iphome.constants.PatentRegistrationNumbers.getRegistrationNumberForTicker(code)
-            Log.d(TAG, "설정된 등록번호: $registrationNumber (티커: $code)")
+            // PatentRegistrationNumbers 클래스에서 모든 특허 등록번호 가져오기 - 현재 ticker 파라미터 사용
+            val allRegistrationNumbers = com.stip.stip.iphome.constants.PatentRegistrationNumbers.getAllRegistrationNumbersForTicker(code)
+            Log.d(TAG, "설정된 등록번호 목록: $allRegistrationNumbers (티커: $code)")
             
-            if (registrationNumber.isBlank()) {
+            if (allRegistrationNumbers.isEmpty()) {
                 // 등록번호가 없는 경우 숨김
                 binding.registrationNumberBox.visibility = View.GONE
                 Log.d(TAG, "등록번호 없음, 숨김 처리: $code")
             } else {
-                binding.registrationNumberBox.text = registrationNumber
+                // 여러 특허 번호를 콤마와 공백으로 구분하여 가로로 표시
+                val displayText = allRegistrationNumbers.joinToString(", ")
+                binding.registrationNumberBox.text = displayText
                 binding.registrationNumberBox.visibility = View.VISIBLE
+                Log.d(TAG, "특허 등록번호 설정: $code = $displayText")
             }
         }
-
-        currentItem = TradingDataHolder.ipListingItems.firstOrNull { it.ticker == ticker }
 
         if (currentItem == null) {
             Log.w(TAG, "updateUiForTicker: No IpListingItem found for ticker = $ticker")
             // 데이터 없을 경우 UI 초기화
-            binding.registrationNumberBox.text = "정보 없음"
-            binding.recyclerViewInfoDetails.adapter = null // ID 확인 필요
-            binding.recyclerViewLicenseScope.adapter = null // ID 확인 필요
+            binding.recyclerViewInfoDetails.adapter = null
+            binding.recyclerViewLicenseScope.adapter = null
             // TODO: 사용자 알림 UI 처리 추가
             return
-        }
-
-        // 티커 등록번호 설정 (PatentRegistrationNumbers 사용 우선, 없으면 currentItem에서 가져옴)
-        val ticker = currentItem?.ticker
-        if (ticker != null) {
-            val registrationNumber = com.stip.stip.iphome.constants.PatentRegistrationNumbers.getRegistrationNumberForTicker(ticker)
-            if (registrationNumber.isBlank()) {
-                // 등록번호가 없는 경우 숨김
-                binding.registrationNumberBox.visibility = View.GONE
-                Log.d(TAG, "등록번호 없음, 숨김 처리: $ticker")
-            } else {
-                binding.registrationNumberBox.text = registrationNumber
-                binding.registrationNumberBox.visibility = View.VISIBLE
-                Log.d(TAG, "티커 등록번호: $ticker = $registrationNumber")
-            }
-        } else {
-            val regNumber = currentItem?.registrationNumber ?: ""
-            if (regNumber.isBlank()) {
-                binding.registrationNumberBox.visibility = View.GONE
-            } else {
-                binding.registrationNumberBox.text = regNumber
-                binding.registrationNumberBox.visibility = View.VISIBLE
-                Log.d(TAG, "등록번호 설정: $regNumber")
-            }
         }
 
         // 어댑터 설정 함수 호출

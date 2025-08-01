@@ -21,10 +21,16 @@ android {
     }
     signingConfigs {
         create("release") {
-            storeFile = file(project.property("RELEASE_STORE_FILE") as String)
-            storePassword = project.property("RELEASE_STORE_PASSWORD") as String
-            keyAlias = project.property("RELEASE_KEY_ALIAS") as String
-            keyPassword = project.property("RELEASE_KEY_PASSWORD") as String
+            // Only configure signing if all required properties are present
+            if (project.hasProperty("RELEASE_STORE_FILE") &&
+                project.hasProperty("RELEASE_STORE_PASSWORD") &&
+                project.hasProperty("RELEASE_KEY_ALIAS") &&
+                project.hasProperty("RELEASE_KEY_PASSWORD")) {
+                storeFile = file(project.property("RELEASE_STORE_FILE") as String)
+                storePassword = project.property("RELEASE_STORE_PASSWORD") as String
+                keyAlias = project.property("RELEASE_KEY_ALIAS") as String
+                keyPassword = project.property("RELEASE_KEY_PASSWORD") as String
+            }
         }
     }
     buildTypes {

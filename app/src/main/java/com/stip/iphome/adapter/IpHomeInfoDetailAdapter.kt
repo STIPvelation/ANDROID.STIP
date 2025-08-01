@@ -30,7 +30,14 @@ class IpHomeInfoDetailAdapter(private var items: List<IpListingItem>) :
             // tickerToBusinessNumber 맵에서 등록번호 가져오기
             val businessNumber = IpDetailInfo.getBusinessNumberForTicker(item.ticker)
             binding.tvValueRegistrationNumber.text = businessNumber.ifBlank { item.registrationNumber ?: "-" } // 등록번호
-            binding.tvValueBusinessType.text = item.businessType ?: item.category // 업태
+            
+            // 티커별 카테고리 설정: AXNO는 BM, 나머지는 특허
+            val category = when (item.ticker) {
+                "AXNO" -> "BM"
+                else -> "특허"
+            }
+            binding.tvValueBusinessType.text = category // 업태(카테고리)
+            
             binding.tvValueContactEmail.text = item.contactEmail ?: "-" // 연락처
             binding.tvValueAddressDetail.text = item.address ?: "-" // 소재지
 

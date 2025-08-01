@@ -192,9 +192,9 @@ class IpHomeFragment : Fragment() {
                         selectedCategoryId = null
                         loadInitialData()
                     } else {
-                        // 카테고리 ID로 필터링
+                        // 카테고리 이름으로 필터링
                         selectedCategoryId = categoryIdMap[category]
-                        loadFilteredDataByCategory(selectedCategoryId)
+                        loadFilteredDataByCategory(category)
                     }
                     collapseDropdown()
                 }
@@ -244,9 +244,8 @@ class IpHomeFragment : Fragment() {
                             selectedCategoryId = null
                             loadInitialData()
                         } else {
-                            // 카테고리 ID로 필터링
-                            selectedCategoryId = categoryIdMap[option]
-                            loadFilteredDataByCategory(selectedCategoryId)
+                            // 카테고리 이름으로 필터링
+                            loadFilteredDataByCategory(option)
                         }
                         scrollToTop()
                     }
@@ -388,57 +387,42 @@ class IpHomeFragment : Fragment() {
     }
 
     /**
-     * 카테고리 ID로 데이터 로드
+     * 선택된 카테고리로 필터링된 데이터 로드
+     * @param categoryName 선택된 카테고리 이름
      */
-    private fun loadCategoryData(categoryId: Int) {
-        val repository = com.stip.stip.api.repository.IpListingRepository()
-        viewLifecycleOwner.lifecycleScope.launch {
-            val apiItems = repository.getMarketPairsByCategory(categoryId)
-            fullList = apiItems.toMutableList()
-            currentList = fullList.toMutableList()
-            com.stip.stip.iphome.TradingDataHolder.ipListingItems = fullList
-            ipListingAdapter.updateItems(currentList)
-        }
-    }
-
-    /**
-     * 선택된 카테고리 ID로 필터링된 데이터 로드
-     * @param categoryId 선택된 카테고리 ID
-     */
-    private fun loadFilteredDataByCategory(categoryId: Int?) {
-        if (categoryId == null) {
+    private fun loadFilteredDataByCategory(categoryName: String?) {
+        if (categoryName == null || categoryName == "ALL IP") {
             loadInitialData()
             return
         }
         
-        val repository = com.stip.stip.api.repository.IpListingRepository()
-        
-        // 로딩 중 표시
-        fullList = emptyList<IpListingItem>().toMutableList()
-        currentList = emptyList<IpListingItem>().toMutableList()
-        ipListingAdapter.updateItems(currentList)
-        
-        viewLifecycleOwner.lifecycleScope.launch {
-            try {
-                // 카테고리 ID로 필터링된 데이터 가져오기
-                val apiItems = repository.getMarketPairsByCategory(categoryId)
-                
-                if (apiItems.isNotEmpty()) {
-                    fullList = apiItems.toMutableList()
-                    currentList = fullList.toMutableList()
-                    TradingDataHolder.ipListingItems = fullList
-                    ipListingAdapter.updateItems(currentList)
-                    android.util.Log.d("IpHomeFragment", "카테고리 필터링 완료: ${apiItems.size}개 아이템 (카테고리 ID: $categoryId)")
-                } else {
-                    loadEmptyState()
+        // 현재 전체 데이터에서 카테고리별로 필터링
+        val filteredItems = when (categoryName) {
+            "Patent" -> {
+                // AXNO를 제외한 모든 티커 (Patent 카테고리)
+                fullList.filter { item ->
+                    val tickerOnly = item.symbol.substringBefore("/")
+                    tickerOnly != "AXNO"
                 }
-            } catch (e: Exception) {
-                android.util.Log.e("IpHomeFragment", "카테고리 필터링 데이터 로드 실패: ${e.message}")
-                loadEmptyState()
+            }
+            "BM" -> {
+                // AXNO만 (BM 카테고리)
+                fullList.filter { item ->
+                    val tickerOnly = item.symbol.substringBefore("/")
+                    tickerOnly == "AXNO"
+                }
+            }
+            else -> {
+                // 다른 카테고리는 빈 리스트 반환
+                emptyList()
             }
         }
+        
+        currentList = filteredItems.toMutableList()
+        ipListingAdapter.updateItems(currentList)
+        
+        android.util.Log.d("IpHomeFragment", "카테고리 필터링 완료: ${filteredItems.size}개 아이템 (카테고리: $categoryName)")
     }
-
 
     private fun startAutoPriceUpdate() {
         priceUpdateRunnable = object : Runnable {

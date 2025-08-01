@@ -13,8 +13,8 @@
     <LinearLayout
         android:id="@+id/frame_4235"
         android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:minHeight="48dp"
+        android:layout_height="40dp"
+        android:minHeight="40dp"
         android:background="@drawable/bg_frame_rounded"
         android:gravity="center_vertical"
         android:orientation="horizontal"
@@ -65,8 +65,8 @@
     <RelativeLayout
         android:id="@+id/frame_4043"
         android:layout_width="140dp"
-        android:layout_height="48dp"
-        android:minHeight="48dp"
+        android:layout_height="32dp"
+        android:minHeight="32dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/bg_frame_fillter_rounded"
         android:paddingStart="8dp"
