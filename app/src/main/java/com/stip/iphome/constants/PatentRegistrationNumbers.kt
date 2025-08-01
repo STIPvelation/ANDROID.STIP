@@ -18,11 +18,13 @@ object PatentRegistrationNumbers {
         "KCOT" to "특허 제 10-2133229호",
         "MDM" to "특허 제 10-1753835호",
         "SMT" to "특허 제 10-6048639호",
-        "WETALK" to "특허 제 10-2004315호,10-2317027호,40-1400891호",
-        "AXNO" to "Business Model",
-        "KATV" to "특허 제 10-2536882호",
-        "SLEEP" to "특허 제 10-2762048호,10-2708038호,20-0493828호",
-        "MSK" to "특허 제 10-2412492호",
+        "WETALK" to "특허 제 10-2004315호",
+        
+        // 특허 등록번호가 없는 티커들
+        "AXNO" to "",
+        "KATV" to "",
+        "SLEEP" to "",
+        "MSK" to "",
     )
     
     /**
