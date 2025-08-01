@@ -55,7 +55,7 @@ object IpDetailInfo {
         "KATV" to "https://drive.google.com/file/d/1ajFZTEZrv3zXyCK8NaWIXRUdJILUk2Ea/view?usp=sharing",
         "KCOT" to "https://drive.google.com/file/d/1dcyyt2rq6STBK57yPec-LLivf2_JmhPR/view?usp=sharing",
         "MSK" to "https://www.dropbox.com/scl/fi/xit1fsqnxtunzhpz93qeg/MSK-2507.pdf?rlkey=s3b0lfyv7nh26t4k7ywsae63x&st=3a95u0y0&dl=0",
-        "JWV" to "https://claude.ai/public/artifacts/0f99e72e-bd44-4aae-b220-420d68ceff4e",
+        "JWV" to "hhttps://drive.google.com/file/d/1hsZT7pHEckC6w0MM3jkNeRjybitdUuDt/view?usp=sharing",
         "AXNO" to "https://docs.google.com/presentation/d/1aGBPC4htTaUGvHqGT3cuy2-QyUSVYwGE/edit?usp=sharing&ouid=114576531580819012864&rtpof=true&sd=true"
     )
 
@@ -87,7 +87,7 @@ object IpDetailInfo {
         "MDM" to "https://youtu.be/pSinruGYXVc?si=JQm2yy8UwzAO4uTy",
         "CDM" to "https://drive.google.com/file/d/1NS5UYf-UniCBaz1eDChVaeykLN61E3xR/view?usp=sharing",
         "IJECT" to "https://youtu.be/03iXowx7I2U",
-        "SLEEP" to "https://youtu.be/XkHFviHL17M?si=JF5MnPa3ekcTsy-P",
+        "SLEEP" to "https://youtube.com/@idealbio",
         "KATV" to "https://youtu.be/yo1NMK1dkIw?si=3EuB5yal_pihKQTN",
         "KCOT" to "https://youtu.be/BhsVcZz7lpo?si=qlx4cvJxqqmJ8v_h",
         "MSK" to "https://youtu.be/nScxr_-hxIA?si=CE05woBOlgm7Yhwi",
@@ -123,9 +123,9 @@ object IpDetailInfo {
         "KCOT" to "코이코어",
         "MDM" to "에프티엔씨",
         "SMT" to "개인",
-        "WETALK" to "개인",
+        "WETALK" to "두레",
         "AXNO" to "콘테츠웨어전략연구소",
-        "KATV" to "GMI 그룹",
+        "KATV" to "GMI그룹",
         "SLEEP" to "수면과건강",
         "MSK" to "개인"
     )
@@ -143,7 +143,7 @@ object IpDetailInfo {
         "SMT" to "김주회",
         "WETALK" to "김병호",
         "AXNO" to "이한순",
-        "KATV" to "이준암", // KATV 대표자명 수정 김준암 -> 이준암
+        "KATV" to "이준암",
         "SLEEP" to "황청풍",
         "MSK" to "윤성은"
     )
