@@ -84,52 +84,56 @@ class IpHomeInfoFragment : Fragment() { // <<< 인터페이스 구현 제거
         }
         Log.d(TAG, "updateUiForTicker: Updating UI for ticker = $ticker")
         
-        // name[symbol] 형식으로 표시
-        currentItem?.let { item ->
+        // 먼저 전달받은 ticker에 매칭되는 정확한 currentItem 찾기
+        currentItem = if (ticker != null) {
+            // 티커에서 슬래시 앞 부분만 추출 (WETALK/USD -> WETALK)
+            val baseTicker = ticker.split("/").firstOrNull() ?: ticker
+            Log.d(TAG, "헤더 티커 추출: '$ticker' -> '$baseTicker'")
             
+            // 기본 티커로 매칭되는 아이템 찾기
+            val matchedItem = TradingDataHolder.ipListingItems.firstOrNull { item ->
+                val itemBaseTicker = item.ticker.split("/").firstOrNull() ?: item.ticker
+                itemBaseTicker.equals(baseTicker, ignoreCase = true)
+            }
+            Log.d(TAG, "매칭된 아이템: ${matchedItem?.ticker} (${matchedItem?.name})")
+            matchedItem
+        } else {
+            null
+        }
+        
+        // 정확한 currentItem을 사용하여 헤더 정보 표시
+        currentItem?.let { item ->
             val displayText = if (item.name.isNotBlank()) {
                 "${item.name}[${item.symbol}]"
             } else {
                 "${item.ticker}[${item.symbol}]"
             }
             binding.tvTickerName.text = displayText
+            Log.d(TAG, "헤더 표시 텍스트 설정: $displayText")
         } ?: run {
             binding.tvTickerName.text = getString(R.string.ticker_name_format, ticker ?: "N/A")
+            Log.w(TAG, "매칭되는 아이템이 없어 기본 텍스트 사용")
         }
 
         // 티커 로고 설정 (이니셜과 색상)
         ticker?.let { code ->
-            // 티커 이니셜 설정 (첫 두 글자 사용)
-            val tickerInitials = code.take(2)
+            // 티커에서 슬래시 앞 부분만 추출하여 로고 설정
+            val baseTicker = code.split("/").firstOrNull() ?: code
+            val tickerInitials = baseTicker.take(2)
             binding.currencyIconText.text = tickerInitials
             
             // TokenLogos 유틸리티를 사용하여 티커별 색상 설정
-            val colorResId = com.stip.iphome.constants.TokenLogos.getColorForTicker(code)
+            val colorResId = com.stip.iphome.constants.TokenLogos.getColorForTicker(baseTicker)
             binding.currencyIconBackground.backgroundTintList = context?.getColorStateList(colorResId)
             
             // TokenIssuanceData 클래스에서 첫 발행일 가져오기
-            val firstIssuanceDate = com.stip.stip.iphome.constants.TokenIssuanceData.getFirstIssuanceDateForTicker(code, "정보 없음")
+            val firstIssuanceDate = com.stip.stip.iphome.constants.TokenIssuanceData.getFirstIssuanceDateForTicker(baseTicker, "정보 없음")
             binding.tvFirstIssuanceDate.text = firstIssuanceDate
             
             // TokenIssuanceData 클래스에서 총 발행 한도 가져오기
             val totalIssuanceLimit = com.stip.stip.iphome.constants.TokenIssuanceData.getTotalIssuanceLimit()
             binding.tvTotalIssuanceLimit.text = totalIssuanceLimit
-            
-            // PatentRegistrationNumbers 클래스에서 특허 등록번호 가져오기
-            val registrationNumber = com.stip.stip.iphome.constants.PatentRegistrationNumbers.getRegistrationNumberForTicker(code)
-            Log.d(TAG, "설정된 등록번호: $registrationNumber (티커: $code)")
-            
-            if (registrationNumber.isBlank()) {
-                // 등록번호가 없는 경우 숨김
-                binding.registrationNumberBox.visibility = View.GONE
-                Log.d(TAG, "등록번호 없음, 숨김 처리: $code")
-            } else {
-                binding.registrationNumberBox.text = registrationNumber
-                binding.registrationNumberBox.visibility = View.VISIBLE
-            }
         }
-
-        currentItem = TradingDataHolder.ipListingItems.firstOrNull { it.ticker == ticker }
 
         if (currentItem == null) {
             Log.w(TAG, "updateUiForTicker: No IpListingItem found for ticker = $ticker")
@@ -141,29 +145,47 @@ class IpHomeInfoFragment : Fragment() { // <<< 인터페이스 구현 제거
             return
         }
 
-        // 티커 등록번호 설정 (PatentRegistrationNumbers 사용 우선, 없으면 currentItem에서 가져옴)
-        val ticker = currentItem?.ticker
-        if (ticker != null) {
-            val registrationNumber = com.stip.stip.iphome.constants.PatentRegistrationNumbers.getRegistrationNumberForTicker(ticker)
-            if (registrationNumber.isBlank()) {
-                // 등록번호가 없는 경우 숨김
-                binding.registrationNumberBox.visibility = View.GONE
-                Log.d(TAG, "등록번호 없음, 숨김 처리: $ticker")
+        // 헤더 티커와 특허번호 정확한 매칭 - 함수 파라미터 ticker 우선 사용
+        Log.d(TAG, "=== 헤더 티커 특허 번호 매칭 START ===")
+        Log.d(TAG, "함수 파라미터 ticker: $ticker")
+        Log.d(TAG, "currentItem?.ticker: ${currentItem?.ticker}")
+        Log.d(TAG, "currentItem?.name: ${currentItem?.name}")
+        
+        // 헤더에 표시할 티커는 함수 파라미터 ticker를 우선 사용
+        val displayTicker = ticker ?: currentItem?.ticker
+        
+        if (displayTicker != null) {
+            // 티커에서 슬래시 앞 부분만 추출 (WETALK/USD -> WETALK)
+            val baseTicker = displayTicker.split("/").firstOrNull() ?: displayTicker
+            Log.d(TAG, "헤더 티커 추출: '$displayTicker' -> '$baseTicker'")
+            
+            // PatentRegistrationNumbers에서 기본 티커로 검색
+            val registrationNumber = com.stip.stip.iphome.constants.PatentRegistrationNumbers.getRegistrationNumberForTicker(baseTicker)
+            Log.d(TAG, "특허번호 매칭 결과: '$baseTicker' -> '$registrationNumber'")
+            
+            if (registrationNumber.isBlank() || registrationNumber == com.stip.stip.iphome.constants.PatentRegistrationNumbers.DEFAULT_VALUE) {
+                // PatentRegistrationNumbers에 데이터가 없으면 currentItem에서 가져오기
+                val fallbackRegNumber = currentItem?.registrationNumber ?: ""
+                Log.d(TAG, "PatentRegistrationNumbers에 데이터 없음, fallback 사용: '$fallbackRegNumber'")
+                if (fallbackRegNumber.isBlank()) {
+                    binding.registrationNumberBox.visibility = View.GONE
+                    Log.d(TAG, "등록번호 없음, 숨김 처리: $baseTicker")
+                } else {
+                    binding.registrationNumberBox.text = fallbackRegNumber
+                    binding.registrationNumberBox.visibility = View.VISIBLE
+                    Log.d(TAG, "Fallback 등록번호 사용: $baseTicker = $fallbackRegNumber")
+                }
             } else {
                 binding.registrationNumberBox.text = registrationNumber
                 binding.registrationNumberBox.visibility = View.VISIBLE
-                Log.d(TAG, "티커 등록번호: $ticker = $registrationNumber")
+                Log.d(TAG, "헤더 티커 특허번호 설정 완료: $baseTicker = $registrationNumber")
             }
         } else {
-            val regNumber = currentItem?.registrationNumber ?: ""
-            if (regNumber.isBlank()) {
-                binding.registrationNumberBox.visibility = View.GONE
-            } else {
-                binding.registrationNumberBox.text = regNumber
-                binding.registrationNumberBox.visibility = View.VISIBLE
-                Log.d(TAG, "등록번호 설정: $regNumber")
-            }
+            // ticker가 없는 경우
+            binding.registrationNumberBox.visibility = View.GONE
+            Log.w(TAG, "ticker가 null입니다.")
         }
+        Log.d(TAG, "=== 헤더 티커 특허 번호 매칭 END ===")
 
         // 어댑터 설정 함수 호출
         setupUsagePlanRecycler(currentItem!!) // currentItem이 null 아님 보장
